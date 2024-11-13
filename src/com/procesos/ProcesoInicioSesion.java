@@ -22,9 +22,12 @@ public class ProcesoInicioSesion
     }
 
     private static void estilosInicioSesion(frmInicioSesion fr) {
-        //bordes
+        //bordes y fondos de los texfiedl
         fr.txtUsuario.setBorder(null);
         fr.txtContraseña.setBorder(null);
+        fr.txtContraseña.setBackground(Color.white);
+        fr.txtUsuario.setBackground(Color.white);
+
         //fondos
         fr.pnlBackground.setBackground(Color.WHITE);
         //texto por defecto
