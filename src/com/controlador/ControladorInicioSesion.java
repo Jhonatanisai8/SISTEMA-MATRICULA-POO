@@ -1,6 +1,6 @@
 package com.controlador;
 
-import com.vista.frmInicioSesion;
+import com.vista.frmInicioSesionView;
 import com.procesos.ProcesoInicioSesion;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
@@ -11,12 +11,12 @@ import javax.swing.JPanel;
 
 public class ControladorInicioSesion implements MouseMotionListener, MouseListener {
 
-    private frmInicioSesion frmInitSesion;
+    private frmInicioSesionView frmInitSesion;
     private JPanel panelNavegacion;
     private int xEje;
     private int yEje;
 
-    public ControladorInicioSesion(frmInicioSesion frmInitSesion) {
+    public ControladorInicioSesion(frmInicioSesionView frmInitSesion) {
         this.frmInitSesion = frmInitSesion;
 
         // agregar listeners al panel de navegación para detectar los eventos de mouse

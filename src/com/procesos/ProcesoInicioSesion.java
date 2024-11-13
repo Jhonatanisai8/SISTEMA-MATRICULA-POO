@@ -1,7 +1,8 @@
 package com.procesos;
 
 import com.constantes.ConstantesInicioSesion;
-import com.vista.frmInicioSesion;
+import com.vista.frmInicioSesionView;
+import com.vista.frmMenuView;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
@@ -11,9 +12,9 @@ import javax.swing.JOptionPane;
 public class ProcesoInicioSesion
         implements ConstantesInicioSesion {
 
-    private static void ponerImagenLogos(frmInicioSesion fr) {
+    private static void ponerImagenLogos(frmInicioSesionView fr) {
         String rutaImagenLogo = "C:\\Users\\User\\Music\\CUARTO CICLO\\08 LABORATORIOS POO\\ProyectoMatriculaPOO\\src\\com\\imgs\\buildings.png";
-        String rutaImagenFondo = "C:\\Users\\User\\Music\\CUARTO CICLO\\08 LABORATORIOS POO\\ProyectoMatriculaPOO\\src\\com\\imgs\\Edificio (2).jpg";
+        String rutaImagenFondo = "C:\\Users\\User\\Music\\CUARTO CICLO\\08 LABORATORIOS POO\\ProyectoMatriculaPOO\\src\\com\\imgs\\iconoColegio02.jpg";
         ImageIcon imgIconoLogo = new ImageIcon(rutaImagenLogo);
         fr.lblLogo.setIcon(imgIconoLogo);
         fr.lblLogo.setText("Jhonatan's");
@@ -21,7 +22,7 @@ public class ProcesoInicioSesion
         fr.lblImagenFondo.setIcon(imgIconoFondo);
     }
 
-    private static void estilosInicioSesion(frmInicioSesion fr) {
+    private static void estilosInicioSesion(frmInicioSesionView fr) {
         //bordes y fondos de los texfiedl
         fr.txtUsuario.setBorder(null);
         fr.txtContraseña.setBorder(null);
@@ -65,7 +66,7 @@ public class ProcesoInicioSesion
         fr.lblOpcionCerrar.setBackground(Color.WHITE);
     }
 
-    public static void presentarFormulario(frmInicioSesion fr) {
+    public static void presentarFormulario(frmInicioSesionView fr) {
         ponerImagenLogos(fr);
         estilosInicioSesion(fr);
 
@@ -75,13 +76,17 @@ public class ProcesoInicioSesion
         fr.setLocationRelativeTo(null);
     }
 
-    public static void entrarFormulario(frmInicioSesion fr) {
+    public static void entrarFormulario(frmInicioSesionView fr) {
         if (fr.txtUsuario.getText().isBlank() && fr.txtContraseña.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "Por favor completar los campos.", "Campos Vacios", JOptionPane.WARNING_MESSAGE);
         } else {
             if (fr.txtUsuario.getText().equals(ConstantesInicioSesion.usuario)
                     && fr.txtContraseña.getText().equals(ConstantesInicioSesion.password)) {
-                JOptionPane.showMessageDialog(null, "Hola Bienvenido", "Bienvenido al Sistema", JOptionPane.INFORMATION_MESSAGE);
+                //JOptionPane.showMessageDialog(null, "Hola Bienvenido", "Bienvenido al Sistema", JOptionPane.INFORMATION_MESSAGE);
+                //hacemos visible el menu 
+                fr.dispose();
+                frmMenuView frMenu = new frmMenuView();
+                frMenu.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario O Contraseña Incorrecta.", "Credenciales Incorrectas", JOptionPane.WARNING_MESSAGE);
             }

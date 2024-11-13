@@ -2,9 +2,9 @@ package com.vista;
 
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
 
-public class frmInicioSesion extends javax.swing.JFrame {
+public class frmInicioSesionView extends javax.swing.JFrame {
 
-    public frmInicioSesion() {
+    public frmInicioSesionView() {
         FlatMaterialLighterIJTheme.setup();
         initComponents();
     }
@@ -159,7 +159,7 @@ public class frmInicioSesion extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmInicioSesion().setVisible(true);
+                new frmInicioSesionView().setVisible(true);
             }
         });
     }
