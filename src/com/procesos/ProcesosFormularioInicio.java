@@ -5,7 +5,6 @@ import com.vista.frmInicioView;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
-import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 
 public class ProcesosFormularioInicio
@@ -24,7 +23,7 @@ public class ProcesosFormularioInicio
         frInicioView.txaDescripcion.setEditable(false);
 
         //para poner el icono
-        frInicioView.lblIconoInicio.setIcon(new ImageIcon(RUTA_IMAGEN_LOGO_IE));
+        frInicioView.lblIconoInicio.setIcon(ICONO_IE);
         //para el borde
         frInicioView.txaDescripcion.setBorder(null);
         frInicioView.txaDescripcion.setFont(FUENTE_TEXT_PRESENTACION);

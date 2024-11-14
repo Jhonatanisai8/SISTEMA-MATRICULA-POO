@@ -1,6 +1,7 @@
 package com.Utelerias.Constantes;
 
 import java.awt.Font;
+import javax.swing.ImageIcon;
 
 public interface ConstantesFormularioInicio {
 
@@ -14,4 +15,7 @@ public interface ConstantesFormularioInicio {
     final Font FUENTE_TEXT_PRESENTACION = new Font("Montserrat", Font.BOLD, 25);
     final Font FUENTE_TEXT_FECHA = new Font("Montserrat", Font.BOLD, 20);
     final Font FUENTE_TEXT_ADMIN = new Font("Montserrat", Font.CENTER_BASELINE, 20);
+    final ImageIcon ICONO_IE = new ImageIcon(RUTA_IMAGEN_LOGO_IE);
+    
+    
 }
