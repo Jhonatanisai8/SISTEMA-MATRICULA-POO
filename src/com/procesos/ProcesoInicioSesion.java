@@ -1,6 +1,7 @@
 package com.procesos;
 
 import com.constantes.ConstantesInicioSesion;
+import com.controlador.ControladorFormularioMenuView;
 import com.vista.frmInicioSesionView;
 import com.vista.frmMenuView;
 import java.awt.Color;
@@ -13,7 +14,7 @@ public class ProcesoInicioSesion
         implements ConstantesInicioSesion {
 
     private static void ponerImagenLogos(frmInicioSesionView fr) {
-        String rutaImagenLogo = "C:\\Users\\User\\Music\\CUARTO CICLO\\08 LABORATORIOS POO\\ProyectoMatriculaPOO\\src\\com\\imgs\\buildings.png";
+        String rutaImagenLogo = "C:\\Users\\User\\Music\\CUARTO CICLO\\08 LABORATORIOS POO\\ProyectoMatriculaPOO\\src\\com\\imgs\\EdificioPequeño.png";
         String rutaImagenFondo = "C:\\Users\\User\\Music\\CUARTO CICLO\\08 LABORATORIOS POO\\ProyectoMatriculaPOO\\src\\com\\imgs\\iconoColegio02.jpg";
         ImageIcon imgIconoLogo = new ImageIcon(rutaImagenLogo);
         fr.lblLogo.setIcon(imgIconoLogo);
@@ -87,6 +88,7 @@ public class ProcesoInicioSesion
                 fr.dispose();
                 frmMenuView frMenu = new frmMenuView();
                 frMenu.setVisible(true);
+                ControladorFormularioMenuView cfmv = new ControladorFormularioMenuView(frMenu);
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario O Contraseña Incorrecta.", "Credenciales Incorrectas", JOptionPane.WARNING_MESSAGE);
             }
