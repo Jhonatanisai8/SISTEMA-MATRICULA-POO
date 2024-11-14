@@ -3,10 +3,6 @@ package com.procesos;
 import com.controlador.ControladorFormularioMenuView;
 import com.vista.frmInicioSesionView;
 import com.vista.frmMenuView;
-import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.Font;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import com.Utelerias.Constantes.ConstantesFormularioInicioSesion;
 
@@ -14,57 +10,52 @@ public class ProcesoInicioSesion
         implements ConstantesFormularioInicioSesion {
 
     private static void ponerImagenLogos(frmInicioSesionView fr) {
-        String rutaImagenLogo = "C:\\Users\\User\\Music\\CUARTO CICLO\\08 LABORATORIOS POO\\ProyectoMatriculaPOO\\src\\com\\imgs\\EdificioPequeño.png";
-        String rutaImagenFondo = "C:\\Users\\User\\Music\\CUARTO CICLO\\08 LABORATORIOS POO\\ProyectoMatriculaPOO\\src\\com\\imgs\\iconoColegio02.jpg";
-        ImageIcon imgIconoLogo = new ImageIcon(rutaImagenLogo);
-        fr.lblLogo.setIcon(imgIconoLogo);
+        fr.lblLogo.setIcon(ICONO_LOGO);
         fr.lblLogo.setText("Jhonatan's");
-        ImageIcon imgIconoFondo = new ImageIcon(rutaImagenFondo);
-        fr.lblImagenFondo.setIcon(imgIconoFondo);
+        fr.lblImagenFondo.setIcon(ICONO_FONDO_IE);
     }
 
     private static void estilosInicioSesion(frmInicioSesionView fr) {
         //bordes y fondos de los texfiedl
         fr.txtUsuario.setBorder(null);
         fr.txtContraseña.setBorder(null);
-        fr.txtContraseña.setBackground(Color.white);
-        fr.txtUsuario.setBackground(Color.white);
+        fr.txtContraseña.setBackground(BLANCO);
+        fr.txtUsuario.setBackground(BLANCO);
 
         //fondos
-        fr.pnlBackground.setBackground(Color.WHITE);
+        fr.pnlBackground.setBackground(BLANCO);
         //texto por defecto
         fr.txtUsuario.setText("Ingrese su Usuario");
         fr.txtContraseña.setText("******************");
         fr.InicioSesionBtn.setText("Iniciar Sesión");
         fr.InicioSesionBtn.setHorizontalAlignment(0);
         //estilos de fuentes
-        fr.lblUsuario.setFont(new Font("Montserrat", Font.BOLD, 14));
-        fr.lblContraseña.setFont(new Font("Montserrat", Font.BOLD, 14));
-        fr.lblInicioSesion.setFont(new Font("Montserrat", Font.BOLD, 18));
-        fr.btnIniciarSesion.setFont(new Font("Montserrat", Font.CENTER_BASELINE, 25));
+        fr.lblUsuario.setFont(FUENTE_LBL_USUARIO);
+        fr.lblContraseña.setFont(FUENTE_LBL_USUARIO);
+        fr.lblInicioSesion.setFont(FUENTE_LBL_INICIO_SESION);
+        fr.btnIniciarSesion.setFont(FUENTE_LBL_BTN_INICIO_SESION);
 
         //color de fuente
-        fr.txtUsuario.setForeground(Color.GRAY);
-        fr.txtContraseña.setForeground(Color.GRAY);
-        fr.InicioSesionBtn.setForeground(Color.white);
+        fr.txtUsuario.setForeground(GRIS);
+        fr.txtContraseña.setForeground(GRIS);
+        fr.InicioSesionBtn.setForeground(BLANCO);
 
         //color del boton (formato rgb)
-        fr.btnIniciarSesion.setBackground(new Color(0, 77, 123));
-        fr.InicioSesionBtn.setBackground(new Color(0, 77, 123));
+        fr.btnIniciarSesion.setBackground(COLOR_BOTON);
+        fr.InicioSesionBtn.setBackground(COLOR_BOTON);
 
         //cursor
-        fr.InicioSesionBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        fr.InicioSesionBtn.setCursor(CURSOR_MANO);
 
         //para evitar el cambio de tamaño
         fr.setResizable(false);
 
         //para la barra de opciones
-        fr.pnlBarraNavegacion.setBackground(Color.white);
+        fr.pnlBarraNavegacion.setBackground(BLANCO);
         fr.lblOpcionCerrar.setText("X");
         fr.lblOpcionCerrar.setHorizontalAlignment(0);
-        fr.lblOpcionCerrar.setCursor(new Cursor(Cursor.HAND_CURSOR) {
-        });
-        fr.lblOpcionCerrar.setBackground(Color.WHITE);
+        fr.lblOpcionCerrar.setCursor(CURSOR_MANO);
+        fr.lblOpcionCerrar.setBackground(BLANCO);
     }
 
     public static void presentarFormulario(frmInicioSesionView fr) {
@@ -81,8 +72,8 @@ public class ProcesoInicioSesion
         if (fr.txtUsuario.getText().isBlank() && fr.txtContraseña.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "Por favor completar los campos.", "Campos Vacios", JOptionPane.WARNING_MESSAGE);
         } else {
-            if (fr.txtUsuario.getText().equals(ConstantesFormularioInicioSesion.usuario)
-                    && fr.txtContraseña.getText().equals(ConstantesFormularioInicioSesion.password)) {
+            if (fr.txtUsuario.getText().equals(ConstantesFormularioInicioSesion.USUARIO)
+                    && fr.txtContraseña.getText().equals(ConstantesFormularioInicioSesion.PASSWORD)) {
                 //JOptionPane.showMessageDialog(null, "Hola Bienvenido", "Bienvenido al Sistema", JOptionPane.INFORMATION_MESSAGE);
                 //hacemos visible el menu 
                 fr.dispose();
