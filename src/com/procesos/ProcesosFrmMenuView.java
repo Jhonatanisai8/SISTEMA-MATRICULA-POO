@@ -1,12 +1,11 @@
 package com.procesos;
 
-import com.constantes.ConstantesFrmMenu;
+import com.controlador.ControladorFormularioInicio;
+import com.vista.frmInicioView;
 import com.vista.frmMenuView;
-import java.awt.Color;
 import javax.swing.ImageIcon;
 
-public class ProcesosFrmMenuView
-        implements ConstantesFrmMenu {
+public class ProcesosFrmMenuView {
 
     public static void ponerIconosMenus(frmMenuView frenuView) {
         frenuView.mnInicio.setIcon(new ImageIcon("C:\\Users\\User\\Music\\CUARTO CICLO\\08 LABORATORIOS POO\\ProyectoMatriculaPOO\\src\\com\\imgs\\Inicio.png"));
@@ -22,9 +21,8 @@ public class ProcesosFrmMenuView
 
     public static void presentarFormularioMenu(frmMenuView frenuView) {
         ponerIconosMenus(frenuView);
-        frenuView.lblAdministrador.setText(nombreAdministrador);
-        frenuView.lblAdministrador.setForeground(Color.black);
         frenuView.setResizable(false);
-
+        frmInicioView frInicioView = new frmInicioView();
+        ControladorFormularioInicio cfi = new ControladorFormularioInicio(frInicioView, frenuView);
     }
 }
