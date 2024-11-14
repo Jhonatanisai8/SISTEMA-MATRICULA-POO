@@ -15,6 +15,7 @@ public class frmMenuView extends javax.swing.JFrame {
 
         pnlBackgroundMenu = new javax.swing.JPanel();
         dsktEscritorio = new javax.swing.JDesktopPane();
+        lblAdministrador = new javax.swing.JLabel();
         menMenuPrincipal = new javax.swing.JMenuBar();
         mnInicio = new javax.swing.JMenu();
         mnEstudiantes = new javax.swing.JMenu();
@@ -28,15 +29,23 @@ public class frmMenuView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        dsktEscritorio.setLayer(lblAdministrador, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout dsktEscritorioLayout = new javax.swing.GroupLayout(dsktEscritorio);
         dsktEscritorio.setLayout(dsktEscritorioLayout);
         dsktEscritorioLayout.setHorizontalGroup(
             dsktEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1060, Short.MAX_VALUE)
+            .addGroup(dsktEscritorioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(802, Short.MAX_VALUE))
         );
         dsktEscritorioLayout.setVerticalGroup(
             dsktEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 522, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dsktEscritorioLayout.createSequentialGroup()
+                .addContainerGap(450, Short.MAX_VALUE)
+                .addComponent(lblAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout pnlBackgroundMenuLayout = new javax.swing.GroupLayout(pnlBackgroundMenu);
@@ -104,6 +113,7 @@ public class frmMenuView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JDesktopPane dsktEscritorio;
+    public javax.swing.JLabel lblAdministrador;
     public javax.swing.JMenuBar menMenuPrincipal;
     public javax.swing.JMenu mnCursos;
     public javax.swing.JMenu mnDocentes;
