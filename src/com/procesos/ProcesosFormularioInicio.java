@@ -2,10 +2,10 @@ package com.procesos;
 
 import com.Utelerias.Constantes.ConstantesFormularioInicio;
 import com.vista.frmInicioView;
-import com.vista.frmMenuView;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 
 public class ProcesosFormularioInicio
@@ -17,13 +17,26 @@ public class ProcesosFormularioInicio
         fr.lblFecha.setText(now.format(DateTimeFormatter.ofPattern("'Hoy es' EEEE dd 'de' MMMM 'de' yyyy", spanishLocale)));
     }
 
+    private static void estilosFormulario(frmInicioView frInicioView) {
+
+        frInicioView.lblAdministrador.setText("Ad. : " + NOMBRE_ADMIN);
+        frInicioView.txaDescripcion.setText(TEXTO_PRESENTACION);
+        frInicioView.txaDescripcion.setEditable(false);
+
+        //para poner el icono
+        frInicioView.lblIconoInicio.setIcon(new ImageIcon(RUTA_IMAGEN_LOGO_IE));
+        //para el borde
+        frInicioView.txaDescripcion.setBorder(null);
+        frInicioView.txaDescripcion.setFont(FUENTE_TEXT_PRESENTACION);
+        frInicioView.lblAdministrador.setFont(FUENTE_TEXT_ADMIN);
+        frInicioView.lblFecha.setFont(FUENTE_TEXT_FECHA);
+
+    }
+
     public static void presentarFormulario(JDesktopPane desktopPane, frmInicioView frInicioView) {
-        frInicioView.lblAdministrador.setText(nombreAdmin);
+        //llamamos a los metodos de esta misma clase
         establecerFecha(frInicioView);
-        frInicioView.txaDescripcion.setText("Bienvenido al Sistema de Matrícula Escolar."
-                + " \n Aquí puedes gestionar fácilmente estudiantes, docentes, "
-                + "\n cursos y horarios para llevar un registro organizado"
-                + "\n y eficiente de tu institución.");
+        estilosFormulario(frInicioView);
         desktopPane.add(frInicioView);
         frInicioView.toFront();
         frInicioView.setVisible(true);
