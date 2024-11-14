@@ -1,6 +1,5 @@
 package com.procesos;
 
-import com.constantes.ConstantesInicioSesion;
 import com.controlador.ControladorFormularioMenuView;
 import com.vista.frmInicioSesionView;
 import com.vista.frmMenuView;
@@ -9,9 +8,10 @@ import java.awt.Cursor;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import com.Utelerias.Constantes.ConstantesFormularioInicioSesion;
 
 public class ProcesoInicioSesion
-        implements ConstantesInicioSesion {
+        implements ConstantesFormularioInicioSesion {
 
     private static void ponerImagenLogos(frmInicioSesionView fr) {
         String rutaImagenLogo = "C:\\Users\\User\\Music\\CUARTO CICLO\\08 LABORATORIOS POO\\ProyectoMatriculaPOO\\src\\com\\imgs\\EdificioPequeño.png";
@@ -81,8 +81,8 @@ public class ProcesoInicioSesion
         if (fr.txtUsuario.getText().isBlank() && fr.txtContraseña.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "Por favor completar los campos.", "Campos Vacios", JOptionPane.WARNING_MESSAGE);
         } else {
-            if (fr.txtUsuario.getText().equals(ConstantesInicioSesion.usuario)
-                    && fr.txtContraseña.getText().equals(ConstantesInicioSesion.password)) {
+            if (fr.txtUsuario.getText().equals(ConstantesFormularioInicioSesion.usuario)
+                    && fr.txtContraseña.getText().equals(ConstantesFormularioInicioSesion.password)) {
                 //JOptionPane.showMessageDialog(null, "Hola Bienvenido", "Bienvenido al Sistema", JOptionPane.INFORMATION_MESSAGE);
                 //hacemos visible el menu 
                 fr.dispose();
