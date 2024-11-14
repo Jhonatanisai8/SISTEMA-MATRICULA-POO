@@ -6,10 +6,10 @@ import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class ControladorInicioSesion implements MouseMotionListener, MouseListener {
+public class ControladorInicioSesion
+        implements MouseMotionListener, MouseListener {
 
     private frmInicioSesionView frmInitSesion;
     private JPanel panelNavegacion;
