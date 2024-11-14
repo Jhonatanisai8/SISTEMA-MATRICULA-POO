@@ -12,6 +12,6 @@ public class ControladorFormularioInicio {
     public ControladorFormularioInicio(frmInicioView frInicioView, frmMenuView frMenuView) {
         this.frInicioView = frInicioView;
         this.frMenuView = frMenuView;  
-        ProcesosFormularioInicio.presentarFormulario(frMenuView.dsktEscritorio, this.frInicioView);
+        ProcesosFormularioInicio.presentarFormulario(this.frMenuView.dsktEscritorio, this.frInicioView);
     }
 }
