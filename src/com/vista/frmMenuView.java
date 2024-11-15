@@ -18,12 +18,26 @@ public class frmMenuView extends javax.swing.JFrame {
         menMenuPrincipal = new javax.swing.JMenuBar();
         mnInicio = new javax.swing.JMenu();
         mnEstudiantes = new javax.swing.JMenu();
+        jmnRegistrarEstudiante = new javax.swing.JMenuItem();
+        jmnAdministrarEstudiantes = new javax.swing.JMenuItem();
         mnDocentes = new javax.swing.JMenu();
+        jmnRegistrarDocente = new javax.swing.JMenuItem();
+        jmnAdministrarDocentes = new javax.swing.JMenuItem();
         mnSalones = new javax.swing.JMenu();
+        jmnRegistrarSalon = new javax.swing.JMenuItem();
+        jmnAdministrarSalones = new javax.swing.JMenuItem();
         mnCursos = new javax.swing.JMenu();
+        jmnRegistrarCurso = new javax.swing.JMenuItem();
+        jmnAdministrarCursos = new javax.swing.JMenuItem();
         mnHorarios = new javax.swing.JMenu();
+        jmnAsignarHorario = new javax.swing.JMenuItem();
+        jmnAdministrarHorarios = new javax.swing.JMenuItem();
         mnMatricula = new javax.swing.JMenu();
+        jmnRegistrarMatricula = new javax.swing.JMenuItem();
+        jmnAdministrarMatriculas = new javax.swing.JMenuItem();
         mnListados = new javax.swing.JMenu();
+        jmnEstudiantesMatriculados = new javax.swing.JMenuItem();
+        jmnDocentesAsignados = new javax.swing.JMenuItem();
         mnSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -47,7 +61,7 @@ public class frmMenuView extends javax.swing.JFrame {
         );
         pnlBackgroundMenuLayout.setVerticalGroup(
             pnlBackgroundMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dsktEscritorio)
+            .addComponent(dsktEscritorio, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         mnInicio.setText("Inicio");
@@ -64,24 +78,93 @@ public class frmMenuView extends javax.swing.JFrame {
         menMenuPrincipal.add(mnInicio);
 
         mnEstudiantes.setText("Estudiantes");
+
+        jmnRegistrarEstudiante.setText("Registrar Estudiante");
+        mnEstudiantes.add(jmnRegistrarEstudiante);
+
+        jmnAdministrarEstudiantes.setText("Administrar Estudiante");
+        jmnAdministrarEstudiantes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmnAdministrarEstudiantesActionPerformed(evt);
+            }
+        });
+        mnEstudiantes.add(jmnAdministrarEstudiantes);
+
         menMenuPrincipal.add(mnEstudiantes);
 
         mnDocentes.setText("Docentes");
+
+        jmnRegistrarDocente.setText("Registrar Docente");
+        mnDocentes.add(jmnRegistrarDocente);
+
+        jmnAdministrarDocentes.setText("Administrar Docentes");
+        mnDocentes.add(jmnAdministrarDocentes);
+
         menMenuPrincipal.add(mnDocentes);
 
         mnSalones.setText("Salones");
+
+        jmnRegistrarSalon.setText("Registrar Salón");
+        mnSalones.add(jmnRegistrarSalon);
+
+        jmnAdministrarSalones.setText("Administrar Salones");
+        mnSalones.add(jmnAdministrarSalones);
+
         menMenuPrincipal.add(mnSalones);
 
         mnCursos.setText("Cursos");
+
+        jmnRegistrarCurso.setText("Registrar Curso");
+        mnCursos.add(jmnRegistrarCurso);
+
+        jmnAdministrarCursos.setText("Administrar Cursos");
+        jmnAdministrarCursos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmnAdministrarCursosActionPerformed(evt);
+            }
+        });
+        mnCursos.add(jmnAdministrarCursos);
+
         menMenuPrincipal.add(mnCursos);
 
         mnHorarios.setText("Horarios");
+
+        jmnAsignarHorario.setText("Asignar Horario");
+        mnHorarios.add(jmnAsignarHorario);
+
+        jmnAdministrarHorarios.setText("Administrar Horarios");
+        jmnAdministrarHorarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmnAdministrarHorariosActionPerformed(evt);
+            }
+        });
+        mnHorarios.add(jmnAdministrarHorarios);
+
         menMenuPrincipal.add(mnHorarios);
 
         mnMatricula.setText("Matrícula");
+
+        jmnRegistrarMatricula.setText("Matricular Estudiante");
+        mnMatricula.add(jmnRegistrarMatricula);
+
+        jmnAdministrarMatriculas.setText("Administrar Matriculas");
+        mnMatricula.add(jmnAdministrarMatriculas);
+
         menMenuPrincipal.add(mnMatricula);
 
         mnListados.setText("Listados");
+
+        jmnEstudiantesMatriculados.setText("Estufiantes Matriculados");
+        mnListados.add(jmnEstudiantesMatriculados);
+
+        jmnDocentesAsignados.setText("Docentes Asignados");
+        jmnDocentesAsignados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmnDocentesAsignadosActionPerformed(evt);
+            }
+        });
+        mnListados.add(jmnDocentesAsignados);
+
         menMenuPrincipal.add(mnListados);
 
         mnSalir.setText("Salir");
@@ -110,6 +193,22 @@ public class frmMenuView extends javax.swing.JFrame {
     private void mnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnInicioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mnInicioActionPerformed
+
+    private void jmnAdministrarEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmnAdministrarEstudiantesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmnAdministrarEstudiantesActionPerformed
+
+    private void jmnAdministrarCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmnAdministrarCursosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmnAdministrarCursosActionPerformed
+
+    private void jmnAdministrarHorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmnAdministrarHorariosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmnAdministrarHorariosActionPerformed
+
+    private void jmnDocentesAsignadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmnDocentesAsignadosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmnDocentesAsignadosActionPerformed
     public static void main(String args[]) {
         FlatMaterialLighterIJTheme.setup();
         /* Create and display the form */
@@ -122,6 +221,20 @@ public class frmMenuView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JDesktopPane dsktEscritorio;
+    public javax.swing.JMenuItem jmnAdministrarCursos;
+    public javax.swing.JMenuItem jmnAdministrarDocentes;
+    public javax.swing.JMenuItem jmnAdministrarEstudiantes;
+    public javax.swing.JMenuItem jmnAdministrarHorarios;
+    public javax.swing.JMenuItem jmnAdministrarMatriculas;
+    public javax.swing.JMenuItem jmnAdministrarSalones;
+    public javax.swing.JMenuItem jmnAsignarHorario;
+    public javax.swing.JMenuItem jmnDocentesAsignados;
+    public javax.swing.JMenuItem jmnEstudiantesMatriculados;
+    public javax.swing.JMenuItem jmnRegistrarCurso;
+    public javax.swing.JMenuItem jmnRegistrarDocente;
+    public javax.swing.JMenuItem jmnRegistrarEstudiante;
+    public javax.swing.JMenuItem jmnRegistrarMatricula;
+    public javax.swing.JMenuItem jmnRegistrarSalon;
     public javax.swing.JMenuBar menMenuPrincipal;
     public javax.swing.JMenu mnCursos;
     public javax.swing.JMenu mnDocentes;

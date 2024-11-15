@@ -13,7 +13,7 @@ public class ControladorFormularioMenuView implements ActionListener {
     public ControladorFormularioMenuView(frmMenuView menuView) {
         this.frmenuView = menuView;
         this.frmenuView.mnInicio.addActionListener(this);
-        ProcesosFormularioMenuView.presentarFormularioMenu(this.frmenuView);
+        ProcesosFormularioMenuView.presentarFormulario(this.frmenuView);
     }
 
     @Override
