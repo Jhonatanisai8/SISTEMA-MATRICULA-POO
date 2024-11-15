@@ -1,6 +1,6 @@
 package com.controlador;
 
-import com.procesos.ProcesosFrmMenuView;
+import com.procesos.ProcesosFormularioMenuView;
 import com.vista.frmInicioView;
 import com.vista.frmMenuView;
 import java.awt.event.ActionEvent;
@@ -13,7 +13,7 @@ public class ControladorFormularioMenuView implements ActionListener {
     public ControladorFormularioMenuView(frmMenuView menuView) {
         this.frmenuView = menuView;
         this.frmenuView.mnInicio.addActionListener(this);
-        ProcesosFrmMenuView.presentarFormularioMenu(this.frmenuView);
+        ProcesosFormularioMenuView.presentarFormularioMenu(this.frmenuView);
     }
 
     @Override
