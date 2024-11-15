@@ -9,7 +9,7 @@ import com.Utelerias.Constantes.ConstantesFormularioInicioSesion;
 public class ProcesoInicioSesion
         implements ConstantesFormularioInicioSesion {
 
-    private static void ponerImagenLogos(frmInicioSesionView fr) {
+    private static void ponerIconosFormulario(frmInicioSesionView fr) {
         fr.lblLogo.setIcon(ICONO_LOGO);
         fr.lblLogo.setText("Jhonatan's");
         fr.lblImagenFondo.setIcon(ICONO_FONDO_IE);
@@ -59,7 +59,7 @@ public class ProcesoInicioSesion
     }
 
     public static void presentarFormulario(frmInicioSesionView fr) {
-        ponerImagenLogos(fr);
+        ponerIconosFormulario(fr);
         estilosInicioSesion(fr);
 
         fr.setTitle("Bienvenido al sistema".toUpperCase());
