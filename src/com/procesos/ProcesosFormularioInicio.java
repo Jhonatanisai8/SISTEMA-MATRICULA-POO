@@ -29,6 +29,8 @@ public class ProcesosFormularioInicio
         frInicioView.txaDescripcion.setFont(FUENTE_TEXT_PRESENTACION);
         frInicioView.lblAdministrador.setFont(FUENTE_TEXT_ADMIN);
         frInicioView.lblFecha.setFont(FUENTE_TEXT_FECHA);
+        //fondo
+        frInicioView.pnlFondo.setBackground(COLOR_FONDO_BLANCO);
 
     }
 
