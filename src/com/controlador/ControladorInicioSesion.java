@@ -1,18 +1,16 @@
 package com.controlador;
 
+import com.Utelerias.Constantes.ConstantesFormularioInicioSesion;
 import com.vista.frmInicioSesionView;
 import com.procesos.ProcesoInicioSesion;
-import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import javax.swing.JPanel;
 
 public class ControladorInicioSesion
-        implements MouseMotionListener, MouseListener {
+        implements ConstantesFormularioInicioSesion, MouseMotionListener, MouseListener {
 
-    private frmInicioSesionView frmInitSesion;
-    private JPanel panelNavegacion;
+    private final frmInicioSesionView frmInitSesion;
     private int xEje;
     private int yEje;
 
@@ -43,19 +41,19 @@ public class ControladorInicioSesion
         if (e.getSource() == this.frmInitSesion.txtUsuario) {
             if (this.frmInitSesion.txtUsuario.getText().equals("Ingrese su Usuario")) {
                 this.frmInitSesion.txtUsuario.setText("");
-                this.frmInitSesion.txtUsuario.setForeground(Color.black);
+                this.frmInitSesion.txtUsuario.setForeground(COLOR_NEGRO);
             }
             if (String.valueOf(this.frmInitSesion.txtContraseña.getPassword()).isEmpty()) {
                 this.frmInitSesion.txtContraseña.setText("******************");
-                this.frmInitSesion.txtContraseña.setForeground(Color.gray);
+                this.frmInitSesion.txtContraseña.setForeground(COLOR_GRIS);
             }
         } else if (e.getSource() == this.frmInitSesion.txtContraseña) {
             if (String.valueOf(this.frmInitSesion.txtContraseña.getPassword()).equals("******************")) {
                 this.frmInitSesion.txtContraseña.setText("");
-                this.frmInitSesion.txtContraseña.setForeground(Color.black);
+                this.frmInitSesion.txtContraseña.setForeground(COLOR_NEGRO);
             }
             if (this.frmInitSesion.txtUsuario.getText().isEmpty()) {
-                this.frmInitSesion.txtUsuario.setForeground(Color.gray);
+                this.frmInitSesion.txtUsuario.setForeground(COLOR_GRIS);
                 this.frmInitSesion.txtUsuario.setText("Ingrese su Usuario");
             }
         }
@@ -71,12 +69,12 @@ public class ControladorInicioSesion
     ) {
         // cambia de color cuando se sale de lblOpcionCerrar
         if (e.getSource() == this.frmInitSesion.lblOpcionCerrar) {
-            this.frmInitSesion.lblOpcionCerrar.setForeground(Color.BLACK);
-            this.frmInitSesion.lblOpcionCerrar.setBackground(Color.white);
+            this.frmInitSesion.lblOpcionCerrar.setForeground(COLOR_NEGRO);
+            this.frmInitSesion.lblOpcionCerrar.setBackground(BLANCO);
         } //para el cambio de color de fondo del boton 
         else if (e.getSource() == this.frmInitSesion.InicioSesionBtn) {
-            this.frmInitSesion.InicioSesionBtn.setBackground(new Color(0, 77, 123));
-            this.frmInitSesion.lblOpcionCerrar.setForeground(Color.WHITE);
+            this.frmInitSesion.InicioSesionBtn.setBackground(COLOR_BOTON);
+            this.frmInitSesion.lblOpcionCerrar.setForeground(BLANCO);
         }
     }
 
@@ -96,12 +94,12 @@ public class ControladorInicioSesion
     ) {
         // cambia el color de fondo cuando el mouse entra en lblOpcionCerrar
         if (e.getSource() == this.frmInitSesion.lblOpcionCerrar) {
-            this.frmInitSesion.lblOpcionCerrar.setForeground(Color.WHITE);
-            this.frmInitSesion.lblOpcionCerrar.setBackground(Color.red);
+            this.frmInitSesion.lblOpcionCerrar.setForeground(BLANCO);
+            this.frmInitSesion.lblOpcionCerrar.setBackground(COLOR_ROJO);
         } //para el cambio de color de fondo del boton 
         else if (e.getSource() == this.frmInitSesion.InicioSesionBtn) {
-            this.frmInitSesion.InicioSesionBtn.setBackground(new Color(0, 134, 125));
-            this.frmInitSesion.lblOpcionCerrar.setForeground(Color.WHITE);
+            this.frmInitSesion.InicioSesionBtn.setBackground(COLOR_BOTON_01);
+            this.frmInitSesion.lblOpcionCerrar.setForeground(BLANCO);
         }
     }
 

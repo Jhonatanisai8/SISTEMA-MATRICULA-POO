@@ -36,8 +36,8 @@ public class ProcesoInicioSesion
         fr.btnIniciarSesion.setFont(FUENTE_LBL_BTN_INICIO_SESION);
 
         //color de fuente
-        fr.txtUsuario.setForeground(GRIS);
-        fr.txtContraseña.setForeground(GRIS);
+        fr.txtUsuario.setForeground(COLOR_GRIS);
+        fr.txtContraseña.setForeground(COLOR_GRIS);
         fr.InicioSesionBtn.setForeground(BLANCO);
 
         //color del boton (formato rgb)

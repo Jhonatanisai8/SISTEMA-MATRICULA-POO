@@ -20,8 +20,12 @@ public interface ConstantesFormularioInicioSesion {
 
     //colores
     final Color BLANCO = Color.WHITE;
-    final Color GRIS = Color.GRAY;
+    final Color COLOR_GRIS = Color.GRAY;
+    final Color COLOR_NEGRO = Color.GRAY;
+    final Color COLOR_ROJO = Color.RED;
+    
     final Color COLOR_BOTON = new Color(0, 77, 123);
+    final Color COLOR_BOTON_01 = new Color(0, 134, 125);
     
     //cursores
     final Cursor CURSOR_MANO = new Cursor(Cursor.HAND_CURSOR);
