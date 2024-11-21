@@ -7,7 +7,7 @@ import com.vista.frmMenuView;
 
 public class ProcesosFormularioMenuView
         implements ConstantesFormularioMenu {
-
+    
     public static void ponerIconosFormulario(frmMenuView frenuView) {
         frenuView.mnInicio.setIcon(ICONO_MN_INICIO);
         frenuView.mnEstudiantes.setIcon(ICONO_MN_ESTUDIANTES);
@@ -31,12 +31,13 @@ public class ProcesosFormularioMenuView
         frenuView.jmnAdministrarHorarios.setIcon(ICONO_JMN_ADMINISTRAR_HORARIOS);
         frenuView.jmnEstudiantesMatriculados.setIcon(ICONO_JMN_LISTAR_ESTUDIANTES_MATRICULADOS);
         frenuView.jmnDocentesAsignados.setIcon(ICONO_JMN_LISTAR_DOCENTES_ASIGNADOS);
-
+        
     }
-
+    
     public static void presentarFormulario(frmMenuView frenuView) {
         ponerIconosFormulario(frenuView);
         frenuView.setResizable(false);
+        frenuView.setLocationRelativeTo(null);
         frmInicioView frInicioView = new frmInicioView();
         ControladorFormularioInicio cfi = new ControladorFormularioInicio(frInicioView, frenuView);
     }
