@@ -46,11 +46,11 @@ public class frmMenuView extends javax.swing.JFrame {
         dsktEscritorio.setLayout(dsktEscritorioLayout);
         dsktEscritorioLayout.setHorizontalGroup(
             dsktEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1060, Short.MAX_VALUE)
+            .addGap(0, 1190, Short.MAX_VALUE)
         );
         dsktEscritorioLayout.setVerticalGroup(
             dsktEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 522, Short.MAX_VALUE)
+            .addGap(0, 572, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout pnlBackgroundMenuLayout = new javax.swing.GroupLayout(pnlBackgroundMenu);
@@ -61,7 +61,7 @@ public class frmMenuView extends javax.swing.JFrame {
         );
         pnlBackgroundMenuLayout.setVerticalGroup(
             pnlBackgroundMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dsktEscritorio, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(dsktEscritorio)
         );
 
         mnInicio.setText("Inicio");
