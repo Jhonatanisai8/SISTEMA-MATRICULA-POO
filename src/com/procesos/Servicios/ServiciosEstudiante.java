@@ -1,6 +1,8 @@
 package com.procesos.Servicios;
 
+import com.vista.frmListadoEstudiantesView;
 import java.util.Random;
+import javax.swing.table.DefaultTableModel;
 
 public class ServiciosEstudiante {
 
@@ -12,5 +14,10 @@ public class ServiciosEstudiante {
         Random numeroRandon = new Random();
         int n = numeroRandon.nextInt(900) + 100;
         return String.valueOf(n).concat(nombre.substring(0, 3)).concat(apellido.substring(0, 3)).concat("EST2402").toUpperCase();
+    }
+
+    public static void mostrarEstudiantesEnTabla(frmListadoEstudiantesView frmEstudiantesView, String titulosColumnas[]) {
+        DefaultTableModel modeloTabla = new DefaultTableModel(null, titulosColumnas);
+        frmEstudiantesView.btlData.setModel(modeloTabla);
     }
 }
