@@ -19,13 +19,13 @@ public class ProcesosFormularioRegistroEstudiante
     }
 
     private static void ponerIconosFormulario(frmRegistrarEstudiante frEstudiante) {
-        frEstudiante.jButton1.setIcon(ICONO_BOTON_GUARDAR);
+        frEstudiante.btnGuardar.setIcon(ICONO_BOTON_GUARDAR);
     }
 
     public static void presentarFormulario(JDesktopPane desktopPane, frmRegistrarEstudiante fr) {
         rellenarComboBox(fr);
         ponerIconosFormulario(fr);
-        fr.setTitle("Presentando");
+        fr.setTitle("Datos del estudiante");
         desktopPane.add(fr);
         fr.toFront();
         fr.setVisible(true);
