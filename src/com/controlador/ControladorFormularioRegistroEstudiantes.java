@@ -1,18 +1,20 @@
 package com.controlador;
 
+import com.Modelo.entidades.DaoImplementacion.EstudianteReposioImple;
+import com.Modelo.entidades.Estudiante;
+import com.Modelo.entidades.InterfaceDao.Repositorio;
 import com.procesos.ProcesosFormularioRegistroEstudiante;
-import com.procesos.Validaciones.ValidacionesFrmRegistroEstudiante;
 import com.vista.frmMenuView;
 import com.vista.frmRegistrarEstudianteView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
 
 public class ControladorFormularioRegistroEstudiantes
         implements ActionListener {
 
     private final frmRegistrarEstudianteView frEstudiante;
     private final frmMenuView frMenuView;
+    private Estudiante estudiante;
 
     public ControladorFormularioRegistroEstudiantes(frmMenuView menuView, frmRegistrarEstudianteView frEstudiante) {
         this.frEstudiante = frEstudiante;
@@ -24,13 +26,10 @@ public class ControladorFormularioRegistroEstudiantes
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.frEstudiante.btnGuardar) {
-            String validacion = ValidacionesFrmRegistroEstudiante.validarCamposFrmRegistroEstudiante(frEstudiante);
-            if (!validacion.equals("")) {
-                System.out.println("Observacion....");
-                JOptionPane.showMessageDialog(null, "Revisar el campo " + validacion, "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
-            } else {
-                System.out.println("Hola Todo paso correctamente");
-            }
+            Repositorio<Estudiante> repositorio = new EstudianteReposioImple();
+            estudiante = ProcesosFormularioRegistroEstudiante.crearEstudiante(this.frEstudiante);
+            repositorio.guardar(estudiante);
+            System.out.println("Estudiante guardado con exito.. ");
         }
     }
 
