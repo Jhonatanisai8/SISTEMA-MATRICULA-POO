@@ -51,7 +51,6 @@ public class ValidacionesFrmRegistroEstudiante {
         //para el numero de documento de identidad
         if (frmEstudiante.txtNumeroDocumento.getText().isBlank()
                 || frmEstudiante.txtNumeroDocumento.getText().length() > 10
-                || frmEstudiante.txtNumeroDocumento.getText().length() < 10
                 || esNumerico(frmEstudiante.txtNumeroDocumento.getText().trim()) == false) {
             return "Numero de Documento de Identidad.";
         }
