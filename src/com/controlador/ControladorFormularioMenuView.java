@@ -3,7 +3,7 @@ package com.controlador;
 import com.procesos.ProcesosFormularioMenuView;
 import com.vista.frmInicioView;
 import com.vista.frmMenuView;
-import com.vista.frmRegistrarEstudiante;
+import com.vista.frmRegistrarEstudianteView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -29,7 +29,7 @@ public class ControladorFormularioMenuView
         }
         if (e.getSource() == this.frmenuView.jmnRegistrarEstudiante) {
             System.out.println("Hola Mundo Jmenu");
-            frmRegistrarEstudiante frEstudiante = new frmRegistrarEstudiante();
+            frmRegistrarEstudianteView frEstudiante = new frmRegistrarEstudianteView();
             ControladorFormularioRegistroEstudiantes cfre = new ControladorFormularioRegistroEstudiantes(this.frmenuView, frEstudiante);
         }
     }

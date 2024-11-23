@@ -1,13 +1,13 @@
 package com.procesos;
 
 import com.Utelerias.Constantes.ConstantesFormularioRegistroEstudiante;
-import com.vista.frmRegistrarEstudiante;
+import com.vista.frmRegistrarEstudianteView;
 import javax.swing.JDesktopPane;
 
 public class ProcesosFormularioRegistroEstudiante
         implements ConstantesFormularioRegistroEstudiante {
 
-    private static void rellenarComboBox(frmRegistrarEstudiante frEstudiante) {
+    private static void rellenarComboBox(frmRegistrarEstudianteView frEstudiante) {
         frEstudiante.cbxProvincia.removeAllItems();
         for (String string : PROVINCIAS) {
             frEstudiante.cbxProvincia.addItem(string);
@@ -18,11 +18,11 @@ public class ProcesosFormularioRegistroEstudiante
         }
     }
 
-    private static void ponerIconosFormulario(frmRegistrarEstudiante frEstudiante) {
+    private static void ponerIconosFormulario(frmRegistrarEstudianteView frEstudiante) {
         frEstudiante.btnGuardar.setIcon(ICONO_BOTON_GUARDAR);
     }
 
-    public static void presentarFormulario(JDesktopPane desktopPane, frmRegistrarEstudiante fr) {
+    public static void presentarFormulario(JDesktopPane desktopPane, frmRegistrarEstudianteView fr) {
         rellenarComboBox(fr);
         ponerIconosFormulario(fr);
         fr.setTitle("Datos del estudiante");

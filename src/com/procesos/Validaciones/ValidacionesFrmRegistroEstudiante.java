@@ -1,6 +1,6 @@
 package com.procesos.Validaciones;
 
-import com.vista.frmRegistrarEstudiante;
+import com.vista.frmRegistrarEstudianteView;
 import java.util.Date;
 import java.util.regex.Pattern;
 
@@ -18,7 +18,7 @@ public class ValidacionesFrmRegistroEstudiante {
         return patron.matcher(cadena).matches(); //comparar la cadena de entrada con el patrón.
     }
 
-    public static String validarCamposFrmRegistroEstudiante(frmRegistrarEstudiante frmEstudiante) {
+    public static String validarCamposFrmRegistroEstudiante(frmRegistrarEstudianteView frmEstudiante) {
 
         //para el campo de nombre
         if (frmEstudiante.txtNombre.getText().isBlank()
