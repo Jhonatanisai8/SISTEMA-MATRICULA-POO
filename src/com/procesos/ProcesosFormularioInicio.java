@@ -38,6 +38,7 @@ public class ProcesosFormularioInicio
         //llamamos a los metodos de esta misma clase
         establecerFecha(frInicioView);
         estilosFormulario(frInicioView);
+        desktopPane.removeAll();
         desktopPane.add(frInicioView);
         frInicioView.toFront();
         frInicioView.setVisible(true);

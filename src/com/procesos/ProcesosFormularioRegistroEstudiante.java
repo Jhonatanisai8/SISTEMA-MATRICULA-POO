@@ -26,6 +26,7 @@ public class ProcesosFormularioRegistroEstudiante
         rellenarComboBox(fr);
         ponerIconosFormulario(fr);
         fr.setTitle("Datos del estudiante");
+        desktopPane.removeAll();
         desktopPane.add(fr);
         fr.toFront();
         fr.setVisible(true);
