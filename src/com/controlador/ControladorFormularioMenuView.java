@@ -2,6 +2,7 @@ package com.controlador;
 
 import com.procesos.ProcesosFormularioMenuView;
 import com.vista.frmInicioView;
+import com.vista.frmListadoEstudiantesView;
 import com.vista.frmMenuView;
 import com.vista.frmRegistrarEstudianteView;
 import java.awt.event.ActionEvent;
@@ -16,6 +17,7 @@ public class ControladorFormularioMenuView
         this.frmenuView = menuView;
         this.frmenuView.mnInicio.addActionListener(this);
         this.frmenuView.jmnRegistrarEstudiante.addActionListener(this);
+        this.frmenuView.jmnAdministrarEstudiantes.addActionListener(this);
         ProcesosFormularioMenuView.presentarFormulario(this.frmenuView);
     }
 
@@ -28,9 +30,15 @@ public class ControladorFormularioMenuView
             ControladorFormularioInicio cfi = new ControladorFormularioInicio(frInicioView, frmenuView);
         }
         if (e.getSource() == this.frmenuView.jmnRegistrarEstudiante) {
-            System.out.println("Hola Mundo Jmenu");
+            System.out.println("Evento del Jmenu del registro de estudiantes");
             frmRegistrarEstudianteView frEstudiante = new frmRegistrarEstudianteView();
             ControladorFormularioRegistroEstudiantes cfre = new ControladorFormularioRegistroEstudiantes(this.frmenuView, frEstudiante);
+        }
+
+        if (e.getSource() == this.frmenuView.jmnAdministrarEstudiantes) {
+            System.out.println("Evento del Jmenu  de estudiantes en marcha....");
+            frmListadoEstudiantesView frmEstudiantesView = new frmListadoEstudiantesView();
+            ControladorFormularioListadoEstudiantes cfle = new ControladorFormularioListadoEstudiantes(frmEstudiantesView, this.frmenuView);
         }
     }
 }
