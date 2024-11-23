@@ -6,13 +6,15 @@ import com.vista.frmMenuView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ControladorFormularioMenuView implements ActionListener {
+public class ControladorFormularioMenuView
+        implements ActionListener {
 
-    private frmMenuView frmenuView;
+    private final frmMenuView frmenuView;
 
     public ControladorFormularioMenuView(frmMenuView menuView) {
         this.frmenuView = menuView;
         this.frmenuView.mnInicio.addActionListener(this);
+        this.frmenuView.jmnRegistrarEstudiante.addActionListener(this);
         ProcesosFormularioMenuView.presentarFormulario(this.frmenuView);
     }
 
