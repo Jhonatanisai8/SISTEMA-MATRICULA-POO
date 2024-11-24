@@ -1,11 +1,14 @@
 package com.Modelo.entidades.DaoImplementacion;
 
 import com.Modelo.entidades.BaseDatos.ConexionBaseDatos;
+import com.Modelo.entidades.Direccion;
+import com.Modelo.entidades.Dni;
 import com.Modelo.entidades.Estudiante;
 import com.Modelo.entidades.InterfaceDao.ConsultasSQLEstudiante;
 import com.Modelo.entidades.InterfaceDao.Repositorio;
 import java.util.List;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class EstudianteReposioImple
         implements Repositorio<Estudiante>,
@@ -17,7 +20,48 @@ public class EstudianteReposioImple
 
     @Override
     public List<Estudiante> listar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<Estudiante> listaEstudiantes = new ArrayList<>();
+        try (Connection con = getConection(); Statement stmt = con.createStatement(); ResultSet rs = stmt.executeQuery(SQL_SELECT_ESTUDIANTES)) {
+            while (rs.next()) {
+                Estudiante e = crearEstudiante(rs);
+                //agregamos al arraylist
+                listaEstudiantes.add(e);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al listar estudiantes: "+e.getMessage());
+        }
+        return listaEstudiantes;
+    }
+
+    private Estudiante crearEstudiante(final ResultSet rs) throws SQLException {
+        Estudiante e = new Estudiante();
+        Dni dni = new Dni();
+        Direccion direccion = new Direccion();
+        //le establecemos los datos al estudiantes
+        e.setIdEstudiante(rs.getLong("ID"));
+        e.setIdPersona(rs.getLong("ID"));
+        e.setNombre(rs.getString("Nombre"));
+        e.setApellidoPaterno(rs.getString("Apellido Paterno"));
+        e.setApellidoMaterno(rs.getString("Apellido Materno"));
+        e.setFechaNacimiento(rs.getDate("Fecha Nacimiento"));
+        e.setTelefono(rs.getString("Telefono"));
+        e.setEmailPersonal(rs.getString("Email Personal"));
+        e.setEmailEducativo(rs.getString("Email Educativo"));
+        e.setCodigoEstudiante(rs.getString("Cod Estudiante"));
+        //le establecemos los datos al dni
+        dni.setIdDni(rs.getLong("ID"));
+        dni.setTipoDocumentoDni(rs.getString("Tipo Documento"));
+        dni.setNumeroDni(rs.getString("Nº de Dni"));
+        //le establecemos los datos a la direccion
+        direccion.setIdDireccion(rs.getLong("ID"));
+        direccion.setCalle(rs.getString("Calle"));
+        direccion.setNumero(rs.getString("Nº Calle"));
+        direccion.setDistrito(rs.getString("Distrito"));
+        direccion.setProvincia(rs.getString("Provincia"));
+        //le establecemos dni y la direccion al estudiante
+        e.setDni(dni);
+        e.setDireccion(direccion);
+        return e;
     }
 
     @Override
