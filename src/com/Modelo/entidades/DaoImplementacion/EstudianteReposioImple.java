@@ -105,7 +105,42 @@ public class EstudianteReposioImple
 
     @Override
     public void modificar(Estudiante t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try (Connection con = getConection(); PreparedStatement stmt_dni = con.prepareStatement(SQL_INSERT_DNI); PreparedStatement stmt_direccion = con.prepareStatement(SQL_UPDATE_DIRECCION); PreparedStatement stmt_persona = con.prepareStatement(SQL_UPDATE_PERSONA); PreparedStatement stmt_estudiante = con.prepareStatement(SQL_UPDATE_ESTUDIANTE);) {
+            //le pasamos los parametros para el dni
+            stmt_dni.setString(1, t.getDni().getTipoDocumentoDni());
+            stmt_dni.setString(2, t.getDni().getNumeroDni());
+            stmt_dni.setLong(3, t.getIdEstudiante());
+
+            //le pasamos los parametros para el direccion
+            stmt_direccion.setString(1, t.getDireccion().getDistrito());
+            stmt_direccion.setString(2, t.getDireccion().getCalle());
+            stmt_direccion.setString(3, t.getDireccion().getNumero());
+            stmt_direccion.setString(4, t.getDireccion().getProvincia());
+            stmt_direccion.setLong(5, t.getIdEstudiante());
+
+            //le pasamos los parametros para el persona
+            stmt_persona.setString(1, t.getNombre());
+            stmt_persona.setString(2, t.getApellidoPaterno());
+            stmt_persona.setString(3, t.getApellidoMaterno());
+            stmt_persona.setDate(4, new Date(t.getFechaNacimiento().getTime()));
+            stmt_persona.setString(5, t.getTelefono());
+            stmt_persona.setString(6, t.getEmailPersonal());
+            stmt_persona.setLong(7, t.getIdEstudiante());
+
+            //le pasamos los parametros para el estudiante
+            stmt_estudiante.setString(1, t.getCodigoEstudiante());
+            stmt_estudiante.setString(2, t.getEmailEducativo());
+            stmt_estudiante.setLong(3, t.getIdEstudiante());
+
+            //ejecutamos las sentencias 
+            stmt_dni.executeUpdate();
+            stmt_direccion.executeUpdate();
+            stmt_persona.executeUpdate();
+            stmt_estudiante.executeUpdate();
+            System.out.println("Modificado Correctamente Correctamente");
+        } catch (Exception e) {
+            System.out.println("Error al modificar un estudiante: " + e.getMessage());
+        }
     }
 
     @Override
