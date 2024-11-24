@@ -15,6 +15,7 @@ public class ControladorFormularioRegistroEstudiantes
     private final frmRegistrarEstudianteView frEstudiante;
     private final frmMenuView frMenuView;
     private Estudiante estudiante;
+    private Estudiante estudianteMoficar;
 
     public ControladorFormularioRegistroEstudiantes(frmMenuView menuView, frmRegistrarEstudianteView frEstudiante) {
         this.frEstudiante = frEstudiante;
@@ -23,21 +24,33 @@ public class ControladorFormularioRegistroEstudiantes
         ProcesosFormularioRegistroEstudiante.presentarFormulario(this.frMenuView.dsktEscritorio, frEstudiante);
     }
 
-    public ControladorFormularioRegistroEstudiantes(frmMenuView menuView, frmRegistrarEstudianteView frEstudiante, Estudiante estudiante) {
+    public ControladorFormularioRegistroEstudiantes(frmMenuView menuView, frmRegistrarEstudianteView frEstudiante, Estudiante estudianteMOd) {
         this.frEstudiante = frEstudiante;
         this.frMenuView = menuView;
+        this.estudianteMoficar = estudianteMOd;
         this.frEstudiante.btnGuardar.addActionListener(this);
-        ProcesosFormularioRegistroEstudiante.presentarFormulario(this.frMenuView.dsktEscritorio, frEstudiante,estudiante);
+        this.frEstudiante.btnGuardar.setText("Modificar");
+        ProcesosFormularioRegistroEstudiante.presentarFormulario(this.frMenuView.dsktEscritorio, this.frEstudiante, this.estudianteMoficar);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
         if (e.getSource() == this.frEstudiante.btnGuardar) {
-            Repositorio<Estudiante> repositorio = new EstudianteReposioImple();
-            estudiante = ProcesosFormularioRegistroEstudiante.crearEstudiante(this.frEstudiante);
-            repositorio.guardar(estudiante);
-            System.out.println("Estudiante guardado con exito.. ");
+            Repositorio<Estudiante> repositorio = new EstudianteReposioImple();  // Asegúrate que el nombre sea correcto.
+            if (!frEstudiante.btnGuardar.getText().equalsIgnoreCase("Modificar")) {
+                estudiante = ProcesosFormularioRegistroEstudiante.crearEstudiante(this.frEstudiante);
+                repositorio.guardar(estudiante);
+                System.out.println("Has dado click para guardar.....");
+            } else {
+                Long id = this.estudianteMoficar.getIdEstudiante();
+                Estudiante estudianteModificar = ProcesosFormularioRegistroEstudiante.crearEstudiante(this.frEstudiante);
+                estudianteModificar.setIdEstudiante(id);  // O si usas otro ID, asignarlo aquí.
+                repositorio.modificar(estudianteModificar);
+                System.out.println("Has dado click para modificar....");
+            }
         }
+
     }
 
 }
