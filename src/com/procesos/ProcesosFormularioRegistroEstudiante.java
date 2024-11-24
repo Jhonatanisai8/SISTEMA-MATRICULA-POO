@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 
 public class ProcesosFormularioRegistroEstudiante
         implements ConstantesFormularioRegistroEstudiante {
-
+    
     private static void rellenarComboBox(frmRegistrarEstudianteView frEstudiante) {
         frEstudiante.cbxProvincia.removeAllItems();
         for (String string : PROVINCIAS) {
@@ -23,16 +23,39 @@ public class ProcesosFormularioRegistroEstudiante
             frEstudiante.cbxTipoDocumento.addItem(string);
         }
     }
-
+    
     private static void ponerIconosFormulario(frmRegistrarEstudianteView frEstudiante) {
         frEstudiante.btnGuardar.setIcon(ICONO_BOTON_GUARDAR);
     }
-
+    
     public static void presentarFormulario(JDesktopPane desktopPane, frmRegistrarEstudianteView fr) {
         rellenarComboBox(fr);
         ponerIconosFormulario(fr);
         fr.setTitle("Datos del estudiante");
         desktopPane.removeAll();
+        desktopPane.add(fr);
+        fr.toFront();
+        fr.setVisible(true);
+    }
+
+    public static void presentarFormulario(JDesktopPane desktopPane, frmRegistrarEstudianteView fr, Estudiante estudiante) {
+        rellenarComboBox(fr);
+        ponerIconosFormulario(fr);
+        fr.setTitle("Moficacion de Informacion del Estudiante");
+        desktopPane.removeAll();
+        //ponemos la informacion
+        fr.txtNombre.setText(estudiante.getNombre());
+        fr.txtApPaterno.setText(estudiante.getApellidoPaterno());
+        fr.txtApMaterno.setText(estudiante.getApellidoMaterno());
+        fr.dtcFechaNacimiento.setDate(estudiante.getFechaNacimiento());
+        fr.cbxTipoDocumento.setSelectedItem(estudiante.getDni().getTipoDocumentoDni());
+        fr.txtNumeroDocumento.setText(estudiante.getDni().getNumeroDni());
+        fr.txtDistrito.setText(estudiante.getDireccion().getDistrito());
+        fr.txtCalle.setText(estudiante.getDireccion().getCalle());
+        fr.txtNumeroCalle.setText(estudiante.getDireccion().getNumero());
+        fr.cbxProvincia.setSelectedItem(estudiante.getDireccion().getProvincia());
+        fr.txtTelefono.setText(estudiante.getTelefono());
+        fr.txtEmailpersonal.setText(estudiante.getEmailPersonal());
         desktopPane.add(fr);
         fr.toFront();
         fr.setVisible(true);
