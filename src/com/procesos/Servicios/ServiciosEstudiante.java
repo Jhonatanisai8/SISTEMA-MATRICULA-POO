@@ -4,6 +4,7 @@ import com.Modelo.entidades.Estudiante;
 import com.vista.frmListadoEstudiantesView;
 import java.util.List;
 import java.util.Random;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class ServiciosEstudiante {
@@ -19,9 +20,10 @@ public class ServiciosEstudiante {
     }
 
     public static void mostrarEstudiantesEnTabla(frmListadoEstudiantesView frmEstudiantesView, String titulosColumnas[], List<Estudiante> listaEstudiantes) {
-        Object data[][] = new Object[titulosColumnas.length][titulosColumnas.length];
-        for (int i = 0; i < frmEstudiantesView.btlData.getColumnCount(); i++) {
-            Estudiante estudiante = listaEstudiantes.get(i);
+        Object data[][] = new Object[listaEstudiantes.size()][titulosColumnas.length];
+
+        for (int i = 0; i < listaEstudiantes.size(); i++) {
+            Estudiante estudiante = listaEstudiantes.get(i);  // Obtener el estudiante correspondiente a la fila i
             data[i][0] = estudiante.getIdEstudiante();
             data[i][1] = estudiante.getNombre();
             data[i][2] = estudiante.getApellidoPaterno();
@@ -38,8 +40,38 @@ public class ServiciosEstudiante {
             data[i][13] = estudiante.getCodigoEstudiante();
             data[i][14] = estudiante.getEmailEducativo();
         }
+
         DefaultTableModel modeloTabla = new DefaultTableModel(data, titulosColumnas);
         frmEstudiantesView.btlData.setModel(modeloTabla);
-        System.out.println("Listando en tabla.....");
+
+        // Imprimir mensaje de confirmación
+        System.out.println("Listando en tabla todos los estudiantes.....");
     }
+
+    public static void mostrarEstudiantesEnTabla(JTable tblData, String titulosColumnas[], Estudiante estudiante) {
+        Object[] data = new Object[titulosColumnas.length];
+
+        data[0] = estudiante.getIdEstudiante();
+        data[1] = estudiante.getNombre();
+        data[2] = estudiante.getApellidoPaterno();
+        data[3] = estudiante.getApellidoMaterno();
+        data[4] = estudiante.getFechaNacimiento();
+        data[5] = estudiante.getDni().getTipoDocumentoDni();
+        data[6] = estudiante.getDni().getNumeroDni();
+        data[7] = estudiante.getDireccion().getCalle();
+        data[8] = estudiante.getDireccion().getNumero();
+        data[9] = estudiante.getDireccion().getDistrito();
+        data[10] = estudiante.getDireccion().getProvincia();
+        data[11] = estudiante.getTelefono();
+        data[12] = estudiante.getEmailPersonal();
+        data[13] = estudiante.getCodigoEstudiante();
+        data[14] = estudiante.getEmailEducativo();
+
+        DefaultTableModel modeloTabla = new DefaultTableModel(new Object[][]{data}, titulosColumnas);
+
+        tblData.setModel(modeloTabla);
+
+        System.out.println("Listando en tabla un solo estudiante.....");
+    }
+
 }
