@@ -10,11 +10,10 @@ public interface ConstantesFormularioListadoEstudiantes {
     final ImageIcon ICONO_ELIMINAR = new ImageIcon("C:\\Users\\User\\Music\\CUARTO CICLO\\08 LABORATORIOS POO\\ProyectoMatriculaPOO\\src\\com\\imgs\\EliminarEstudiante.png");
 
     //cabezeras de la tabla alumnos
-    final String TITULOS_COLUMNAS[] = {"Nombre", "Apellido Paterno",
+    final String TITULOS_COLUMNAS[] = {"ID", "Nombre", "Apellido Paterno",
         "Apellido Materno", "Fecha Nacimiento", "Tipo Documento",
-        "Nº de Dni", "Direccion", "Distrito",
-        "Calle", "Nº Calle", "Provincia",
-        "Telefono", "Email Personal", "Cod Estudiante",
-        "Email Educativo"};
+        "Nº de Dni", "Calle", "Nº de Calle",
+        "Distrito", "Provincia","Telefono", 
+        "Email Personal", "Cod Estudiante","Email Educativo"};
 
 }
