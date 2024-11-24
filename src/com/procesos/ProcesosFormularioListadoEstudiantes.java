@@ -49,4 +49,34 @@ public class ProcesosFormularioListadoEstudiantes
         ServiciosEstudiante.mostrarEstudiantesEnTabla(tblData, TITULOS_COLUMNAS, obtenerEstudiante(dni));
     }
 
+    public static void seleccionarDatosEliminar(frmListadoEstudiantesView frmEstudiantesView) {
+        Repositorio<Estudiante> repo = new EstudianteReposioImple();
+        int filasSelecionadas[] = frmEstudiantesView.btlData.getSelectedRows();
+        if (filasSelecionadas.length == 0) {
+            JOptionPane.showMessageDialog(null, "Por favor selecciona una o más filas para eliminar.", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        StringBuilder contIds = new StringBuilder();
+        for (int i = 0; i < filasSelecionadas.length; i++) {
+            String idEstudiante = frmEstudiantesView.btlData.getValueAt(filasSelecionadas[i], 0).toString();
+            if (contIds.length() > 0) {
+                contIds.append(",");
+            }
+            contIds.append(idEstudiante);
+        }
+
+        //preguntamos al admin si desea elimar dichos datos 
+        int opcion = JOptionPane.showConfirmDialog(null, "¿Estás seguro de eliminar los registros con ID: " + contIds + "?", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
+        if (opcion == JOptionPane.YES_OPTION) {
+            for (int i = filasSelecionadas.length - 1; i >= 0; i--) {
+                Long idEstudiante = (Long) frmEstudiantesView.btlData.getValueAt(filasSelecionadas[i], 0);
+                repo.eliminar(idEstudiante);
+            }
+            ServiciosEstudiante.mostrarEstudiantesEnTabla(frmEstudiantesView, TITULOS_COLUMNAS, listaEstudiantes());
+            //avtualizamos la tabla
+        }
+        System.out.println("Borrando datos......");
+    }
+
 }
