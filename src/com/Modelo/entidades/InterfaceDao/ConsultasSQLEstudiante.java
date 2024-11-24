@@ -12,13 +12,13 @@ public interface ConsultasSQLEstudiante {
     final String SQL_INSERT_ESTUDIANTE = "INSERT INTO estudiante (id_estudiante,codigo_estudiante,email_educativo)"
             + " VALUES ((SELECT id_persona FROM persona ORDER BY id_persona DESC limit 1),?,?)";
 
-    final String SQL_UPDATE_DNI = "UPDATE FROM dni SET tipo_documento = ?, numero_dni = ? WHERE id_dni = ?";
+    final String SQL_UPDATE_DNI = "UPDATE  dni SET tipo_documento = ?, numero_dni = ? WHERE id_dni = ?";
 
-    final String SQL_UPDATE_DIRECCION = "UPDATE FROM direccion SET distrito = ?, calle = ?,numero_cale = ?,provincia = ?  WHERE id_direccion = ?";
+    final String SQL_UPDATE_DIRECCION = "UPDATE  direccion SET distrito = ?, calle = ?,numero_cale = ?,provincia = ?  WHERE id_direccion = ?";
 
-    final String SQL_UPDATE_PERSONA = "UPDATE FROM persona SET nombre = ?,apellido_paterno = ? ,apellido_materno =? ,fecha_nacimiento = ? ,id_dni = ? ,id_direccion = ? ,telefono = ?,email_personal = ?";
+    final String SQL_UPDATE_PERSONA = "UPDATE  persona SET nombre = ?,apellido_paterno = ? ,apellido_materno =? ,fecha_nacimiento = ? ,id_dni = ? ,id_direccion = ? ,telefono = ?,email_personal = ? WHERE id_persona = ?";
 
-    final String SQL_UPDATE_ESTUDIANTE = "UPDATE FROM estudiante SET codigo_estudiante = ? ,email_educativo = ? WHERE id_estudiante = ?";
+    final String SQL_UPDATE_ESTUDIANTE = "UPDATE  estudiante SET codigo_estudiante = ? ,email_educativo = ? WHERE id_estudiante = ?";
 
     final String SQL_SELECT_ESTUDIANTES = "SELECT "
             + "	p.id_persona AS 'ID', "

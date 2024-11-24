@@ -5,8 +5,7 @@
         <group>
             <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/Modelo/entidades/DaoImplementacion/EstudianteReposioImple.java</file>
             <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/Modelo/entidades/InterfaceDao/ConsultasSQLEstudiante.java</file>
-            <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/Modelo/entidades/InterfaceDao/Repositorio.java</file>
-            <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/procesos/Validaciones/ValidacionesFrmRegistroEstudiante.java</file>
+            <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/procesos/Servicios/ServiciosEstudiante.java</file>
             <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/controlador/ControladorFormularioRegistroEstudiantes.java</file>
             <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/procesos/ProcesosFormularioRegistroEstudiante.java</file>
         </group>
