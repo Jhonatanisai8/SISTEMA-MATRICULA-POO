@@ -32,8 +32,8 @@ public interface ConsultasSQLEstudiante {
             + "INNER JOIN dni AS d ON d.id_dni = p.id_dni "
             + "INNER JOIN direccion AS di ON di.id_direccion = p.id_direccion "
             + "INNER JOIN estudiante AS e ON e.id_estudiante = p.id_persona";
-    final String SQL_DELETE_ESTUDIANTE = "DELETE FROM estudiante WHERE id_estudiante = 5";
-    final String SQL_DELETE_PERSONA = "DELETE FROM persona WHERE id_persona = 5";
-    final String SQL_DELETE_DIRECCION = "DELETE FROM direccion WHERE id_direccion = 5";
-    final String SQL_DELETE_DNI = "DELETE FROM dni WHERE id_dni = 5";
+    final String SQL_DELETE_ESTUDIANTE = "DELETE FROM estudiante WHERE id_estudiante = ?";
+    final String SQL_DELETE_PERSONA = "DELETE FROM persona WHERE id_persona = ?";
+    final String SQL_DELETE_DIRECCION = "DELETE FROM direccion WHERE id_direccion = ?";
+    final String SQL_DELETE_DNI = "DELETE FROM dni WHERE id_dni = ?";
 }
