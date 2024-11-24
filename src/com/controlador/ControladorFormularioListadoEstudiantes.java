@@ -6,6 +6,7 @@ import static com.procesos.ProcesosFormularioListadoEstudiantes.listaEstudiantes
 import com.procesos.Servicios.ServiciosEstudiante;
 import com.vista.frmListadoEstudiantesView;
 import com.vista.frmMenuView;
+import com.vista.frmRegistrarEstudianteView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -20,6 +21,7 @@ public class ControladorFormularioListadoEstudiantes
         this.frmMenuView1 = frmMenuView1;
         this.frmEstudiantesView.btnBuscar.addActionListener(this);
         this.frmEstudiantesView.btnEliminar.addActionListener(this);
+        this.frmEstudiantesView.btnModificar.addActionListener(this);
         ProcesosFormularioListadoEstudiantes.presentarFormulario(this.frmMenuView1.dsktEscritorio, this.frmEstudiantesView);
     }
 
@@ -37,6 +39,12 @@ public class ControladorFormularioListadoEstudiantes
         if (e.getSource() == this.frmEstudiantesView.btnEliminar) {
             ProcesosFormularioListadoEstudiantes.seleccionarDatosEliminar(this.frmEstudiantesView);
             System.out.println("Has dado click en el boton eliminar....");
+        }
+        if (e.getSource() == this.frmEstudiantesView.btnModificar) {
+            this.frmEstudiantesView.dispose();
+            frmRegistrarEstudianteView frmRegistrarEstudianteView1 = new frmRegistrarEstudianteView();
+            ControladorFormularioRegistroEstudiantes cfre = new ControladorFormularioRegistroEstudiantes(this.frmMenuView1, frmRegistrarEstudianteView1);
+            System.out.println("Has dado click el boton Modificar");
         }
 
     }
