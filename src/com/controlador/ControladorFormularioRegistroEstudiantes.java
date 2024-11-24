@@ -23,6 +23,13 @@ public class ControladorFormularioRegistroEstudiantes
         ProcesosFormularioRegistroEstudiante.presentarFormulario(this.frMenuView.dsktEscritorio, frEstudiante);
     }
 
+    public ControladorFormularioRegistroEstudiantes(frmMenuView menuView, frmRegistrarEstudianteView frEstudiante, Estudiante estudiante) {
+        this.frEstudiante = frEstudiante;
+        this.frMenuView = menuView;
+        this.frEstudiante.btnGuardar.addActionListener(this);
+        ProcesosFormularioRegistroEstudiante.presentarFormulario(this.frMenuView.dsktEscritorio, frEstudiante,estudiante);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.frEstudiante.btnGuardar) {
