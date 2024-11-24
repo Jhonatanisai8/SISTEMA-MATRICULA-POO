@@ -19,6 +19,7 @@ public class ControladorFormularioListadoEstudiantes
         this.frmEstudiantesView = frmEstudiantesView;
         this.frmMenuView1 = frmMenuView1;
         this.frmEstudiantesView.btnBuscar.addActionListener(this);
+        this.frmEstudiantesView.btnEliminar.addActionListener(this);
         ProcesosFormularioListadoEstudiantes.presentarFormulario(this.frmMenuView1.dsktEscritorio, this.frmEstudiantesView);
     }
 
@@ -31,6 +32,11 @@ public class ControladorFormularioListadoEstudiantes
                 ProcesosFormularioListadoEstudiantes.enviarEstudiante(this.frmEstudiantesView.btlData, Long.valueOf(frmEstudiantesView.txtBuscar.getText()));
             }
             System.out.println("Has dado click en el boton buscar....");
+        }
+
+        if (e.getSource() == this.frmEstudiantesView.btnEliminar) {
+            ProcesosFormularioListadoEstudiantes.seleccionarDatosEliminar(this.frmEstudiantesView);
+            System.out.println("Has dado click en el boton eliminar....");
         }
 
     }
