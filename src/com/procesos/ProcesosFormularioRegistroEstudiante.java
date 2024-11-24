@@ -97,7 +97,6 @@ public class ProcesosFormularioRegistroEstudiante
             e.setEmailPersonal(frmEstudianteView.txtEmailpersonal.getText());
             e.setCodigoEstudiante(ServiciosEstudiante.generarCodigoEstudiante(frmEstudianteView.txtNombre.getText(), frmEstudianteView.txtApPaterno.getText()));
             e.setEmailEducativo(ServiciosEstudiante.generarCorreoEducatico(frmEstudianteView.txtNombre.getText(), frmEstudianteView.txtApPaterno.getText(), frmEstudianteView.txtApMaterno.getText()));
-            System.out.println("Empeado creado");
         }
         return e;
     }
