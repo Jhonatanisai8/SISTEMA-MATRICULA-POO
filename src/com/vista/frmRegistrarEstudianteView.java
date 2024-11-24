@@ -1,10 +1,16 @@
 package com.vista;
 
+import com.Modelo.entidades.Estudiante;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
 
 public class frmRegistrarEstudianteView extends javax.swing.JInternalFrame {
 
     public frmRegistrarEstudianteView() {
+        FlatMaterialLighterIJTheme.setup();
+        initComponents();
+    }
+
+    public frmRegistrarEstudianteView(Estudiante e) {
         FlatMaterialLighterIJTheme.setup();
         initComponents();
     }
