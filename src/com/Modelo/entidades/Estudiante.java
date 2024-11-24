@@ -34,4 +34,11 @@ public class Estudiante
         this.emailEducativo = emailEducativo;
     }
 
+    @Override
+    public String toString() {
+        return idEstudiante+"-"+super.getNombre() + "-"+super.getApellidoPaterno()+"-"
+                +super.getApellidoMaterno()+ "-"+super.getFechaNacimiento()+"-"+super.getDni().getIdDni();
+    }
+
+    
 }
