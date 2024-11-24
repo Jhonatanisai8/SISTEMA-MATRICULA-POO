@@ -1,5 +1,6 @@
 package com.controlador;
 
+import com.Modelo.entidades.Estudiante;
 import static com.Utelerias.Constantes.ConstantesFormularioListadoEstudiantes.TITULOS_COLUMNAS;
 import com.procesos.ProcesosFormularioListadoEstudiantes;
 import static com.procesos.ProcesosFormularioListadoEstudiantes.listaEstudiantes;
@@ -9,6 +10,7 @@ import com.vista.frmMenuView;
 import com.vista.frmRegistrarEstudianteView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 public class ControladorFormularioListadoEstudiantes
         implements ActionListener {
@@ -41,9 +43,15 @@ public class ControladorFormularioListadoEstudiantes
             System.out.println("Has dado click en el boton eliminar....");
         }
         if (e.getSource() == this.frmEstudiantesView.btnModificar) {
-            this.frmEstudiantesView.dispose();
-            frmRegistrarEstudianteView frmRegistrarEstudianteView1 = new frmRegistrarEstudianteView();
-            ControladorFormularioRegistroEstudiantes cfre = new ControladorFormularioRegistroEstudiantes(this.frmMenuView1, frmRegistrarEstudianteView1);
+            int filaSelecionada = frmEstudiantesView.btlData.getSelectedRow();
+            if (filaSelecionada >= 0) {
+                Estudiante estudiante = ProcesosFormularioListadoEstudiantes.obtenerEstudiante((Long) frmEstudiantesView.btlData.getValueAt(filaSelecionada, 0));
+                frmRegistrarEstudianteView frmRegistrarEstudianteView1 = new frmRegistrarEstudianteView(estudiante);
+                this.frmEstudiantesView.dispose();
+                ControladorFormularioRegistroEstudiantes cfre = new ControladorFormularioRegistroEstudiantes(this.frmMenuView1, frmRegistrarEstudianteView1,estudiante);
+            } else {
+                JOptionPane.showMessageDialog(null, "Por favor debe seleccionar un estudiante para poder Modificar su Informacion", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
+            }
             System.out.println("Has dado click el boton Modificar");
         }
 
