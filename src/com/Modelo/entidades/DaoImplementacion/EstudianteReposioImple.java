@@ -105,7 +105,7 @@ public class EstudianteReposioImple
 
     @Override
     public void modificar(Estudiante t) {
-        try (Connection con = getConection(); PreparedStatement stmt_dni = con.prepareStatement(SQL_INSERT_DNI); PreparedStatement stmt_direccion = con.prepareStatement(SQL_UPDATE_DIRECCION); PreparedStatement stmt_persona = con.prepareStatement(SQL_UPDATE_PERSONA); PreparedStatement stmt_estudiante = con.prepareStatement(SQL_UPDATE_ESTUDIANTE);) {
+        try (Connection con = getConection(); PreparedStatement stmt_dni = con.prepareStatement(SQL_UPDATE_DNI); PreparedStatement stmt_direccion = con.prepareStatement(SQL_UPDATE_DIRECCION); PreparedStatement stmt_persona = con.prepareStatement(SQL_UPDATE_PERSONA); PreparedStatement stmt_estudiante = con.prepareStatement(SQL_UPDATE_ESTUDIANTE);) {
             //le pasamos los parametros para el dni
             stmt_dni.setString(1, t.getDni().getTipoDocumentoDni());
             stmt_dni.setString(2, t.getDni().getNumeroDni());
@@ -123,9 +123,11 @@ public class EstudianteReposioImple
             stmt_persona.setString(2, t.getApellidoPaterno());
             stmt_persona.setString(3, t.getApellidoMaterno());
             stmt_persona.setDate(4, new Date(t.getFechaNacimiento().getTime()));
-            stmt_persona.setString(5, t.getTelefono());
-            stmt_persona.setString(6, t.getEmailPersonal());
-            stmt_persona.setLong(7, t.getIdEstudiante());
+            stmt_persona.setLong(5, t.getIdEstudiante()); //id de dni
+            stmt_persona.setLong(6, t.getIdEstudiante());// id de direccion
+            stmt_persona.setString(7, t.getTelefono()); 
+            stmt_persona.setString(8, t.getEmailPersonal()); 
+            stmt_persona.setLong(9, t.getIdEstudiante());
 
             //le pasamos los parametros para el estudiante
             stmt_estudiante.setString(1, t.getCodigoEstudiante());
