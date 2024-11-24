@@ -28,45 +28,43 @@ public class EstudianteReposioImple
                 listaEstudiantes.add(e);
             }
         } catch (Exception e) {
-            System.out.println("Error al listar estudiantes: "+e.getMessage());
+            System.out.println("Error al listar estudiantes: " + e.getMessage());
         }
         return listaEstudiantes;
     }
 
-    private Estudiante crearEstudiante(final ResultSet rs) throws SQLException {
-        Estudiante e = new Estudiante();
-        Dni dni = new Dni();
-        Direccion direccion = new Direccion();
-        //le establecemos los datos al estudiantes
-        e.setIdEstudiante(rs.getLong("ID"));
-        e.setIdPersona(rs.getLong("ID"));
-        e.setNombre(rs.getString("Nombre"));
-        e.setApellidoPaterno(rs.getString("Apellido Paterno"));
-        e.setApellidoMaterno(rs.getString("Apellido Materno"));
-        e.setFechaNacimiento(rs.getDate("Fecha Nacimiento"));
-        e.setTelefono(rs.getString("Telefono"));
-        e.setEmailPersonal(rs.getString("Email Personal"));
-        e.setEmailEducativo(rs.getString("Email Educativo"));
-        e.setCodigoEstudiante(rs.getString("Cod Estudiante"));
-        //le establecemos los datos al dni
-        dni.setIdDni(rs.getLong("ID"));
-        dni.setTipoDocumentoDni(rs.getString("Tipo Documento"));
-        dni.setNumeroDni(rs.getString("Nº de Dni"));
-        //le establecemos los datos a la direccion
-        direccion.setIdDireccion(rs.getLong("ID"));
-        direccion.setCalle(rs.getString("Calle"));
-        direccion.setNumero(rs.getString("Nº Calle"));
-        direccion.setDistrito(rs.getString("Distrito"));
-        direccion.setProvincia(rs.getString("Provincia"));
-        //le establecemos dni y la direccion al estudiante
-        e.setDni(dni);
-        e.setDireccion(direccion);
-        return e;
-    }
-
     @Override
     public Estudiante porDni(Long dni) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Estudiante estudiante = null;
+        String SQL_SELECT_BUSCAR_ESTUDIANTE = "SELECT "
+                + "            	p.id_persona AS 'ID', "
+                + "                p.nombre AS 'Nombre', "
+                + "                p.apellido_paterno AS 'Apellido Paterno', "
+                + "                p.apellido_materno AS 'Apellido Materno', "
+                + "                p.fecha_nacimiento AS 'Fecha Nacimiento', "
+                + "                d.tipo_documento AS 'Tipo Documento', "
+                + "                d.numero_dni AS 'Nº de Dni', "
+                + "                di.calle AS 'Calle', "
+                + "                di.numero_cale AS 'Nº Calle', "
+                + "                di.distrito AS 'Distrito', "
+                + "                di.provincia AS 'Provincia', "
+                + "                p.telefono AS 'Telefono', "
+                + "                p.email_personal AS 'Email Personal', "
+                + "                e.codigo_estudiante AS 'Cod Estudiante', "
+                + "                e.email_educativo AS 'Email Educativo' "
+                + "            FROM persona AS p "
+                + "            INNER JOIN dni AS d ON d.id_dni = p.id_dni "
+                + "            INNER JOIN direccion AS di ON di.id_direccion = p.id_direccion "
+                + "            INNER JOIN estudiante AS e ON e.id_estudiante = p.id_persona "
+                + "            WHERE d.numero_dni LIKE  '%" + String.valueOf(dni) + "%' ";
+        try (Connection con = getConection(); Statement stmt = con.createStatement(); ResultSet rs = stmt.executeQuery(SQL_SELECT_BUSCAR_ESTUDIANTE)) {
+            if (rs.next()) {
+                estudiante = crearEstudiante(rs);
+            }
+        } catch (SQLException exception) {
+            System.out.println("Error al buscar por id: " + exception.getMessage());
+        }
+        return estudiante;
     }
 
     @Override
@@ -115,4 +113,34 @@ public class EstudianteReposioImple
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    private Estudiante crearEstudiante(final ResultSet rs) throws SQLException {
+        Estudiante e = new Estudiante();
+        Dni dni = new Dni();
+        Direccion direccion = new Direccion();
+        //le establecemos los datos al estudiantes
+        e.setIdEstudiante(rs.getLong("ID"));
+        e.setIdPersona(rs.getLong("ID"));
+        e.setNombre(rs.getString("Nombre"));
+        e.setApellidoPaterno(rs.getString("Apellido Paterno"));
+        e.setApellidoMaterno(rs.getString("Apellido Materno"));
+        e.setFechaNacimiento(rs.getDate("Fecha Nacimiento"));
+        e.setTelefono(rs.getString("Telefono"));
+        e.setEmailPersonal(rs.getString("Email Personal"));
+        e.setEmailEducativo(rs.getString("Email Educativo"));
+        e.setCodigoEstudiante(rs.getString("Cod Estudiante"));
+        //le establecemos los datos al dni
+        dni.setIdDni(rs.getLong("ID"));
+        dni.setTipoDocumentoDni(rs.getString("Tipo Documento"));
+        dni.setNumeroDni(rs.getString("Nº de Dni"));
+        //le establecemos los datos a la direccion
+        direccion.setIdDireccion(rs.getLong("ID"));
+        direccion.setCalle(rs.getString("Calle"));
+        direccion.setNumero(rs.getString("Nº Calle"));
+        direccion.setDistrito(rs.getString("Distrito"));
+        direccion.setProvincia(rs.getString("Provincia"));
+        //le establecemos dni y la direccion al estudiante
+        e.setDni(dni);
+        e.setDireccion(direccion);
+        return e;
+    }
 }
