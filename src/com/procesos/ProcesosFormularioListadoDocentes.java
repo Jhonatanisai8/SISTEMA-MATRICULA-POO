@@ -17,13 +17,18 @@ public class ProcesosFormularioListadoDocentes
         Repositorio<Docente> repo = new DocenteReposioImple();
         return repo.listar();
     }
-    
+
+    public static Docente obtenerDocente(Long dni) {
+        Repositorio<Docente> repo = new DocenteReposioImple();
+        return repo.porDni(dni);
+    }
+
     private static void ponerIconosFormulario(frmListadoDocentesView frmListadoDocentesView) {
         frmListadoDocentesView.btnBuscar.setIcon(ICONO_BUSCAR);
         frmListadoDocentesView.btnModificar.setIcon(ICONO_MODIFICAR);
         frmListadoDocentesView.btnEliminar.setIcon(ICONO_ELIMINAR);
     }
-    
+
     public static void presentarFormulario(JDesktopPane desktopPane, frmListadoDocentesView frmListadoDocentesView) {
         ponerIconosFormulario(frmListadoDocentesView);
         ServiciosDocente.mostrarDocentesEnTabla(frmListadoDocentesView, TITULOS_COLUMNAS_DOCENTE, obtenerListaDocente());
@@ -33,12 +38,7 @@ public class ProcesosFormularioListadoDocentes
         frmListadoDocentesView.toFront();
         frmListadoDocentesView.setVisible(true);
     }
-    
-    public static Docente obtenerDocente(Long dni) {
-        Repositorio<Docente> repo = new DocenteReposioImple();
-        return repo.porDni(dni);
-    }
-    
+
     public static void mostarSoloDocente(frmListadoDocentesView frmistadoDocentesView, String text) {
         if (text.isBlank()) {
             ServiciosDocente.mostrarDocentesEnTabla(frmistadoDocentesView, TITULOS_COLUMNAS_DOCENTE, obtenerListaDocente());
@@ -46,5 +46,5 @@ public class ProcesosFormularioListadoDocentes
             ServiciosDocente.mostrarDocenteEntabla(frmistadoDocentesView, TITULOS_COLUMNAS_DOCENTE, obtenerDocente(Long.valueOf(text)));
         }
     }
-    
+
 }
