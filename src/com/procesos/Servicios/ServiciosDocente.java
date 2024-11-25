@@ -17,7 +17,7 @@ public class ServiciosDocente {
             data[i][3] = docente.getApellidoMaterno();
             data[i][4] = docente.getFechaNacimiento();
             data[i][5] = docente.getDni().getTipoDocumentoDni();
-            data[i][6] = docente.getDni().getNumeroDni();
+            data[i][6] = docente.getDni().getNumeroDni().toString();
             data[i][7] = docente.getDireccion().getCalle();
             data[i][8] = docente.getDireccion().getNumero();
             data[i][9] = docente.getDireccion().getDistrito();
