@@ -25,6 +25,6 @@ public interface ConsultasSQLDocente {
             + "FROM persona AS p "
             + "INNER JOIN dni AS d ON d.id_dni = p.id_dni "
             + "INNER JOIN direccion AS di ON di.id_direccion = p.id_direccion "
-            + "INNER JOIN docente AS doc ON  doc.id_docente = p.id_persona;";
+            + "INNER JOIN docente AS doc ON  doc.id_docente = p.id_persona";
 
 }

@@ -32,41 +32,10 @@ public class DocenteReposioImple
         return listaDocentes;
     }
 
-    private Docente crearDocente(final ResultSet rs) throws SQLException {
-        Docente docente = new Docente();
-        Dni dni = new Dni();
-        Direccion direccion = new Direccion();
-        docente.setIdDocente(rs.getLong("ID"));
-        docente.setIdPersona(rs.getLong("ID"));
-        docente.setNombre(rs.getString("Nombre"));
-        docente.setApellidoPaterno(rs.getString("Apellido Paterno"));
-        docente.setFechaNacimiento(rs.getDate("Fecha Nacimiento"));
-        docente.setTelefono(rs.getString("Telefono"));
-        docente.setEmailPersonal(rs.getString("Email Personal"));
-        docente.setCodigoDocente(rs.getString("Cod Docente"));
-        docente.setTituloAcademico(rs.getString("Titulo Academico"));
-        docente.setAniosExperiencia(rs.getInt("Anios Exp"));
-        docente.setEmailEducativoDocente(rs.getString("Email Educativo"));
-        //dni
-        dni.setIdDni(rs.getLong("ID"));
-        dni.setTipoDocumentoDni(rs.getString("Tipo Documento"));
-        dni.setNumeroDni(rs.getString("Numero Dni"));
-        //direccion
-        direccion.setIdDireccion(rs.getLong("ID"));
-        direccion.setCalle(rs.getString("Calle"));
-        direccion.setNumero(rs.getString("Numero Calle"));
-        direccion.setDistrito(rs.getString("Distrito"));
-        direccion.setProvincia(rs.getString("Provincia"));
-        //establemos al docente
-        docente.setDni(dni);
-        docente.setDireccion(direccion);
-        return docente;
-    }
-
     @Override
     public Docente porDni(Long dni) {
         Docente docente = null;
-        final String SQL_BUSCAR_POR_DNI = "SELECT "
+        String SQL_BUSCAR_POR_DNI = "SELECT "
                 + "    p.id_dni AS 'ID', "
                 + "    p.nombre AS 'Nombre', "
                 + "    p.apellido_paterno AS 'Apellido Paterno', "
@@ -88,7 +57,7 @@ public class DocenteReposioImple
                 + "INNER JOIN dni AS d ON d.id_dni = p.id_dni  "
                 + "INNER JOIN direccion AS di ON di.id_direccion = p.id_direccion  "
                 + "INNER JOIN docente AS doc ON  doc.id_docente = p.id_persona "
-                + "WHERE d.numero_dni LIKE '%" + String.valueOf(dni) + "%'";
+                + "WHERE d.numero_dni LIKE '%" + String.valueOf(dni) + "%' ";
         try (Connection con = getConection(); Statement stmt = con.createStatement(); ResultSet rs = stmt.executeQuery(SQL_BUSCAR_POR_DNI)) {
             if (rs.next()) {
                 docente = crearDocente(rs);
@@ -96,6 +65,7 @@ public class DocenteReposioImple
         } catch (SQLException exception) {
             System.out.println("Error al buscar docente por id: " + exception.getMessage());
         }
+        System.out.println(dni);
         return docente;
     }
 
@@ -145,6 +115,38 @@ public class DocenteReposioImple
     @Override
     public void eliminar(Long id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private Docente crearDocente(final ResultSet rs) throws SQLException {
+        Docente docente = new Docente();
+        Dni dni = new Dni();
+        Direccion direccion = new Direccion();
+        docente.setIdDocente(rs.getLong("ID"));
+        docente.setIdPersona(rs.getLong("ID"));
+        docente.setNombre(rs.getString("Nombre"));
+        docente.setApellidoPaterno(rs.getString("Apellido Paterno"));
+        docente.setApellidoMaterno(rs.getString("Apellido Materno"));
+        docente.setFechaNacimiento(rs.getDate("Fecha Nacimiento"));
+        docente.setTelefono(rs.getString("Telefono"));
+        docente.setEmailPersonal(rs.getString("Email Personal"));
+        docente.setCodigoDocente(rs.getString("Cod Docente"));
+        docente.setTituloAcademico(rs.getString("Titulo Academico"));
+        docente.setAniosExperiencia(rs.getInt("Anios Exp"));
+        docente.setEmailEducativoDocente(rs.getString("Email Educativo"));
+        //dni
+        dni.setIdDni(rs.getLong("ID"));
+        dni.setTipoDocumentoDni(rs.getString("Tipo Documento"));
+        dni.setNumeroDni(rs.getString("Numero Dni"));
+        //direccion
+        direccion.setIdDireccion(rs.getLong("ID"));
+        direccion.setCalle(rs.getString("Calle"));
+        direccion.setNumero(rs.getString("Numero Calle"));
+        direccion.setDistrito(rs.getString("Distrito"));
+        direccion.setProvincia(rs.getString("Provincia"));
+        //establemos al docente
+        docente.setDni(dni);
+        docente.setDireccion(direccion);
+        return docente;
     }
 
 }
