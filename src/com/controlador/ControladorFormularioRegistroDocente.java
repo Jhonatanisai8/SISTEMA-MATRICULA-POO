@@ -11,18 +11,28 @@ import java.awt.event.ActionListener;
 
 public class ControladorFormularioRegistroDocente
         implements ActionListener {
-    
-    private frmRegistrarDocenteView frmRegistrarDocenteView;
-    private frmMenuView frmMenuView;
+
+    private final frmRegistrarDocenteView frmRegistrarDocenteView;
+    private final frmMenuView frmMenuView;
     private Docente miDocente;
-    
+
     public ControladorFormularioRegistroDocente(frmRegistrarDocenteView frmRegistrarDocenteView, frmMenuView frmMenuView) {
         this.frmRegistrarDocenteView = frmRegistrarDocenteView;
         this.frmMenuView = frmMenuView;
         this.frmRegistrarDocenteView.btnGuardar.addActionListener(this);
         ProcesosFormularioRegistroDocente.presentarFormulario(this.frmMenuView.dsktEscritorio, this.frmRegistrarDocenteView);
     }
-    
+
+    //controlafor para editar
+    public ControladorFormularioRegistroDocente(frmRegistrarDocenteView frmRegistrarDocenteView, frmMenuView frmMenuView, Docente docente) {
+        this.frmRegistrarDocenteView = frmRegistrarDocenteView;
+        this.frmMenuView = frmMenuView;
+        this.miDocente = docente;
+        this.frmRegistrarDocenteView.btnGuardar.addActionListener(this);
+        this.frmRegistrarDocenteView.btnGuardar.setText("Modificar");
+        ProcesosFormularioRegistroDocente.presentarFormulario(this.frmMenuView.dsktEscritorio, this.frmRegistrarDocenteView, this.miDocente);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         Repositorio<Docente> repo = new DocenteReposioImple();
@@ -32,5 +42,5 @@ public class ControladorFormularioRegistroDocente
             repo.guardar(miDocente);
         }
     }
-    
+
 }
