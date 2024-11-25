@@ -65,7 +65,38 @@ public class DocenteReposioImple
 
     @Override
     public Docente porDni(Long dni) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Docente docente = null;
+        final String SQL_BUSCAR_POR_DNI = "SELECT "
+                + "    p.id_dni AS 'ID', "
+                + "    p.nombre AS 'Nombre', "
+                + "    p.apellido_paterno AS 'Apellido Paterno', "
+                + "    p.apellido_materno AS 'Apellido Materno', "
+                + "    p.fecha_nacimiento AS 'Fecha Nacimiento', "
+                + "    d.tipo_documento AS 'Tipo Documento', "
+                + "    d.numero_dni AS 'Numero Dni', "
+                + "    di.calle AS 'Calle', "
+                + "    di.numero_cale AS 'Numero Calle', "
+                + "    di.distrito AS 'Distrito', "
+                + "    di.provincia AS 'Provincia', "
+                + "    p.telefono AS 'Telefono', "
+                + "    p.email_personal AS 'Email Personal', "
+                + "    doc.codigo_docente AS 'Cod Docente', "
+                + "    doc.titulo_academico AS 'Titulo Academico', "
+                + "    doc.anios_esperiencia AS 'Anios Exp', "
+                + "    doc.email_educativo_docente AS 'Email Educativo' "
+                + "FROM persona AS p "
+                + "INNER JOIN dni AS d ON d.id_dni = p.id_dni  "
+                + "INNER JOIN direccion AS di ON di.id_direccion = p.id_direccion  "
+                + "INNER JOIN docente AS doc ON  doc.id_docente = p.id_persona "
+                + "WHERE d.numero_dni LIKE '%" + String.valueOf(dni) + "%'";
+        try (Connection con = getConection(); Statement stmt = con.createStatement(); ResultSet rs = stmt.executeQuery(SQL_BUSCAR_POR_DNI)) {
+            if (rs.next()) {
+                docente = crearDocente(rs);
+            }
+        } catch (SQLException exception) {
+            System.out.println("Error al buscar docente por id: " + exception.getMessage());
+        }
+        return docente;
     }
 
     @Override
