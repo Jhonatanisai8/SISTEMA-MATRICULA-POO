@@ -3,15 +3,15 @@ package com.procesos;
 import com.Modelo.entidades.Direccion;
 import com.Modelo.entidades.Dni;
 import com.Modelo.entidades.Estudiante;
-import com.Utelerias.Constantes.ConstantesFormularioRegistroEstudiante;
 import com.procesos.Servicios.ServiciosEstudiante;
 import com.procesos.Validaciones.ValidacionesFrmRegistroEstudiante;
 import com.vista.frmRegistrarEstudianteView;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
+import com.Utelerias.Constantes.ConstantesFormularioRegistroEstudianteDocente;
 
 public class ProcesosFormularioRegistroEstudiante
-        implements ConstantesFormularioRegistroEstudiante {
+        implements ConstantesFormularioRegistroEstudianteDocente {
     
     private static void rellenarComboBox(frmRegistrarEstudianteView frEstudiante) {
         frEstudiante.cbxProvincia.removeAllItems();
