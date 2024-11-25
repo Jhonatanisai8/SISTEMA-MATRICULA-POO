@@ -34,7 +34,7 @@ public class ProcesosFormularioRegistroDocente
         frmRegistrarDocenteView1.btnGuardar.setIcon(ICONO_BOTON_GUARDAR);
     }
 
-    private static Docente crearDocenteFormulario(frmRegistrarDocenteView frmRegistrarDocenteView1) {
+    public static Docente crearDocenteFormulario(frmRegistrarDocenteView frmRegistrarDocenteView1) {
         Docente docente = null;
         //llamamos al metodo de las validaciones 
         String validacion = ValidacionesFrmRegistroDocente.validarCamposFrmRegistroEstudiante(frmRegistrarDocenteView1);
