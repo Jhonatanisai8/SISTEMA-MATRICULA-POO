@@ -96,22 +96,27 @@ public class ProcesosFormularioRegistroDocente
     public static void presentarFormulario(JDesktopPane desktopPane, frmRegistrarDocenteView frmRegistrarDocenteView1, Docente docente) {
         rellenarComboBox(frmRegistrarDocenteView1);
         ponerIconosFormulario(frmRegistrarDocenteView1);
-        desktopPane.removeAll();
         frmRegistrarDocenteView1.setTitle("Datos del Docente: ");
+        desktopPane.removeAll();
         //para los texFields
-        frmRegistrarDocenteView1.txtApMaterno.setText(docente.getApellidoMaterno());
-        frmRegistrarDocenteView1.txtApPaterno.setText(docente.getApellidoPaterno());
-        frmRegistrarDocenteView1.txtCalle.setText(docente.getDireccion().getCalle());
-        frmRegistrarDocenteView1.txtDistrito.setText(docente.getDireccion().getDistrito());
-        frmRegistrarDocenteView1.txtEmailpersonal.setText(docente.getEmailPersonal());
         frmRegistrarDocenteView1.txtNombre.setText(docente.getNombre());
-        frmRegistrarDocenteView1.txtNumeroCalle.setText(docente.getDireccion().getNumero());
-        frmRegistrarDocenteView1.txtTelefono.setText(docente.getTelefono());
-        //para los combobis
-        frmRegistrarDocenteView1.cbxProvincia.setSelectedItem(docente.getDireccion().getProvincia());
+        frmRegistrarDocenteView1.txtApPaterno.setText(docente.getApellidoPaterno());
+        frmRegistrarDocenteView1.txtApMaterno.setText(docente.getApellidoMaterno());
+        frmRegistrarDocenteView1.dtcFechaNacimiento.setDate(docente.getFechaNacimiento());
+
         frmRegistrarDocenteView1.cbxTipoDocumento.setSelectedItem(docente.getDni().getTipoDocumentoDni());
+        frmRegistrarDocenteView1.txtNumeroDocumento.setText(docente.getDni().getNumeroDni());
         frmRegistrarDocenteView1.cbxTituloAcademico.setSelectedItem(docente.getTituloAcademico());
         frmRegistrarDocenteView1.spnAniosExperiencia.setValue(docente.getAniosExperiencia());
+
+        frmRegistrarDocenteView1.txtDistrito.setText(docente.getDireccion().getDistrito());
+        frmRegistrarDocenteView1.txtCalle.setText(docente.getDireccion().getCalle());
+        frmRegistrarDocenteView1.txtNumeroCalle.setText(docente.getDireccion().getNumero());
+        frmRegistrarDocenteView1.cbxProvincia.setSelectedItem(docente.getDireccion().getProvincia());
+
+        frmRegistrarDocenteView1.txtTelefono.setText(docente.getTelefono());
+        frmRegistrarDocenteView1.txtEmailpersonal.setText(docente.getEmailPersonal());
+        //para los combobis
 
         desktopPane.add(frmRegistrarDocenteView1);
         frmRegistrarDocenteView1.toFront();
