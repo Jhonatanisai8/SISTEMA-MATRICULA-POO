@@ -12,7 +12,7 @@ import com.Utelerias.Constantes.ConstantesFormularioRegistroEstudianteDocente;
 
 public class ProcesosFormularioRegistroEstudiante
         implements ConstantesFormularioRegistroEstudianteDocente {
-    
+
     private static void rellenarComboBox(frmRegistrarEstudianteView frEstudiante) {
         frEstudiante.cbxProvincia.removeAllItems();
         for (String string : PROVINCIAS) {
@@ -23,11 +23,11 @@ public class ProcesosFormularioRegistroEstudiante
             frEstudiante.cbxTipoDocumento.addItem(string);
         }
     }
-    
+
     private static void ponerIconosFormulario(frmRegistrarEstudianteView frEstudiante) {
         frEstudiante.btnGuardar.setIcon(ICONO_BOTON_GUARDAR);
     }
-    
+
     public static void presentarFormulario(JDesktopPane desktopPane, frmRegistrarEstudianteView fr) {
         rellenarComboBox(fr);
         ponerIconosFormulario(fr);
@@ -61,31 +61,29 @@ public class ProcesosFormularioRegistroEstudiante
         fr.setVisible(true);
     }
 
-    //metodo que lee la categoria 
     public static Estudiante crearEstudiante(frmRegistrarEstudianteView frmEstudianteView) {
-        Dni dni = null;
-        Direccion direccion = null;
         Estudiante e = null;
+
         String validacion = ValidacionesFrmRegistroEstudiante.validarCamposFrmRegistroEstudiante(frmEstudianteView);
         if (!validacion.equals("")) {
-            System.out.println("Observacion....");
             JOptionPane.showMessageDialog(null, "Revisar el campo " + validacion, "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
-        } else {
-            System.out.println("Hola Todo paso correctamente");
+            return null;
+        }
 
-            //creando el dni
-            dni = new Dni();
+        try {
+            // Creando el DNI
+            Dni dni = new Dni();
             dni.setTipoDocumentoDni(frmEstudianteView.cbxTipoDocumento.getSelectedItem().toString());
             dni.setNumeroDni(frmEstudianteView.txtNumeroDocumento.getText());
 
-            //creando la direcion
-            direccion = new Direccion();
+            // Creando la dirección
+            Direccion direccion = new Direccion();
             direccion.setDistrito(frmEstudianteView.txtDistrito.getText());
             direccion.setCalle(frmEstudianteView.txtCalle.getText());
             direccion.setNumero(frmEstudianteView.txtNumeroCalle.getText());
             direccion.setProvincia(frmEstudianteView.cbxProvincia.getSelectedItem().toString());
 
-            //creando el estudiante
+            // Creando el estudiante
             e = new Estudiante();
             e.setNombre(frmEstudianteView.txtNombre.getText());
             e.setApellidoPaterno(frmEstudianteView.txtApPaterno.getText());
@@ -95,9 +93,22 @@ public class ProcesosFormularioRegistroEstudiante
             e.setDireccion(direccion);
             e.setTelefono(frmEstudianteView.txtTelefono.getText());
             e.setEmailPersonal(frmEstudianteView.txtEmailpersonal.getText());
-            e.setCodigoEstudiante(ServiciosEstudiante.generarCodigoEstudiante(frmEstudianteView.txtNombre.getText(), frmEstudianteView.txtApPaterno.getText()));
-            e.setEmailEducativo(ServiciosEstudiante.generarCorreoEducatico(frmEstudianteView.txtNombre.getText(), frmEstudianteView.txtApPaterno.getText(), frmEstudianteView.txtApMaterno.getText()));
+
+            // Generando código y correo educativo
+            String nombre = frmEstudianteView.txtNombre.getText();
+            String apPaterno = frmEstudianteView.txtApPaterno.getText();
+            String apMaterno = frmEstudianteView.txtApMaterno.getText();
+            e.setCodigoEstudiante(ServiciosEstudiante.generarCodigoEstudiante(nombre, apPaterno));
+            e.setEmailEducativo(ServiciosEstudiante.generarCorreoEducatico(nombre, apPaterno, apMaterno));
+
+        } catch (Exception ex) {
+            // Manejo de excepciones, como un error al obtener los datos de los campos
+            ex.printStackTrace();  // O usar un logger
+            JOptionPane.showMessageDialog(null, "Ocurrió un error al crear el estudiante.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            return null;
         }
+
         return e;
     }
+
 }
