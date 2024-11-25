@@ -5,7 +5,7 @@ import com.vista.frmRegistrarDocenteView;
 
 public class ProcesosFormularioRegistroDocente
         implements ConstantesFormularioRegistroEstudianteDocente {
-
+    
     public static void rellenarComboBox(frmRegistrarDocenteView frmRegistrarDocenteView1) {
         frmRegistrarDocenteView1.cbxProvincia.removeAllItems();
         frmRegistrarDocenteView1.cbxTipoDocumento.removeAllItems();
@@ -20,6 +20,10 @@ public class ProcesosFormularioRegistroDocente
         for (String documento : TIPO_DOCUMENTO) {
             frmRegistrarDocenteView1.cbxTipoDocumento.addItem(documento);
         }
-
+        
+    }
+    
+    public static void ponerIconosFormulario(frmRegistrarDocenteView frmRegistrarDocenteView1) {
+        frmRegistrarDocenteView1.btnGuardar.setIcon(ICONO_BOTON_GUARDAR);
     }
 }
