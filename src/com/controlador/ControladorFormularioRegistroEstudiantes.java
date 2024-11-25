@@ -4,7 +4,7 @@ import com.Modelo.entidades.DaoImplementacion.EstudianteReposioImple;
 import com.Modelo.entidades.Estudiante;
 import com.Modelo.entidades.InterfaceDao.Repositorio;
 import com.procesos.ProcesosFormularioRegistroEstudiante;
-import com.procesos.Servicios.ServiciosEstudiante;
+import com.procesos.Servicios.ServiciosEstudianteDocente;
 import com.vista.frmMenuView;
 import com.vista.frmRegistrarEstudianteView;
 import java.awt.event.ActionEvent;
@@ -42,14 +42,14 @@ public class ControladorFormularioRegistroEstudiantes
             if (!frEstudiante.btnGuardar.getText().equalsIgnoreCase("Modificar")) {
                 estudiante = ProcesosFormularioRegistroEstudiante.crearEstudiante(this.frEstudiante);
                 repositorio.guardar(estudiante);
-                ServiciosEstudiante.limpiarDatos(frEstudiante);
+                ServiciosEstudianteDocente.limpiarDatos(frEstudiante);
                 System.out.println("Has dado click para guardar.....");
             } else {
                 Long id = this.estudianteMoficar.getIdEstudiante();
                 Estudiante estudianteModificar = ProcesosFormularioRegistroEstudiante.crearEstudiante(this.frEstudiante);
                 estudianteModificar.setIdEstudiante(id);  // O si usas otro ID, asignarlo aquí.
                 repositorio.modificar(estudianteModificar);
-                ServiciosEstudiante.limpiarDatos(frEstudiante);
+                ServiciosEstudianteDocente.limpiarDatos(frEstudiante);
                 System.out.println("Has dado click para modificar....");
             }
         }

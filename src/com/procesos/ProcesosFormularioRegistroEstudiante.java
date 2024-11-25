@@ -3,7 +3,7 @@ package com.procesos;
 import com.Modelo.entidades.Direccion;
 import com.Modelo.entidades.Dni;
 import com.Modelo.entidades.Estudiante;
-import com.procesos.Servicios.ServiciosEstudiante;
+import com.procesos.Servicios.ServiciosEstudianteDocente;
 import com.procesos.Validaciones.ValidacionesFrmRegistroEstudiante;
 import com.vista.frmRegistrarEstudianteView;
 import javax.swing.JDesktopPane;
@@ -98,8 +98,8 @@ public class ProcesosFormularioRegistroEstudiante
             String nombre = frmEstudianteView.txtNombre.getText();
             String apPaterno = frmEstudianteView.txtApPaterno.getText();
             String apMaterno = frmEstudianteView.txtApMaterno.getText();
-            e.setCodigoEstudiante(ServiciosEstudiante.generarCodigoEstudiante(nombre, apPaterno));
-            e.setEmailEducativo(ServiciosEstudiante.generarCorreoEducatico(nombre, apPaterno, apMaterno));
+            e.setCodigoEstudiante(ServiciosEstudianteDocente.generarCodigo(nombre, apPaterno));
+            e.setEmailEducativo(ServiciosEstudianteDocente.generarCorreoEducatico(nombre, apPaterno, apMaterno));
 
         } catch (Exception ex) {
             // Manejo de excepciones, como un error al obtener los datos de los campos

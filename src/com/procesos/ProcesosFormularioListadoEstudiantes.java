@@ -4,7 +4,7 @@ import com.Modelo.entidades.DaoImplementacion.EstudianteReposioImple;
 import com.Modelo.entidades.Estudiante;
 import com.Modelo.entidades.InterfaceDao.Repositorio;
 import com.Utelerias.Constantes.ConstantesFormularioListadoEstudiantes;
-import com.procesos.Servicios.ServiciosEstudiante;
+import com.procesos.Servicios.ServiciosEstudianteDocente;
 import com.vista.frmListadoEstudiantesView;
 import java.util.List;
 import javax.swing.JDesktopPane;
@@ -32,7 +32,7 @@ public class ProcesosFormularioListadoEstudiantes
 
     public static void presentarFormulario(JDesktopPane desktopPane, frmListadoEstudiantesView frmEstudiantesView) {
         ponerIconosFormulario(frmEstudiantesView);
-        ServiciosEstudiante.mostrarEstudiantesEnTabla(frmEstudiantesView, TITULOS_COLUMNAS, listaEstudiantes());
+        ServiciosEstudianteDocente.mostrarEstudiantesEnTabla(frmEstudiantesView, TITULOS_COLUMNAS, listaEstudiantes());
         frmEstudiantesView.setTitle("Listado de Estudiantes");
         desktopPane.removeAll();
         desktopPane.add(frmEstudiantesView);
@@ -46,7 +46,7 @@ public class ProcesosFormularioListadoEstudiantes
             return;
         }
         System.out.println("Enviando estudiante....");
-        ServiciosEstudiante.mostrarEstudiantesEnTabla(tblData, TITULOS_COLUMNAS, obtenerEstudiante(dni));
+        ServiciosEstudianteDocente.mostrarEstudiantesEnTabla(tblData, TITULOS_COLUMNAS, obtenerEstudiante(dni));
     }
 
     public static void seleccionarDatosEliminar(frmListadoEstudiantesView frmEstudiantesView) {
@@ -73,7 +73,7 @@ public class ProcesosFormularioListadoEstudiantes
                 Long idEstudiante = (Long) frmEstudiantesView.btlData.getValueAt(filasSelecionadas[i], 0);
                 repo.eliminar(idEstudiante);
             }
-            ServiciosEstudiante.mostrarEstudiantesEnTabla(frmEstudiantesView, TITULOS_COLUMNAS, listaEstudiantes());
+            ServiciosEstudianteDocente.mostrarEstudiantesEnTabla(frmEstudiantesView, TITULOS_COLUMNAS, listaEstudiantes());
             //avtualizamos la tabla
         }
         System.out.println("Borrando datos......");

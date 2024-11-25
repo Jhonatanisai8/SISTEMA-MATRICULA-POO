@@ -4,7 +4,7 @@ import com.Modelo.entidades.Estudiante;
 import static com.Utelerias.Constantes.ConstantesFormularioListadoEstudiantes.TITULOS_COLUMNAS;
 import com.procesos.ProcesosFormularioListadoEstudiantes;
 import static com.procesos.ProcesosFormularioListadoEstudiantes.listaEstudiantes;
-import com.procesos.Servicios.ServiciosEstudiante;
+import com.procesos.Servicios.ServiciosEstudianteDocente;
 import com.vista.frmListadoEstudiantesView;
 import com.vista.frmMenuView;
 import com.vista.frmRegistrarEstudianteView;
@@ -31,7 +31,7 @@ public class ControladorFormularioListadoEstudiantes
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.frmEstudiantesView.btnBuscar) {
             if (frmEstudiantesView.txtBuscar.getText().isBlank()) {
-                ServiciosEstudiante.mostrarEstudiantesEnTabla(frmEstudiantesView, TITULOS_COLUMNAS, listaEstudiantes());
+                ServiciosEstudianteDocente.mostrarEstudiantesEnTabla(frmEstudiantesView, TITULOS_COLUMNAS, listaEstudiantes());
             } else {
                 ProcesosFormularioListadoEstudiantes.enviarEstudiante(this.frmEstudiantesView.btlData, Long.valueOf(frmEstudiantesView.txtBuscar.getText()));
             }
