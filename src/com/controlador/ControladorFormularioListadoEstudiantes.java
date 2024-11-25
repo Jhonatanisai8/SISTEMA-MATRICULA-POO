@@ -1,7 +1,7 @@
 package com.controlador;
 
 import com.Modelo.entidades.Estudiante;
-import static com.Utelerias.Constantes.ConstantesFormularioListadoEstudiantes.TITULOS_COLUMNAS;
+import static com.Utelerias.Constantes.ConstantesFormularioListadoEstudiantesDocentes.TITULOS_COLUMNAS;
 import com.procesos.ProcesosFormularioListadoEstudiantes;
 import static com.procesos.ProcesosFormularioListadoEstudiantes.listaEstudiantes;
 import com.procesos.Servicios.ServiciosEstudianteDocente;

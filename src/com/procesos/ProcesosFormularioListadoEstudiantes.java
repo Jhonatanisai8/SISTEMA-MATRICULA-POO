@@ -3,16 +3,16 @@ package com.procesos;
 import com.Modelo.entidades.DaoImplementacion.EstudianteReposioImple;
 import com.Modelo.entidades.Estudiante;
 import com.Modelo.entidades.InterfaceDao.Repositorio;
-import com.Utelerias.Constantes.ConstantesFormularioListadoEstudiantes;
 import com.procesos.Servicios.ServiciosEstudianteDocente;
 import com.vista.frmListadoEstudiantesView;
 import java.util.List;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import com.Utelerias.Constantes.ConstantesFormularioListadoEstudiantesDocentes;
 
 public class ProcesosFormularioListadoEstudiantes
-        implements ConstantesFormularioListadoEstudiantes {
+        implements ConstantesFormularioListadoEstudiantesDocentes {
 
     private static void ponerIconosFormulario(frmListadoEstudiantesView frmEstudiantesView) {
         frmEstudiantesView.btnBuscar.setIcon(ICONO_BUSCAR);
