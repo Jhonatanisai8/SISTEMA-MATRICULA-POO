@@ -1,8 +1,5 @@
 package com.principal;
 
-import com.Modelo.entidades.DaoImplementacion.EstudianteReposioImple;
-import com.Modelo.entidades.Estudiante;
-import com.Modelo.entidades.InterfaceDao.Repositorio;
 import com.controlador.ControladorInicioSesion;
 import com.vista.frmInicioSesionView;
 

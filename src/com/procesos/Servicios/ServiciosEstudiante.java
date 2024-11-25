@@ -2,6 +2,7 @@ package com.procesos.Servicios;
 
 import com.Modelo.entidades.Estudiante;
 import com.vista.frmListadoEstudiantesView;
+import com.vista.frmRegistrarEstudianteView;
 import java.util.List;
 import java.util.Random;
 import javax.swing.JTable;
@@ -74,4 +75,20 @@ public class ServiciosEstudiante {
         System.out.println("Listando en tabla un solo estudiante.....");
     }
 
+    public static void limpiarDatos(frmRegistrarEstudianteView frView) {
+        //limpiamos los campos 
+        frView.txtApMaterno.setText("");
+        frView.txtApPaterno.setText("");
+        frView.txtCalle.setText("");
+        frView.txtDistrito.setText("");
+        frView.txtEmailpersonal.setText("");
+        frView.txtNombre.setText("");
+        frView.txtNumeroCalle.setText("");
+        frView.txtNumeroDocumento.setText("");
+        frView.txtTelefono.setText("");
+        frView.cbxProvincia.setSelectedIndex(0);
+        frView.cbxTipoDocumento.setSelectedIndex(0);
+        frView.dtcFechaNacimiento.setDate(null);
+        frView.txtNombre.requestFocus();
+    }
 }
