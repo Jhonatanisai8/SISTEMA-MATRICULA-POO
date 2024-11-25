@@ -7,12 +7,21 @@ public class Docente
     private String codigoDocente;
     private String tituloAcademico;
     private int aniosExperiencia;
+    private String emailEducativoDocente;
 
     public Docente() {
     }
 
     public Long getIdDocente() {
         return idDocente;
+    }
+
+    public String getEmailEducativoDocente() {
+        return emailEducativoDocente;
+    }
+
+    public void setEmailEducativoDocente(String emailEducativoDocente) {
+        this.emailEducativoDocente = emailEducativoDocente;
     }
 
     public void setIdDocente(Long idDocente) {
