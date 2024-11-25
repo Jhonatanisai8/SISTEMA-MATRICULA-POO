@@ -1,14 +1,19 @@
 package com.procesos;
 
+import com.Modelo.entidades.Direccion;
+import com.Modelo.entidades.Dni;
 import com.Modelo.entidades.Docente;
 import com.Utelerias.Constantes.ConstantesFormularioRegistroEstudianteDocente;
+import com.procesos.Servicios.ServiciosEstudianteDocente;
+import com.procesos.Validaciones.ValidacionesFrmRegistroDocente;
 import com.vista.frmRegistrarDocenteView;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
 
 public class ProcesosFormularioRegistroDocente
         implements ConstantesFormularioRegistroEstudianteDocente {
 
-    public static void rellenarComboBox(frmRegistrarDocenteView frmRegistrarDocenteView1) {
+    private static void rellenarComboBox(frmRegistrarDocenteView frmRegistrarDocenteView1) {
         frmRegistrarDocenteView1.cbxProvincia.removeAllItems();
         frmRegistrarDocenteView1.cbxTipoDocumento.removeAllItems();
         frmRegistrarDocenteView1.cbxTituloAcademico.removeAllItems();
@@ -25,12 +30,56 @@ public class ProcesosFormularioRegistroDocente
 
     }
 
-    public static void ponerIconosFormulario(frmRegistrarDocenteView frmRegistrarDocenteView1) {
+    private static void ponerIconosFormulario(frmRegistrarDocenteView frmRegistrarDocenteView1) {
         frmRegistrarDocenteView1.btnGuardar.setIcon(ICONO_BOTON_GUARDAR);
     }
 
-    public static Docente crearDocente(frmRegistrarDocenteView frmRegistrarDocenteView1) {
-        return null;
+    private static Docente crearDocenteFormulario(frmRegistrarDocenteView frmRegistrarDocenteView1) {
+        Docente docente = null;
+        //llamamos al metodo de las validaciones 
+        String validacion = ValidacionesFrmRegistroDocente.validarCamposFrmRegistroEstudiante(frmRegistrarDocenteView1);
+        if (!validacion.equals("")) {
+            JOptionPane.showMessageDialog(null, "Revisar el Campo." + validacion, "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
+            return null;
+        }
+        try {
+            //creamos el dni 
+            Dni dni = new Dni();
+            dni.setTipoDocumentoDni(frmRegistrarDocenteView1.cbxTipoDocumento.getSelectedItem().toString());
+            dni.setNumeroDni(frmRegistrarDocenteView1.txtNumeroDocumento.getText().trim());
+
+            //creamos la direccion 
+            Direccion direccion = new Direccion();
+            direccion.setDistrito(frmRegistrarDocenteView1.txtDistrito.getText());
+            direccion.setCalle(frmRegistrarDocenteView1.txtCalle.getText());
+            direccion.setNumero(frmRegistrarDocenteView1.txtNumeroCalle.getText());
+            direccion.setProvincia(frmRegistrarDocenteView1.cbxProvincia.getSelectedItem().toString());
+            //creamos al docente 
+            docente = new Docente();
+            docente.setNombre(frmRegistrarDocenteView1.txtNombre.getText());
+            docente.setApellidoPaterno(frmRegistrarDocenteView1.txtApPaterno.getText());
+            docente.setApellidoMaterno(frmRegistrarDocenteView1.txtApMaterno.getText());
+            docente.setFechaNacimiento(frmRegistrarDocenteView1.dtcFechaNacimiento.getDate());
+            docente.setDni(dni);
+            docente.setDireccion(direccion);
+            docente.setTelefono(frmRegistrarDocenteView1.txtTelefono.getText());
+            docente.setEmailPersonal(frmRegistrarDocenteView1.txtEmailpersonal.getText());
+            docente.setAniosExperiencia(Integer.parseInt(frmRegistrarDocenteView1.spnAniosExperiencia.getValue().toString()));
+            docente.setTituloAcademico(frmRegistrarDocenteView1.cbxTituloAcademico.getSelectedItem().toString());
+
+            String nombre = frmRegistrarDocenteView1.txtNombre.getText();
+            String ap01 = frmRegistrarDocenteView1.txtApPaterno.getText();
+            String ap02 = frmRegistrarDocenteView1.txtApMaterno.getText();
+            //establecemos el codigo y el email educativo 
+            docente.setCodigoDocente(ServiciosEstudianteDocente.generarCodigo(nombre, ap02));
+            docente.setEmailEducativoDocente(ServiciosEstudianteDocente.generarCorreoEducatico(nombre, ap01, ap02));
+
+        } catch (NumberFormatException e) {
+            System.out.println("Error al crear un estudiante desde el formulario: " + e.getMessage());
+            return null;
+        }
+        //retornamos 
+        return docente;
     }
 
     public static void presentarFormulario(JDesktopPane desktopPane, frmRegistrarDocenteView frmRegistrarDocenteView1) {
