@@ -26,7 +26,7 @@ public class ProcesosFormularioListadoDocentes
 
     public static void presentarFormulario(JDesktopPane desktopPane, frmListadoDocentesView frmListadoDocentesView) {
         ponerIconosFormulario(frmListadoDocentesView);
-        ServiciosDocente.mostrarDocentesEnTabla(frmListadoDocentesView, TITULOS_COLUMNAS, obtenerListaDocente());
+        ServiciosDocente.mostrarDocentesEnTabla(frmListadoDocentesView, TITULOS_COLUMNAS_DOCENTE, obtenerListaDocente());
         frmListadoDocentesView.setTitle("Listado de Docentes");
         desktopPane.removeAll();
         desktopPane.add(frmListadoDocentesView);
