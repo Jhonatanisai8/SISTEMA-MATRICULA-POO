@@ -21,6 +21,6 @@ public interface ConstantesFormularioListadoEstudiantesDocentes {
         "Nº de Dni", "Calle", "Nº de Calle",
         "Distrito", "Provincia", "Telefono",
         "Email Personal", "Cod Docente", "Titulo Academico",
-        "AÑOS EXP", "Email Educativo"};
+        "Años Exp", "Email Educativo"};
 
 }
