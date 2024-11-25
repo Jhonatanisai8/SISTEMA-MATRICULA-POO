@@ -34,4 +34,29 @@ public class ServiciosDocente {
         frmListadoDocentesView.btlData.setModel(modelo);
         System.out.println("Mostrando todos los docentes.....");
     }
+
+    public static void mostrarDocenteEntabla(frmListadoDocentesView frmDocentesView, String[] cabezeras, Docente docente) {
+        Object[] datos = new Object[cabezeras.length];
+        datos[0] = docente.getIdDocente();
+        datos[1] = docente.getNombre();
+        datos[2] = docente.getApellidoPaterno();
+        datos[3] = docente.getApellidoMaterno();
+        datos[4] = docente.getFechaNacimiento();
+        datos[5] = docente.getDni().getTipoDocumentoDni();
+        datos[6] = docente.getDni().getNumeroDni();
+        datos[7] = docente.getDireccion().getCalle();
+        datos[8] = docente.getDireccion().getNumero();
+        datos[9] = docente.getDireccion().getDistrito();
+        datos[10] = docente.getDireccion().getProvincia();
+        datos[11] = docente.getTelefono();
+        datos[12] = docente.getEmailPersonal();
+        datos[13] = docente.getCodigoDocente();
+        datos[14] = docente.getTituloAcademico();
+        datos[15] = docente.getAniosExperiencia();
+        datos[16] = docente.getEmailEducativoDocente();
+
+        DefaultTableModel modeloTabla = new DefaultTableModel(new Object[][]{datos}, cabezeras);
+        frmDocentesView.btlData.setModel(modeloTabla);
+        System.out.println("Mostrando un solo estudiante en la tabla.....");
+    }
 }
