@@ -25,6 +25,7 @@ public class ControladorFormularioRegistroEstudiantes
         ProcesosFormularioRegistroEstudiante.presentarFormulario(this.frMenuView.dsktEscritorio, frEstudiante);
     }
 
+    //controlador para editar
     public ControladorFormularioRegistroEstudiantes(frmMenuView menuView, frmRegistrarEstudianteView frEstudiante, Estudiante estudianteMOd) {
         this.frEstudiante = frEstudiante;
         this.frMenuView = menuView;
@@ -36,15 +37,15 @@ public class ControladorFormularioRegistroEstudiantes
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        Repositorio<Estudiante> repositorio = new EstudianteReposioImple();  // Asegúrate que el nombre sea correcto.
         if (e.getSource() == this.frEstudiante.btnGuardar) {
-            Repositorio<Estudiante> repositorio = new EstudianteReposioImple();  // Asegúrate que el nombre sea correcto.
+            //si esta en guardar
             if (!frEstudiante.btnGuardar.getText().equalsIgnoreCase("Modificar")) {
                 estudiante = ProcesosFormularioRegistroEstudiante.crearEstudiante(this.frEstudiante);
                 repositorio.guardar(estudiante);
                 ServiciosEstudianteDocente.limpiarDatos(frEstudiante);
                 System.out.println("Has dado click para guardar.....");
-            } else {
+            } else {//si esta en modificar
                 Long id = this.estudianteMoficar.getIdEstudiante();
                 Estudiante estudianteModificar = ProcesosFormularioRegistroEstudiante.crearEstudiante(this.frEstudiante);
                 estudianteModificar.setIdEstudiante(id);  // O si usas otro ID, asignarlo aquí.
