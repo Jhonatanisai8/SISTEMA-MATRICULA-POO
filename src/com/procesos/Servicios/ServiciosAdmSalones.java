@@ -12,10 +12,10 @@ public class ServiciosAdmSalones {
         Object[][] data = new Object[listsSalon.size()][COLUMNAS.length];
         for (int i = 0; i < listsSalon.size(); i++) {
             Salon miSalon = listsSalon.get(i);
-            data[i][1] = miSalon.getIdSalon();
-            data[i][2] = miSalon.getNombreSalon();
-            data[i][3] = miSalon.getCapacidadEstudiantes();
-            data[i][4] = miSalon.getReferencia();
+            data[i][0] = miSalon.getIdSalon();
+            data[i][1] = miSalon.getNombreSalon();
+            data[i][2] = miSalon.getCapacidadEstudiantes();
+            data[i][3] = miSalon.getReferencia();
         }
         //creamo el modelo 
         DefaultTableModel modelo = new DefaultTableModel(data, COLUMNAS);
