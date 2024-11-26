@@ -29,6 +29,7 @@ public class ControladorFormularioListadoEstudiantes
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        //evento en el boton buscar
         if (e.getSource() == this.frmEstudiantesView.btnBuscar) {
             if (frmEstudiantesView.txtBuscar.getText().isBlank()) {
                 ServiciosEstudianteDocente.mostrarEstudiantesEnTabla(frmEstudiantesView, TITULOS_COLUMNAS, listaEstudiantes());
@@ -38,17 +39,19 @@ public class ControladorFormularioListadoEstudiantes
             System.out.println("Has dado click en el boton buscar....");
         }
 
+        //evento en el boton eliminar
         if (e.getSource() == this.frmEstudiantesView.btnEliminar) {
             ProcesosFormularioListadoEstudiantes.seleccionarDatosEliminar(this.frmEstudiantesView);
             System.out.println("Has dado click en el boton eliminar....");
         }
+        //evento en el boton modificar
         if (e.getSource() == this.frmEstudiantesView.btnModificar) {
             int filaSelecionada = frmEstudiantesView.btlData.getSelectedRow();
             if (filaSelecionada >= 0) {
                 Estudiante estudiante = ProcesosFormularioListadoEstudiantes.obtenerEstudiante((Long) frmEstudiantesView.btlData.getValueAt(filaSelecionada, 0));
                 frmRegistrarEstudianteView frmRegistrarEstudianteView1 = new frmRegistrarEstudianteView(estudiante);
                 this.frmEstudiantesView.dispose();
-                ControladorFormularioRegistroEstudiantes cfre = new ControladorFormularioRegistroEstudiantes(this.frmMenuView1, frmRegistrarEstudianteView1,estudiante);
+                ControladorFormularioRegistroEstudiantes cfre = new ControladorFormularioRegistroEstudiantes(this.frmMenuView1, frmRegistrarEstudianteView1, estudiante);
             } else {
                 JOptionPane.showMessageDialog(null, "Por favor debe seleccionar un estudiante para poder Modificar su Informacion", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
             }
