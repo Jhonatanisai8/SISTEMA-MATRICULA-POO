@@ -3,11 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/vista/frmListadoDocentesView.java</file>
-            <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/vista/frmListadoEstudiantesView.java</file>
+            <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/procesos/Servicios/ServiciosDocente.java</file>
+            <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/controlador/ControladorFormularioListadoEstudiantes.java</file>
+            <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/controlador/ControladorFormularioListadoDocentes.java</file>
+            <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/Modelo/entidades/DaoImplementacion/EstudianteReposioImple.java</file>
+            <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/procesos/ProcesosFormularioListadoDocentes.java</file>
             <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/procesos/ProcesosFormularioRegistroDocente.java</file>
+            <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/Modelo/entidades/DaoImplementacion/DocenteReposioImple.java</file>
             <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/procesos/ProcesosFormularioListadoEstudiantes.java</file>
-            <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/procesos/ProcesosFormularioRegistroEstudiante.java</file>
+            <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/procesos/Servicios/ServiciosEstudianteDocente.java</file>
+            <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/Modelo/entidades/InterfaceDao/ConsultasSQLDocente.java</file>
+            <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/Utelerias/Constantes/ConstantesFormularioListadoEstudiantesDocentes.java</file>
         </group>
     </open-files>
 </project-private>
