@@ -12,11 +12,12 @@ import java.awt.event.ActionListener;
 
 public class ControladorFormularioRegistroDocente
         implements ActionListener {
-    
+
     private final frmRegistrarDocenteView frmRegistrarDocenteView;
     private final frmMenuView frmMenuView;
     private Docente miDocente;
-    
+    private Docente docenteModificar;
+
     public ControladorFormularioRegistroDocente(frmRegistrarDocenteView frmRegistrarDocenteView, frmMenuView frmMenuView) {
         this.frmRegistrarDocenteView = frmRegistrarDocenteView;
         this.frmMenuView = frmMenuView;
@@ -28,21 +29,32 @@ public class ControladorFormularioRegistroDocente
     public ControladorFormularioRegistroDocente(frmRegistrarDocenteView frmRegistrarDocenteView, frmMenuView frmMenuView, Docente docente) {
         this.frmRegistrarDocenteView = frmRegistrarDocenteView;
         this.frmMenuView = frmMenuView;
-        this.miDocente = docente;
+        this.docenteModificar = docente;
         this.frmRegistrarDocenteView.btnGuardar.addActionListener(this);
         this.frmRegistrarDocenteView.btnGuardar.setText("Modificar");
-        ProcesosFormularioRegistroDocente.presentarFormulario(this.frmMenuView.dsktEscritorio, this.frmRegistrarDocenteView, this.miDocente);
+        ProcesosFormularioRegistroDocente.presentarFormulario(this.frmMenuView.dsktEscritorio, this.frmRegistrarDocenteView, this.docenteModificar);
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         Repositorio<Docente> repo = new DocenteReposioImple();
         //si el usuario da clik sobre guardar 
         if (e.getSource() == this.frmRegistrarDocenteView.btnGuardar) {
-            miDocente = ProcesosFormularioRegistroDocente.crearDocenteFormulario(this.frmRegistrarDocenteView);
-            repo.guardar(miDocente);
-            ServiciosDocente.limpiarDatos(frmRegistrarDocenteView);
+            //si esta en guardar
+            if (!frmRegistrarDocenteView.btnGuardar.getText().equalsIgnoreCase("Modificar")) {
+                miDocente = ProcesosFormularioRegistroDocente.crearDocenteFormulario(this.frmRegistrarDocenteView);
+                repo.guardar(miDocente);
+                ServiciosDocente.limpiarDatos(frmRegistrarDocenteView);
+                System.out.println("Has dado click para guardar.....");
+            } else { //si esta en modificar
+                Long idDocente = this.docenteModificar.getIdDocente(); // obtenemos el id
+                Docente midocente = ProcesosFormularioRegistroDocente.crearDocenteFormulario(this.frmRegistrarDocenteView);
+                midocente.setIdDocente(idDocente);
+                repo.modificar(midocente);
+                ServiciosDocente.limpiarDatos(frmRegistrarDocenteView);
+                System.out.println("Has dado click para modificar.....");
+            }
         }
     }
-    
+
 }
