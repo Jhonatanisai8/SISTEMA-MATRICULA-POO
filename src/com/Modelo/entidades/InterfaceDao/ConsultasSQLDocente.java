@@ -27,4 +27,6 @@ public interface ConsultasSQLDocente {
             + "INNER JOIN direccion AS di ON di.id_direccion = p.id_direccion "
             + "INNER JOIN docente AS doc ON  doc.id_docente = p.id_persona";
 
+    final String SQL_UPDATE_DOCENTE = "UPDATE  docente SET codigo_docente = ? ,titulo_academico = ?, anios_esperiencia = ?, email_educativo_docente = ? WHERE id_docente = ?";
+
 }
