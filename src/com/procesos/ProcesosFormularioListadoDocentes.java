@@ -8,6 +8,7 @@ import com.procesos.Servicios.ServiciosDocente;
 import com.vista.frmListadoDocentesView;
 import java.util.List;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
 
 public class ProcesosFormularioListadoDocentes
         implements ConstantesFormularioListadoEstudiantesDocentes {
@@ -47,4 +48,34 @@ public class ProcesosFormularioListadoDocentes
         }
     }
 
+    public static void seleccionarDatosEliminar(frmListadoDocentesView frmistadoDocentesView) {
+        Repositorio<Docente> repo = new DocenteReposioImple();
+        int filasSelecionadas[] = frmistadoDocentesView.btlData.getSelectedRows();
+        if (filasSelecionadas.length == 0) {
+            JOptionPane.showMessageDialog(null, "Por favor selecciona una o más filas para eliminar.", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        StringBuilder contIds = new StringBuilder();
+        for (int i = 0; i < filasSelecionadas.length; i++) {
+            String idDocente = frmistadoDocentesView.btlData.getValueAt(filasSelecionadas[i], 0).toString();
+            if (contIds.length() > 0) {
+                contIds.append(",");
+            }
+            contIds.append(idDocente);
+        }
+
+        //preguntamos al admin si desea elimar dichos datos 
+        int opcion = JOptionPane.showConfirmDialog(null, "¿Estás seguro de eliminar los registros con ID: " + contIds + "?", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
+        if (opcion == JOptionPane.YES_OPTION) {
+            for (int i = filasSelecionadas.length - 1; i >= 0; i--) {
+                Long idEstudiante = (Long) frmistadoDocentesView.btlData.getValueAt(filasSelecionadas[i], 0);
+                repo.eliminar(idEstudiante);
+            }
+            //avtualizamos la tabla
+            ServiciosDocente.mostrarDocentesEnTabla(frmistadoDocentesView, TITULOS_COLUMNAS_DOCENTE, obtenerListaDocente());
+
+        }
+        System.out.println("Borrando datos......");
+    }
 }
