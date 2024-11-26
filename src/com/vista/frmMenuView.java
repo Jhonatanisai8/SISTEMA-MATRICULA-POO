@@ -24,8 +24,7 @@ public class frmMenuView extends javax.swing.JFrame {
         jmnRegistrarDocente = new javax.swing.JMenuItem();
         jmnAdministrarDocentes = new javax.swing.JMenuItem();
         mnSalones = new javax.swing.JMenu();
-        jmnRegistrarSalon = new javax.swing.JMenuItem();
-        jmnAdministrarSalones = new javax.swing.JMenuItem();
+        jmnAdmistrarSalones = new javax.swing.JMenuItem();
         mnCursos = new javax.swing.JMenu();
         jmnRegistrarCurso = new javax.swing.JMenuItem();
         jmnAdministrarCursos = new javax.swing.JMenuItem();
@@ -104,11 +103,8 @@ public class frmMenuView extends javax.swing.JFrame {
 
         mnSalones.setText("Salones");
 
-        jmnRegistrarSalon.setText("Registrar Salón");
-        mnSalones.add(jmnRegistrarSalon);
-
-        jmnAdministrarSalones.setText("Administrar Salones");
-        mnSalones.add(jmnAdministrarSalones);
+        jmnAdmistrarSalones.setText("Adminstrar Salones");
+        mnSalones.add(jmnAdmistrarSalones);
 
         menMenuPrincipal.add(mnSalones);
 
@@ -226,7 +222,7 @@ public class frmMenuView extends javax.swing.JFrame {
     public javax.swing.JMenuItem jmnAdministrarEstudiantes;
     public javax.swing.JMenuItem jmnAdministrarHorarios;
     public javax.swing.JMenuItem jmnAdministrarMatriculas;
-    public javax.swing.JMenuItem jmnAdministrarSalones;
+    public javax.swing.JMenuItem jmnAdmistrarSalones;
     public javax.swing.JMenuItem jmnAsignarHorario;
     public javax.swing.JMenuItem jmnDocentesAsignados;
     public javax.swing.JMenuItem jmnEstudiantesMatriculados;
@@ -234,7 +230,6 @@ public class frmMenuView extends javax.swing.JFrame {
     public javax.swing.JMenuItem jmnRegistrarDocente;
     public javax.swing.JMenuItem jmnRegistrarEstudiante;
     public javax.swing.JMenuItem jmnRegistrarMatricula;
-    public javax.swing.JMenuItem jmnRegistrarSalon;
     public javax.swing.JMenuBar menMenuPrincipal;
     public javax.swing.JMenu mnCursos;
     public javax.swing.JMenu mnDocentes;

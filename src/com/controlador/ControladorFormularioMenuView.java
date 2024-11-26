@@ -1,6 +1,7 @@
 package com.controlador;
 
 import com.procesos.ProcesosFormularioMenuView;
+import com.vista.frmAdmistrarSalonesView;
 import com.vista.frmInicioView;
 import com.vista.frmListadoDocentesView;
 import com.vista.frmListadoEstudiantesView;
@@ -22,6 +23,7 @@ public class ControladorFormularioMenuView
         this.frmenuView.jmnAdministrarEstudiantes.addActionListener(this);
         this.frmenuView.jmnRegistrarDocente.addActionListener(this);
         this.frmenuView.jmnAdministrarDocentes.addActionListener(this);
+        this.frmenuView.jmnAdmistrarSalones.addActionListener(this);
         ProcesosFormularioMenuView.presentarFormulario(this.frmenuView);
     }
 
@@ -54,5 +56,10 @@ public class ControladorFormularioMenuView
             ControladorFormularioListadoDocentes cfld = new ControladorFormularioListadoDocentes(frmListadoDocentesView, this.frmenuView);
             System.out.println("Evento del Jmenu de administrar docentes...");
         }
+        if (e.getSource() == this.frmenuView.jmnAdmistrarSalones) {
+            frmAdmistrarSalonesView frmAdmistrarSalonesView = new frmAdmistrarSalonesView();
+            ControladorFormularioAdmSalones admSalones = new ControladorFormularioAdmSalones(this.frmenuView, frmAdmistrarSalonesView);
+        }
+
     }
 }
