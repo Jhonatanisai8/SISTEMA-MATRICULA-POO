@@ -154,7 +154,21 @@ public class DocenteReposioImple
 
     @Override
     public void eliminar(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try (Connection con = getConection(); PreparedStatement stmtDocente = con.prepareStatement(SQL_DELETE_DOCENTE); PreparedStatement stmtPersona = con.prepareStatement(SQL_DELETE_PERSONA); PreparedStatement stmtDireccion = con.prepareStatement(SQL_DELETE_DIRECCION); PreparedStatement stmtDni = con.prepareStatement(SQL_DELETE_DNI);) {
+            //le asiganamos el parametro a cada sentencia
+            stmtDocente.setLong(1, id);
+            stmtPersona.setLong(1, id);
+            stmtDireccion.setLong(1, id);
+            stmtDni.setLong(1, id);
+            //ejecutamos cada sentencia en orden para que no halla errores
+            stmtDocente.executeUpdate();
+            stmtPersona.executeUpdate();
+            stmtDireccion.executeUpdate();
+            stmtDni.executeUpdate();
+            System.out.println("Docente eliminado....");
+        } catch (Exception e) {
+            System.out.println("Error al eliminar un docente: " + e.getMessage());
+        }
     }
 
     private Docente crearDocente(final ResultSet rs) throws SQLException {

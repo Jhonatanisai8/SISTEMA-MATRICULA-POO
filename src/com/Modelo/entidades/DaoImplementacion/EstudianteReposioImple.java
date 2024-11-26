@@ -125,8 +125,8 @@ public class EstudianteReposioImple
             stmt_persona.setDate(4, new Date(t.getFechaNacimiento().getTime()));
             stmt_persona.setLong(5, t.getIdEstudiante()); //id de dni
             stmt_persona.setLong(6, t.getIdEstudiante());// id de direccion
-            stmt_persona.setString(7, t.getTelefono()); 
-            stmt_persona.setString(8, t.getEmailPersonal()); 
+            stmt_persona.setString(7, t.getTelefono());
+            stmt_persona.setString(8, t.getEmailPersonal());
             stmt_persona.setLong(9, t.getIdEstudiante());
 
             //le pasamos los parametros para el estudiante
