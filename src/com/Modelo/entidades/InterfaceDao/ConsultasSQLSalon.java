@@ -8,6 +8,5 @@ public interface ConsultasSQLSalon {
 
     final String SQL_DELETE_SALON = "DELETE FROM salon WHERE id_salon = ?";
 
-    final String SQL_BUSCAR_SALON = "SELECT id_salon,nombre_salon,capacidad,referencia FROM salon WHERE id_salon = ?";
-
+    final String SQL_SELECT_RONALDO = "SELECT id_salon,nombre_salon,capacidad,referencia FROM salon";
 }
