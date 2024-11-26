@@ -2,6 +2,7 @@ package com.procesos.Servicios;
 
 import com.Modelo.entidades.Docente;
 import com.vista.frmListadoDocentesView;
+import com.vista.frmRegistrarDocenteView;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -58,5 +59,25 @@ public class ServiciosDocente {
         DefaultTableModel modeloTabla = new DefaultTableModel(new Object[][]{datos}, cabezeras);
         frmDocentesView.btlData.setModel(modeloTabla);
         System.out.println("Mostrando un solo estudiante en la tabla.....");
+    }
+
+    public static void limpiarDatos(frmRegistrarDocenteView frView) {
+        //JTextField
+        frView.txtApMaterno.setText("");
+        frView.txtApPaterno.setText("");
+        frView.txtCalle.setText("");
+        frView.txtDistrito.setText("");
+        frView.txtEmailpersonal.setText("");
+        frView.txtNombre.setText("");
+        frView.txtNumeroCalle.setText("");
+        frView.txtNumeroDocumento.setText("");
+        frView.txtTelefono.setText("");
+        //combobox
+        frView.cbxProvincia.setSelectedIndex(0);
+        frView.cbxTipoDocumento.setSelectedIndex(0);
+        frView.cbxTituloAcademico.setSelectedIndex(0);
+        //fecha
+        frView.dtcFechaNacimiento.setDate(null);
+        frView.spnAniosExperiencia.setValue(0);
     }
 }
