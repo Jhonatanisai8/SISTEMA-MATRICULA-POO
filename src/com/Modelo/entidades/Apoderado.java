@@ -3,11 +3,20 @@ package com.Modelo.entidades;
 public class Apoderado
         extends Persona {
 
+    private Long idApoderado;
     private String relacionEstudiante;
     private String ocupacion;
     private String estadoCivil;
 
     public Apoderado() {
+    }
+
+    public Long getIdApoderado() {
+        return idApoderado;
+    }
+
+    public void setIdApoderado(Long idApoderado) {
+        this.idApoderado = idApoderado;
     }
 
     public String getRelacionEstudiante() {
