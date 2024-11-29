@@ -13,23 +13,24 @@ import com.Utelerias.Constantes.ConstantesFormularioListadoEstudiantesDocentes;
 
 public class ProcesosFormularioListadoEstudiantes
         implements ConstantesFormularioListadoEstudiantesDocentes {
-
+    
     private static void ponerIconosFormulario(frmListadoEstudiantesView frmEstudiantesView) {
+        frmEstudiantesView.btlData.setFont(FUENTE_TEXT_PRESENTACION);
         frmEstudiantesView.btnBuscar.setIcon(ICONO_BUSCAR);
         frmEstudiantesView.btnModificar.setIcon(ICONO_MODIFICAR);
         frmEstudiantesView.btnEliminar.setIcon(ICONO_ELIMINAR);
     }
-
+    
     public static List<Estudiante> listaEstudiantes() {
         Repositorio<Estudiante> repo = new EstudianteReposioImple();
         return repo.listar();
     }
-
+    
     public static Estudiante obtenerEstudiante(Long dni) {
         Repositorio<Estudiante> repo = new EstudianteReposioImple();
         return repo.porDni(dni);
     }
-
+    
     public static void presentarFormulario(JDesktopPane desktopPane, frmListadoEstudiantesView frmEstudiantesView) {
         ponerIconosFormulario(frmEstudiantesView);
         ServiciosEstudianteDocente.mostrarEstudiantesEnTabla(frmEstudiantesView, TITULOS_COLUMNAS, listaEstudiantes());
@@ -39,7 +40,7 @@ public class ProcesosFormularioListadoEstudiantes
         frmEstudiantesView.toFront();
         frmEstudiantesView.setVisible(true);
     }
-
+    
     public static void enviarEstudiante(JTable tblData, Long dni) {
         if (obtenerEstudiante(dni) == null) {
             JOptionPane.showMessageDialog(null, "Estudiante con el Dni: " + dni + " no fue encontrado", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
@@ -48,7 +49,7 @@ public class ProcesosFormularioListadoEstudiantes
         System.out.println("Enviando estudiante....");
         ServiciosEstudianteDocente.mostrarEstudiantesEnTabla(tblData, TITULOS_COLUMNAS, obtenerEstudiante(dni));
     }
-
+    
     public static void seleccionarDatosEliminar(frmListadoEstudiantesView frmEstudiantesView) {
         Repositorio<Estudiante> repo = new EstudianteReposioImple();
         int filasSelecionadas[] = frmEstudiantesView.btlData.getSelectedRows();
@@ -56,7 +57,7 @@ public class ProcesosFormularioListadoEstudiantes
             JOptionPane.showMessageDialog(null, "Por favor selecciona una o más filas para eliminar.", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
             return;
         }
-
+        
         StringBuilder contIds = new StringBuilder();
         for (int i = 0; i < filasSelecionadas.length; i++) {
             String idEstudiante = frmEstudiantesView.btlData.getValueAt(filasSelecionadas[i], 0).toString();
@@ -78,5 +79,5 @@ public class ProcesosFormularioListadoEstudiantes
         }
         System.out.println("Borrando datos......");
     }
-
+    
 }

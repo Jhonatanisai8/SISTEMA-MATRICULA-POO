@@ -1,5 +1,6 @@
 package com.Utelerias.Constantes;
 
+import java.awt.Font;
 import javax.swing.ImageIcon;
 
 public interface ConstantesFormularioListadoEstudiantesDocentes {
@@ -15,12 +16,15 @@ public interface ConstantesFormularioListadoEstudiantesDocentes {
         "Nº de Dni", "Calle", "Nº de Calle",
         "Distrito", "Provincia", "Telefono",
         "Email Personal", "Cod Estudiante", "Email Educativo"};
-    
+
     final String TITULOS_COLUMNAS_DOCENTE[] = {"ID", "Nombre", "Apellido Paterno",
         "Apellido Materno", "Fecha Nacimiento", "Tipo Documento",
         "Nº de Dni", "Calle", "Nº de Calle",
         "Distrito", "Provincia", "Telefono",
         "Email Personal", "Cod Docente", "Titulo Academico",
         "Años Exp", "Email Educativo"};
+
+    //fuentes
+    final Font FUENTE_TEXT_PRESENTACION = new Font("Segoe UI", Font.PLAIN, 12);
 
 }

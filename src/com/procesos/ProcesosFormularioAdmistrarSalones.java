@@ -20,6 +20,7 @@ public class ProcesosFormularioAdmistrarSalones
     }
 
     public static void presentarFormulario(JDesktopPane desktopPane, frmAdmistrarSalonesView frmSalonesView) {
+        frmSalonesView.tblData.setFont(FUENTE_TEXT_PRESENTACION);
         frmSalonesView.setTitle("Administracion de Salones.");
         desktopPane.removeAll();
         desktopPane.add(frmSalonesView);

@@ -25,12 +25,15 @@ public class ProcesosFormularioListadoDocentes
     }
 
     private static void ponerIconosFormulario(frmListadoDocentesView frmListadoDocentesView) {
+        frmListadoDocentesView.btlData.setFont(FUENTE_TEXT_PRESENTACION);
+        frmListadoDocentesView.setFont(FUENTE_TEXT_PRESENTACION);
         frmListadoDocentesView.btnBuscar.setIcon(ICONO_BUSCAR);
         frmListadoDocentesView.btnModificar.setIcon(ICONO_MODIFICAR);
         frmListadoDocentesView.btnEliminar.setIcon(ICONO_ELIMINAR);
     }
 
     public static void presentarFormulario(JDesktopPane desktopPane, frmListadoDocentesView frmListadoDocentesView) {
+        frmListadoDocentesView.btlData.setFont(FUENTE_TEXT_PRESENTACION);
         ponerIconosFormulario(frmListadoDocentesView);
         ServiciosDocente.mostrarDocentesEnTabla(frmListadoDocentesView, TITULOS_COLUMNAS_DOCENTE, obtenerListaDocente());
         frmListadoDocentesView.setTitle("Listado de Docentes");
