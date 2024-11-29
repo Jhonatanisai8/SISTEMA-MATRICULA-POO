@@ -2,10 +2,13 @@ package com.Modelo.entidades.DaoImplementacion;
 
 import com.Modelo.entidades.Apoderado;
 import com.Modelo.entidades.BaseDatos.ConexionBaseDatos;
+import com.Modelo.entidades.Direccion;
+import com.Modelo.entidades.Dni;
 import com.Modelo.entidades.InterfaceDao.ConsultasSQLApoderado;
 import com.Modelo.entidades.InterfaceDao.Repositorio;
 import java.util.List;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class ApoderadoReposiImple
         implements Repositorio<Apoderado>,
@@ -18,7 +21,44 @@ public class ApoderadoReposiImple
     @Override
 
     public List<Apoderado> listar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<Apoderado> listaApoderados = new ArrayList<>();
+        try (Connection con = getConnection(); Statement stmt = con.createStatement(); ResultSet rs = stmt.executeQuery(SQL_SELECT_APODERADOS)) {
+            while (rs.next()) {
+                Apoderado apoderado = new Apoderado();
+                Dni dni = new Dni();
+                Direccion direccion = new Direccion();
+                //le establecemos los datos al estudiantes
+                apoderado.setIdApoderado(rs.getLong("ID"));
+                apoderado.setIdPersona(rs.getLong("ID"));
+                apoderado.setNombre(rs.getString("Nombre"));
+                apoderado.setApellidoPaterno(rs.getString("Apellido Paterno"));
+                apoderado.setApellidoMaterno(rs.getString("Apellido Materno"));
+                apoderado.setFechaNacimiento(rs.getDate("Fecha Nacimiento"));
+                apoderado.setTelefono(rs.getString("Telefono"));
+                apoderado.setEmailPersonal(rs.getString("Email Personal"));
+                apoderado.setRelacionEstudiante(rs.getString("Relacion Con Estudiante"));
+                apoderado.setOcupacion(rs.getString("Ocupacion"));
+                apoderado.setEstadoCivil(rs.getString("Estado Civil"));
+
+                //le establecemos los datos al dni
+                dni.setIdDni(rs.getLong("ID"));
+                dni.setTipoDocumentoDni(rs.getString("Tipo Documento"));
+                dni.setNumeroDni(rs.getString("Nº de Dni"));
+                //le establecemos los datos a la direccion
+                direccion.setIdDireccion(rs.getLong("ID"));
+                direccion.setCalle(rs.getString("Calle"));
+                direccion.setNumero(rs.getString("Nº Calle"));
+                direccion.setDistrito(rs.getString("Distrito"));
+                direccion.setProvincia(rs.getString("Provincia"));
+                //le establecemos dni y la direccion al estudiante
+                apoderado.setDni(dni);
+                apoderado.setDireccion(direccion);
+                listaApoderados.add(apoderado);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al listar los apoderados: " + e.getMessage());
+        }
+        return listaApoderados;
     }
 
     @Override
