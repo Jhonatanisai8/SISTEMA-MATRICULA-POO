@@ -19,6 +19,5 @@ public interface ConstantesFormularioRegistroApoderado {
         "Chef", "Mecánico", "Electricista"
     };
     final String[] ESTADO_CIVIL = {"=Seleccionar=", "Soltero", "Casado"};
-    final String[] TITULOS_ACADEMICOS = {"=Seleccionar=", "Licenciatura", "Maestría", "Doctorado", "Especializaciones y Diplomados"};
 
 }
