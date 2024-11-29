@@ -3,6 +3,7 @@ package com.controlador;
 import com.procesos.ProcesosFormularioMenuView;
 import com.vista.frmAdmistrarSalonesView;
 import com.vista.frmInicioView;
+import com.vista.frmListadoApoderadosView;
 import com.vista.frmListadoDocentesView;
 import com.vista.frmListadoEstudiantesView;
 import com.vista.frmMenuView;
@@ -27,6 +28,7 @@ public class ControladorFormularioMenuView
         this.frmenuView.jmnAdministrarDocentes.addActionListener(this);
         this.frmenuView.jmnAdmistrarSalones.addActionListener(this);
         this.frmenuView.jmnRegistroApoderados.addActionListener(this);
+        this.frmenuView.jmnAdministrarApoderados.addActionListener(this);
         ProcesosFormularioMenuView.presentarFormulario(this.frmenuView);
     }
 
@@ -75,6 +77,11 @@ public class ControladorFormularioMenuView
             frmRegistrarApoderadoView frmApoderadoView = new frmRegistrarApoderadoView();
             ControladorFormularioRegistroApoderado apoderado = new ControladorFormularioRegistroApoderado(frmApoderadoView, this.frmenuView);
             System.out.println("Click sobre el Jmenu de registrar Apoderados");
+        }
+        if (e.getSource() == this.frmenuView.jmnAdministrarApoderados) {
+            frmListadoApoderadosView frmListadoApoderadosView = new frmListadoApoderadosView();
+            ControladorFormularioListadoApoderados apoderados = new ControladorFormularioListadoApoderados(frmenuView, frmListadoApoderadosView);
+            System.out.println("Click sobre el Jmenu Admisnitrar Apoderados.");
         }
     }
 }
