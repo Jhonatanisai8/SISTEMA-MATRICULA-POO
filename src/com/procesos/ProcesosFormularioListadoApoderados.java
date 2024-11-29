@@ -29,6 +29,11 @@ public class ProcesosFormularioListadoApoderados
         return lisRepositorio.listar();
     }
 
+    public static Apoderado obtenerDocente(Long dni) {
+        Repositorio<Apoderado> lisRepositorio = new ApoderadoReposiImple();
+        return lisRepositorio.porDni(dni);
+    }
+
     public static void presentarFormulario(JDesktopPane escritorio, frmListadoApoderadosView frmListadoApoderadosView) {
         ponerIconosFormulario(frmListadoApoderadosView);
         ServiciosApoderado.mostrarEstudiantesEnTabla(frmListadoApoderadosView, ENCABEZADOS_TABLA, listaApoderados());
@@ -68,6 +73,14 @@ public class ProcesosFormularioListadoApoderados
             System.out.println("Eli inando..");
         }
         System.out.println("Borrando datos......");
+    }
+
+    public static void mostarApoderado(frmListadoApoderadosView frmListadoApoderadosView, String test) {
+        if (test.isBlank()) {
+            ServiciosApoderado.mostrarEstudiantesEnTabla(frmListadoApoderadosView, ENCABEZADOS_TABLA, listaApoderados());
+        } else {
+            ServiciosApoderado.mostrarApoderadoEnTabla(frmListadoApoderadosView, ENCABEZADOS_TABLA, obtenerDocente(Long.valueOf(test)));
+        }
     }
 
 }
