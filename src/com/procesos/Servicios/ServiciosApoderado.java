@@ -58,4 +58,28 @@ public class ServiciosApoderado {
         System.out.println("Listando en tabla todos los apoderados.....");
     }
 
+    public static void mostrarApoderadoEnTabla(frmListadoApoderadosView frmListadoApoderadosView, String[] cabezeras, Apoderado apoderado) {
+        Object[] data = new Object[cabezeras.length];
+        data[0] = apoderado.getIdApoderado();
+        data[1] = apoderado.getNombre();
+        data[2] = apoderado.getApellidoPaterno();
+        data[3] = apoderado.getApellidoMaterno();
+        data[4] = apoderado.getFechaNacimiento();
+        data[5] = apoderado.getDni().getTipoDocumentoDni();
+        data[6] = apoderado.getDni().getNumeroDni();
+        data[7] = apoderado.getDireccion().getCalle();
+        data[8] = apoderado.getDireccion().getNumero();
+        data[9] = apoderado.getDireccion().getDistrito();
+        data[10] = apoderado.getDireccion().getProvincia();
+        data[11] = apoderado.getTelefono();
+        data[12] = apoderado.getEmailPersonal();
+        data[13] = apoderado.getRelacionEstudiante();
+        data[14] = apoderado.getOcupacion();
+        data[15] = apoderado.getEstadoCivil();
+
+        DefaultTableModel modeloTabla = new DefaultTableModel(new Object[][]{data}, cabezeras);
+        frmListadoApoderadosView.tblDatos.setModel(modeloTabla);
+        System.out.println("Mostrando un solo estudiante en la tabla.....");
+    }
+
 }

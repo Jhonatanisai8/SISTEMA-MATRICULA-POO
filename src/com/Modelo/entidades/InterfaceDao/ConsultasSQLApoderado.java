@@ -42,8 +42,6 @@ public interface ConsultasSQLApoderado {
             + "            INNER JOIN direccion AS di ON di.id_direccion = p.id_direccion "
             + "            INNER JOIN apoderado AS a ON a.id_apoderado = p.id_persona";
 
-    final String SQL_SELECT_APODERADO = "SELECT * FROM apoderado ORDER BY id_apoderado DESC";
-
     final String SQL_DELETE_PERSONA = "DELETE FROM persona WHERE id_persona = ?";
     final String SQL_DELETE_DIRECCION = "DELETE FROM direccion WHERE id_direccion = ?";
     final String SQL_DELETE_DNI = "DELETE FROM dni WHERE id_dni = ?";
