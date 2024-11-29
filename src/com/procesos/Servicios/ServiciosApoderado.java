@@ -4,6 +4,7 @@ import com.Modelo.entidades.Apoderado;
 import com.vista.frmListadoApoderadosView;
 import com.vista.frmRegistrarApoderadoView;
 import java.util.List;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class ServiciosApoderado {
@@ -58,7 +59,7 @@ public class ServiciosApoderado {
         System.out.println("Listando en tabla todos los apoderados.....");
     }
 
-    public static void mostrarApoderadoEnTabla(frmListadoApoderadosView frmListadoApoderadosView, String[] cabezeras, Apoderado apoderado) {
+    public static void mostrarApoderadoEnTabla(JTable tblDatos, String[] cabezeras, Apoderado apoderado) {
         Object[] data = new Object[cabezeras.length];
         data[0] = apoderado.getIdApoderado();
         data[1] = apoderado.getNombre();
@@ -78,7 +79,7 @@ public class ServiciosApoderado {
         data[15] = apoderado.getEstadoCivil();
 
         DefaultTableModel modeloTabla = new DefaultTableModel(new Object[][]{data}, cabezeras);
-        frmListadoApoderadosView.tblDatos.setModel(modeloTabla);
+        tblDatos.setModel(modeloTabla);
         System.out.println("Mostrando un solo estudiante en la tabla.....");
     }
 
