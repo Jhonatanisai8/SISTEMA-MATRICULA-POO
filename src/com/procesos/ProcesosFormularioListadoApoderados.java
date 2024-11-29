@@ -13,6 +13,7 @@ import com.vista.frmListadoApoderadosView;
 import java.util.List;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 public class ProcesosFormularioListadoApoderados
         implements ConstantesFormularioRegistroApoderado {
@@ -75,12 +76,13 @@ public class ProcesosFormularioListadoApoderados
         System.out.println("Borrando datos......");
     }
 
-    public static void mostarApoderado(frmListadoApoderadosView frmListadoApoderadosView, String test) {
-        if (test.isBlank()) {
-            ServiciosApoderado.mostrarEstudiantesEnTabla(frmListadoApoderadosView, ENCABEZADOS_TABLA, listaApoderados());
-        } else {
-            ServiciosApoderado.mostrarApoderadoEnTabla(frmListadoApoderadosView, ENCABEZADOS_TABLA, obtenerDocente(Long.valueOf(test)));
+    public static void enviarApoderado(JTable tblDatos, Long dni) {
+        if (obtenerDocente(dni) == null) {
+            JOptionPane.showMessageDialog(null, "Apoderdo con Dni: " + dni + " no fue encontrado.", "Atención", 3);
+            return;
         }
+        System.out.println("Eviando apoderadoo.......");
+        ServiciosApoderado.mostrarApoderadoEnTabla(tblDatos, ENCABEZADOS_TABLA, obtenerDocente(dni));
     }
 
 }
