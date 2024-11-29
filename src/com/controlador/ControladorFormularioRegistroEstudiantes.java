@@ -9,6 +9,7 @@ import com.vista.frmMenuView;
 import com.vista.frmRegistrarEstudianteView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 public class ControladorFormularioRegistroEstudiantes
         implements ActionListener {
@@ -42,15 +43,21 @@ public class ControladorFormularioRegistroEstudiantes
             //si esta en guardar
             if (!frEstudiante.btnGuardar.getText().equalsIgnoreCase("Modificar")) {
                 estudiante = ProcesosFormularioRegistroEstudiante.crearEstudiante(this.frEstudiante);
-                repositorio.guardar(estudiante);
-                ServiciosEstudianteDocente.limpiarDatos(frEstudiante);
-                System.out.println("Has dado click para guardar.....");
+                if (estudiante != null) {
+                    repositorio.guardar(estudiante);
+                    ServiciosEstudianteDocente.limpiarDatos(frEstudiante);
+                    System.out.println("Has dado click para guardar.....");
+                    JOptionPane.showMessageDialog(null, "Estudiante con Nombre: " + estudiante.getNombre() + "\n guardado correctamente", "Atención", 3);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se puedo insertar el estudiante", "Atención", 3);
+                }
             } else {//si esta en modificar
                 Long id = this.estudianteMoficar.getIdEstudiante();
                 Estudiante estudianteModificar = ProcesosFormularioRegistroEstudiante.crearEstudiante(this.frEstudiante);
                 estudianteModificar.setIdEstudiante(id);  // O si usas otro ID, asignarlo aquí.
                 repositorio.modificar(estudianteModificar);
                 ServiciosEstudianteDocente.limpiarDatos(frEstudiante);
+                JOptionPane.showMessageDialog(null, "Estudiante con Id: " + estudiante.getIdEstudiante() + "\n modifcado correctamente", "Atención", 3);
                 System.out.println("Has dado click para modificar....");
             }
         }

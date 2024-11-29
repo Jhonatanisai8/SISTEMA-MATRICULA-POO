@@ -34,7 +34,18 @@ public class ControladorFormularioListadoEstudiantes
             if (frmEstudiantesView.txtBuscar.getText().isBlank()) {
                 ServiciosEstudianteDocente.mostrarEstudiantesEnTabla(frmEstudiantesView, TITULOS_COLUMNAS, listaEstudiantes());
             } else {
-                ProcesosFormularioListadoEstudiantes.enviarEstudiante(this.frmEstudiantesView.btlData, Long.valueOf(frmEstudiantesView.txtBuscar.getText()));
+                boolean dniValido = true;
+                Long dni = null;
+                try {
+                    dni = Long.valueOf(frmEstudiantesView.txtBuscar.getText());
+                    dniValido = false;
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Por favor debe ingresar un numero de dni valido!.", "Atención", 3);
+                    return;
+                }
+                if (!dniValido) {
+                    ProcesosFormularioListadoEstudiantes.enviarEstudiante(this.frmEstudiantesView.btlData, dni);
+                }
             }
             System.out.println("Has dado click en el boton buscar....");
         }
