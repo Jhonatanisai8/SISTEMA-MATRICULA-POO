@@ -33,7 +33,6 @@ public class ApoderadoReposiImple
         return listaApoderados;
     }
 
-
     @Override
     public Apoderado porDni(Long dni) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -84,7 +83,19 @@ public class ApoderadoReposiImple
 
     @Override
     public void eliminar(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try (Connection con = getConnection(); PreparedStatement stsmPersona = con.prepareStatement(SQL_DELETE_PERSONA); PreparedStatement stsmDireccion = con.prepareStatement(SQL_DELETE_DIRECCION); PreparedStatement stsmDni = con.prepareStatement(SQL_DELETE_DNI);) {
+            //le pasamos los parametros
+            stsmPersona.setLong(1, id);
+            stsmDireccion.setLong(1, id);
+            stsmDni.setLong(1, id);
+            //ejecutamos en este orden para evitar errores
+            stsmPersona.executeUpdate();
+            stsmDireccion.executeUpdate();
+            stsmDni.executeUpdate();
+            System.out.println("Eliminando apoderado.......");
+        } catch (Exception e) {
+            System.out.println("Error al eliminar un apoderado: " + e.getMessage());
+        }
     }
 
     private Apoderado crearApoderado(final ResultSet rs) throws SQLException {
