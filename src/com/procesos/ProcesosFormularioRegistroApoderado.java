@@ -2,10 +2,11 @@ package com.procesos;
 
 import com.Utelerias.Constantes.ConstantesFormularioRegistroApoderado;
 import com.vista.frmRegistrarApoderadoView;
+import javax.swing.JDesktopPane;
 
 public class ProcesosFormularioRegistroApoderado
         implements ConstantesFormularioRegistroApoderado {
-
+    
     private static void rellenarComboBox(frmRegistrarApoderadoView frmRegistrarApoderadoView) {
         //eliminamos los elementos
         frmRegistrarApoderadoView.cbxEstadoCivil.removeAllItems();
@@ -30,6 +31,16 @@ public class ProcesosFormularioRegistroApoderado
         for (String tipoDoc : TIPO_DOCUMENTO) {
             frmRegistrarApoderadoView.cbxTipoDocumento.addItem(tipoDoc);
         }
-
+        
+    }
+    
+    public static void presentarFormulario(JDesktopPane escritorio, frmRegistrarApoderadoView frmApoderadoVie) {
+        rellenarComboBox(frmApoderadoVie);
+        frmApoderadoVie.btnGuardar.setIcon(ICONO_BOTON_GUARDAR);
+        frmApoderadoVie.setTitle("Datos del apoderado");
+        escritorio.removeAll();
+        escritorio.add(frmApoderadoVie);
+        frmApoderadoVie.toFront();
+        frmApoderadoVie.setVisible(true);
     }
 }
