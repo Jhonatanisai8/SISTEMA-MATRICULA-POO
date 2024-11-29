@@ -18,7 +18,7 @@ public interface ConsultasSQLApoderado {
 
     final String SQL_UPDATE_PERSONA = "UPDATE  persona SET nombre = ?,apellido_paterno = ? ,apellido_materno =? ,fecha_nacimiento = ? ,id_dni = ? ,id_direccion = ? ,telefono = ?,email_personal = ? WHERE id_persona = ?";
 
-    final String SQL_UPDATE_APODERADO = "UPDATE  apoderado SET relacion_estudiante = ? , ocupacion = ? ,estado_civil = ? WERE id_apoderado = ? ";
+    final String SQL_UPDATE_APODERADO = "UPDATE  apoderado SET relacion_estudiante  = ?,  ocupacion = ?, estado_civil = ? WHERE id_apoderado = ?";
 
     final String SQL_SELECT_APODERADOS = "SELECT "
             + "             	p.id_persona AS 'ID', "

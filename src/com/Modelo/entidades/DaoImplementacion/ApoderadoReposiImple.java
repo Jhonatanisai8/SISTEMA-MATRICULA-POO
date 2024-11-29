@@ -107,8 +107,46 @@ public class ApoderadoReposiImple
     }
 
     @Override
-    public void modificar(Apoderado t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void modificar(Apoderado apoderado) {
+        try (Connection con = getConnection(); PreparedStatement stmtDni = con.prepareStatement(SQL_UPDATE_DNI); PreparedStatement stmtDirecion = con.prepareStatement(SQL_UPDATE_DIRECCION); PreparedStatement stmtPersona = con.prepareStatement(SQL_UPDATE_PERSONA); PreparedStatement stmtApoderado = con.prepareStatement(SQL_UPDATE_APODERADO)) {
+            //le pasamos los parametros para el dni
+            stmtDni.setString(1, apoderado.getDni().getTipoDocumentoDni());
+            stmtDni.setString(2, apoderado.getDni().getNumeroDni());
+            stmtDni.setLong(3, apoderado.getIdApoderado());
+
+            //le pasamos los parametros para el direccion
+            stmtDirecion.setString(1, apoderado.getDireccion().getDistrito());
+            stmtDirecion.setString(2, apoderado.getDireccion().getCalle());
+            stmtDirecion.setString(3, apoderado.getDireccion().getNumero());
+            stmtDirecion.setString(4, apoderado.getDireccion().getProvincia());
+            stmtDirecion.setLong(5, apoderado.getIdApoderado());
+
+            //le pasamos los parametros para el persona
+            stmtPersona.setString(1, apoderado.getNombre());
+            stmtPersona.setString(2, apoderado.getApellidoPaterno());
+            stmtPersona.setString(3, apoderado.getApellidoMaterno());
+            stmtPersona.setDate(4, new Date(apoderado.getFechaNacimiento().getTime()));
+            stmtPersona.setLong(5, apoderado.getIdApoderado()); //id de dni
+            stmtPersona.setLong(6, apoderado.getIdApoderado());// id de direccion
+            stmtPersona.setString(7, apoderado.getTelefono());
+            stmtPersona.setString(8, apoderado.getEmailPersonal());
+            stmtPersona.setLong(9, apoderado.getIdApoderado());
+
+            //le passamos los parametros a consulta que actualiza el apoderado
+            stmtApoderado.setString(1, apoderado.getRelacionEstudiante());
+            stmtApoderado.setString(2, apoderado.getOcupacion());
+            stmtApoderado.setString(3, apoderado.getEstadoCivil());
+            stmtApoderado.setLong(4, apoderado.getIdApoderado());
+
+            //ejecutamos las cunsultas 
+            stmtDni.executeUpdate();
+            stmtDirecion.executeUpdate();
+            stmtPersona.executeUpdate();
+            stmtApoderado.executeUpdate();
+            System.out.println("Apoderado Modificado..");
+        } catch (Exception e) {
+            System.out.println("Error al modificar: " + e.getMessage());
+        }
     }
 
     @Override
