@@ -1,5 +1,6 @@
 package com.controlador;
 
+import com.Modelo.entidades.Apoderado;
 import com.procesos.ProcesosFormularioListadoApoderados;
 import com.procesos.Servicios.ServiciosApoderado;
 import com.vista.frmListadoApoderadosView;
@@ -8,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static com.Utelerias.Constantes.ConstantesFormularioRegistroApoderado.*;
 import static com.procesos.ProcesosFormularioListadoApoderados.listaApoderados;
+import com.vista.frmRegistrarApoderadoView;
 import javax.swing.JOptionPane;
 
 public class ControladorFormularioListadoApoderados
@@ -21,6 +23,7 @@ public class ControladorFormularioListadoApoderados
         this.frmListadoApoderadosView = frmListadoApoderadosView;
         this.frmListadoApoderadosView.btnEliminar.addActionListener(this);
         this.frmListadoApoderadosView.btnBuscar.addActionListener(this);
+        this.frmListadoApoderadosView.btnModificar.addActionListener(this);
         ProcesosFormularioListadoApoderados.presentarFormulario(this.frmMenuView.dsktEscritorio, this.frmListadoApoderadosView);
     }
 
@@ -50,6 +53,19 @@ public class ControladorFormularioListadoApoderados
                 }
             }
             System.out.println("Click sobre el boton Buscar.....");
+        }
+        //boton modificar
+        if (e.getSource() == this.frmListadoApoderadosView.btnModificar) {
+            int fila = frmListadoApoderadosView.tblDatos.getSelectedRow();
+            if (fila < 0) {
+                JOptionPane.showMessageDialog(null, "Por favor debe selecionar una fila para poder modificar!.", "Atencion", 3);
+                return;
+            }
+            Apoderado miApoderado = ProcesosFormularioListadoApoderados.obtenerDocente(Long.valueOf(this.frmListadoApoderadosView.tblDatos.getValueAt(fila, 6).toString()));
+            frmRegistrarApoderadoView frmApoderadoView = new frmRegistrarApoderadoView(miApoderado);
+            this.frmListadoApoderadosView.dispose();
+            ControladorFormularioRegistroApoderado cfra = new ControladorFormularioRegistroApoderado(frmApoderadoView, this.frmMenuView, miApoderado);
+            System.out.println("Click sobre el boton modificar......");
         }
     }
 
