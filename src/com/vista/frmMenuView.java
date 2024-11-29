@@ -16,7 +16,8 @@ public class frmMenuView extends javax.swing.JFrame {
         pnlBackgroundMenu = new javax.swing.JPanel();
         dsktEscritorio = new javax.swing.JDesktopPane();
         menMenuPrincipal = new javax.swing.JMenuBar();
-        mnInicio = new javax.swing.JMenu();
+        jmnInicio = new javax.swing.JMenu();
+        jmnnInicio = new javax.swing.JMenuItem();
         mnEstudiantes = new javax.swing.JMenu();
         jmnRegistrarEstudiante = new javax.swing.JMenuItem();
         jmnAdministrarEstudiantes = new javax.swing.JMenuItem();
@@ -63,18 +64,22 @@ public class frmMenuView extends javax.swing.JFrame {
             .addComponent(dsktEscritorio)
         );
 
-        mnInicio.setText("Inicio");
-        mnInicio.addMouseListener(new java.awt.event.MouseAdapter() {
+        jmnInicio.setText("Inicio");
+        jmnInicio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                mnInicioMouseClicked(evt);
+                jmnInicioMouseClicked(evt);
             }
         });
-        mnInicio.addActionListener(new java.awt.event.ActionListener() {
+        jmnInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnInicioActionPerformed(evt);
+                jmnInicioActionPerformed(evt);
             }
         });
-        menMenuPrincipal.add(mnInicio);
+
+        jmnnInicio.setText("Inicio");
+        jmnInicio.add(jmnnInicio);
+
+        menMenuPrincipal.add(jmnInicio);
 
         mnEstudiantes.setText("Estudiantes");
 
@@ -182,13 +187,13 @@ public class frmMenuView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mnInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnInicioMouseClicked
+    private void jmnInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmnInicioMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_mnInicioMouseClicked
+    }//GEN-LAST:event_jmnInicioMouseClicked
 
-    private void mnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnInicioActionPerformed
+    private void jmnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmnInicioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_mnInicioActionPerformed
+    }//GEN-LAST:event_jmnInicioActionPerformed
 
     private void jmnAdministrarEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmnAdministrarEstudiantesActionPerformed
         // TODO add your handling code here:
@@ -226,16 +231,17 @@ public class frmMenuView extends javax.swing.JFrame {
     public javax.swing.JMenuItem jmnAsignarHorario;
     public javax.swing.JMenuItem jmnDocentesAsignados;
     public javax.swing.JMenuItem jmnEstudiantesMatriculados;
+    public javax.swing.JMenu jmnInicio;
     public javax.swing.JMenuItem jmnRegistrarCurso;
     public javax.swing.JMenuItem jmnRegistrarDocente;
     public javax.swing.JMenuItem jmnRegistrarEstudiante;
     public javax.swing.JMenuItem jmnRegistrarMatricula;
+    public javax.swing.JMenuItem jmnnInicio;
     public javax.swing.JMenuBar menMenuPrincipal;
     public javax.swing.JMenu mnCursos;
     public javax.swing.JMenu mnDocentes;
     public javax.swing.JMenu mnEstudiantes;
     public javax.swing.JMenu mnHorarios;
-    public javax.swing.JMenu mnInicio;
     public javax.swing.JMenu mnListados;
     public javax.swing.JMenu mnMatricula;
     public javax.swing.JMenu mnSalir;

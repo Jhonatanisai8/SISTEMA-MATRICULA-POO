@@ -18,7 +18,8 @@ public class ControladorFormularioMenuView
 
     public ControladorFormularioMenuView(frmMenuView menuView) {
         this.frmenuView = menuView;
-        this.frmenuView.mnInicio.addActionListener(this);
+        this.frmenuView.jmnInicio.addActionListener(this);
+        this.frmenuView.jmnnInicio.addActionListener(this);
         this.frmenuView.jmnRegistrarEstudiante.addActionListener(this);
         this.frmenuView.jmnAdministrarEstudiantes.addActionListener(this);
         this.frmenuView.jmnRegistrarDocente.addActionListener(this);
@@ -29,12 +30,19 @@ public class ControladorFormularioMenuView
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == this.frmenuView.mnInicio) {
+        if (e.getSource() == this.frmenuView.jmnInicio) {
             frmInicioView frInicioView = new frmInicioView();
-            System.out.println("Holaaa");
             // pasamos el frmMenuView existente al ControladorFormularioInicio
             ControladorFormularioInicio cfi = new ControladorFormularioInicio(frInicioView, frmenuView);
         }
+
+        if (e.getSource() == this.frmenuView.jmnnInicio) {
+            frmInicioView frInicioView = new frmInicioView();
+            // pasamos el frmMenuView existente al ControladorFormularioInicio
+            ControladorFormularioInicio cfi = new ControladorFormularioInicio(frInicioView, frmenuView);
+            System.out.println("Click sobre el menu de incio");
+        }
+
         if (e.getSource() == this.frmenuView.jmnRegistrarEstudiante) {
             System.out.println("Evento del Jmenu del registro de estudiantes");
             frmRegistrarEstudianteView frEstudiante = new frmRegistrarEstudianteView();

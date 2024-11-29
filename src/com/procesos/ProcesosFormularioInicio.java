@@ -18,7 +18,7 @@ public class ProcesosFormularioInicio
 
     private static void estilosFormulario(frmInicioView frInicioView) {
 
-        frInicioView.lblAdministrador.setText("Ad. : " + NOMBRE_ADMIN);
+        frInicioView.lblAdministrador.setText("Administrador del Sistema:: " + NOMBRE_ADMIN);
         frInicioView.txaDescripcion.setText(TEXTO_PRESENTACION);
         frInicioView.txaDescripcion.setEditable(false);
 
