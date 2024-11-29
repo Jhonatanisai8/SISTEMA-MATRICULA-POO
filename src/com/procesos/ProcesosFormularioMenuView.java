@@ -19,7 +19,11 @@ public class ProcesosFormularioMenuView
         frenuView.mnSalir.setIcon(ICONO_MN_SALIR);
         frenuView.mnHorarios.setIcon(ICONO_MN_HORARIOS);
         frenuView.mnCursos.setIcon(ICONO_MN_CURSOS);
+        frenuView.mnApoderados.setIcon(ICONO_MN_APODERADO);
         //para los submenus
+        frenuView.jmnAdministrarApoderados.setIcon(ICONO_MN_ADMINISTRAR_APODERADOS);
+        frenuView.jmnRegistroApoderados.setIcon(ICONO_MN_ADMINISTRAR_APODERADOS);
+        frenuView.jmnRegistroApoderados.setIcon(ICONO_JMN_REGISTRAR_APODERADO);
         frenuView.jmnRegistrarEstudiante.setIcon(ICONO_JMN_REGISTRAR_ESTUDIANTE);
         frenuView.jmnAdministrarEstudiantes.setIcon(ICONO_JMN_ADMINISTRAR_ESTUDIANTE);
         frenuView.jmnRegistrarDocente.setIcon(ICONO_JMN_REGISTRAR_DOCENTE);

@@ -21,7 +21,7 @@ public class frmMenuView extends javax.swing.JFrame {
         mnEstudiantes = new javax.swing.JMenu();
         jmnRegistrarEstudiante = new javax.swing.JMenuItem();
         jmnAdministrarEstudiantes = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
+        mnApoderados = new javax.swing.JMenu();
         jmnRegistroApoderados = new javax.swing.JMenuItem();
         jmnAdministrarApoderados = new javax.swing.JMenuItem();
         mnDocentes = new javax.swing.JMenu();
@@ -99,15 +99,20 @@ public class frmMenuView extends javax.swing.JFrame {
 
         menMenuPrincipal.add(mnEstudiantes);
 
-        jMenu1.setText("Apoderados");
+        mnApoderados.setText("Apoderados");
 
         jmnRegistroApoderados.setText("Registro de Apoderados");
-        jMenu1.add(jmnRegistroApoderados);
+        jmnRegistroApoderados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmnRegistroApoderadosActionPerformed(evt);
+            }
+        });
+        mnApoderados.add(jmnRegistroApoderados);
 
         jmnAdministrarApoderados.setText("Administrar Apoderados");
-        jMenu1.add(jmnAdministrarApoderados);
+        mnApoderados.add(jmnAdministrarApoderados);
 
-        menMenuPrincipal.add(jMenu1);
+        menMenuPrincipal.add(mnApoderados);
 
         mnDocentes.setText("Docentes");
 
@@ -223,6 +228,10 @@ public class frmMenuView extends javax.swing.JFrame {
     private void jmnDocentesAsignadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmnDocentesAsignadosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jmnDocentesAsignadosActionPerformed
+
+    private void jmnRegistroApoderadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmnRegistroApoderadosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmnRegistroApoderadosActionPerformed
     public static void main(String args[]) {
         FlatMaterialLighterIJTheme.setup();
         /* Create and display the form */
@@ -235,7 +244,6 @@ public class frmMenuView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JDesktopPane dsktEscritorio;
-    public javax.swing.JMenu jMenu1;
     public javax.swing.JMenuItem jmnAdministrarApoderados;
     public javax.swing.JMenuItem jmnAdministrarCursos;
     public javax.swing.JMenuItem jmnAdministrarDocentes;
@@ -254,6 +262,7 @@ public class frmMenuView extends javax.swing.JFrame {
     public javax.swing.JMenuItem jmnRegistroApoderados;
     public javax.swing.JMenuItem jmnnInicio;
     public javax.swing.JMenuBar menMenuPrincipal;
+    public javax.swing.JMenu mnApoderados;
     public javax.swing.JMenu mnCursos;
     public javax.swing.JMenu mnDocentes;
     public javax.swing.JMenu mnEstudiantes;

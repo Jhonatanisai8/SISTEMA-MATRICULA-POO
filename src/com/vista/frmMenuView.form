@@ -58,7 +58,7 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu1">
+        <Menu class="javax.swing.JMenu" name="mnApoderados">
           <Properties>
             <Property name="text" type="java.lang.String" value="Apoderados"/>
           </Properties>
@@ -70,6 +70,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Registro de Apoderados"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmnRegistroApoderadosActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
