@@ -35,7 +35,37 @@ public class ApoderadoReposiImple
 
     @Override
     public Apoderado porDni(Long dni) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Apoderado apoderado = null;
+        final String SQL_SELECT_APODERADO = "SELECT "
+                + "             	p.id_persona AS 'ID', "
+                + "                p.nombre AS 'Nombre', "
+                + "                p.apellido_paterno AS 'Apellido Paterno', "
+                + "                p.apellido_materno AS 'Apellido Materno', "
+                + "                p.fecha_nacimiento AS 'Fecha Nacimiento', "
+                + "                d.tipo_documento AS 'Tipo Documento', "
+                + "                d.numero_dni AS 'Nº de Dni', "
+                + "                di.calle AS 'Calle', "
+                + "                di.numero_cale AS 'Nº Calle', "
+                + "                di.distrito AS 'Distrito', "
+                + "                di.provincia AS 'Provincia', "
+                + "                p.telefono AS 'Telefono', "
+                + "                p.email_personal AS 'Email Personal', "
+                + "                a.relacion_estudiante AS 'Relacion Con Estudiante', "
+                + "                a.ocupacion AS 'Ocupacion' ,"
+                + "                a.estado_civil as 'Estado Civil' "
+                + "            FROM persona AS p "
+                + "            INNER JOIN dni AS d ON d.id_dni = p.id_dni "
+                + "            INNER JOIN direccion AS di ON di.id_direccion = p.id_direccion "
+                + "            INNER JOIN apoderado AS a ON a.id_apoderado = p.id_persona "
+                + "            WHERE d.numero_dni LIKE  '%" + dni + "%'";
+        try (Connection con = getConnection(); Statement st = con.createStatement(); ResultSet rs = st.executeQuery(SQL_SELECT_APODERADO)) {
+            if (rs.next()) {
+                apoderado = crearApoderado(rs);
+            }
+        } catch (Exception e) {
+            System.out.println("Erro al buscar por id: " + e.getMessage());
+        }
+        return apoderado;
     }
 
     @Override
