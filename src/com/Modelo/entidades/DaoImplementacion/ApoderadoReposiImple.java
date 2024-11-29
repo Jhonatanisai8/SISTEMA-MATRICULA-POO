@@ -24,35 +24,7 @@ public class ApoderadoReposiImple
         List<Apoderado> listaApoderados = new ArrayList<>();
         try (Connection con = getConnection(); Statement stmt = con.createStatement(); ResultSet rs = stmt.executeQuery(SQL_SELECT_APODERADOS)) {
             while (rs.next()) {
-                Apoderado apoderado = new Apoderado();
-                Dni dni = new Dni();
-                Direccion direccion = new Direccion();
-                //le establecemos los datos al estudiantes
-                apoderado.setIdApoderado(rs.getLong("ID"));
-                apoderado.setIdPersona(rs.getLong("ID"));
-                apoderado.setNombre(rs.getString("Nombre"));
-                apoderado.setApellidoPaterno(rs.getString("Apellido Paterno"));
-                apoderado.setApellidoMaterno(rs.getString("Apellido Materno"));
-                apoderado.setFechaNacimiento(rs.getDate("Fecha Nacimiento"));
-                apoderado.setTelefono(rs.getString("Telefono"));
-                apoderado.setEmailPersonal(rs.getString("Email Personal"));
-                apoderado.setRelacionEstudiante(rs.getString("Relacion Con Estudiante"));
-                apoderado.setOcupacion(rs.getString("Ocupacion"));
-                apoderado.setEstadoCivil(rs.getString("Estado Civil"));
-
-                //le establecemos los datos al dni
-                dni.setIdDni(rs.getLong("ID"));
-                dni.setTipoDocumentoDni(rs.getString("Tipo Documento"));
-                dni.setNumeroDni(rs.getString("Nº de Dni"));
-                //le establecemos los datos a la direccion
-                direccion.setIdDireccion(rs.getLong("ID"));
-                direccion.setCalle(rs.getString("Calle"));
-                direccion.setNumero(rs.getString("Nº Calle"));
-                direccion.setDistrito(rs.getString("Distrito"));
-                direccion.setProvincia(rs.getString("Provincia"));
-                //le establecemos dni y la direccion al estudiante
-                apoderado.setDni(dni);
-                apoderado.setDireccion(direccion);
+                Apoderado apoderado = crearApoderado(rs);
                 listaApoderados.add(apoderado);
             }
         } catch (Exception e) {
@@ -60,6 +32,7 @@ public class ApoderadoReposiImple
         }
         return listaApoderados;
     }
+
 
     @Override
     public Apoderado porDni(Long dni) {
@@ -114,4 +87,35 @@ public class ApoderadoReposiImple
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    private Apoderado crearApoderado(final ResultSet rs) throws SQLException {
+        Apoderado apoderado = new Apoderado();
+        Dni dni = new Dni();
+        Direccion direccion = new Direccion();
+        //le establecemos los datos al estudiantes
+        apoderado.setIdApoderado(rs.getLong("ID"));
+        apoderado.setIdPersona(rs.getLong("ID"));
+        apoderado.setNombre(rs.getString("Nombre"));
+        apoderado.setApellidoPaterno(rs.getString("Apellido Paterno"));
+        apoderado.setApellidoMaterno(rs.getString("Apellido Materno"));
+        apoderado.setFechaNacimiento(rs.getDate("Fecha Nacimiento"));
+        apoderado.setTelefono(rs.getString("Telefono"));
+        apoderado.setEmailPersonal(rs.getString("Email Personal"));
+        apoderado.setRelacionEstudiante(rs.getString("Relacion Con Estudiante"));
+        apoderado.setOcupacion(rs.getString("Ocupacion"));
+        apoderado.setEstadoCivil(rs.getString("Estado Civil"));
+        //le establecemos los datos al dni
+        dni.setIdDni(rs.getLong("ID"));
+        dni.setTipoDocumentoDni(rs.getString("Tipo Documento"));
+        dni.setNumeroDni(rs.getString("Nº de Dni"));
+        //le establecemos los datos a la direccion
+        direccion.setIdDireccion(rs.getLong("ID"));
+        direccion.setCalle(rs.getString("Calle"));
+        direccion.setNumero(rs.getString("Nº Calle"));
+        direccion.setDistrito(rs.getString("Distrito"));
+        direccion.setProvincia(rs.getString("Provincia"));
+        //le establecemos dni y la direccion al estudiante
+        apoderado.setDni(dni);
+        apoderado.setDireccion(direccion);
+        return apoderado;
+    }
 }
