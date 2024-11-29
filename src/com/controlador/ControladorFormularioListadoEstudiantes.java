@@ -14,10 +14,10 @@ import javax.swing.JOptionPane;
 
 public class ControladorFormularioListadoEstudiantes
         implements ActionListener {
-
+    
     private final frmListadoEstudiantesView frmEstudiantesView;
     private final frmMenuView frmMenuView1;
-
+    
     public ControladorFormularioListadoEstudiantes(frmListadoEstudiantesView frmEstudiantesView, frmMenuView frmMenuView1) {
         this.frmEstudiantesView = frmEstudiantesView;
         this.frmMenuView1 = frmMenuView1;
@@ -26,7 +26,7 @@ public class ControladorFormularioListadoEstudiantes
         this.frmEstudiantesView.btnModificar.addActionListener(this);
         ProcesosFormularioListadoEstudiantes.presentarFormulario(this.frmMenuView1.dsktEscritorio, this.frmEstudiantesView);
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         //evento en el boton buscar
@@ -59,7 +59,7 @@ public class ControladorFormularioListadoEstudiantes
         if (e.getSource() == this.frmEstudiantesView.btnModificar) {
             int filaSelecionada = frmEstudiantesView.btlData.getSelectedRow();
             if (filaSelecionada >= 0) {
-                Estudiante estudiante = ProcesosFormularioListadoEstudiantes.obtenerEstudiante((Long) frmEstudiantesView.btlData.getValueAt(filaSelecionada, 0));
+                Estudiante estudiante = ProcesosFormularioListadoEstudiantes.obtenerEstudiante(Long.valueOf(frmEstudiantesView.btlData.getValueAt(filaSelecionada, 6).toString()));
                 frmRegistrarEstudianteView frmRegistrarEstudianteView1 = new frmRegistrarEstudianteView(estudiante);
                 this.frmEstudiantesView.dispose();
                 ControladorFormularioRegistroEstudiantes cfre = new ControladorFormularioRegistroEstudiantes(this.frmMenuView1, frmRegistrarEstudianteView1, estudiante);
@@ -68,7 +68,7 @@ public class ControladorFormularioListadoEstudiantes
             }
             System.out.println("Has dado click el boton Modificar");
         }
-
+        
     }
-
+    
 }

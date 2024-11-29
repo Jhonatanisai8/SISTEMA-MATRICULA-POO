@@ -63,7 +63,6 @@ public class ProcesosFormularioRegistroEstudiante
 
     public static Estudiante crearEstudiante(frmRegistrarEstudianteView frmEstudianteView) {
         Estudiante e = null;
-
         String validacion = ValidacionesFrmRegistroEstudiante.validarCamposFrmRegistroEstudiante(frmEstudianteView);
         if (!validacion.equals("")) {
             JOptionPane.showMessageDialog(null, "Revisar el campo " + validacion, "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
@@ -107,7 +106,6 @@ public class ProcesosFormularioRegistroEstudiante
             JOptionPane.showMessageDialog(null, "Ocurrió un error al crear el estudiante.", "ERROR", JOptionPane.ERROR_MESSAGE);
             return null;
         }
-
         return e;
     }
 

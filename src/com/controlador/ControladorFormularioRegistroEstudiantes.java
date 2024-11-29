@@ -56,8 +56,8 @@ public class ControladorFormularioRegistroEstudiantes
                 Estudiante estudianteModificar = ProcesosFormularioRegistroEstudiante.crearEstudiante(this.frEstudiante);
                 estudianteModificar.setIdEstudiante(id);  // O si usas otro ID, asignarlo aquí.
                 repositorio.modificar(estudianteModificar);
+                JOptionPane.showMessageDialog(null, "Estudiante con Id: " + estudianteModificar.getIdEstudiante() + "\n modifcado correctamente", "Atención", 3);
                 ServiciosEstudianteDocente.limpiarDatos(frEstudiante);
-                JOptionPane.showMessageDialog(null, "Estudiante con Id: " + estudiante.getIdEstudiante() + "\n modifcado correctamente", "Atención", 3);
                 System.out.println("Has dado click para modificar....");
             }
         }
