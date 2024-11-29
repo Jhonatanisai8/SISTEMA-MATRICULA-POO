@@ -16,7 +16,7 @@ public class ControladorInicioSesion
 
     public ControladorInicioSesion(frmInicioSesionView frmInitSesion) {
         this.frmInitSesion = frmInitSesion;
-
+        System.out.println("Iniciando Sistema....");
         // agregar listeners al panel de navegación para detectar los eventos de mouse
         this.frmInitSesion.pnlBarraNavegacion.addMouseListener(this);
         this.frmInitSesion.pnlBarraNavegacion.addMouseMotionListener(this);

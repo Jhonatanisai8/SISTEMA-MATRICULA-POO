@@ -30,6 +30,7 @@ public class ControladorFormularioMenuView
         this.frmenuView.jmnRegistroApoderados.addActionListener(this);
         this.frmenuView.jmnAdministrarApoderados.addActionListener(this);
         ProcesosFormularioMenuView.presentarFormulario(this.frmenuView);
+        System.out.println("Mostrando el Menu del sistema...");
     }
 
     @Override
