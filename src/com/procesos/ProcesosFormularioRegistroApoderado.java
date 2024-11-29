@@ -49,6 +49,17 @@ public class ProcesosFormularioRegistroApoderado
         frmApoderadoVie.setVisible(true);
     }
 
+    //metodo que se llama en caso de quiera modificar 
+    public static void presentarFormulario(JDesktopPane dsktEscritorio, frmRegistrarApoderadoView frmRegistrarApoderadoView, Apoderado apoderadoModificar) {
+        rellenarComboBox(frmRegistrarApoderadoView);
+        frmRegistrarApoderadoView.btnGuardar.setIcon(ICONO_BOTON_GUARDAR);
+        frmRegistrarApoderadoView.setTitle("Moficacion de datos del apoderado.");
+        dsktEscritorio.removeAll();
+        cargarInformacionApoderadoFormulario(frmRegistrarApoderadoView, apoderadoModificar);
+        dsktEscritorio.add(frmRegistrarApoderadoView);
+        frmRegistrarApoderadoView.setVisible(true);
+    }
+
     public static Apoderado crearApoderadoDesdeFormulario(frmRegistrarApoderadoView frmView) {
         Apoderado apoderado = null;
         String validacion = ValidacionesFrmRegistroApoderado.validarCamposFrmRegistroEstudiante(frmView);
@@ -87,5 +98,24 @@ public class ProcesosFormularioRegistroApoderado
             return null;
         }
         return apoderado;
+    }
+
+    private static void cargarInformacionApoderadoFormulario(frmRegistrarApoderadoView frmRegistrarApoderadoView, Apoderado apoderadoModificar) {
+        //ponemos la informacion del apoderado en los campos correspondientes
+        frmRegistrarApoderadoView.txtNombre.setText(apoderadoModificar.getNombre());
+        frmRegistrarApoderadoView.txtApPaterno.setText(apoderadoModificar.getApellidoPaterno());
+        frmRegistrarApoderadoView.txtApMaterno.setText(apoderadoModificar.getApellidoMaterno());
+        frmRegistrarApoderadoView.dtcFechaNacimiento.setDate(apoderadoModificar.getFechaNacimiento());
+        frmRegistrarApoderadoView.cbxTipoDocumento.setSelectedItem(apoderadoModificar.getDni().getTipoDocumentoDni());
+        frmRegistrarApoderadoView.txtNumeroDocumento.setText(apoderadoModificar.getDni().getNumeroDni());
+        frmRegistrarApoderadoView.txtCalle.setText(apoderadoModificar.getDireccion().getNumero());
+        frmRegistrarApoderadoView.txtDistrito.setText(apoderadoModificar.getDireccion().getDistrito());
+        frmRegistrarApoderadoView.cbxProvincia.setSelectedItem(apoderadoModificar.getDireccion().getProvincia());
+        frmRegistrarApoderadoView.txtNumeroCalle.setText(apoderadoModificar.getDireccion().getNumero());
+        frmRegistrarApoderadoView.txtTelefono.setText(apoderadoModificar.getTelefono());
+        frmRegistrarApoderadoView.txtEmailpersonal.setText(apoderadoModificar.getEmailPersonal());
+        frmRegistrarApoderadoView.cbxRelacion.setSelectedItem(apoderadoModificar.getRelacionEstudiante());
+        frmRegistrarApoderadoView.cbxOcupacion.setSelectedItem(apoderadoModificar.getOcupacion());
+        frmRegistrarApoderadoView.cbxEstadoCivil.setSelectedItem(apoderadoModificar.getEstadoCivil());
     }
 }

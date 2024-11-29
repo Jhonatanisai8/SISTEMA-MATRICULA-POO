@@ -1,6 +1,6 @@
 package com.vista;
 
-import com.Modelo.entidades.Estudiante;
+import com.Modelo.entidades.Apoderado;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
 
 public class frmRegistrarApoderadoView extends javax.swing.JInternalFrame {
@@ -10,7 +10,7 @@ public class frmRegistrarApoderadoView extends javax.swing.JInternalFrame {
         initComponents();
     }
 
-    public frmRegistrarApoderadoView(Estudiante e) {
+    public frmRegistrarApoderadoView(Apoderado apoderado) {
         FlatMaterialLighterIJTheme.setup();
         initComponents();
     }
