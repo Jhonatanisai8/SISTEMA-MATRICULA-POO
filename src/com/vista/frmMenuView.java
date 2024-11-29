@@ -21,6 +21,8 @@ public class frmMenuView extends javax.swing.JFrame {
         mnEstudiantes = new javax.swing.JMenu();
         jmnRegistrarEstudiante = new javax.swing.JMenuItem();
         jmnAdministrarEstudiantes = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jmnRegistroApoderados = new javax.swing.JMenuItem();
         mnDocentes = new javax.swing.JMenu();
         jmnRegistrarDocente = new javax.swing.JMenuItem();
         jmnAdministrarDocentes = new javax.swing.JMenuItem();
@@ -95,6 +97,13 @@ public class frmMenuView extends javax.swing.JFrame {
         mnEstudiantes.add(jmnAdministrarEstudiantes);
 
         menMenuPrincipal.add(mnEstudiantes);
+
+        jMenu1.setText("Apoderados");
+
+        jmnRegistroApoderados.setText("Registro de Apoderados");
+        jMenu1.add(jmnRegistroApoderados);
+
+        menMenuPrincipal.add(jMenu1);
 
         mnDocentes.setText("Docentes");
 
@@ -222,6 +231,7 @@ public class frmMenuView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JDesktopPane dsktEscritorio;
+    public javax.swing.JMenu jMenu1;
     public javax.swing.JMenuItem jmnAdministrarCursos;
     public javax.swing.JMenuItem jmnAdministrarDocentes;
     public javax.swing.JMenuItem jmnAdministrarEstudiantes;
@@ -236,6 +246,7 @@ public class frmMenuView extends javax.swing.JFrame {
     public javax.swing.JMenuItem jmnRegistrarDocente;
     public javax.swing.JMenuItem jmnRegistrarEstudiante;
     public javax.swing.JMenuItem jmnRegistrarMatricula;
+    public javax.swing.JMenuItem jmnRegistroApoderados;
     public javax.swing.JMenuItem jmnnInicio;
     public javax.swing.JMenuBar menMenuPrincipal;
     public javax.swing.JMenu mnCursos;
