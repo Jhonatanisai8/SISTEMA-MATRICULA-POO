@@ -6,6 +6,7 @@ public class Estudiante
     private Long idEstudiante;
     private String codigoEstudiante;
     private String emailEducativo;
+    private Apoderado apoderado;
 
     public Estudiante() {
     }
@@ -34,11 +35,18 @@ public class Estudiante
         this.emailEducativo = emailEducativo;
     }
 
-    @Override
-    public String toString() {
-        return idEstudiante+"-"+super.getNombre() + "-"+super.getApellidoPaterno()+"-"
-                +super.getApellidoMaterno()+ "-"+super.getFechaNacimiento()+"-"+super.getDni().getIdDni();
+    public Apoderado getApoderado() {
+        return apoderado;
     }
 
-    
+    public void setApoderado(Apoderado apoderado) {
+        this.apoderado = apoderado;
+    }
+
+    @Override
+    public String toString() {
+        return idEstudiante + "-" + super.getNombre() + "-" + super.getApellidoPaterno() + "-"
+                + super.getApellidoMaterno() + "-" + super.getFechaNacimiento() + "-" + super.getDni().getIdDni();
+    }
+
 }
