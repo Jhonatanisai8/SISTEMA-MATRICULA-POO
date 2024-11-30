@@ -1,6 +1,7 @@
 package com.controlador;
 
 import com.procesos.ProcesosFormularioMenuView;
+import com.vista.frmAdmistrarCursos;
 import com.vista.frmAdmistrarSalonesView;
 import com.vista.frmInicioSesionView;
 import com.vista.frmInicioView;
@@ -32,6 +33,7 @@ public class ControladorFormularioMenuView
         this.frmenuView.jmnRegistroApoderados.addActionListener(this);
         this.frmenuView.jmnAdministrarApoderados.addActionListener(this);
         this.frmenuView.jmnCerrarSesion.addActionListener(this);
+        this.frmenuView.jmnRegistrarCurso.addActionListener(this);
         ProcesosFormularioMenuView.presentarFormulario(this.frmenuView);
         System.out.println("Mostrando el Menu del sistema...");
     }
@@ -96,6 +98,10 @@ public class ControladorFormularioMenuView
                 ControladorInicioSesion cis = new ControladorInicioSesion(frmInicioSesionView);
             }
             System.out.println("Click sobre el jMenu de cerrar sesion.....");
+        }
+        if (e.getSource() == this.frmenuView.jmnRegistrarCurso) {
+            frmAdmistrarCursos frmAdmistrarCursos = new frmAdmistrarCursos();
+            ControladorFormularioAdmCursos admCursos = new ControladorFormularioAdmCursos(this.frmenuView, frmAdmistrarCursos);
         }
     }
 }
