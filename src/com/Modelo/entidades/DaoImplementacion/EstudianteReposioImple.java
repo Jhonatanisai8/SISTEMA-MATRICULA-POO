@@ -116,6 +116,7 @@ public class EstudianteReposioImple
             //le pasamos los parametros para el estudiante
             stmt_estudiante.setString(1, t.getCodigoEstudiante());
             stmt_estudiante.setString(2, t.getEmailEducativo());
+            stmt_estudiante.setLong(1, t.getApoderado().getIdApoderado());
 
             //ejecutamos las sentencias 
             stmt_dni.executeUpdate();
