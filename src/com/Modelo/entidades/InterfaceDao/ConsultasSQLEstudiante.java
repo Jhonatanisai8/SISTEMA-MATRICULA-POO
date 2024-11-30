@@ -2,6 +2,14 @@ package com.Modelo.entidades.InterfaceDao;
 
 public interface ConsultasSQLEstudiante {
 
+    final String SQL_SELECT_DATOS_APODERADO = "SELECT id_apoderado AS ID ,  "
+            + "concat(persona.nombre,\" \",persona.apellido_paterno,\" \",persona.apellido_materno) AS NOMBRE,  "
+            + "relacion_estudiante AS RELACION,  "
+            + "ocupacion  AS OCUPACION,  "
+            + "estado_civil AS ESTADO_CIVIL	  "
+            + "FROM apoderado   "
+            + "INNER JOIN persona   "
+            + "ON apoderado.id_apoderado = persona.id_persona";
     final String SQL_INSERT_DNI = "INSERT INTO dni(tipo_documento,numero_dni) VALUES (?,?)";
 
     final String SQL_INSERT_DIRECCION = "INSERT INTO direccion(distrito,calle,numero_cale,provincia) VALUES (?,?,?,?)";
