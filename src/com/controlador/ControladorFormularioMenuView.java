@@ -2,6 +2,7 @@ package com.controlador;
 
 import com.procesos.ProcesosFormularioMenuView;
 import com.vista.frmAdmistrarSalonesView;
+import com.vista.frmInicioSesionView;
 import com.vista.frmInicioView;
 import com.vista.frmListadoApoderadosView;
 import com.vista.frmListadoDocentesView;
@@ -12,6 +13,7 @@ import com.vista.frmRegistrarDocenteView;
 import com.vista.frmRegistrarEstudianteView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 public class ControladorFormularioMenuView
         implements ActionListener {
@@ -29,6 +31,7 @@ public class ControladorFormularioMenuView
         this.frmenuView.jmnAdmistrarSalones.addActionListener(this);
         this.frmenuView.jmnRegistroApoderados.addActionListener(this);
         this.frmenuView.jmnAdministrarApoderados.addActionListener(this);
+        this.frmenuView.jmnCerrarSesion.addActionListener(this);
         ProcesosFormularioMenuView.presentarFormulario(this.frmenuView);
         System.out.println("Mostrando el Menu del sistema...");
     }
@@ -83,6 +86,16 @@ public class ControladorFormularioMenuView
             frmListadoApoderadosView frmListadoApoderadosView = new frmListadoApoderadosView();
             ControladorFormularioListadoApoderados apoderados = new ControladorFormularioListadoApoderados(frmenuView, frmListadoApoderadosView);
             System.out.println("Click sobre el Jmenu Admisnitrar Apoderados.");
+        }
+
+        if (e.getSource() == this.frmenuView.jmnCerrarSesion) {
+            int opcion = JOptionPane.showConfirmDialog(null, "¿Desea Salir de Sistema.?", "Atención", JOptionPane.INFORMATION_MESSAGE);
+            if (opcion == 0) {
+                this.frmenuView.dispose();
+                frmInicioSesionView frmInicioSesionView = new frmInicioSesionView();
+                ControladorInicioSesion cis = new ControladorInicioSesion(frmInicioSesionView);
+            }
+            System.out.println("Click sobre el jMenu de cerrar sesion.....");
         }
     }
 }

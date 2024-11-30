@@ -35,6 +35,7 @@ public class ProcesosFormularioMenuView
         frenuView.jmnAdministrarHorarios.setIcon(ICONO_JMN_ADMINISTRAR_HORARIOS);
         frenuView.jmnEstudiantesMatriculados.setIcon(ICONO_JMN_LISTAR_ESTUDIANTES_MATRICULADOS);
         frenuView.jmnDocentesAsignados.setIcon(ICONO_JMN_LISTAR_DOCENTES_ASIGNADOS);
+        frenuView.jmnCerrarSesion.setIcon(ICONO_MN_SALIR);
 
     }
 

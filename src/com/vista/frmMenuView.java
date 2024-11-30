@@ -42,6 +42,7 @@ public class frmMenuView extends javax.swing.JFrame {
         jmnEstudiantesMatriculados = new javax.swing.JMenuItem();
         jmnDocentesAsignados = new javax.swing.JMenuItem();
         mnSalir = new javax.swing.JMenu();
+        jmnCerrarSesion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -187,6 +188,10 @@ public class frmMenuView extends javax.swing.JFrame {
         menMenuPrincipal.add(mnListados);
 
         mnSalir.setText("Salir");
+
+        jmnCerrarSesion.setText("Cerrar Sesion");
+        mnSalir.add(jmnCerrarSesion);
+
         menMenuPrincipal.add(mnSalir);
 
         setJMenuBar(menMenuPrincipal);
@@ -252,6 +257,7 @@ public class frmMenuView extends javax.swing.JFrame {
     public javax.swing.JMenuItem jmnAdministrarMatriculas;
     public javax.swing.JMenuItem jmnAdmistrarSalones;
     public javax.swing.JMenuItem jmnAsignarHorario;
+    public javax.swing.JMenuItem jmnCerrarSesion;
     public javax.swing.JMenuItem jmnDocentesAsignados;
     public javax.swing.JMenuItem jmnEstudiantesMatriculados;
     public javax.swing.JMenu jmnInicio;
