@@ -6,6 +6,7 @@ import com.Modelo.entidades.InterfaceDao.Repositorio;
 import com.procesos.ProcesosFormularioRegistroEstudiante;
 import com.procesos.Servicios.ServiciosEstudianteDocente;
 import com.vista.frmMenuView;
+import com.vista.frmRegistrarApoderadoView;
 import com.vista.frmRegistrarEstudianteView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,6 +24,7 @@ public class ControladorFormularioRegistroEstudiantes
         this.frEstudiante = frEstudiante;
         this.frMenuView = menuView;
         this.frEstudiante.btnGuardar.addActionListener(this);
+        this.frEstudiante.btnRegistrarApoderado.addActionListener(this);
         ProcesosFormularioRegistroEstudiante.presentarFormulario(this.frMenuView.dsktEscritorio, frEstudiante);
     }
 
@@ -32,6 +34,7 @@ public class ControladorFormularioRegistroEstudiantes
         this.frMenuView = menuView;
         this.estudianteMoficar = estudianteMOd;
         this.frEstudiante.btnGuardar.addActionListener(this);
+        this.frEstudiante.btnRegistrarApoderado.addActionListener(this);
         this.frEstudiante.btnGuardar.setText("Modificar");
         ProcesosFormularioRegistroEstudiante.presentarFormulario(this.frMenuView.dsktEscritorio, this.frEstudiante, this.estudianteMoficar);
     }
@@ -65,6 +68,14 @@ public class ControladorFormularioRegistroEstudiantes
                 ServiciosEstudianteDocente.limpiarDatos(frEstudiante);
                 System.out.println("Has dado click para modificar....");
             }
+        }
+
+        //para digirse al formulario de regisi apoderado
+        if (e.getSource() == this.frEstudiante.btnRegistrarApoderado) {
+            frmRegistrarApoderadoView frmRegistrarApoderadoView = new frmRegistrarApoderadoView();
+            this.frEstudiante.dispose();
+            ControladorFormularioRegistroApoderado cfra = new ControladorFormularioRegistroApoderado(frmRegistrarApoderadoView, this.frMenuView);
+            System.out.println("Click para registrar un apoderado......");
         }
 
     }

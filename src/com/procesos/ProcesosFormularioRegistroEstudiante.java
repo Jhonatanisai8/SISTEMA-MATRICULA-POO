@@ -36,7 +36,8 @@ public class ProcesosFormularioRegistroEstudiante
 
     private static void ponerIconosFormulario(frmRegistrarEstudianteView frEstudiante) {
         frEstudiante.tblApoderados.setFont(FUENTE_TEXT_PRESENTACION);
-        frEstudiante.btnGuardar.setIcon(ICONO_BOTON_GUARDAR);
+        frEstudiante.btnGuardar.setIcon(ICONO_BOTON_REGISTRAR_APODERADO);
+        frEstudiante.btnRegistrarApoderado.setIcon(ICONO_BOTON_GUARDAR);
     }
 
     public static void presentarFormulario(JDesktopPane desktopPane, frmRegistrarEstudianteView fr) {
