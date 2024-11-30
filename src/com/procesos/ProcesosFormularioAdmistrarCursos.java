@@ -1,54 +1,62 @@
 package com.procesos;
 
-import com.Modelo.entidades.DaoImplementacion.SalonReposiImple;
+import com.Modelo.entidades.Curso;
+import com.Modelo.entidades.DaoImplementacion.CursoReposiImple;
 import com.Modelo.entidades.InterfaceDao.Repositorio;
-import com.Modelo.entidades.Salon;
-import com.Utelerias.Constantes.ConstantesFormularioAdmSalones;
-import com.procesos.Servicios.ServiciosAdmSalones;
-import com.procesos.Validaciones.ValidacionesFrmAdmSalones;
+import com.Utelerias.Constantes.ConstantesFormularioAdmCursos;
+import com.procesos.Servicios.ServiciosCurso;
+import com.procesos.Validaciones.ValidacionesFrmAdmCursos;
 import com.vista.frmAdmistrarCursos;
-import com.vista.frmAdmistrarSalonesView;
 import java.util.List;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
 public class ProcesosFormularioAdmistrarCursos
-        implements ConstantesFormularioAdmSalones {
-
-    private static List<Salon> obtenerListaDocente() {
-        Repositorio<Salon> repo = new SalonReposiImple();
+        implements ConstantesFormularioAdmCursos {
+    
+    private static List<Curso> obtenerListaCursos() {
+        Repositorio<Curso> repo = new CursoReposiImple();
         return repo.listar();
     }
 
+    private static void rellenarComboBox(frmAdmistrarCursos frmAdmistrarCursos) {
+        frmAdmistrarCursos.cbxGrado.removeAllItems();
+        for (String string : LISTA_GRADOS) {
+            frmAdmistrarCursos.cbxGrado.addItem(string);
+        }
+    }
+    
     public static void presentarFormulario(JDesktopPane desktopPane, frmAdmistrarCursos frmAdmistrarCursos) {
+        rellenarComboBox(frmAdmistrarCursos);
         frmAdmistrarCursos.tblDatosCursos.setFont(FUENTE_TEXT_PRESENTACION);
         frmAdmistrarCursos.setTitle("Administracion de Cursos.");
         desktopPane.removeAll();
         desktopPane.add(frmAdmistrarCursos);
         frmAdmistrarCursos.toFront();
         frmAdmistrarCursos.setVisible(true);
-        // ServiciosAdmSalones.mostrarSalonesEnTabla(frmAdmistrarCursos, TITULOS_COLUMNAS, obtenerListaDocente());
+        ServiciosCurso.mostrarCursosEnTabla(frmAdmistrarCursos, ENCABEZADO_COLUMNAS_TABLA, obtenerListaCursos());
     }
-
-    public static Salon creaSalonFormulario(frmAdmistrarSalonesView frmSalonesView) {
-        Salon miSalon = null;
+    
+    public static Curso creaCursoFormulario(frmAdmistrarCursos frmAdmistrarCursos) {
+        Curso miCurso = null;
         //llamamos al metodo de las validaciones 
-        String validacion = ValidacionesFrmAdmSalones.validarCampos(frmSalonesView);
+        String validacion = ValidacionesFrmAdmCursos.validarCampos(frmAdmistrarCursos);
         if (!validacion.equals("")) {
             JOptionPane.showMessageDialog(null, "Revisar el Campo." + validacion, "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
             return null;
         }
         try {
-            miSalon = new Salon();
-            miSalon.setNombreSalon(frmSalonesView.txtNombreSalon.getText());
-            miSalon.setCapacidadEstudiantes(Integer.parseInt(frmSalonesView.spnCapacidad.getValue().toString()));
-            miSalon.setReferencia(frmSalonesView.txtReferenciaSalon.getText());
-
+            miCurso = new Curso();
+            miCurso.setNombreCurso(frmAdmistrarCursos.txtNombreCurso.getText().trim());
+            miCurso.setCodigoCurso(ServiciosCurso.generarCodigoCurso(frmAdmistrarCursos.txtNombreCurso.getText().trim()));
+            miCurso.setDescripcion(frmAdmistrarCursos.txtDiscripcion.getText().trim());
+            miCurso.setGrado(Integer.parseInt(frmAdmistrarCursos.cbxGrado.getSelectedItem().toString()));
+            miCurso.setNivel("Primaria");
         } catch (NumberFormatException e) {
             System.out.println("Error al crear un Salon desde el formulario: " + e.getMessage());
             return null;
         }
         //retornamos 
-        return miSalon;
+        return miCurso;
     }
 }

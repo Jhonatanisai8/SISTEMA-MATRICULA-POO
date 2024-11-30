@@ -1,12 +1,11 @@
 package com.controlador;
 
-import com.Modelo.entidades.DaoImplementacion.SalonReposiImple;
+import com.Modelo.entidades.Curso;
+import com.Modelo.entidades.DaoImplementacion.CursoReposiImple;
 import com.Modelo.entidades.InterfaceDao.Repositorio;
-import com.Modelo.entidades.Salon;
-import static com.Utelerias.Constantes.ConstantesFormularioAdmSalones.TITULOS_COLUMNAS;
+import static com.Utelerias.Constantes.ConstantesFormularioAdmCursos.ENCABEZADO_COLUMNAS_TABLA;
 import com.procesos.ProcesosFormularioAdmistrarCursos;
-import com.procesos.ProcesosFormularioAdmistrarSalones;
-import com.procesos.Servicios.ServiciosAdmSalones;
+import com.procesos.Servicios.ServiciosCurso;
 import com.vista.frmAdmistrarCursos;
 import com.vista.frmMenuView;
 import java.awt.event.ActionEvent;
@@ -18,23 +17,27 @@ public class ControladorFormularioAdmCursos
 
     private final frmMenuView frmMenuView;
     private final frmAdmistrarCursos frmAdmistrarCursos;
+    private Curso miCurso;
 
     public ControladorFormularioAdmCursos(frmMenuView frmMenuView, frmAdmistrarCursos frmAdmistrarCursos) {
         this.frmMenuView = frmMenuView;
         this.frmAdmistrarCursos = frmAdmistrarCursos;
+        this.frmAdmistrarCursos.btnGuardarCurso.addActionListener(this);
         ProcesosFormularioAdmistrarCursos.presentarFormulario(this.frmMenuView.dsktEscritorio, this.frmAdmistrarCursos);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-//        Repositorio<Salon> repo = new SalonReposiImple();
-//        //clik sobre guardar 
-//        if (e.getSource() == this.frmAdmistrarSalonesView.btnGuardarSalon) {
-//            miSalon = ProcesosFormularioAdmistrarSalones.creaSalonFormulario(this.frmAdmistrarSalonesView);
-//            repo.guardar(miSalon);
-//            ServiciosAdmSalones.mostrarSalonesEnTabla(this.frmAdmistrarSalonesView, TITULOS_COLUMNAS, repo.listar());
-//            JOptionPane.showMessageDialog(null, "Salon Guardado Correctamente", "ATENCIÓN", 3);
-//        }
+        Repositorio<Curso> repo = new CursoReposiImple();
+        //clik sobre guardar 
+        if (e.getSource() == this.frmAdmistrarCursos.btnGuardarCurso) {
+            miCurso = ProcesosFormularioAdmistrarCursos.creaCursoFormulario(this.frmAdmistrarCursos);
+            if (miCurso != null) {
+                repo.guardar(miCurso);
+                ServiciosCurso.mostrarCursosEnTabla(frmAdmistrarCursos, ENCABEZADO_COLUMNAS_TABLA, repo.listar());
+                JOptionPane.showMessageDialog(null, "Curso Registrado Correctamente", "ATENCIÓN", 3);
+            }
+        }
     }
 
 }
