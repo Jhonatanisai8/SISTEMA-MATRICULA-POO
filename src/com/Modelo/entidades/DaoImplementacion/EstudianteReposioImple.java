@@ -1,5 +1,6 @@
 package com.Modelo.entidades.DaoImplementacion;
 
+import com.Modelo.entidades.ApoderadoDatos;
 import com.Modelo.entidades.BaseDatos.ConexionBaseDatos;
 import com.Modelo.entidades.Direccion;
 import com.Modelo.entidades.Dni;
@@ -16,6 +17,30 @@ public class EstudianteReposioImple
 
     private Connection getConection() throws SQLException {
         return ConexionBaseDatos.getInstance();
+    }
+
+    public List<ApoderadoDatos> listarApoderadoDatos() {
+        List<ApoderadoDatos> listApoderados = new ArrayList<>();
+        try (
+                Connection con = getConection(); Statement st = con.createStatement(); ResultSet rs = st.executeQuery(SQL_SELECT_DATOS_APODERADO);) {
+            while (rs.next()) {
+                ApoderadoDatos apoderadoDatos = estraerDatosTablaApoderado(rs);
+                listApoderados.add(apoderadoDatos);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al listar los datos de los apoderado de los apoderado...");
+        }
+        return listApoderados;
+    }
+
+    private ApoderadoDatos estraerDatosTablaApoderado(final ResultSet rs) throws SQLException {
+        ApoderadoDatos apoderadoDatos = new ApoderadoDatos();
+        apoderadoDatos.setIdApoderado(rs.getLong("ID"));
+        apoderadoDatos.setNombreApoderado(rs.getString("NOMBRE"));
+        apoderadoDatos.setRelacionEstudiante(rs.getString("RELACION"));
+        apoderadoDatos.setOcupacion(rs.getString("OCUPACION"));
+        apoderadoDatos.setEstadoCivil(rs.getString("ESTADO_CIVIL"));
+        return apoderadoDatos;
     }
 
     @Override
@@ -194,4 +219,5 @@ public class EstudianteReposioImple
         e.setDireccion(direccion);
         return e;
     }
+
 }
