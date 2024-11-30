@@ -1,14 +1,18 @@
 package com.procesos;
 
+import com.Modelo.entidades.ApoderadoDatos;
+import com.Modelo.entidades.DaoImplementacion.EstudianteReposioImple;
 import com.Modelo.entidades.Direccion;
 import com.Modelo.entidades.Dni;
 import com.Modelo.entidades.Estudiante;
+import static com.Utelerias.Constantes.ConstantesFormularioListadoEstudiantesDocentes.FUENTE_TEXT_PRESENTACION;
 import com.procesos.Servicios.ServiciosEstudianteDocente;
 import com.procesos.Validaciones.ValidacionesFrmRegistroEstudiante;
 import com.vista.frmRegistrarEstudianteView;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import com.Utelerias.Constantes.ConstantesFormularioRegistroEstudianteDocente;
+import java.util.List;
 
 public class ProcesosFormularioRegistroEstudiante
         implements ConstantesFormularioRegistroEstudianteDocente {
@@ -24,7 +28,13 @@ public class ProcesosFormularioRegistroEstudiante
         }
     }
 
+    public static List<ApoderadoDatos> obtenerLista() {
+        EstudianteReposioImple e = new EstudianteReposioImple();
+        return e.listarApoderadoDatos();
+    }
+
     private static void ponerIconosFormulario(frmRegistrarEstudianteView frEstudiante) {
+        frEstudiante.tblApoderados.setFont(FUENTE_TEXT_PRESENTACION);
         frEstudiante.btnGuardar.setIcon(ICONO_BOTON_GUARDAR);
     }
 
@@ -36,6 +46,7 @@ public class ProcesosFormularioRegistroEstudiante
         desktopPane.add(fr);
         fr.toFront();
         fr.setVisible(true);
+        ServiciosEstudianteDocente.mostrarDatosApoderadoTabla(fr, ENCABEZADOS_APODERADO_TABLA, obtenerLista());
     }
 
     public static void presentarFormulario(JDesktopPane desktopPane, frmRegistrarEstudianteView fr, Estudiante estudiante) {

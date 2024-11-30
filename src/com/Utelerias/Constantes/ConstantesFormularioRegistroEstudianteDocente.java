@@ -8,5 +8,6 @@ public interface ConstantesFormularioRegistroEstudianteDocente {
     final String[] PROVINCIAS = {"=Seleccionar=", "Amazonas", "Ancash", "Arequipa", "Ayacucho", "Cajamarca", "Callao", "Cuzco", "Lima"};
     final String[] TIPO_DOCUMENTO = {"=Seleccionar=", "Dni", "Carnet De Extranjeria"};
     final String[] TITULOS_ACADEMICOS = {"=Seleccionar=", "Licenciatura", "Maestría", "Doctorado", "Especializaciones y Diplomados"};
+    final String[] ENCABEZADOS_APODERADO_TABLA = {"ID", "NOMBRE", "OCUPACION", "RELACION", "ESTADO CIVIL"};
 
 }
