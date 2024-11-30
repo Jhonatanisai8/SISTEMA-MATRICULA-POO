@@ -34,6 +34,7 @@ public class ProcesosFormularioListadoEstudiantes
     public static void presentarFormulario(JDesktopPane desktopPane, frmListadoEstudiantesView frmEstudiantesView) {
         ponerIconosFormulario(frmEstudiantesView);
         ServiciosEstudianteDocente.mostrarEstudiantesEnTabla(frmEstudiantesView, TITULOS_COLUMNAS, listaEstudiantes());
+        ServiciosEstudianteDocente.establecerAnchoColumnasTabla(frmEstudiantesView.btlData, ANCHO_COLUMAS_TABLA_ESTUDIANTE);
         frmEstudiantesView.setTitle("Listado de Estudiantes");
         desktopPane.removeAll();
         desktopPane.add(frmEstudiantesView);

@@ -4,7 +4,9 @@ import com.Modelo.entidades.Curso;
 import com.vista.frmAdmistrarCursos;
 import java.util.List;
 import java.util.Random;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 public class ServiciosCurso {
 
@@ -14,6 +16,13 @@ public class ServiciosCurso {
         String letras = "QWERTYUIOPASDFGHJKLÑZXCVBNM";
         char letra = letras.charAt(n);
         return String.valueOf(curso.substring(0, 5).toUpperCase().concat(String.valueOf(letra + "00")).concat(String.valueOf(n)));
+    }
+
+    public static void establecerAnchoColumnasTabla(JTable table, int[] widths) {
+        for (int i = 0; i < widths.length && i < table.getColumnCount(); i++) {
+            TableColumn column = table.getColumnModel().getColumn(i);
+            column.setPreferredWidth(widths[i]);
+        }
     }
 
     public static void mostrarCursosEnTabla(

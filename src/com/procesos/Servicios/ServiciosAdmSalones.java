@@ -3,9 +3,18 @@ package com.procesos.Servicios;
 import com.Modelo.entidades.Salon;
 import com.vista.frmAdmistrarSalonesView;
 import java.util.List;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 public class ServiciosAdmSalones {
+
+    public static void establecerAnchoColumnasTabla(JTable table, int[] widths) {
+        for (int i = 0; i < widths.length && i < table.getColumnCount(); i++) {
+            TableColumn column = table.getColumnModel().getColumn(i);
+            column.setPreferredWidth(widths[i]);
+        }
+    }
 
     public static void mostrarSalonesEnTabla(frmAdmistrarSalonesView frAdmistrarSalonesView,
             String[] COLUMNAS, List<Salon> listsSalon) {

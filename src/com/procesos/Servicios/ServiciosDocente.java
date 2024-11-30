@@ -4,9 +4,18 @@ import com.Modelo.entidades.Docente;
 import com.vista.frmListadoDocentesView;
 import com.vista.frmRegistrarDocenteView;
 import java.util.List;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 public class ServiciosDocente {
+
+    public static void establecerAnchoColumnasTabla(JTable table, int[] widths) {
+        for (int i = 0; i < widths.length && i < table.getColumnCount(); i++) {
+            TableColumn column = table.getColumnModel().getColumn(i);
+            column.setPreferredWidth(widths[i]);
+        }
+    }
 
     public static void mostrarDocentesEnTabla(frmListadoDocentesView frmListadoDocentesView, String columnas[], List<Docente> listaDocentes) {
         Object[][] data = new Object[listaDocentes.size()][columnas.length];

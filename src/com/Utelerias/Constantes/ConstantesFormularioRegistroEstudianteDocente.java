@@ -10,5 +10,6 @@ public interface ConstantesFormularioRegistroEstudianteDocente {
     final String[] TIPO_DOCUMENTO = {"=Seleccionar=", "Dni", "Carnet De Extranjeria"};
     final String[] TITULOS_ACADEMICOS = {"=Seleccionar=", "Licenciatura", "Maestría", "Doctorado", "Especializaciones y Diplomados"};
     final String[] ENCABEZADOS_APODERADO_TABLA = {"ID", "NOMBRE", "OCUPACION", "RELACION", "ESTADO CIVIL"};
+    final int ANCHO_COLUMNAS[] = {5, 40, 20, 20, 20};
 
 }

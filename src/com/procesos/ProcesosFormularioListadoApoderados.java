@@ -38,6 +38,7 @@ public class ProcesosFormularioListadoApoderados
     public static void presentarFormulario(JDesktopPane escritorio, frmListadoApoderadosView frmListadoApoderadosView) {
         ponerIconosFormulario(frmListadoApoderadosView);
         ServiciosApoderado.mostrarEstudiantesEnTabla(frmListadoApoderadosView, ENCABEZADOS_TABLA, listaApoderados());
+        ServiciosApoderado.establecerAnchoColumnasTabla(frmListadoApoderadosView.tblDatos, ANCHO_COLUMNAS);
         frmListadoApoderadosView.setTitle("Listado de Estudiantes.");
         escritorio.removeAll();
         escritorio.add(frmListadoApoderadosView);

@@ -19,8 +19,8 @@ public interface ConstantesFormularioRegistroApoderado {
         "Chef", "Mecánico", "Electricista"
     };
     final String[] ESTADO_CIVIL = {"=Seleccionar=", "Soltero", "Casado"};
-    final String[] ENCABEZADOS_TABLA = {"DNI", "NOMBRES", "APP. PATERNO", "APP. MATERNO", "FECHA NACIMIENTO",
+    final String[] ENCABEZADOS_TABLA = {"ID", "NOMBRES", "APP. PATERNO", "APP. MATERNO", "FECHA NACIMIENTO",
         "TIPO DE DOC. IDENTIDAD", "Nº DE DOC", "CALLE", "Nº DE CALLE", "DISTRITO",
         "PROVINCIA", "TELEFONO", "EMAIL PERSONAL", "RELACION CON ESTUDIANTE", "OCUPACION", "ESTADO CIVIL"};
-
+    final int ANCHO_COLUMNAS[] = {3, 40, 40, 40, 20, 30, 30, 40, 20, 30, 30, 30, 40, 40, 40, 30};
 }

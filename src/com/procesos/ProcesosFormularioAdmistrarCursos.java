@@ -18,7 +18,7 @@ public class ProcesosFormularioAdmistrarCursos
         Repositorio<Curso> repo = new CursoReposiImple();
         return repo.listar();
     }
-
+    
     private static void rellenarComboBox(frmAdmistrarCursos frmAdmistrarCursos) {
         frmAdmistrarCursos.cbxGrado.removeAllItems();
         for (String string : LISTA_GRADOS) {
@@ -35,6 +35,7 @@ public class ProcesosFormularioAdmistrarCursos
         frmAdmistrarCursos.toFront();
         frmAdmistrarCursos.setVisible(true);
         ServiciosCurso.mostrarCursosEnTabla(frmAdmistrarCursos, ENCABEZADO_COLUMNAS_TABLA, obtenerListaCursos());
+        ServiciosCurso.establecerAnchoColumnasTabla(frmAdmistrarCursos.tblDatosCursos, ANCH0_COLUMNAS);
     }
     
     public static Curso creaCursoFormulario(frmAdmistrarCursos frmAdmistrarCursos) {

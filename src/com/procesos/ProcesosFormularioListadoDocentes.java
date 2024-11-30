@@ -36,6 +36,7 @@ public class ProcesosFormularioListadoDocentes
         frmListadoDocentesView.btlData.setFont(FUENTE_TEXT_PRESENTACION);
         ponerIconosFormulario(frmListadoDocentesView);
         ServiciosDocente.mostrarDocentesEnTabla(frmListadoDocentesView, TITULOS_COLUMNAS_DOCENTE, obtenerListaDocente());
+        ServiciosDocente.establecerAnchoColumnasTabla(frmListadoDocentesView.btlData, ANCHO_COLUMAS_TABLA_DOCENTE);
         frmListadoDocentesView.setTitle("Listado de Docentes");
         desktopPane.removeAll();
         desktopPane.add(frmListadoDocentesView);
