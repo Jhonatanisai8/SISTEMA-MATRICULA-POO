@@ -1,9 +1,11 @@
 package com.principal;
 
+import com.Utelerias.Constantes.ConstantesFormularioAdmCursos;
 import com.controlador.ControladorInicioSesion;
 import com.vista.frmInicioSesionView;
 
-public class Principal {
+public class Principal
+        implements ConstantesFormularioAdmCursos {
 
     public static void main(String[] args) {
         llamarFormularioPrincipal();
