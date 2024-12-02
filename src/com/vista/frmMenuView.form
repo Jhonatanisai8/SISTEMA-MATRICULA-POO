@@ -183,23 +183,23 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="mnMatricula">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Matr&#xed;cula"/>
+            <Property name="text" type="java.lang.String" value="Asignaciones"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jmnRegistrarMatricula">
+            <MenuItem class="javax.swing.JMenuItem" name="jmnRegistrarAsignacion">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Matricular Estudiante"/>
+                <Property name="text" type="java.lang.String" value="Matricular Asignacion"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jmnAdministrarMatriculas">
+            <MenuItem class="javax.swing.JMenuItem" name="jmnAdministrarAsignaciones">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Administrar Matriculas"/>
+                <Property name="text" type="java.lang.String" value="Administrar Asignaciones"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

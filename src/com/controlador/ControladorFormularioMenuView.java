@@ -1,6 +1,7 @@
 package com.controlador;
 
 import com.procesos.ProcesosFormularioMenuView;
+import com.vista.frmAdministrarAsignacionesView;
 import com.vista.frmAdmistrarCursos;
 import com.vista.frmAdmistrarHorariosView;
 import com.vista.frmAdmistrarSalonesView;
@@ -36,6 +37,7 @@ public class ControladorFormularioMenuView
         this.frmenuView.jmnCerrarSesion.addActionListener(this);
         this.frmenuView.jmnRegistrarCurso.addActionListener(this);
         this.frmenuView.jmnAdministrarHorarios.addActionListener(this);
+        this.frmenuView.jmnRegistrarAsignacion.addActionListener(this);
         ProcesosFormularioMenuView.presentarFormulario(this.frmenuView);
         System.out.println("Mostrando el Menu del sistema...");
     }
@@ -112,6 +114,11 @@ public class ControladorFormularioMenuView
             frmAdmistrarHorariosView frmAdmistrarHorariosView = new frmAdmistrarHorariosView();
             ControladorFormularioAdmHorarios cfah = new ControladorFormularioAdmHorarios(this.frmenuView, frmAdmistrarHorariosView);
             System.out.println("click sobre el jMenu de Administrar Horarios..");
+        }
+
+        if (e.getSource() == this.frmenuView.jmnRegistrarAsignacion) {
+            frmAdministrarAsignacionesView frmAdministrarAsignacionesVie = new frmAdministrarAsignacionesView();
+            ControladorFormularioAdmAsignaciones admAsignaciones = new ControladorFormularioAdmAsignaciones(this.frmenuView, frmAdministrarAsignacionesVie);
         }
     }
 }
