@@ -6,6 +6,7 @@ public class Salon {
     private String nombreSalon;
     private int capacidadEstudiantes;
     private String referencia;
+    private int vacantesDisponibles;
 
     public Salon() {
     }
@@ -16,6 +17,14 @@ public class Salon {
 
     public void setIdSalon(Long idSalon) {
         this.idSalon = idSalon;
+    }
+
+    public void setVacantes(int vacantes) {
+        this.vacantesDisponibles = vacantes;
+    }
+
+    public int getVacantes() {
+        return vacantesDisponibles;
     }
 
     public String getNombreSalon() {

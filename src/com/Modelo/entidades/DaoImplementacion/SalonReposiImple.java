@@ -35,7 +35,7 @@ public class SalonReposiImple
 
     @Override
     public Salon porDni(Long id) {
-        String SQL_BUSCAR_SALON = "SELECT id_salon,nombre_salon,capacidad,referencia FROM salon WHERE id_salon = " + id;
+        String SQL_BUSCAR_SALON = "SELECT id_salon,nombre_salon,capacidad,referencia,vacantes_disponibles FROM salon WHERE id_salon = " + id;
         Salon miSalon = null;
         try (Connection con = getConection(); Statement stnt = con.createStatement(); ResultSet rs = stnt.executeQuery(SQL_BUSCAR_SALON)) {
             if (rs.next()) {
@@ -53,6 +53,7 @@ public class SalonReposiImple
             stmt.setString(1, t.getNombreSalon());
             stmt.setInt(2, t.getCapacidadEstudiantes());
             stmt.setString(3, t.getReferencia());
+            stmt.setInt(4, t.getCapacidadEstudiantes());
             stmt.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error al insertar un salon en la bd: " + e.getMessage());
@@ -65,7 +66,8 @@ public class SalonReposiImple
             stmt.setString(1, t.getNombreSalon());
             stmt.setInt(2, t.getCapacidadEstudiantes());
             stmt.setString(3, t.getReferencia());
-            stmt.setLong(4, t.getIdSalon());
+            stmt.setInt(4, t.getVacantes());
+            stmt.setLong(5, t.getIdSalon());
             stmt.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error al modificar un salon en la bd: " + e.getMessage());
@@ -88,6 +90,7 @@ public class SalonReposiImple
         salon.setNombreSalon(rs.getString("nombre_salon"));
         salon.setCapacidadEstudiantes(rs.getInt("capacidad"));
         salon.setReferencia(rs.getString("referencia"));
+        salon.setVacantes(rs.getInt("vacantes_disponibles"));
         return salon;
     }
 }
