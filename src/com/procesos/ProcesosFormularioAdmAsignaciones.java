@@ -1,11 +1,17 @@
 package com.procesos;
 
+import com.Modelo.entidades.DaoImplementacion.HorarioRepoImple;
+import com.Modelo.entidades.Horario;
+import com.Modelo.entidades.InterfaceDao.Repositorio;
+import com.Utelerias.Constantes.ConstantesFormularioAdmHorarios;
 import com.vista.frmAdministrarAsignacionesView;
 import javax.swing.JDesktopPane;
 
-public class ProcesosFormularioAdmAsignaciones {
+public class ProcesosFormularioAdmAsignaciones
+        implements ConstantesFormularioAdmHorarios {
 
     public static void presentarFormulario(JDesktopPane desktopPane, frmAdministrarAsignacionesView frmAdministrarAsignacionesView) {
+        Repositorio<Horario> repo = new HorarioRepoImple();
         desktopPane.removeAll();
         desktopPane.add(frmAdministrarAsignacionesView);
         frmAdministrarAsignacionesView.setTitle("Registro de asignaciones".toUpperCase());

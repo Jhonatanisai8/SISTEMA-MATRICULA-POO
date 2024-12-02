@@ -48,8 +48,8 @@ public class ProcesosFormularioRegistroEstudiante
         desktopPane.add(fr);
         fr.toFront();
         fr.setVisible(true);
-        ServiciosEstudianteDocente.mostrarDatosApoderadoTabla(fr, ENCABEZADOS_APODERADO_TABLA, obtenerLista());
-        ServiciosEstudianteDocente.establecerAnchoColumnasTabla(fr.tblApoderados  , ANCHO_COLUMNAS);
+        ServiciosEstudianteDocente.mostrarDatosApoderadoTabla(fr.tblApoderados, ENCABEZADOS_APODERADO_TABLA, obtenerLista());
+        ServiciosEstudianteDocente.establecerAnchoColumnasTabla(fr.tblApoderados, ANCHO_COLUMNAS);
     }
 
     public static void presentarFormulario(JDesktopPane desktopPane, frmRegistrarEstudianteView fr, Estudiante estudiante) {

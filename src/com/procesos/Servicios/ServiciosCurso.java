@@ -9,7 +9,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 public class ServiciosCurso {
-    
+
     public static String generarCodigoCurso(String curso) {
         Random r = new Random();
         int n = r.nextInt(10) + 1;
@@ -17,16 +17,16 @@ public class ServiciosCurso {
         char letra = letras.charAt(n);
         return String.valueOf(curso.substring(0, 5).toUpperCase().concat(String.valueOf(letra + "00")).concat(String.valueOf(n)));
     }
-    
+
     public static void establecerAnchoColumnasTabla(JTable table, int[] widths) {
         for (int i = 0; i < widths.length && i < table.getColumnCount(); i++) {
             TableColumn column = table.getColumnModel().getColumn(i);
             column.setPreferredWidth(widths[i]);
         }
     }
-    
+
     public static void mostrarCursosEnTabla(
-            frmAdmistrarCursos frmAdmistrarCursos,
+            JTable tblDatosCursos,
             String columnas[],
             List<Curso> listaCurso) {
         Object data[][] = new Object[listaCurso.size()][columnas.length];
@@ -40,10 +40,10 @@ public class ServiciosCurso {
             data[i][5] = miCurso.getNivel();
         }
         DefaultTableModel miModel = new DefaultTableModel(data, columnas);
-        frmAdmistrarCursos.tblDatosCursos.setModel(miModel);
+        tblDatosCursos.setModel(miModel);
         System.out.println("MOstrando los cursos en tabla...");
     }
-    
+
     public static void limpiarCampos(frmAdmistrarCursos frmAdmistrarCursos) {
         frmAdmistrarCursos.txtBuscar.setText("");
         frmAdmistrarCursos.txtDiscripcion.setText("");
@@ -51,5 +51,5 @@ public class ServiciosCurso {
         frmAdmistrarCursos.cbxGrado.setSelectedIndex(0);
         frmAdmistrarCursos.txtNombreCurso.requestFocus();
     }
-    
+
 }

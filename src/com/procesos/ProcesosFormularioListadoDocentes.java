@@ -35,7 +35,7 @@ public class ProcesosFormularioListadoDocentes
     public static void presentarFormulario(JDesktopPane desktopPane, frmListadoDocentesView frmListadoDocentesView) {
         frmListadoDocentesView.btlData.setFont(FUENTE_TEXT_PRESENTACION);
         ponerIconosFormulario(frmListadoDocentesView);
-        ServiciosDocente.mostrarDocentesEnTabla(frmListadoDocentesView, TITULOS_COLUMNAS_DOCENTE, obtenerListaDocente());
+        ServiciosDocente.mostrarDocentesEnTabla(frmListadoDocentesView.btlData, TITULOS_COLUMNAS_DOCENTE, obtenerListaDocente());
         ServiciosDocente.establecerAnchoColumnasTabla(frmListadoDocentesView.btlData, ANCHO_COLUMAS_TABLA_DOCENTE);
         frmListadoDocentesView.setTitle("Listado de Docentes");
         desktopPane.removeAll();
@@ -46,9 +46,9 @@ public class ProcesosFormularioListadoDocentes
 
     public static void mostarSoloDocente(frmListadoDocentesView frmistadoDocentesView, String text) {
         if (text.isBlank()) {
-            ServiciosDocente.mostrarDocentesEnTabla(frmistadoDocentesView, TITULOS_COLUMNAS_DOCENTE, obtenerListaDocente());
+            ServiciosDocente.mostrarDocentesEnTabla(frmistadoDocentesView.btlData, TITULOS_COLUMNAS_DOCENTE, obtenerListaDocente());
         } else {
-            ServiciosDocente.mostrarDocenteEntabla(frmistadoDocentesView, TITULOS_COLUMNAS_DOCENTE, obtenerDocente(Long.valueOf(text)));
+            ServiciosDocente.mostrarDocenteEntabla(frmistadoDocentesView.btlData, TITULOS_COLUMNAS_DOCENTE, obtenerDocente(Long.valueOf(text)));
         }
     }
 
@@ -77,7 +77,7 @@ public class ProcesosFormularioListadoDocentes
                 repo.eliminar(idEstudiante);
             }
             //avtualizamos la tabla
-            ServiciosDocente.mostrarDocentesEnTabla(frmistadoDocentesView, TITULOS_COLUMNAS_DOCENTE, obtenerListaDocente());
+            ServiciosDocente.mostrarDocentesEnTabla(frmistadoDocentesView.btlData, TITULOS_COLUMNAS_DOCENTE, obtenerListaDocente());
 
         }
         System.out.println("Borrando datos......");

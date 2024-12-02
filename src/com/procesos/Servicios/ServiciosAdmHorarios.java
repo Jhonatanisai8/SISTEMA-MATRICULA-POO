@@ -16,7 +16,7 @@ public class ServiciosAdmHorarios {
         }
     }
 
-    public static void mostrarHorarios(frmAdmistrarHorariosView frmAdmistrarHorariosView,
+    public static void mostrarHorarios(JTable tblDataHorarios,
             String[] COLUMNAS, List<Horario> listaHorarios) {
         Object data[][] = new Object[listaHorarios.size()][COLUMNAS.length];
         for (int i = 0; i < listaHorarios.size(); i++) {
@@ -28,7 +28,7 @@ public class ServiciosAdmHorarios {
             data[i][4] = miHorario.getTurno();
         }
         DefaultTableModel miModel = new DefaultTableModel(data, COLUMNAS);
-        frmAdmistrarHorariosView.tblDataHorarios.setModel(miModel);
+        tblDataHorarios.setModel(miModel);
         System.out.println("mostrando todos los horarios...");
     }
 

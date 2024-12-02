@@ -13,19 +13,19 @@ import javax.swing.JOptionPane;
 
 public class ProcesosFormularioAdmistrarCursos
         implements ConstantesFormularioAdmCursos {
-    
+
     private static List<Curso> obtenerListaCursos() {
         Repositorio<Curso> repo = new CursoReposiImple();
         return repo.listar();
     }
-    
+
     private static void rellenarComboBox(frmAdmistrarCursos frmAdmistrarCursos) {
         frmAdmistrarCursos.cbxGrado.removeAllItems();
         for (String string : LISTA_GRADOS) {
             frmAdmistrarCursos.cbxGrado.addItem(string);
         }
     }
-    
+
     public static void presentarFormulario(JDesktopPane desktopPane, frmAdmistrarCursos frmAdmistrarCursos) {
         rellenarComboBox(frmAdmistrarCursos);
         frmAdmistrarCursos.tblDatosCursos.setFont(FUENTE_TEXT_PRESENTACION);
@@ -34,10 +34,10 @@ public class ProcesosFormularioAdmistrarCursos
         desktopPane.add(frmAdmistrarCursos);
         frmAdmistrarCursos.toFront();
         frmAdmistrarCursos.setVisible(true);
-        ServiciosCurso.mostrarCursosEnTabla(frmAdmistrarCursos, ENCABEZADO_COLUMNAS_TABLA, obtenerListaCursos());
+        ServiciosCurso.mostrarCursosEnTabla(frmAdmistrarCursos.tblDatosCursos, ENCABEZADO_COLUMNAS_TABLA, obtenerListaCursos());
         ServiciosCurso.establecerAnchoColumnasTabla(frmAdmistrarCursos.tblDatosCursos, ANCH0_COLUMNAS);
     }
-    
+
     public static Curso creaCursoFormulario(frmAdmistrarCursos frmAdmistrarCursos) {
         Curso miCurso = null;
         //llamamos al metodo de las validaciones 

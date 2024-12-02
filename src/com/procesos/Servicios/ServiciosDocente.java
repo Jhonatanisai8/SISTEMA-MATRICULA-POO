@@ -17,7 +17,9 @@ public class ServiciosDocente {
         }
     }
 
-    public static void mostrarDocentesEnTabla(frmListadoDocentesView frmListadoDocentesView, String columnas[], List<Docente> listaDocentes) {
+    public static void mostrarDocentesEnTabla(JTable btlData,
+            String columnas[],
+            List<Docente> listaDocentes) {
         Object[][] data = new Object[listaDocentes.size()][columnas.length];
         for (int i = 0; i < listaDocentes.size(); i++) {
             Docente docente = listaDocentes.get(i);
@@ -41,11 +43,11 @@ public class ServiciosDocente {
         }
         //creamo el modelo 
         DefaultTableModel modelo = new DefaultTableModel(data, columnas);
-        frmListadoDocentesView.btlData.setModel(modelo);
+        btlData.setModel(modelo);
         System.out.println("Mostrando todos los docentes.....");
     }
 
-    public static void mostrarDocenteEntabla(frmListadoDocentesView frmDocentesView, String[] cabezeras, Docente docente) {
+    public static void mostrarDocenteEntabla(JTable btlData, String[] cabezeras, Docente docente) {
         Object[] datos = new Object[cabezeras.length];
         datos[0] = docente.getIdDocente();
         datos[1] = docente.getNombre();
@@ -66,7 +68,7 @@ public class ServiciosDocente {
         datos[16] = docente.getEmailEducativoDocente();
 
         DefaultTableModel modeloTabla = new DefaultTableModel(new Object[][]{datos}, cabezeras);
-        frmDocentesView.btlData.setModel(modeloTabla);
+        btlData.setModel(modeloTabla);
         System.out.println("Mostrando un solo estudiante en la tabla.....");
     }
 

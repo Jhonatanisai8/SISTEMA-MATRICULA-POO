@@ -27,7 +27,7 @@ public class ProcesosFormularioAdmistrarSalones
         frmSalonesView.toFront();
         frmSalonesView.setVisible(true);
         frmSalonesView.txtNombreSalon.requestFocus();
-        ServiciosAdmSalones.mostrarSalonesEnTabla(frmSalonesView, TITULOS_COLUMNAS, obtenerListaDocente());
+        ServiciosAdmSalones.mostrarSalonesEnTabla(frmSalonesView.tblData, TITULOS_COLUMNAS, obtenerListaDocente());
         ServiciosAdmSalones.establecerAnchoColumnasTabla(frmSalonesView.tblData, ANCHO_COLUMAS);
     }
 

@@ -14,18 +14,18 @@ import javax.swing.JOptionPane;
 
 public class ControladorFormularioAdmCursos
         implements ActionListener {
-    
+
     private final frmMenuView frmMenuView;
     private final frmAdmistrarCursos frmAdmistrarCursos;
     private Curso miCurso;
-    
+
     public ControladorFormularioAdmCursos(frmMenuView frmMenuView, frmAdmistrarCursos frmAdmistrarCursos) {
         this.frmMenuView = frmMenuView;
         this.frmAdmistrarCursos = frmAdmistrarCursos;
         this.frmAdmistrarCursos.btnGuardarCurso.addActionListener(this);
         ProcesosFormularioAdmistrarCursos.presentarFormulario(this.frmMenuView.dsktEscritorio, this.frmAdmistrarCursos);
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         Repositorio<Curso> repo = new CursoReposiImple();
@@ -34,11 +34,11 @@ public class ControladorFormularioAdmCursos
             miCurso = ProcesosFormularioAdmistrarCursos.creaCursoFormulario(this.frmAdmistrarCursos);
             if (miCurso != null) {
                 repo.guardar(miCurso);
-                ServiciosCurso.mostrarCursosEnTabla(frmAdmistrarCursos, ENCABEZADO_COLUMNAS_TABLA, repo.listar());
+                ServiciosCurso.mostrarCursosEnTabla(frmAdmistrarCursos.tblDatosCursos, ENCABEZADO_COLUMNAS_TABLA, repo.listar());
                 ServiciosCurso.limpiarCampos(this.frmAdmistrarCursos);
                 JOptionPane.showMessageDialog(null, "Curso Registrado Correctamente", "ATENCIÓN", 3);
             }
         }
     }
-    
+
 }

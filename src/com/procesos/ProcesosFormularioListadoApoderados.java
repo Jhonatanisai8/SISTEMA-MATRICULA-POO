@@ -37,7 +37,7 @@ public class ProcesosFormularioListadoApoderados
 
     public static void presentarFormulario(JDesktopPane escritorio, frmListadoApoderadosView frmListadoApoderadosView) {
         ponerIconosFormulario(frmListadoApoderadosView);
-        ServiciosApoderado.mostrarEstudiantesEnTabla(frmListadoApoderadosView, ENCABEZADOS_TABLA, listaApoderados());
+        ServiciosApoderado.mostrarEstudiantesEnTabla(frmListadoApoderadosView.tblDatos, ENCABEZADOS_TABLA, listaApoderados());
         ServiciosApoderado.establecerAnchoColumnasTabla(frmListadoApoderadosView.tblDatos, ANCHO_COLUMNAS);
         frmListadoApoderadosView.setTitle("Listado de Estudiantes.");
         escritorio.removeAll();
@@ -71,7 +71,7 @@ public class ProcesosFormularioListadoApoderados
                 repo.eliminar(idEstudiante);
             }
             //avtualizamos la tabla
-            ServiciosApoderado.mostrarEstudiantesEnTabla(frmListadoApoderadosView, ENCABEZADOS_TABLA, listaApoderados());
+            ServiciosApoderado.mostrarEstudiantesEnTabla(frmListadoApoderadosView.tblDatos, ENCABEZADOS_TABLA, listaApoderados());
             System.out.println("Eli inando..");
         }
         System.out.println("Borrando datos......");

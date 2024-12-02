@@ -33,7 +33,7 @@ public class ProcesosFormularioListadoEstudiantes
 
     public static void presentarFormulario(JDesktopPane desktopPane, frmListadoEstudiantesView frmEstudiantesView) {
         ponerIconosFormulario(frmEstudiantesView);
-        ServiciosEstudianteDocente.mostrarEstudiantesEnTabla(frmEstudiantesView, TITULOS_COLUMNAS, listaEstudiantes());
+        ServiciosEstudianteDocente.mostrarEstudiantesEnTabla(frmEstudiantesView.btlData, TITULOS_COLUMNAS, listaEstudiantes());
         ServiciosEstudianteDocente.establecerAnchoColumnasTabla(frmEstudiantesView.btlData, ANCHO_COLUMAS_TABLA_ESTUDIANTE);
         frmEstudiantesView.setTitle("Listado de Estudiantes");
         desktopPane.removeAll();
@@ -75,7 +75,7 @@ public class ProcesosFormularioListadoEstudiantes
                 Long idEstudiante = (Long) frmEstudiantesView.btlData.getValueAt(filasSelecionadas[i], 0);
                 repo.eliminar(idEstudiante);
             }
-            ServiciosEstudianteDocente.mostrarEstudiantesEnTabla(frmEstudiantesView, TITULOS_COLUMNAS, listaEstudiantes());
+            ServiciosEstudianteDocente.mostrarEstudiantesEnTabla(frmEstudiantesView.btlData, TITULOS_COLUMNAS, listaEstudiantes());
             //avtualizamos la tabla
         }
         System.out.println("Borrando datos......");

@@ -1,7 +1,6 @@
 package com.procesos.Servicios;
 
 import com.Modelo.entidades.Apoderado;
-import com.vista.frmListadoApoderadosView;
 import com.vista.frmRegistrarApoderadoView;
 import java.util.List;
 import javax.swing.JTable;
@@ -38,7 +37,9 @@ public class ServiciosApoderado {
 
     }
 
-    public static void mostrarEstudiantesEnTabla(frmListadoApoderadosView frListadoApoderadosVie, String titulosColumnas[], List<Apoderado> listaApoderados) {
+    public static void mostrarEstudiantesEnTabla(JTable tblDatos,
+            String titulosColumnas[],
+            List<Apoderado> listaApoderados) {
         Object data[][] = new Object[listaApoderados.size()][titulosColumnas.length];
 
         for (int i = 0; i < listaApoderados.size(); i++) {
@@ -62,7 +63,7 @@ public class ServiciosApoderado {
         }
 
         DefaultTableModel modeloTabla = new DefaultTableModel(data, titulosColumnas);
-        frListadoApoderadosVie.tblDatos.setModel(modeloTabla);
+        tblDatos.setModel(modeloTabla);
         // Imprimir mensaje de confirmación
         System.out.println("Listando en tabla todos los apoderados.....");
     }

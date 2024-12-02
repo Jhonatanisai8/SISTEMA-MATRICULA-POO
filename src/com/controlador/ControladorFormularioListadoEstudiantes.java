@@ -14,10 +14,10 @@ import javax.swing.JOptionPane;
 
 public class ControladorFormularioListadoEstudiantes
         implements ActionListener {
-    
+
     private final frmListadoEstudiantesView frmEstudiantesView;
     private final frmMenuView frmMenuView1;
-    
+
     public ControladorFormularioListadoEstudiantes(frmListadoEstudiantesView frmEstudiantesView, frmMenuView frmMenuView1) {
         this.frmEstudiantesView = frmEstudiantesView;
         this.frmMenuView1 = frmMenuView1;
@@ -26,13 +26,13 @@ public class ControladorFormularioListadoEstudiantes
         this.frmEstudiantesView.btnModificar.addActionListener(this);
         ProcesosFormularioListadoEstudiantes.presentarFormulario(this.frmMenuView1.dsktEscritorio, this.frmEstudiantesView);
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         //evento en el boton buscar
         if (e.getSource() == this.frmEstudiantesView.btnBuscar) {
             if (frmEstudiantesView.txtBuscar.getText().isBlank()) {
-                ServiciosEstudianteDocente.mostrarEstudiantesEnTabla(frmEstudiantesView, TITULOS_COLUMNAS, listaEstudiantes());
+                ServiciosEstudianteDocente.mostrarEstudiantesEnTabla(frmEstudiantesView.btlData, TITULOS_COLUMNAS, listaEstudiantes());
             } else {
                 boolean dniValido = true;
                 Long dni = null;
@@ -68,7 +68,7 @@ public class ControladorFormularioListadoEstudiantes
             }
             System.out.println("Has dado click el boton Modificar");
         }
-        
+
     }
-    
+
 }

@@ -16,7 +16,7 @@ public class ServiciosAdmSalones {
         }
     }
 
-    public static void mostrarSalonesEnTabla(frmAdmistrarSalonesView frAdmistrarSalonesView,
+    public static void mostrarSalonesEnTabla(JTable tblData,
             String[] COLUMNAS, List<Salon> listsSalon) {
         Object[][] data = new Object[listsSalon.size()][COLUMNAS.length];
         for (int i = 0; i < listsSalon.size(); i++) {
@@ -29,11 +29,11 @@ public class ServiciosAdmSalones {
         }
         //creamo el modelo 
         DefaultTableModel modelo = new DefaultTableModel(data, COLUMNAS);
-        frAdmistrarSalonesView.tblData.setModel(modelo);
+        tblData.setModel(modelo);
         System.out.println("Mostrando todos los salones.....");
     }
 
-    public static void mostrarSalonEnTabla(frmAdmistrarSalonesView frAdmistrarSalonesView,
+    public static void mostrarSalonEnTabla(JTable tblData,
             String[] COLUMNAS, Salon miSalon) {
         Object data[] = new Object[COLUMNAS.length];
         data[0] = miSalon.getIdSalon();
@@ -43,7 +43,7 @@ public class ServiciosAdmSalones {
         data[4] = miSalon.getCapacidadEstudiantes();
 
         DefaultTableModel modeloTabla = new DefaultTableModel(new Object[][]{data}, COLUMNAS);
-        frAdmistrarSalonesView.tblData.setModel(modeloTabla);
+        tblData.setModel(modeloTabla);
         System.out.println("Mostrando un solo salon...");
     }
 

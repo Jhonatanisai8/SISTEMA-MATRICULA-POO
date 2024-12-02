@@ -34,7 +34,7 @@ public class ControladorFormularioAdmSalones
         if (e.getSource() == this.frmAdmistrarSalonesView.btnGuardarSalon) {
             miSalon = ProcesosFormularioAdmistrarSalones.creaSalonFormulario(this.frmAdmistrarSalonesView);
             repo.guardar(miSalon);
-            ServiciosAdmSalones.mostrarSalonesEnTabla(this.frmAdmistrarSalonesView, TITULOS_COLUMNAS, repo.listar());
+            ServiciosAdmSalones.mostrarSalonesEnTabla(this.frmAdmistrarSalonesView.tblData, TITULOS_COLUMNAS, repo.listar());
             ServiciosAdmSalones.establecerAnchoColumnasTabla(this.frmAdmistrarSalonesView.tblData, ANCHO_COLUMAS);
             JOptionPane.showMessageDialog(null, "Salon Guardado Correctamente", "ATENCIÓN", 3);
             ServiciosAdmSalones.limpiarCampos(this.frmAdmistrarSalonesView);

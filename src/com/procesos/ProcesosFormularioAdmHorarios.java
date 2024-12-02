@@ -17,22 +17,22 @@ import javax.swing.JOptionPane;
 
 public class ProcesosFormularioAdmHorarios
         implements ConstantesFormularioAdmHorarios {
-    
+
     private static List<Horario> obtenerListaHorarios() {
         Repositorio<Horario> repo = new HorarioRepoImple();
         return repo.listar();
     }
-    
+
     public static void presentarFormulario(JDesktopPane esDesktopPane, frmAdmistrarHorariosView frmAdmistrarHorariosView) {
         rellenarComboBox(frmAdmistrarHorariosView);
         esDesktopPane.removeAll();
         esDesktopPane.add(frmAdmistrarHorariosView);
         frmAdmistrarHorariosView.toFront();
         frmAdmistrarHorariosView.setVisible(true);
-        ServiciosAdmHorarios.mostrarHorarios(frmAdmistrarHorariosView, ENCABEZADOS_TABLA, obtenerListaHorarios());
+        ServiciosAdmHorarios.mostrarHorarios(frmAdmistrarHorariosView.tblDataHorarios, ENCABEZADOS_TABLA, obtenerListaHorarios());
         ServiciosAdmHorarios.establecerAnchoColumnasTabla(frmAdmistrarHorariosView.tblDataHorarios, TAMANIO_COLUMNAS);
     }
-    
+
     public static Horario crearHorarioFormulario(frmAdmistrarHorariosView frmAdmistrarHorariosView) {
         Horario miHorario = null;
         String validacion = ValidacionesFrmAdmHorarios.validarCampos(frmAdmistrarHorariosView);
@@ -55,7 +55,7 @@ public class ProcesosFormularioAdmHorarios
         }
         return miHorario;
     }
-    
+
     private static void rellenarComboBox(frmAdmistrarHorariosView frmAdmistrarHorariosView) {
         frmAdmistrarHorariosView.cbxDiaSemana.removeAllItems();
         frmAdmistrarHorariosView.cbxHoraFin.removeAllItems();

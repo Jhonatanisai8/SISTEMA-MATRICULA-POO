@@ -37,7 +37,7 @@ public class ControladorFormularioListadoApoderados
         //boton buscar 
         if (e.getSource() == this.frmListadoApoderadosView.btnBuscar) {
             if (this.frmListadoApoderadosView.txtBuscar.getText().isBlank()) {
-                ServiciosApoderado.mostrarEstudiantesEnTabla(this.frmListadoApoderadosView, ENCABEZADOS_TABLA, listaApoderados());
+                ServiciosApoderado.mostrarEstudiantesEnTabla(this.frmListadoApoderadosView.tblDatos, ENCABEZADOS_TABLA, listaApoderados());
             } else {
                 boolean dniValido = true;
                 Long dni = null;
