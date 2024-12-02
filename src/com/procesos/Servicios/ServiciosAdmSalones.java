@@ -8,14 +8,14 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 public class ServiciosAdmSalones {
-
+    
     public static void establecerAnchoColumnasTabla(JTable table, int[] widths) {
         for (int i = 0; i < widths.length && i < table.getColumnCount(); i++) {
             TableColumn column = table.getColumnModel().getColumn(i);
             column.setPreferredWidth(widths[i]);
         }
     }
-
+    
     public static void mostrarSalonesEnTabla(frmAdmistrarSalonesView frAdmistrarSalonesView,
             String[] COLUMNAS, List<Salon> listsSalon) {
         Object[][] data = new Object[listsSalon.size()][COLUMNAS.length];
@@ -31,7 +31,7 @@ public class ServiciosAdmSalones {
         frAdmistrarSalonesView.tblData.setModel(modelo);
         System.out.println("Mostrando todos los salones.....");
     }
-
+    
     public static void mostrarSalonEnTabla(frmAdmistrarSalonesView frAdmistrarSalonesView,
             String[] COLUMNAS, Salon miSalon) {
         Object data[] = new Object[COLUMNAS.length];
@@ -39,9 +39,16 @@ public class ServiciosAdmSalones {
         data[1] = miSalon.getNombreSalon();
         data[2] = miSalon.getCapacidadEstudiantes();
         data[3] = miSalon.getReferencia();
-
+        
         DefaultTableModel modeloTabla = new DefaultTableModel(new Object[][]{data}, COLUMNAS);
         frAdmistrarSalonesView.tblData.setModel(modeloTabla);
         System.out.println("Mostrando un solo salon...");
+    }
+    
+    public static void limpiarCampos(frmAdmistrarSalonesView frmAdmistrarSalonesView) {
+        frmAdmistrarSalonesView.txtNombreSalon.setText("");
+        frmAdmistrarSalonesView.txtReferenciaSalon.setText("");
+        frmAdmistrarSalonesView.spnCapacidad.setValue(0);
+        frmAdmistrarSalonesView.txtNombreSalon.requestFocus();
     }
 }

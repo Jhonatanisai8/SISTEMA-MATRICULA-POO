@@ -26,6 +26,7 @@ public class ProcesosFormularioAdmistrarSalones
         desktopPane.add(frmSalonesView);
         frmSalonesView.toFront();
         frmSalonesView.setVisible(true);
+        frmSalonesView.txtNombreSalon.requestFocus();
         ServiciosAdmSalones.mostrarSalonesEnTabla(frmSalonesView, TITULOS_COLUMNAS, obtenerListaDocente());
         ServiciosAdmSalones.establecerAnchoColumnasTabla(frmSalonesView.tblData, ANCHO_COLUMAS);
     }

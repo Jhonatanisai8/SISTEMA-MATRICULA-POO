@@ -4,6 +4,7 @@ import com.Modelo.entidades.DaoImplementacion.SalonReposiImple;
 import com.Modelo.entidades.InterfaceDao.Repositorio;
 import com.Modelo.entidades.Salon;
 import static com.Utelerias.Constantes.ConstantesFormularioAdmSalones.TITULOS_COLUMNAS;
+import static com.Utelerias.Constantes.ConstantesFormularioAdmSalones.ANCHO_COLUMAS;
 import com.procesos.ProcesosFormularioAdmistrarSalones;
 import com.procesos.Servicios.ServiciosAdmSalones;
 import com.vista.frmAdmistrarSalonesView;
@@ -34,7 +35,9 @@ public class ControladorFormularioAdmSalones
             miSalon = ProcesosFormularioAdmistrarSalones.creaSalonFormulario(this.frmAdmistrarSalonesView);
             repo.guardar(miSalon);
             ServiciosAdmSalones.mostrarSalonesEnTabla(this.frmAdmistrarSalonesView, TITULOS_COLUMNAS, repo.listar());
+            ServiciosAdmSalones.establecerAnchoColumnasTabla(this.frmAdmistrarSalonesView.tblData, ANCHO_COLUMAS);
             JOptionPane.showMessageDialog(null, "Salon Guardado Correctamente", "ATENCIÓN", 3);
+            ServiciosAdmSalones.limpiarCampos(this.frmAdmistrarSalonesView);
         }
     }
 
