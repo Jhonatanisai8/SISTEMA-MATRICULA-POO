@@ -33,7 +33,6 @@ public class frmMenuView extends javax.swing.JFrame {
         jmnRegistrarCurso = new javax.swing.JMenuItem();
         jmnAdministrarCursos = new javax.swing.JMenuItem();
         mnHorarios = new javax.swing.JMenu();
-        jmnAsignarHorario = new javax.swing.JMenuItem();
         jmnAdministrarHorarios = new javax.swing.JMenuItem();
         mnMatricula = new javax.swing.JMenu();
         jmnRegistrarMatricula = new javax.swing.JMenuItem();
@@ -149,9 +148,6 @@ public class frmMenuView extends javax.swing.JFrame {
 
         mnHorarios.setText("Horarios");
 
-        jmnAsignarHorario.setText("Asignar Horario");
-        mnHorarios.add(jmnAsignarHorario);
-
         jmnAdministrarHorarios.setText("Administrar Horarios");
         jmnAdministrarHorarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -256,7 +252,6 @@ public class frmMenuView extends javax.swing.JFrame {
     public javax.swing.JMenuItem jmnAdministrarHorarios;
     public javax.swing.JMenuItem jmnAdministrarMatriculas;
     public javax.swing.JMenuItem jmnAdmistrarSalones;
-    public javax.swing.JMenuItem jmnAsignarHorario;
     public javax.swing.JMenuItem jmnCerrarSesion;
     public javax.swing.JMenuItem jmnDocentesAsignados;
     public javax.swing.JMenuItem jmnEstudiantesMatriculados;
