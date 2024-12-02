@@ -2,7 +2,10 @@ package com.controlador;
 
 import com.Modelo.entidades.DaoImplementacion.HorarioRepoImple;
 import com.Modelo.entidades.Horario;
+import static com.Utelerias.Constantes.ConstantesFormularioAdmHorarios.ENCABEZADOS_TABLA;
+import static com.Utelerias.Constantes.ConstantesFormularioAdmHorarios.TAMANIO_COLUMNAS;
 import com.procesos.ProcesosFormularioAdmHorarios;
+import com.procesos.Servicios.ServiciosAdmHorarios;
 import com.vista.frmAdmistrarHorariosView;
 import com.vista.frmMenuView;
 import java.awt.event.ActionEvent;
@@ -11,18 +14,18 @@ import javax.swing.JOptionPane;
 
 public class ControladorFormularioAdmHorarios
         implements ActionListener {
-
+    
     private final frmMenuView frmMenuView;
     private final frmAdmistrarHorariosView frmAdmistrarHorariosView;
     private Horario miHorario;
-
+    
     public ControladorFormularioAdmHorarios(frmMenuView frmMenuView, frmAdmistrarHorariosView frmAdmistrarHorariosView) {
         this.frmMenuView = frmMenuView;
         this.frmAdmistrarHorariosView = frmAdmistrarHorariosView;
         this.frmAdmistrarHorariosView.btnGuardarHorario.addActionListener(this);
         ProcesosFormularioAdmHorarios.presentarFormulario(this.frmMenuView.dsktEscritorio, this.frmAdmistrarHorariosView);
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         HorarioRepoImple repo = new HorarioRepoImple();
@@ -33,9 +36,12 @@ public class ControladorFormularioAdmHorarios
             } else {
                 repo.guardar(miHorario);
                 JOptionPane.showMessageDialog(null, "Horario Guardado Correctamente", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
+                ServiciosAdmHorarios.mostrarHorarios(frmAdmistrarHorariosView, ENCABEZADOS_TABLA, repo.listar());
+                ServiciosAdmHorarios.establecerAnchoColumnasTabla(frmAdmistrarHorariosView.tblDataHorarios, TAMANIO_COLUMNAS);
+                ServiciosAdmHorarios.limpiarCampos(this.frmAdmistrarHorariosView);
             }
             System.out.println("click sobre el boton guardar.....");
         }
     }
-
+    
 }
