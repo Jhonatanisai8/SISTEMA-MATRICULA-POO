@@ -2,7 +2,9 @@ package com.procesos;
 
 import com.Modelo.entidades.Curso;
 import com.Modelo.entidades.DaoImplementacion.CursoReposiImple;
+import com.Modelo.entidades.DaoImplementacion.DocenteReposioImple;
 import com.Modelo.entidades.DaoImplementacion.HorarioRepoImple;
+import com.Modelo.entidades.Docente;
 import com.Modelo.entidades.Horario;
 import com.Modelo.entidades.InterfaceDao.Repositorio;
 import com.Utelerias.Constantes.ConstantesFormularioAdmHorarios;
@@ -17,6 +19,7 @@ public class ProcesosFormularioAdmAsignaciones
     public static void presentarFormulario(JDesktopPane desktopPane, frmAdministrarAsignacionesView frmAdministrarAsignacionesView) {
         Repositorio<Horario> repo = new HorarioRepoImple();
         Repositorio<Curso> repositorio = new CursoReposiImple();
+        Repositorio<Docente> repoDocente = new DocenteReposioImple();
 
         desktopPane.removeAll();
         desktopPane.add(frmAdministrarAsignacionesView);
@@ -26,5 +29,6 @@ public class ProcesosFormularioAdmAsignaciones
         System.out.println("Haciendo visible el registor de asiganaciones....");
         ServiciosAdmAsignaciones.mostrarRegistrosEnTablas(frmAdministrarAsignacionesView);
         ServiciosAdmAsignaciones.listarEnTablaCursos(frmAdministrarAsignacionesView.tblCursos, ENCABEZADO_CURSO, repositorio.listar());
+        ServiciosAdmAsignaciones.listarEnTablaDocentes(frmAdministrarAsignacionesView.tblDocentes, ENCABEZADO_DOCENTE, repoDocente.listar());
     }
 }
