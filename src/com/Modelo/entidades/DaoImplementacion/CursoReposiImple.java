@@ -44,7 +44,24 @@ public class CursoReposiImple
 
     @Override
     public Curso porDni(Long dni) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Curso curso = null;
+        final String CONSULTA_SQL_SELECT_CURSO = "SELECT  "
+                + "id_curso AS ID, "
+                + "codigo_curso AS CODIGO, "
+                + "nombre_curso AS NOMBRE, "
+                + "descripcion AS DESCRIPCION, "
+                + "grado AS GRADO, "
+                + "nivel  AS NIVEL"
+                + "from curso WHERE id_curso = " + dni;
+        try (
+                Connection con = getConnection(); Statement st = con.createStatement(); ResultSet rs = st.executeQuery(CONSULTA_SQL_SELECT_CURSO);) {
+            if (rs.next()) {
+                curso = crearCurso(rs);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al buscar Curso: " + e.getMessage());
+        }
+        return curso;
     }
 
     @Override
