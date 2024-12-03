@@ -1,26 +1,27 @@
 package com.procesos.Servicios;
 
 import com.Modelo.entidades.Docente;
-import com.vista.frmListadoDocentesView;
+import com.Utelerias.Constantes.Utelerias;
 import com.vista.frmRegistrarDocenteView;
 import java.util.List;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-public class ServiciosDocente {
+public class ServiciosDocente
+        extends Utelerias<Docente> {
 
-    public static void establecerAnchoColumnasTabla(JTable table, int[] widths) {
-        for (int i = 0; i < widths.length && i < table.getColumnCount(); i++) {
-            TableColumn column = table.getColumnModel().getColumn(i);
-            column.setPreferredWidth(widths[i]);
+    @Override
+    public void establecerAnchoColumnasTabla(JTable tblTabla, int[] anchoColumnas) {
+        for (int i = 0; i < anchoColumnas.length && i < tblTabla.getColumnCount(); i++) {
+            TableColumn column = tblTabla.getColumnModel().getColumn(i);
+            column.setPreferredWidth(anchoColumnas[i]);
         }
     }
 
-    public static void mostrarDocentesEnTabla(JTable btlData,
-            String columnas[],
-            List<Docente> listaDocentes) {
-        Object[][] data = new Object[listaDocentes.size()][columnas.length];
+    @Override
+    public void mostrarRegistrosEnTabla(JTable tblData, String[] nombreColumnas, List<Docente> listaDocentes) {
+        Object[][] data = new Object[listaDocentes.size()][nombreColumnas.length];
         for (int i = 0; i < listaDocentes.size(); i++) {
             Docente docente = listaDocentes.get(i);
             data[i][0] = docente.getIdDocente();
@@ -41,14 +42,14 @@ public class ServiciosDocente {
             data[i][15] = docente.getAniosExperiencia();
             data[i][16] = docente.getEmailEducativoDocente();
         }
-        //creamo el modelo 
-        DefaultTableModel modelo = new DefaultTableModel(data, columnas);
-        btlData.setModel(modelo);
+        DefaultTableModel modelo = new DefaultTableModel(data, nombreColumnas);
+        tblData.setModel(modelo);
         System.out.println("Mostrando todos los docentes.....");
     }
 
-    public static void mostrarDocenteEntabla(JTable btlData, String[] cabezeras, Docente docente) {
-        Object[] datos = new Object[cabezeras.length];
+    @Override
+    public void mostrarRegistroSoloTabla(JTable tblData, String[] nombreColumnas, Docente docente) {
+        Object[] datos = new Object[nombreColumnas.length];
         datos[0] = docente.getIdDocente();
         datos[1] = docente.getNombre();
         datos[2] = docente.getApellidoPaterno();
@@ -67,8 +68,8 @@ public class ServiciosDocente {
         datos[15] = docente.getAniosExperiencia();
         datos[16] = docente.getEmailEducativoDocente();
 
-        DefaultTableModel modeloTabla = new DefaultTableModel(new Object[][]{datos}, cabezeras);
-        btlData.setModel(modeloTabla);
+        DefaultTableModel modeloTabla = new DefaultTableModel(new Object[][]{datos}, nombreColumnas);
+        tblData.setModel(modeloTabla);
         System.out.println("Mostrando un solo estudiante en la tabla.....");
     }
 

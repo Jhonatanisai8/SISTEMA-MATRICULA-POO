@@ -33,10 +33,11 @@ public class ProcesosFormularioListadoDocentes
     }
 
     public static void presentarFormulario(JDesktopPane desktopPane, frmListadoDocentesView frmListadoDocentesView) {
+        ServiciosDocente serviciosDocente = new ServiciosDocente();
         frmListadoDocentesView.btlData.setFont(FUENTE_TEXT_PRESENTACION);
         ponerIconosFormulario(frmListadoDocentesView);
-        ServiciosDocente.mostrarDocentesEnTabla(frmListadoDocentesView.btlData, TITULOS_COLUMNAS_DOCENTE, obtenerListaDocente());
-        ServiciosDocente.establecerAnchoColumnasTabla(frmListadoDocentesView.btlData, ANCHO_COLUMAS_TABLA_DOCENTE);
+        serviciosDocente.mostrarRegistrosEnTabla(frmListadoDocentesView.btlData, TITULOS_COLUMNAS_DOCENTE, obtenerListaDocente());
+        serviciosDocente.establecerAnchoColumnasTabla(frmListadoDocentesView.btlData, ANCHO_COLUMAS_TABLA_DOCENTE);
         frmListadoDocentesView.setTitle("Listado de Docentes");
         desktopPane.removeAll();
         desktopPane.add(frmListadoDocentesView);
@@ -45,14 +46,16 @@ public class ProcesosFormularioListadoDocentes
     }
 
     public static void mostarSoloDocente(frmListadoDocentesView frmistadoDocentesView, String text) {
+        ServiciosDocente serviciosDocente = new ServiciosDocente();
         if (text.isBlank()) {
-            ServiciosDocente.mostrarDocentesEnTabla(frmistadoDocentesView.btlData, TITULOS_COLUMNAS_DOCENTE, obtenerListaDocente());
+            serviciosDocente.mostrarRegistrosEnTabla(frmistadoDocentesView.btlData, TITULOS_COLUMNAS_DOCENTE, obtenerListaDocente());
         } else {
-            ServiciosDocente.mostrarDocenteEntabla(frmistadoDocentesView.btlData, TITULOS_COLUMNAS_DOCENTE, obtenerDocente(Long.valueOf(text)));
+            serviciosDocente.mostrarRegistroSoloTabla(frmistadoDocentesView.btlData, TITULOS_COLUMNAS_DOCENTE, obtenerDocente(Long.valueOf(text)));
         }
     }
 
     public static void seleccionarDatosEliminar(frmListadoDocentesView frmistadoDocentesView) {
+        ServiciosDocente serviciosDocente = new ServiciosDocente();
         Repositorio<Docente> repo = new DocenteReposioImple();
         int filasSelecionadas[] = frmistadoDocentesView.btlData.getSelectedRows();
         if (filasSelecionadas.length == 0) {
@@ -77,7 +80,7 @@ public class ProcesosFormularioListadoDocentes
                 repo.eliminar(idEstudiante);
             }
             //avtualizamos la tabla
-            ServiciosDocente.mostrarDocentesEnTabla(frmistadoDocentesView.btlData, TITULOS_COLUMNAS_DOCENTE, obtenerListaDocente());
+            serviciosDocente.mostrarRegistrosEnTabla(frmistadoDocentesView.btlData, TITULOS_COLUMNAS_DOCENTE, obtenerListaDocente());
 
         }
         System.out.println("Borrando datos......");
