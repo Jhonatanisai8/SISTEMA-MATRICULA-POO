@@ -4,6 +4,7 @@ import com.Modelo.entidades.Curso;
 import com.Modelo.entidades.DaoImplementacion.CursoReposiImple;
 import com.Modelo.entidades.InterfaceDao.Repositorio;
 import static com.Utelerias.Constantes.ConstantesFormularioAdmCursos.ENCABEZADO_COLUMNAS_TABLA;
+import static com.Utelerias.Constantes.ConstantesFormularioAdmCursos.ANCH0_COLUMNAS;
 import com.procesos.ProcesosFormularioAdmistrarCursos;
 import com.procesos.Servicios.ServiciosCurso;
 import com.vista.frmAdmistrarCursos;
@@ -29,12 +30,14 @@ public class ControladorFormularioAdmCursos
     @Override
     public void actionPerformed(ActionEvent e) {
         Repositorio<Curso> repo = new CursoReposiImple();
+        ServiciosCurso admCurso = new ServiciosCurso();
         //clik sobre guardar 
         if (e.getSource() == this.frmAdmistrarCursos.btnGuardarCurso) {
             miCurso = ProcesosFormularioAdmistrarCursos.creaCursoFormulario(this.frmAdmistrarCursos);
             if (miCurso != null) {
                 repo.guardar(miCurso);
-                ServiciosCurso.mostrarCursosEnTabla(frmAdmistrarCursos.tblDatosCursos, ENCABEZADO_COLUMNAS_TABLA, repo.listar());
+                admCurso.mostrarRegistrosEnTabla(frmAdmistrarCursos.tblDatosCursos, ENCABEZADO_COLUMNAS_TABLA, repo.listar());
+                admCurso.establecerAnchoColumnasTabla(this.frmAdmistrarCursos.tblDatosCursos, ANCH0_COLUMNAS);
                 ServiciosCurso.limpiarCampos(this.frmAdmistrarCursos);
                 JOptionPane.showMessageDialog(null, "Curso Registrado Correctamente", "ATENCIÓN", 3);
             }

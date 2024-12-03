@@ -27,6 +27,7 @@ public class ProcesosFormularioAdmistrarCursos
     }
 
     public static void presentarFormulario(JDesktopPane desktopPane, frmAdmistrarCursos frmAdmistrarCursos) {
+        ServiciosCurso admCurso = new ServiciosCurso();
         rellenarComboBox(frmAdmistrarCursos);
         frmAdmistrarCursos.tblDatosCursos.setFont(FUENTE_TEXT_PRESENTACION);
         frmAdmistrarCursos.setTitle("Administracion de Cursos.");
@@ -34,8 +35,8 @@ public class ProcesosFormularioAdmistrarCursos
         desktopPane.add(frmAdmistrarCursos);
         frmAdmistrarCursos.toFront();
         frmAdmistrarCursos.setVisible(true);
-        ServiciosCurso.mostrarCursosEnTabla(frmAdmistrarCursos.tblDatosCursos, ENCABEZADO_COLUMNAS_TABLA, obtenerListaCursos());
-        ServiciosCurso.establecerAnchoColumnasTabla(frmAdmistrarCursos.tblDatosCursos, ANCH0_COLUMNAS);
+        admCurso.mostrarRegistrosEnTabla(frmAdmistrarCursos.tblDatosCursos, ENCABEZADO_COLUMNAS_TABLA, obtenerListaCursos());
+        admCurso.establecerAnchoColumnasTabla(frmAdmistrarCursos.tblDatosCursos, ANCH0_COLUMNAS);
     }
 
     public static Curso creaCursoFormulario(frmAdmistrarCursos frmAdmistrarCursos) {
