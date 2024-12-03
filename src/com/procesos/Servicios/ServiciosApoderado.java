@@ -1,20 +1,15 @@
 package com.procesos.Servicios;
 
 import com.Modelo.entidades.Apoderado;
+import com.Utelerias.Constantes.Utelerias;
 import com.vista.frmRegistrarApoderadoView;
 import java.util.List;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-public class ServiciosApoderado {
-
-    public static void establecerAnchoColumnasTabla(JTable table, int[] widths) {
-        for (int i = 0; i < widths.length && i < table.getColumnCount(); i++) {
-            TableColumn column = table.getColumnModel().getColumn(i);
-            column.setPreferredWidth(widths[i]);
-        }
-    }
+public class ServiciosApoderado
+        extends Utelerias<Apoderado> {
 
     public static void limpiarDatos(frmRegistrarApoderadoView frmRegistrarApoderadoView) {
         frmRegistrarApoderadoView.txtApMaterno.setText("");
@@ -37,11 +32,17 @@ public class ServiciosApoderado {
 
     }
 
-    public static void mostrarEstudiantesEnTabla(JTable tblDatos,
-            String titulosColumnas[],
-            List<Apoderado> listaApoderados) {
-        Object data[][] = new Object[listaApoderados.size()][titulosColumnas.length];
+    @Override
+    public void establecerAnchoColumnasTabla(JTable tblTabla, int[] anchoColumnas) {
+        for (int i = 0; i < anchoColumnas.length && i < tblTabla.getColumnCount(); i++) {
+            TableColumn column = tblTabla.getColumnModel().getColumn(i);
+            column.setPreferredWidth(anchoColumnas[i]);
+        }
+    }
 
+    @Override
+    public void mostrarRegistrosEnTabla(JTable tblData, String[] nombreColumnas, List<Apoderado> listaApoderados) {
+        Object data[][] = new Object[listaApoderados.size()][nombreColumnas.length];
         for (int i = 0; i < listaApoderados.size(); i++) {
             Apoderado apoderado = listaApoderados.get(i);  // Obtener el apoderado correspondiente a la fila i
             data[i][0] = apoderado.getIdApoderado();
@@ -61,15 +62,14 @@ public class ServiciosApoderado {
             data[i][14] = apoderado.getOcupacion();
             data[i][15] = apoderado.getEstadoCivil();
         }
-
-        DefaultTableModel modeloTabla = new DefaultTableModel(data, titulosColumnas);
-        tblDatos.setModel(modeloTabla);
-        // Imprimir mensaje de confirmación
+        DefaultTableModel modeloTabla = new DefaultTableModel(data, nombreColumnas);
+        tblData.setModel(modeloTabla);
         System.out.println("Listando en tabla todos los apoderados.....");
     }
 
-    public static void mostrarApoderadoEnTabla(JTable tblDatos, String[] cabezeras, Apoderado apoderado) {
-        Object[] data = new Object[cabezeras.length];
+    @Override
+    public void mostrarRegistroSoloTabla(JTable tblData, String[] nombreColumnas, Apoderado apoderado) {
+        Object[] data = new Object[nombreColumnas.length];
         data[0] = apoderado.getIdApoderado();
         data[1] = apoderado.getNombre();
         data[2] = apoderado.getApellidoPaterno();
@@ -87,8 +87,8 @@ public class ServiciosApoderado {
         data[14] = apoderado.getOcupacion();
         data[15] = apoderado.getEstadoCivil();
 
-        DefaultTableModel modeloTabla = new DefaultTableModel(new Object[][]{data}, cabezeras);
-        tblDatos.setModel(modeloTabla);
+        DefaultTableModel modeloTabla = new DefaultTableModel(new Object[][]{data}, nombreColumnas);
+        tblData.setModel(modeloTabla);
         System.out.println("Mostrando un solo estudiante en la tabla.....");
     }
 

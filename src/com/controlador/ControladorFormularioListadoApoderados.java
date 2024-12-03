@@ -29,6 +29,7 @@ public class ControladorFormularioListadoApoderados
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        ServiciosApoderado serviciosApoderado = new ServiciosApoderado();
         //boton eliminar
         if (e.getSource() == this.frmListadoApoderadosView.btnEliminar) {
             ProcesosFormularioListadoApoderados.seleccionarDatosEliminar(this.frmListadoApoderadosView);
@@ -37,7 +38,7 @@ public class ControladorFormularioListadoApoderados
         //boton buscar 
         if (e.getSource() == this.frmListadoApoderadosView.btnBuscar) {
             if (this.frmListadoApoderadosView.txtBuscar.getText().isBlank()) {
-                ServiciosApoderado.mostrarEstudiantesEnTabla(this.frmListadoApoderadosView.tblDatos, ENCABEZADOS_TABLA, listaApoderados());
+                serviciosApoderado.mostrarRegistrosEnTabla(this.frmListadoApoderadosView.tblDatos, ENCABEZADOS_TABLA, listaApoderados());
             } else {
                 boolean dniValido = true;
                 Long dni = null;

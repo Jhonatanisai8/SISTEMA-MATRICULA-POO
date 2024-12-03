@@ -36,9 +36,11 @@ public class ProcesosFormularioListadoApoderados
     }
 
     public static void presentarFormulario(JDesktopPane escritorio, frmListadoApoderadosView frmListadoApoderadosView) {
+        ServiciosApoderado serviciosApoderado = new ServiciosApoderado();
         ponerIconosFormulario(frmListadoApoderadosView);
-        ServiciosApoderado.mostrarEstudiantesEnTabla(frmListadoApoderadosView.tblDatos, ENCABEZADOS_TABLA, listaApoderados());
-        ServiciosApoderado.establecerAnchoColumnasTabla(frmListadoApoderadosView.tblDatos, ANCHO_COLUMNAS);
+
+        serviciosApoderado.mostrarRegistrosEnTabla(frmListadoApoderadosView.tblDatos, ENCABEZADOS_TABLA, listaApoderados());
+        serviciosApoderado.establecerAnchoColumnasTabla(frmListadoApoderadosView.tblDatos, ANCHO_COLUMNAS);
         frmListadoApoderadosView.setTitle("Listado de Estudiantes.");
         escritorio.removeAll();
         escritorio.add(frmListadoApoderadosView);
@@ -47,6 +49,7 @@ public class ProcesosFormularioListadoApoderados
     }
 
     public static void seleccionarDatosEliminar(frmListadoApoderadosView frmListadoApoderadosView) {
+        ServiciosApoderado serviciosApoderado = new ServiciosApoderado();
         Repositorio<Apoderado> repo = new ApoderadoReposiImple();
         int filasSelecionadas[] = frmListadoApoderadosView.tblDatos.getSelectedRows();
         if (filasSelecionadas.length == 0) {
@@ -71,19 +74,20 @@ public class ProcesosFormularioListadoApoderados
                 repo.eliminar(idEstudiante);
             }
             //avtualizamos la tabla
-            ServiciosApoderado.mostrarEstudiantesEnTabla(frmListadoApoderadosView.tblDatos, ENCABEZADOS_TABLA, listaApoderados());
+            serviciosApoderado.mostrarRegistrosEnTabla(frmListadoApoderadosView.tblDatos, ENCABEZADOS_TABLA, listaApoderados());
             System.out.println("Eli inando..");
         }
         System.out.println("Borrando datos......");
     }
 
     public static void enviarApoderado(JTable tblDatos, Long dni) {
+        ServiciosApoderado serviciosApoderado = new ServiciosApoderado();
         if (obtenerDocente(dni) == null) {
             JOptionPane.showMessageDialog(null, "Apoderdo con Dni: " + dni + " no fue encontrado.", "Atención", 3);
             return;
         }
         System.out.println("Eviando apoderadoo.......");
-        ServiciosApoderado.mostrarApoderadoEnTabla(tblDatos, ENCABEZADOS_TABLA, obtenerDocente(dni));
+        serviciosApoderado.mostrarRegistroSoloTabla(tblDatos, ENCABEZADOS_TABLA, obtenerDocente(dni));
     }
 
 }
