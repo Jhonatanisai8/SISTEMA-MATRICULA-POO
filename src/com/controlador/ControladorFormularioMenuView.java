@@ -100,6 +100,7 @@ public class ControladorFormularioMenuView
                 this.frmenuView.dispose();
                 frmInicioSesionView frmInicioSesionView = new frmInicioSesionView();
                 ControladorInicioSesion cis = new ControladorInicioSesion(frmInicioSesionView);
+                frmInicioSesionView.txtUsuario.requestFocus();
             }
             System.out.println("Click sobre el jMenu de cerrar sesion.....");
         }
