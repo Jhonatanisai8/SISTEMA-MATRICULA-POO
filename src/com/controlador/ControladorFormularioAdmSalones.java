@@ -30,12 +30,13 @@ public class ControladorFormularioAdmSalones
     @Override
     public void actionPerformed(ActionEvent e) {
         Repositorio<Salon> repo = new SalonReposiImple();
+        ServiciosAdmSalones admSalones = new ServiciosAdmSalones();
         //clik sobre guardar 
         if (e.getSource() == this.frmAdmistrarSalonesView.btnGuardarSalon) {
             miSalon = ProcesosFormularioAdmistrarSalones.creaSalonFormulario(this.frmAdmistrarSalonesView);
             repo.guardar(miSalon);
-            ServiciosAdmSalones.mostrarSalonesEnTabla(this.frmAdmistrarSalonesView.tblData, TITULOS_COLUMNAS, repo.listar());
-            ServiciosAdmSalones.establecerAnchoColumnasTabla(this.frmAdmistrarSalonesView.tblData, ANCHO_COLUMAS);
+            admSalones.mostrarRegistrosEnTabla(this.frmAdmistrarSalonesView.tblData, TITULOS_COLUMNAS, repo.listar());
+            admSalones.establecerAnchoColumnasTabla(this.frmAdmistrarSalonesView.tblData, ANCHO_COLUMAS);
             JOptionPane.showMessageDialog(null, "Salon Guardado Correctamente", "ATENCIÓN", 3);
             ServiciosAdmSalones.limpiarCampos(this.frmAdmistrarSalonesView);
         }

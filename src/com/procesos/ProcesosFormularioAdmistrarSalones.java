@@ -20,6 +20,7 @@ public class ProcesosFormularioAdmistrarSalones
     }
 
     public static void presentarFormulario(JDesktopPane desktopPane, frmAdmistrarSalonesView frmSalonesView) {
+        ServiciosAdmSalones serviciosAdmSalones = new ServiciosAdmSalones();
         frmSalonesView.tblData.setFont(FUENTE_TEXT_PRESENTACION);
         frmSalonesView.setTitle("Administracion de Salones.");
         desktopPane.removeAll();
@@ -27,8 +28,8 @@ public class ProcesosFormularioAdmistrarSalones
         frmSalonesView.toFront();
         frmSalonesView.setVisible(true);
         frmSalonesView.txtNombreSalon.requestFocus();
-        ServiciosAdmSalones.mostrarSalonesEnTabla(frmSalonesView.tblData, TITULOS_COLUMNAS, obtenerListaDocente());
-        ServiciosAdmSalones.establecerAnchoColumnasTabla(frmSalonesView.tblData, ANCHO_COLUMAS);
+        serviciosAdmSalones.mostrarRegistrosEnTabla(frmSalonesView.tblData, TITULOS_COLUMNAS, obtenerListaDocente());
+        serviciosAdmSalones.establecerAnchoColumnasTabla(frmSalonesView.tblData, ANCHO_COLUMAS);
     }
 
     public static Salon creaSalonFormulario(frmAdmistrarSalonesView frmSalonesView) {

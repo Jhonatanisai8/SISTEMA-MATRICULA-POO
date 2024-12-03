@@ -11,10 +11,10 @@ public class ServiciosAdmAsignaciones
         ConstantesFormularioAdmSalones {
 
     public static void mostrarRegistrosEnTablas(frmAdministrarAsignacionesView frmView) {
+        ServiciosAdmSalones admSalones = new ServiciosAdmSalones();
         HorarioRepoImple horarioRepoImple = new HorarioRepoImple();
         ServiciosAdmHorarios.mostrarHorarios(frmView.tblHorarios, ENCABEZADOS_TABLA, horarioRepoImple.listar());
         SalonReposiImple imple = new SalonReposiImple();
-        ServiciosAdmSalones.mostrarSalonesEnTabla(frmView.tblSalones, ConstantesFormularioAdmSalones.TITULOS_COLUMNAS, imple.listar());
-        
+        admSalones.mostrarRegistrosEnTabla(frmView.tblSalones, ConstantesFormularioAdmSalones.TITULOS_COLUMNAS, imple.listar());
     }
 }
