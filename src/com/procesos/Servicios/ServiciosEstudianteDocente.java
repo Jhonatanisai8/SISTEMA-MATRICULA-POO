@@ -2,7 +2,6 @@ package com.procesos.Servicios;
 
 import com.Modelo.entidades.ApoderadoDatos;
 import com.Modelo.entidades.Estudiante;
-import com.vista.frmListadoEstudiantesView;
 import com.vista.frmRegistrarEstudianteView;
 import java.util.List;
 import java.util.Random;

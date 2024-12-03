@@ -29,10 +29,11 @@ public class ControladorFormularioListadoEstudiantes
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        ServiciosEstudianteDocente serviciosEstudianteDocente = new ServiciosEstudianteDocente();
         //evento en el boton buscar
         if (e.getSource() == this.frmEstudiantesView.btnBuscar) {
             if (frmEstudiantesView.txtBuscar.getText().isBlank()) {
-                ServiciosEstudianteDocente.mostrarEstudiantesEnTabla(frmEstudiantesView.btlData, TITULOS_COLUMNAS, listaEstudiantes());
+                serviciosEstudianteDocente.mostrarEstudiantesEnTabla(frmEstudiantesView.btlData, TITULOS_COLUMNAS, listaEstudiantes());
             } else {
                 boolean dniValido = true;
                 Long dni = null;
