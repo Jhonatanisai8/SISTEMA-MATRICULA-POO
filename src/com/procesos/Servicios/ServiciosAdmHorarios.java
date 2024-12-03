@@ -1,24 +1,27 @@
 package com.procesos.Servicios;
 
 import com.Modelo.entidades.Horario;
+import com.Utelerias.Constantes.Utelerias;
 import com.vista.frmAdmistrarHorariosView;
 import java.util.List;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-public class ServiciosAdmHorarios {
+public class ServiciosAdmHorarios
+        extends Utelerias<Horario> {
 
-    public static void establecerAnchoColumnasTabla(JTable table, int[] widths) {
-        for (int i = 0; i < widths.length && i < table.getColumnCount(); i++) {
-            TableColumn column = table.getColumnModel().getColumn(i);
-            column.setPreferredWidth(widths[i]);
+    @Override
+    public void establecerAnchoColumnasTabla(JTable tblTabla, int[] anchoColumnas) {
+        for (int i = 0; i < anchoColumnas.length && i < tblTabla.getColumnCount(); i++) {
+            TableColumn column = tblTabla.getColumnModel().getColumn(i);
+            column.setPreferredWidth(anchoColumnas[i]);
         }
     }
 
-    public static void mostrarHorarios(JTable tblDataHorarios,
-            String[] COLUMNAS, List<Horario> listaHorarios) {
-        Object data[][] = new Object[listaHorarios.size()][COLUMNAS.length];
+    @Override
+    public void mostrarRegistrosEnTabla(JTable tblData, String[] nombreColumnas, List<Horario> listaHorarios) {
+        Object data[][] = new Object[listaHorarios.size()][nombreColumnas.length];
         for (int i = 0; i < listaHorarios.size(); i++) {
             Horario miHorario = listaHorarios.get(i);
             data[i][0] = miHorario.getIdHorario();
@@ -27,9 +30,14 @@ public class ServiciosAdmHorarios {
             data[i][3] = miHorario.getHoraFin();
             data[i][4] = miHorario.getTurno();
         }
-        DefaultTableModel miModel = new DefaultTableModel(data, COLUMNAS);
-        tblDataHorarios.setModel(miModel);
+        DefaultTableModel miModel = new DefaultTableModel(data, nombreColumnas);
+        tblData.setModel(miModel);
         System.out.println("mostrando todos los horarios...");
+    }
+
+    @Override
+    public void mostrarRegistroSoloTabla(JTable tblData, String[] nombreColumnas, Horario object) {
+        
     }
 
     public static void limpiarCampos(frmAdmistrarHorariosView frmAdmistrarHorariosView) {

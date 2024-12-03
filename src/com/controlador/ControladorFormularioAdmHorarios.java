@@ -29,6 +29,7 @@ public class ControladorFormularioAdmHorarios
     @Override
     public void actionPerformed(ActionEvent e) {
         HorarioRepoImple repo = new HorarioRepoImple();
+        ServiciosAdmHorarios admHorarios = new ServiciosAdmHorarios();
         if (e.getSource() == this.frmAdmistrarHorariosView.btnGuardarHorario) {
             miHorario = ProcesosFormularioAdmHorarios.crearHorarioFormulario(this.frmAdmistrarHorariosView);
             if (miHorario == null) {
@@ -36,8 +37,8 @@ public class ControladorFormularioAdmHorarios
             } else {
                 repo.guardar(miHorario);
                 JOptionPane.showMessageDialog(null, "Horario Guardado Correctamente", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
-                ServiciosAdmHorarios.mostrarHorarios(frmAdmistrarHorariosView.tblDataHorarios, ENCABEZADOS_TABLA, repo.listar());
-                ServiciosAdmHorarios.establecerAnchoColumnasTabla(frmAdmistrarHorariosView.tblDataHorarios, TAMANIO_COLUMNAS);
+                admHorarios.mostrarRegistrosEnTabla(frmAdmistrarHorariosView.tblDataHorarios, ENCABEZADOS_TABLA, repo.listar());
+                admHorarios.establecerAnchoColumnasTabla(frmAdmistrarHorariosView.tblDataHorarios, TAMANIO_COLUMNAS);
                 ServiciosAdmHorarios.limpiarCampos(this.frmAdmistrarHorariosView);
             }
             System.out.println("click sobre el boton guardar.....");

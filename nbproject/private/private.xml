@@ -3,9 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/procesos/Servicios/ServiciosAdmSalones.java</file>
             <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/procesos/Servicios/ServiciosAdmAsignaciones.java</file>
-            <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/procesos/ProcesosFormularioAdmistrarSalones.java</file>
+            <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/controlador/ControladorFormularioAdmSalones.java</file>
+            <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/Utelerias/Constantes/Utelerias.java</file>
             <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/procesos/Servicios/ServiciosAdmHorarios.java</file>
         </group>
     </open-files>

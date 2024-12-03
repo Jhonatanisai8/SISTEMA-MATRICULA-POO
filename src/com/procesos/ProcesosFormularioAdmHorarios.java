@@ -24,13 +24,14 @@ public class ProcesosFormularioAdmHorarios
     }
 
     public static void presentarFormulario(JDesktopPane esDesktopPane, frmAdmistrarHorariosView frmAdmistrarHorariosView) {
+        ServiciosAdmHorarios admHorarios = new ServiciosAdmHorarios();
         rellenarComboBox(frmAdmistrarHorariosView);
         esDesktopPane.removeAll();
         esDesktopPane.add(frmAdmistrarHorariosView);
         frmAdmistrarHorariosView.toFront();
         frmAdmistrarHorariosView.setVisible(true);
-        ServiciosAdmHorarios.mostrarHorarios(frmAdmistrarHorariosView.tblDataHorarios, ENCABEZADOS_TABLA, obtenerListaHorarios());
-        ServiciosAdmHorarios.establecerAnchoColumnasTabla(frmAdmistrarHorariosView.tblDataHorarios, TAMANIO_COLUMNAS);
+        admHorarios.mostrarRegistrosEnTabla(frmAdmistrarHorariosView.tblDataHorarios, ENCABEZADOS_TABLA, obtenerListaHorarios());
+        admHorarios.establecerAnchoColumnasTabla(frmAdmistrarHorariosView.tblDataHorarios, TAMANIO_COLUMNAS);
     }
 
     public static Horario crearHorarioFormulario(frmAdmistrarHorariosView frmAdmistrarHorariosView) {

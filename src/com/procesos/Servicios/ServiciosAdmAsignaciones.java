@@ -12,8 +12,9 @@ public class ServiciosAdmAsignaciones
 
     public static void mostrarRegistrosEnTablas(frmAdministrarAsignacionesView frmView) {
         ServiciosAdmSalones admSalones = new ServiciosAdmSalones();
+        ServiciosAdmHorarios admHorarios = new ServiciosAdmHorarios();
         HorarioRepoImple horarioRepoImple = new HorarioRepoImple();
-        ServiciosAdmHorarios.mostrarHorarios(frmView.tblHorarios, ENCABEZADOS_TABLA, horarioRepoImple.listar());
+        admHorarios.mostrarRegistrosEnTabla(frmView.tblHorarios, ENCABEZADOS_TABLA, horarioRepoImple.listar());
         SalonReposiImple imple = new SalonReposiImple();
         admSalones.mostrarRegistrosEnTabla(frmView.tblSalones, ConstantesFormularioAdmSalones.TITULOS_COLUMNAS, imple.listar());
     }
