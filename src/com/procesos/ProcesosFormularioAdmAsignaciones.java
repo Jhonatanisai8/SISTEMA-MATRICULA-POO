@@ -8,15 +8,27 @@ import com.Modelo.entidades.Docente;
 import com.Modelo.entidades.Horario;
 import com.Modelo.entidades.InterfaceDao.Repositorio;
 import com.Utelerias.Constantes.ConstantesFormularioAdmHorarios;
+import com.Utelerias.Constantes.ConstantesFormularioMenu;
 import com.Utelerias.Constantes.ConstantesFormularioRegistrarAsignacion;
 import com.procesos.Servicios.ServiciosAdmAsignaciones;
 import com.vista.frmAdministrarAsignacionesView;
 import javax.swing.JDesktopPane;
 
 public class ProcesosFormularioAdmAsignaciones
-        implements ConstantesFormularioAdmHorarios, ConstantesFormularioRegistrarAsignacion {
+        implements ConstantesFormularioAdmHorarios, ConstantesFormularioRegistrarAsignacion,
+        ConstantesFormularioMenu {
+
+    public static void ponerIconosFormularios(frmAdministrarAsignacionesView frmAdministrarAsignacionesView) {
+        frmAdministrarAsignacionesView.btnBuscarCurso.setIcon(ICONO_LUPA);
+        frmAdministrarAsignacionesView.btnBuscarDocente.setIcon(ICONO_LUPA);
+        frmAdministrarAsignacionesView.btnBuscarHorarios.setIcon(ICONO_LUPA);
+        frmAdministrarAsignacionesView.btnBuscarSalones.setIcon(ICONO_LUPA);
+        frmAdministrarAsignacionesView.btnRegistrarAsignacion.setIcon(ICONO_MN_MATRICULA);
+
+    }
 
     public static void presentarFormulario(JDesktopPane desktopPane, frmAdministrarAsignacionesView frmAdministrarAsignacionesView) {
+        ponerIconosFormularios(frmAdministrarAsignacionesView);
         Repositorio<Horario> repo = new HorarioRepoImple();
         Repositorio<Curso> repositorio = new CursoReposiImple();
         Repositorio<Docente> repoDocente = new DocenteReposioImple();

@@ -31,5 +31,6 @@ public interface ConstantesFormularioMenu {
     final ImageIcon ICONO_JMN_LISTAR_ESTUDIANTES_MATRICULADOS = new ImageIcon("C:\\Users\\User\\Music\\CUARTO CICLO\\08 LABORATORIOS POO\\ProyectoMatriculaPOO\\src\\com\\imgs\\ListarEstudiantes.png");
     final ImageIcon ICONO_JMN_LISTAR_DOCENTES_ASIGNADOS = new ImageIcon("C:\\Users\\User\\Music\\CUARTO CICLO\\08 LABORATORIOS POO\\ProyectoMatriculaPOO\\src\\com\\imgs\\ListarDocentes.png");
     final ImageIcon ICONO_JMN_REGISTRAR_APODERADO = new ImageIcon("C:\\Users\\User\\Music\\CUARTO CICLO\\08 LABORATORIOS POO\\ProyectoMatriculaPOO\\src\\com\\imgs\\RegApoderado.png");
+    final ImageIcon ICONO_LUPA = new ImageIcon("C:\\Users\\User\\Music\\CUARTO CICLO\\08 LABORATORIOS POO\\ProyectoMatriculaPOO\\src\\com\\imgs\\loupe.png");
 
 }

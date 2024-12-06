@@ -61,6 +61,7 @@ public class ProcesoInicioSesion
     public static void presentarFormulario(frmInicioSesionView fr) {
         ponerIconosFormulario(fr);
         estilosInicioSesion(fr);
+        fr.txtUsuario.requestFocus();
 
         fr.setTitle("Bienvenido al sistema".toUpperCase());
 
