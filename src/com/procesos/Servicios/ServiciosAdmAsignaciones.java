@@ -6,7 +6,7 @@ import com.Modelo.entidades.DaoImplementacion.SalonReposiImple;
 import com.Modelo.entidades.Docente;
 import com.Utelerias.Constantes.ConstantesFormularioAdmHorarios;
 import com.Utelerias.Constantes.ConstantesFormularioAdmSalones;
-import com.vista.frmAdministrarAsignacionesView;
+import com.vista.frmRegistrarAsignacionesView;
 import java.util.List;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -15,7 +15,7 @@ public class ServiciosAdmAsignaciones
         implements ConstantesFormularioAdmHorarios,
         ConstantesFormularioAdmSalones {
 
-    public static void mostrarRegistrosEnTablas(frmAdministrarAsignacionesView frmView) {
+    public static void mostrarRegistrosEnTablas(frmRegistrarAsignacionesView frmView) {
         ServiciosAdmSalones admSalones = new ServiciosAdmSalones();
         ServiciosAdmHorarios admHorarios = new ServiciosAdmHorarios();
         HorarioRepoImple horarioRepoImple = new HorarioRepoImple();

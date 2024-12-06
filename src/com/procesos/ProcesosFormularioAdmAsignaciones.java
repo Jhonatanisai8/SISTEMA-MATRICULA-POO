@@ -11,14 +11,14 @@ import com.Utelerias.Constantes.ConstantesFormularioAdmHorarios;
 import com.Utelerias.Constantes.ConstantesFormularioMenu;
 import com.Utelerias.Constantes.ConstantesFormularioRegistrarAsignacion;
 import com.procesos.Servicios.ServiciosAdmAsignaciones;
-import com.vista.frmAdministrarAsignacionesView;
+import com.vista.frmRegistrarAsignacionesView;
 import javax.swing.JDesktopPane;
 
 public class ProcesosFormularioAdmAsignaciones
         implements ConstantesFormularioAdmHorarios, ConstantesFormularioRegistrarAsignacion,
         ConstantesFormularioMenu {
 
-    public static void ponerIconosFormularios(frmAdministrarAsignacionesView frmAdministrarAsignacionesView) {
+    public static void ponerIconosFormularios(frmRegistrarAsignacionesView frmAdministrarAsignacionesView) {
         frmAdministrarAsignacionesView.btnBuscarCurso.setIcon(ICONO_LUPA);
         frmAdministrarAsignacionesView.btnBuscarDocente.setIcon(ICONO_LUPA);
         frmAdministrarAsignacionesView.btnBuscarHorarios.setIcon(ICONO_LUPA);
@@ -27,7 +27,7 @@ public class ProcesosFormularioAdmAsignaciones
 
     }
 
-    public static void presentarFormulario(JDesktopPane desktopPane, frmAdministrarAsignacionesView frmAdministrarAsignacionesView) {
+    public static void presentarFormulario(JDesktopPane desktopPane, frmRegistrarAsignacionesView frmAdministrarAsignacionesView) {
         ponerIconosFormularios(frmAdministrarAsignacionesView);
         Repositorio<Horario> repo = new HorarioRepoImple();
         Repositorio<Curso> repositorio = new CursoReposiImple();

@@ -2,9 +2,9 @@ package com.vista;
 
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
 
-public class frmAdministrarAsignacionesView extends javax.swing.JInternalFrame {
+public class frmRegistrarAsignacionesView extends javax.swing.JInternalFrame {
 
-    public frmAdministrarAsignacionesView() {
+    public frmRegistrarAsignacionesView() {
         FlatMaterialLighterIJTheme.setup();
         initComponents();
     }

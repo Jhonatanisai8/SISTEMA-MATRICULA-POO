@@ -1,7 +1,7 @@
 package com.controlador;
 
 import com.procesos.ProcesosFormularioMenuView;
-import com.vista.frmAdministrarAsignacionesView;
+import com.vista.frmRegistrarAsignacionesView;
 import com.vista.frmAdmistrarCursos;
 import com.vista.frmAdmistrarHorariosView;
 import com.vista.frmAdmistrarSalonesView;
@@ -117,8 +117,8 @@ public class ControladorFormularioMenuView
         }
 
         if (e.getSource() == this.frmenuView.jmnRegistrarAsignacion) {
-            frmAdministrarAsignacionesView frmAdministrarAsignacionesVie = new frmAdministrarAsignacionesView();
-            ControladorFormularioAdmAsignaciones admAsignaciones = new ControladorFormularioAdmAsignaciones(this.frmenuView, frmAdministrarAsignacionesVie);
+            frmRegistrarAsignacionesView frmAdministrarAsignacionesVie = new frmRegistrarAsignacionesView();
+            ControladorFormularioRegistroAsignaciones admAsignaciones = new ControladorFormularioRegistroAsignaciones(this.frmenuView, frmAdministrarAsignacionesVie);
         }
     }
 }
