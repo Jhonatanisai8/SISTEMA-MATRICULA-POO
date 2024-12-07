@@ -1,6 +1,6 @@
 package com.Utelerias.Constantes;
 
-public interface ConstantesFormularioRegistroMatricula {
+public interface ConstantesFormulariosMatricula {
 
     final String COLUMNAS_TABLA_ESTUDIANTES[] = {
         "ID",

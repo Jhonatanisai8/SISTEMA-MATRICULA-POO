@@ -2,7 +2,7 @@ package com.controlador;
 
 import com.Modelo.entidades.DaoImplementacion.MatriculaRepoImple;
 import com.Modelo.entidades.Matricula;
-import static com.Utelerias.Constantes.ConstantesFormularioRegistroMatricula.ANCHO_COLUMAS;
+import static com.Utelerias.Constantes.ConstantesFormulariosMatricula.ANCHO_COLUMAS;
 import com.procesos.ProcesosFormularioRegistroMatricula;
 import com.procesos.Servicios.ServiciosMatricula;
 import com.procesos.Validaciones.ValidacionesFormularioRegistroMatricula;

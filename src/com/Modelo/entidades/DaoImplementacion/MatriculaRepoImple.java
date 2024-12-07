@@ -4,16 +4,16 @@ import com.Modelo.entidades.BaseDatos.ConexionBaseDatos;
 import com.Modelo.entidades.InterfaceDao.ConsultasSQLMatricula;
 import com.Modelo.entidades.InterfaceDao.Repositorio;
 import com.Modelo.entidades.Matricula;
-import com.Utelerias.Constantes.ConstantesFormularioRegistroMatricula;
 import java.util.List;
 import java.sql.*;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import com.Utelerias.Constantes.ConstantesFormulariosMatricula;
 
 public class MatriculaRepoImple
         implements ConsultasSQLMatricula,
         Repositorio<Matricula>,
-        ConstantesFormularioRegistroMatricula {
+        ConstantesFormulariosMatricula {
 
     private Connection getConnection() throws SQLException {
         return ConexionBaseDatos.getInstance();

@@ -6,14 +6,14 @@ import com.Modelo.entidades.DaoImplementacion.MatriculaRepoImple;
 import com.Modelo.entidades.Estudiante;
 import com.Modelo.entidades.Matricula;
 import static com.Utelerias.Constantes.ConstantesFormularioListadoEstudiantesDocentes.FUENTE_TEXT_PRESENTACION;
-import com.Utelerias.Constantes.ConstantesFormularioRegistroMatricula;
 import com.procesos.Servicios.ServiciosMatricula;
 import com.vista.frmRegistrarMatriculasView;
 import java.util.Date;
 import javax.swing.JDesktopPane;
+import com.Utelerias.Constantes.ConstantesFormulariosMatricula;
 
 public class ProcesosFormularioRegistroMatricula
-        implements ConstantesFormularioRegistroMatricula {
+        implements ConstantesFormulariosMatricula {
 
     static void ponerIconosFormulario(frmRegistrarMatriculasView frmRegistrarMatriculasView) {
 
