@@ -191,7 +191,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jmnRegistrarAsignacion">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Matricular Asignacion"/>
+                <Property name="text" type="java.lang.String" value="Registrar Asignacion"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -209,26 +209,26 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="mnListados">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Listados"/>
+            <Property name="text" type="java.lang.String" value="Matriculas"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jmnEstudiantesMatriculados">
+            <MenuItem class="javax.swing.JMenuItem" name="jmnRegistrarMatriculas">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Estufiantes Matriculados"/>
+                <Property name="text" type="java.lang.String" value="Registrar Matricula"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jmnDocentesAsignados">
+            <MenuItem class="javax.swing.JMenuItem" name="jmnAdministrarMatriculas">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Docentes Asignados"/>
+                <Property name="text" type="java.lang.String" value="Administrar Matriculas"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmnDocentesAsignadosActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmnAdministrarMatriculasActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
