@@ -36,11 +36,14 @@ public class DocenteReposioImple
     public Docente porDni(Long dni) {
         Docente docente = null;
         String parametroBusqueda = "";
+        String parametroObjeto = "";
         //validacion
         if (dni <= 100) {
             parametroBusqueda = "id_docente";
+            parametroObjeto = "doc";
         } else {
             parametroBusqueda = "numero_dni";
+            parametroObjeto = "d";
         }
         System.out.println(parametroBusqueda);
         String SQL_BUSCAR_POR_DNI = "SELECT "
@@ -65,7 +68,7 @@ public class DocenteReposioImple
                 + "INNER JOIN dni AS d ON d.id_dni = p.id_dni  "
                 + "INNER JOIN direccion AS di ON di.id_direccion = p.id_direccion  "
                 + "INNER JOIN docente AS doc ON  doc.id_docente = p.id_persona "
-                + "WHERE d." + parametroBusqueda + "   LIKE '%" + String.valueOf(dni) + "%' ";
+                + "WHERE  " + parametroObjeto + "." + parametroBusqueda + "   LIKE '%" + String.valueOf(dni) + "%' ";
         try (Connection con = getConection(); Statement stmt = con.createStatement(); ResultSet rs = stmt.executeQuery(SQL_BUSCAR_POR_DNI)) {
             if (rs.next()) {
                 docente = crearDocente(rs);
