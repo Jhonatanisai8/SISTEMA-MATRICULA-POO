@@ -10,6 +10,7 @@ import com.vista.frmInicioView;
 import com.vista.frmListadoApoderadosView;
 import com.vista.frmListadoDocentesView;
 import com.vista.frmListadoEstudiantesView;
+import com.vista.frmListadoMatriculasView;
 import com.vista.frmMenuView;
 import com.vista.frmRegistrarApoderadoView;
 import com.vista.frmRegistrarDocenteView;
@@ -40,6 +41,7 @@ public class ControladorFormularioMenuView
         this.frmenuView.jmnAdministrarHorarios.addActionListener(this);
         this.frmenuView.jmnRegistrarAsignacion.addActionListener(this);
         this.frmenuView.jmnRegistrarMatriculas.addActionListener(this);
+        this.frmenuView.jmnAdministrarMatriculas.addActionListener(this);
         ProcesosFormularioMenuView.presentarFormulario(this.frmenuView);
         System.out.println("Mostrando el Menu del sistema...");
     }
@@ -128,6 +130,12 @@ public class ControladorFormularioMenuView
             frmRegistrarMatriculasView frmMatriculasView = new frmRegistrarMatriculasView();
             ControladorFormularioRegistroMatricula cfrm = new ControladorFormularioRegistroMatricula(this.frmenuView, frmMatriculasView);
             System.out.println("Click sobre el JMenu de Registrar Matriculas");
+        }
+
+        if (e.getSource() == this.frmenuView.jmnAdministrarMatriculas) {
+            frmListadoMatriculasView frmListadoMatriculasView = new frmListadoMatriculasView();
+            ControladorFormularioListadoMatriculas cflm = new ControladorFormularioListadoMatriculas(this.frmenuView, frmListadoMatriculasView);
+            System.out.println("Click sobre el JMenu de Administrar Matriculas");
         }
 
     }
