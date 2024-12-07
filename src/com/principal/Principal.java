@@ -15,5 +15,4 @@ public class Principal
         frmInicioSesionView frm = new frmInicioSesionView();
         ControladorInicioSesion cis = new ControladorInicioSesion(frm);
     }
-
 }
