@@ -33,5 +33,6 @@ public interface ConstantesFormulariosMatricula {
         "HORARIO",
         "FECHA MATRICULA"
     };
-    final int ANCHO_COLUMNAS_TABLA_MATRICULAS[] = {25, 150, 100, 150, 50, 50, 50};
+
+    final int ANCHO_COLUMNAS_TABLA_MATRICULAS[] = {25, 150, 100, 150, 20, 100, 70};
 }
