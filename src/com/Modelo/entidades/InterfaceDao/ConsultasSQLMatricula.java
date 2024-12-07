@@ -26,4 +26,30 @@ public interface ConsultasSQLMatricula {
                                                INNER JOIN horario AS h ON h.id_horario = a.id_horario
                                            ORDER BY
                                                h.dia_semana ASC""";
+
+    final String SQL_SELECT_INFORMACION = """
+                                          SELECT 
+                                              m.id_matricula AS ID_Matricula,
+                                              CONCAT(p.nombre, ' ', p.apellido_paterno, ' ', p.apellido_materno) AS Estudiante,
+                                              e.email_educativo AS Email_Educativo,
+                                              CONCAT(pd.nombre, ' ', pd.apellido_paterno, ' ', pd.apellido_materno) AS Docente,
+                                              s.nombre_salon AS Salon,
+                                              CONCAT(h.dia_semana, ' ', h.hora_inicio, '-', h.hora_fin) AS Horario,
+                                              m.fecha_matricula AS Fecha_Matricula
+                                          FROM 
+                                              matricula m
+                                          JOIN 
+                                              estudiante e ON m.id_estudiante = e.id_estudiante
+                                          JOIN 
+                                              persona p ON e.id_estudiante = p.id_persona
+                                          JOIN 
+                                              asignacion a ON m.id_asignacion = a.id_asignacion
+                                          JOIN 
+                                              docente d ON a.id_docente = d.id_docente
+                                          JOIN 
+                                              persona pd ON d.id_docente = pd.id_persona
+                                          JOIN 
+                                              salon s ON a.id_salon = s.id_salon
+                                          JOIN 
+                                              horario h ON a.id_horario = h.id_horario""";
 }
