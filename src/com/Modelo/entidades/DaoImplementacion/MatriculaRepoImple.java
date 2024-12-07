@@ -73,4 +73,25 @@ public class MatriculaRepoImple
         }
 
     }
+
+    public void listarInformacionMatriculas(JTable tblData) {
+        try (Connection con = getConnection(); PreparedStatement pr = con.prepareStatement(SQL_SELECT_INFORMACION); ResultSet rs = pr.executeQuery();) {
+            //obtenemos las columnas 
+            DefaultTableModel modelo = new DefaultTableModel(ENCABEZADOS_TABLA_MATRICULA, 0);
+            tblData.setModel(modelo);
+            ResultSetMetaData data = rs.getMetaData();
+            int nColumnas = data.getColumnCount();
+            while (rs.next()) {
+                Object[] fila = new Object[nColumnas];
+                for (int i = 1; i <= nColumnas; i++) {
+                    fila[i - 1] = rs.getObject(i);
+                }
+                modelo.addRow(fila);
+            }
+            System.out.println("Listando informacion de matriculas");
+        } catch (Exception e) {
+            System.out.println("Error al listar cierta informacion de la tabla de matriculas: " + e.getMessage());
+        }
+
+    }
 }
