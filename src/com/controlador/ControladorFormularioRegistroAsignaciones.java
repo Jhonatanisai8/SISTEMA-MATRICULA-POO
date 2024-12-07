@@ -1,17 +1,21 @@
 package com.controlador;
 
+import com.Modelo.entidades.Asignacion;
+import com.Modelo.entidades.DaoImplementacion.AsignacionRepoImple;
 import com.procesos.ProcesosFormularioRegistroAsignaciones;
 import com.procesos.Validaciones.ValidacionesFormularioRegistrarAsignacion;
 import com.vista.frmRegistrarAsignacionesView;
 import com.vista.frmMenuView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 public class ControladorFormularioRegistroAsignaciones
         implements ActionListener {
 
     private final frmMenuView frmMenuView;
     private final frmRegistrarAsignacionesView frmAdministrarAsignacionesView;
+    private Asignacion asignacion;
 
     public ControladorFormularioRegistroAsignaciones(frmMenuView frmMenuView, frmRegistrarAsignacionesView frmAdministrarAsignacionesView) {
         this.frmMenuView = frmMenuView;
@@ -26,6 +30,7 @@ public class ControladorFormularioRegistroAsignaciones
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        AsignacionRepoImple asignacionRepoImple = new AsignacionRepoImple();
         if (e.getSource() == this.frmAdministrarAsignacionesView.btnBuscarCurso) {
             System.out.println("Click sobre el boton Buscar Curso....");
         }
@@ -42,7 +47,14 @@ public class ControladorFormularioRegistroAsignaciones
             String validacion = ValidacionesFormularioRegistrarAsignacion.validarSeleccionFilaTablas(frmAdministrarAsignacionesView.tblCursos, frmAdministrarAsignacionesView.tblDocentes, frmAdministrarAsignacionesView.tblHorarios, frmAdministrarAsignacionesView.tblSalones);
             if (!validacion.equals("")) {
                 System.out.println("Selecionar Fila " + validacion);
-            } 
+                JOptionPane.showMessageDialog(null, "Seleccionar una fila de " + validacion, "ATENCION", JOptionPane.WARNING_MESSAGE);
+                return;
+            } else {
+                asignacion = ProcesosFormularioRegistroAsignaciones.crearAsignacionDesdeFormulario(this.frmAdministrarAsignacionesView);
+                asignacionRepoImple.guardar(asignacion);
+                JOptionPane.showMessageDialog(null, "Asignacion Registrada Corectamente", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
+                ProcesosFormularioRegistroAsignaciones.presentarFormulario(this.frmMenuView.dsktEscritorio, this.frmAdministrarAsignacionesView);
+            }
             System.out.println("Click sobre el boton Registrar Asigacion....");
         }
 
