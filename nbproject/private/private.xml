@@ -3,14 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/Modelo/entidades/DaoImplementacion/MatriculaRepoImple.java</file>
-            <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/procesos/ProcesosFormularioRegistroAsignaciones.java</file>
-            <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/procesos/ProcesosFormularioRegistroMatricula.java</file>
-            <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/controlador/ControladorFormularioRegistroAsignaciones.java</file>
-            <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/controlador/ControladorFormularioRegistroMatricula.java</file>
+            <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/principal/Principal.java</file>
+            <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/Utelerias/Constantes/ConstantesFormulariosMatricula.java</file>
             <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/Modelo/entidades/InterfaceDao/ConsultasSQLMatricula.java</file>
-            <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/procesos/Validaciones/ValidacionesFormularioRegistrarAsignacion.java</file>
-            <file>file:/C:/Users/User/Music/CUARTO%20CICLO/08%20LABORATORIOS%20POO/ProyectoMatriculaPOO/src/com/vista/frmRegistrarMatriculasView.java</file>
         </group>
     </open-files>
 </project-private>
