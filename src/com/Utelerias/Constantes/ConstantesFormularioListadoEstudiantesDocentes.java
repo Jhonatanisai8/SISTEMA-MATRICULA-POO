@@ -26,6 +26,6 @@ public interface ConstantesFormularioListadoEstudiantesDocentes {
     final int ANCHO_COLUMAS_TABLA_DOCENTE[] = {3, 40, 40, 40, 20, 30, 30, 40, 10, 20, 20, 30, 40, 30, 40, 5, 40};
 
     //fuentes
-    final Font FUENTE_TEXT_PRESENTACION = new Font("Segoe UI", Font.PLAIN, 12);
+    final Font FUENTE_TEXT_PRESENTACION = new Font("Segoe UI", Font.PLAIN, 11);
 
 }

@@ -1,6 +1,7 @@
 package com.procesos;
 
 import com.Modelo.entidades.DaoImplementacion.EstudianteReposioImple;
+import com.Modelo.entidades.DaoImplementacion.MatriculaRepoImple;
 import static com.Utelerias.Constantes.ConstantesFormularioListadoEstudiantesDocentes.FUENTE_TEXT_PRESENTACION;
 import com.Utelerias.Constantes.ConstantesFormularioRegistroMatricula;
 import com.procesos.Servicios.ServiciosMatricula;
@@ -16,6 +17,7 @@ public class ProcesosFormularioRegistroMatricula
 
     public static void presentarFormulario(JDesktopPane escritorio, frmRegistrarMatriculasView frmRegistrarMatriculasView) {
         EstudianteReposioImple estudianteReposioImple = new EstudianteReposioImple();
+        MatriculaRepoImple matriculaRepoImple = new MatriculaRepoImple();
         ponerIconosFormulario(frmRegistrarMatriculasView);
         escritorio.removeAll();
         escritorio.add(frmRegistrarMatriculasView);
@@ -26,6 +28,8 @@ public class ProcesosFormularioRegistroMatricula
         ServiciosMatricula.establecerAnchoColumnasTabla(frmRegistrarMatriculasView.tblEstudiantes, TAMANIO_COLUMNAS);
         frmRegistrarMatriculasView.tblAsignaciones.setFont(FUENTE_TEXT_PRESENTACION);
         frmRegistrarMatriculasView.tblEstudiantes.setFont(FUENTE_TEXT_PRESENTACION);
+        matriculaRepoImple.listarInformacion(frmRegistrarMatriculasView.tblAsignaciones);
+        ServiciosMatricula.establecerAnchoColumnasTabla(frmRegistrarMatriculasView.tblAsignaciones, ANCHO_COLUMAS);
     }
 
 }
