@@ -15,10 +15,10 @@ public class frmRegistrarMatriculasView extends javax.swing.JInternalFrame {
 
         pnlFondo = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblDocentes = new javax.swing.JTable();
+        tblEstudiantes = new javax.swing.JTable();
         lblTotalEstudiantes = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblCursos = new javax.swing.JTable();
+        tblAsignaciones = new javax.swing.JTable();
         btnRegistrarMatricula = new javax.swing.JButton();
         txtBuscarEstdent = new javax.swing.JTextField();
         btnBuscarEstudent = new javax.swing.JButton();
@@ -30,7 +30,7 @@ public class frmRegistrarMatriculasView extends javax.swing.JInternalFrame {
 
         pnlFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tblDocentes.setModel(new javax.swing.table.DefaultTableModel(
+        tblEstudiantes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -41,12 +41,12 @@ public class frmRegistrarMatriculasView extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tblDocentes);
+        jScrollPane1.setViewportView(tblEstudiantes);
 
-        pnlFondo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 260, 450));
+        pnlFondo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 350, 450));
         pnlFondo.add(lblTotalEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(1148, 480, 314, 44));
 
-        tblCursos.setModel(new javax.swing.table.DefaultTableModel(
+        tblAsignaciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -57,9 +57,9 @@ public class frmRegistrarMatriculasView extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(tblCursos);
+        jScrollPane2.setViewportView(tblAsignaciones);
 
-        pnlFondo.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 880, 400));
+        pnlFondo.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 780, 400));
 
         btnRegistrarMatricula.setText("Grabar Matricula");
         pnlFondo.add(btnRegistrarMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 470, 240, 40));
@@ -106,8 +106,8 @@ public class frmRegistrarMatriculasView extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblTotalEstudiantes;
     private static javax.swing.JPanel pnlFondo;
-    public javax.swing.JTable tblCursos;
-    public javax.swing.JTable tblDocentes;
+    public javax.swing.JTable tblAsignaciones;
+    public javax.swing.JTable tblEstudiantes;
     public javax.swing.JTextField txtBuscarAsignacion;
     public javax.swing.JTextField txtBuscarEstdent;
     // End of variables declaration//GEN-END:variables
