@@ -7,6 +7,7 @@ public interface ConstantesFormulariosMatricula {
         "NOMBRES Y APELLIDOS",
         "COD.",};
     final int TAMANIO_COLUMNAS[] = {30, 170, 60};
+
     final String ENCABEZADOS_TABLA_ASIGNACIONES[] = {
         "ID",
         "ID DOCENTE",
@@ -21,5 +22,16 @@ public interface ConstantesFormulariosMatricula {
         "HORA FIN",
         "TURNO"
     };
-    final int ANCHO_COLUMAS[] = {40,40,150,100,40,100,100,50,100,70,70,50};
+    final int ANCHO_COLUMAS[] = {40, 40, 150, 100, 40, 100, 100, 50, 100, 70, 70, 50};
+
+    final String[] ENCABEZADOS_TABLA_MATRICULA = {
+        "ID",
+        "ESTUDIANTE",
+        "EMAIL ESTUDIANTE",
+        "DOCENTE",
+        "SALON",
+        "HORARIO",
+        "FECHA MATRICULA"
+    };
+    final int ANCHO_COLUMNAS_TABLA_MATRICULAS[] = {25, 150, 100, 150, 50, 50, 50};
 }
