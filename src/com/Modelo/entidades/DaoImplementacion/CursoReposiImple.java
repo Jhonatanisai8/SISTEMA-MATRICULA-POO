@@ -46,12 +46,12 @@ public class CursoReposiImple
     public Curso porDni(Long dni) {
         Curso curso = null;
         final String CONSULTA_SQL_SELECT_CURSO = "SELECT  "
-                + "id_curso AS ID, "
-                + "codigo_curso AS CODIGO, "
-                + "nombre_curso AS NOMBRE, "
-                + "descripcion AS DESCRIPCION, "
-                + "grado AS GRADO, "
-                + "nivel  AS NIVEL"
+                + "id_curso AS ID,  "
+                + "codigo_curso AS CODIGO,  "
+                + "nombre_curso AS NOMBRE_CURSO,  "
+                + "descripcion AS DESCRIPCION,  "
+                + "grado AS GRADO,  "
+                + "nivel  AS NIVEL "
                 + "from curso WHERE id_curso = " + dni;
         try (
                 Connection con = getConnection(); Statement st = con.createStatement(); ResultSet rs = st.executeQuery(CONSULTA_SQL_SELECT_CURSO);) {
