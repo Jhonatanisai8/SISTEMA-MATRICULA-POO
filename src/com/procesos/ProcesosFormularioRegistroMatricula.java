@@ -43,8 +43,8 @@ public class ProcesosFormularioRegistroMatricula
         //obetenemos los ids
         int filaSelecEstudiante = frmRegistrarMatriculasVie.tblEstudiantes.getSelectedRow();
         int filaSelecAsignacion = frmRegistrarMatriculasVie.tblAsignaciones.getSelectedRow();
-        Long idEstudiante = (Long) frmRegistrarMatriculasVie.tblEstudiantes.getValueAt(filaSelecEstudiante, 0);
-        Long idAsgnacion = (Long) frmRegistrarMatriculasVie.tblEstudiantes.getValueAt(filaSelecAsignacion, 0);
+        Long idAsgnacion = Long.valueOf(frmRegistrarMatriculasVie.tblAsignaciones.getValueAt(filaSelecAsignacion, 0).toString());
+        Long idEstudiante = Long.valueOf(frmRegistrarMatriculasVie.tblEstudiantes.getValueAt(filaSelecEstudiante, 0).toString());;
         //le establcemos los ids a los objetos que conforman la matricula
         asignacion.setIdAsignacion(idAsgnacion);
         estudiante.setIdEstudiante(idEstudiante);
