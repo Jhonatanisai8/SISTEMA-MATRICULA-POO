@@ -1,12 +1,15 @@
 package com.procesos;
 
+import com.Modelo.entidades.Asignacion;
 import com.Modelo.entidades.Curso;
 import com.Modelo.entidades.DaoImplementacion.CursoReposiImple;
 import com.Modelo.entidades.DaoImplementacion.DocenteReposioImple;
 import com.Modelo.entidades.DaoImplementacion.HorarioRepoImple;
+import com.Modelo.entidades.DaoImplementacion.SalonReposiImple;
 import com.Modelo.entidades.Docente;
 import com.Modelo.entidades.Horario;
 import com.Modelo.entidades.InterfaceDao.Repositorio;
+import com.Modelo.entidades.Salon;
 import com.Utelerias.Constantes.ConstantesFormularioAdmHorarios;
 import com.Utelerias.Constantes.ConstantesFormularioMenu;
 import com.Utelerias.Constantes.ConstantesFormularioRegistrarAsignacion;
@@ -42,5 +45,34 @@ public class ProcesosFormularioRegistroAsignaciones
         ServiciosAdmAsignaciones.mostrarRegistrosEnTablas(frmAdministrarAsignacionesView);
         ServiciosAdmAsignaciones.listarEnTablaCursos(frmAdministrarAsignacionesView.tblCursos, ENCABEZADO_CURSO, repositorio.listar());
         ServiciosAdmAsignaciones.listarEnTablaDocentes(frmAdministrarAsignacionesView.tblDocentes, ENCABEZADO_DOCENTE, repoDocente.listar());
+    }
+
+    public static Asignacion crearAsignacionDesdeFormulario(frmRegistrarAsignacionesView frmAsignacionesVie) {
+        Asignacion asignacion = new Asignacion();
+        DocenteReposioImple docenteReposioImple = new DocenteReposioImple();
+        CursoReposiImple cursoReposiImple = new CursoReposiImple();
+        SalonReposiImple salonReposiImple = new SalonReposiImple();
+        HorarioRepoImple horarioRepoImple = new HorarioRepoImple();
+        //primero obtenemos la fila seleccionada de las tablas del frm
+        int filaSeleccionadaDocente = frmAsignacionesVie.tblDocentes.getSelectedRow();
+        int filaSeleccionadaCurso = frmAsignacionesVie.tblCursos.getSelectedRow();
+        int filaSeleccionadaSalon = frmAsignacionesVie.tblSalones.getSelectedRow();
+        int filaSeleccionadaHorario = frmAsignacionesVie.tblHorarios.getSelectedRow();
+        //ahora los ids
+        Long idDocente = (Long) frmAsignacionesVie.tblDocentes.getValueAt(filaSeleccionadaDocente, 0);
+        Long idCurso = (Long) frmAsignacionesVie.tblCursos.getValueAt(filaSeleccionadaCurso, 0);
+        Long idSalon = (Long) frmAsignacionesVie.tblSalones.getValueAt(filaSeleccionadaSalon, 0);
+        Long idHorario = (Long) frmAsignacionesVie.tblHorarios.getValueAt(filaSeleccionadaHorario, 0);
+        //creamos el docente
+        Docente docente = docenteReposioImple.porDni(idDocente);
+        Curso curso = cursoReposiImple.porDni(idCurso);
+        Salon salon = salonReposiImple.porDni(idSalon);
+        Horario horario = horarioRepoImple.porDni(idHorario);
+        //asignamos al abjeto asignacin 
+        asignacion.setDocente(docente);
+        asignacion.setCurso(curso);
+        asignacion.setSalon(salon);
+        asignacion.setHorario(horario);
+        return asignacion;
     }
 }
