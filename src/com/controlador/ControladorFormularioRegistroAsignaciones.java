@@ -1,6 +1,6 @@
 package com.controlador;
 
-import com.procesos.ProcesosFormularioAdmAsignaciones;
+import com.procesos.ProcesosFormularioRegistroAsignaciones;
 import com.procesos.Validaciones.ValidacionesFormularioRegistrarAsignacion;
 import com.vista.frmRegistrarAsignacionesView;
 import com.vista.frmMenuView;
@@ -21,7 +21,7 @@ public class ControladorFormularioRegistroAsignaciones
         this.frmAdministrarAsignacionesView.btnBuscarHorarios.addActionListener(this);
         this.frmAdministrarAsignacionesView.btnBuscarSalones.addActionListener(this);
         this.frmAdministrarAsignacionesView.btnRegistrarAsignacion.addActionListener(this);
-        ProcesosFormularioAdmAsignaciones.presentarFormulario(this.frmMenuView.dsktEscritorio, this.frmAdministrarAsignacionesView);
+        ProcesosFormularioRegistroAsignaciones.presentarFormulario(this.frmMenuView.dsktEscritorio, this.frmAdministrarAsignacionesView);
     }
 
     @Override

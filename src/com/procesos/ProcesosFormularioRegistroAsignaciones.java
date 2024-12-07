@@ -14,7 +14,7 @@ import com.procesos.Servicios.ServiciosAdmAsignaciones;
 import com.vista.frmRegistrarAsignacionesView;
 import javax.swing.JDesktopPane;
 
-public class ProcesosFormularioAdmAsignaciones
+public class ProcesosFormularioRegistroAsignaciones
         implements ConstantesFormularioAdmHorarios, ConstantesFormularioRegistrarAsignacion,
         ConstantesFormularioMenu {
 
