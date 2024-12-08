@@ -9,10 +9,10 @@ public class ControladorFormularioVerInformacionMatricula {
     private final frmMenuView frmMenuView;
     private final frmVerInformacionMatriculaView frmInformacionMatriculaVie;
 
-    public ControladorFormularioVerInformacionMatricula(frmMenuView frmMenuView, frmVerInformacionMatriculaView frmInformacionMatriculaVie) {
+    public ControladorFormularioVerInformacionMatricula(frmMenuView frmMenuView, frmVerInformacionMatriculaView frmInformacionMatriculaVie, Long id) {
         this.frmMenuView = frmMenuView;
         this.frmInformacionMatriculaVie = frmInformacionMatriculaVie;
-        ProcesosFormularioVerInformacionMatricula.presentarFormulario(this.frmMenuView.dsktEscritorio, this.frmInformacionMatriculaVie);
+        ProcesosFormularioVerInformacionMatricula.presentarFormulario(this.frmMenuView.dsktEscritorio, this.frmInformacionMatriculaVie,id);
     }
 
 }
