@@ -26,6 +26,7 @@ public interface ConstantesFormulariosMatricula {
 
     final String[] ENCABEZADOS_TABLA_MATRICULA = {
         "ID",
+        "ID EST",
         "ESTUDIANTE",
         "EMAIL ESTUDIANTE",
         "DOCENTE",
@@ -34,5 +35,5 @@ public interface ConstantesFormulariosMatricula {
         "FECHA MATRICULA"
     };
 
-    final int ANCHO_COLUMNAS_TABLA_MATRICULAS[] = {25, 150, 100, 150, 20, 100, 70};
+    final int ANCHO_COLUMNAS_TABLA_MATRICULAS[] = {25, 25, 150, 100, 150, 20, 100, 70};
 }
