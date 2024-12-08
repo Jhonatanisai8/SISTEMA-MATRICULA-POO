@@ -83,6 +83,19 @@ public class CursoReposiImple
 
     @Override
     public void modificar(Curso curso) {
+        try (
+                Connection con = getConnection(); PreparedStatement st = con.prepareStatement(SQL_UPDATE_CURSO);) {
+            //le establecemos los parametros 
+            st.setString(1, curso.getCodigoCurso());
+            st.setString(2, curso.getNombreCurso());
+            st.setString(3, curso.getDescripcion());
+            st.setInt(4, curso.getGrado());
+            st.setLong(5, curso.getIdCurso());
+            //ejecutamos
+            st.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("error al modificar un curso: " + e.getMessage());
+        }
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
