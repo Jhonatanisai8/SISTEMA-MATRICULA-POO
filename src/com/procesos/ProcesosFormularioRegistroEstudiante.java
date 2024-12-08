@@ -73,6 +73,9 @@ public class ProcesosFormularioRegistroEstudiante
         desktopPane.add(fr);
         fr.toFront();
         fr.setVisible(true);
+        fr.txtNombre.requestFocus();
+        ServiciosEstudianteDocente.mostrarDatosApoderadoTabla(fr.tblApoderados, ENCABEZADOS_APODERADO_TABLA, obtenerLista());
+        ServiciosEstudianteDocente.establecerAnchoColumnasTabla(fr.tblApoderados, ANCHO_COLUMNAS);
     }
 
     public static Estudiante crearEstudiante(frmRegistrarEstudianteView frmEstudianteView, int fila) {
