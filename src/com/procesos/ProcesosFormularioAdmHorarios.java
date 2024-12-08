@@ -17,12 +17,17 @@ import javax.swing.JOptionPane;
 
 public class ProcesosFormularioAdmHorarios
         implements ConstantesFormularioAdmHorarios {
-
+    
     private static List<Horario> obtenerListaHorarios() {
         Repositorio<Horario> repo = new HorarioRepoImple();
         return repo.listar();
     }
-
+    
+    public static Horario obtenerHorario(Long id) {
+        HorarioRepoImple repo = new HorarioRepoImple();
+        return repo.porDni(id);
+    }
+    
     public static void presentarFormulario(JDesktopPane esDesktopPane, frmAdmistrarHorariosView frmAdmistrarHorariosView) {
         ServiciosAdmHorarios admHorarios = new ServiciosAdmHorarios();
         rellenarComboBox(frmAdmistrarHorariosView);
@@ -33,7 +38,7 @@ public class ProcesosFormularioAdmHorarios
         admHorarios.mostrarRegistrosEnTabla(frmAdmistrarHorariosView.tblDataHorarios, ENCABEZADOS_TABLA, obtenerListaHorarios());
         admHorarios.establecerAnchoColumnasTabla(frmAdmistrarHorariosView.tblDataHorarios, TAMANIO_COLUMNAS);
     }
-
+    
     public static Horario crearHorarioFormulario(frmAdmistrarHorariosView frmAdmistrarHorariosView) {
         Horario miHorario = null;
         String validacion = ValidacionesFrmAdmHorarios.validarCampos(frmAdmistrarHorariosView);
@@ -56,7 +61,7 @@ public class ProcesosFormularioAdmHorarios
         }
         return miHorario;
     }
-
+    
     private static void rellenarComboBox(frmAdmistrarHorariosView frmAdmistrarHorariosView) {
         frmAdmistrarHorariosView.cbxDiaSemana.removeAllItems();
         frmAdmistrarHorariosView.cbxHoraFin.removeAllItems();
@@ -66,5 +71,14 @@ public class ProcesosFormularioAdmHorarios
         frmAdmistrarHorariosView.cbxHoraFin.setModel(new DefaultComboBoxModel<>(HORA_FIN));
         frmAdmistrarHorariosView.cbxHoraInicio.setModel(new DefaultComboBoxModel<>(HORA_INICIO));
         frmAdmistrarHorariosView.cbxTurno.setModel(new DefaultComboBoxModel<>(TURNO));
+    }
+    
+    public static void presentarInformacionHorario(frmAdmistrarHorariosView frmAdmistrarHorariosView, Horario horario) {
+        //ponemos la informacion del horario en los campos del formulario 
+        frmAdmistrarHorariosView.cbxDiaSemana.setSelectedItem(horario.getDiaSemana());
+        frmAdmistrarHorariosView.cbxHoraInicio.setSelectedItem(String.valueOf(horario.getHoraInicio()));
+        frmAdmistrarHorariosView.cbxHoraFin.setSelectedItem(String.valueOf(horario.getHoraFin()));
+        frmAdmistrarHorariosView.cbxTurno.setSelectedItem(horario.getTurno());
+        frmAdmistrarHorariosView.btnGuardarHorario.setEnabled(false);
     }
 }
