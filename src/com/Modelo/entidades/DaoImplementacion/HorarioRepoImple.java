@@ -7,6 +7,7 @@ import com.Modelo.entidades.InterfaceDao.Repositorio;
 import java.util.List;
 import java.sql.*;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class HorarioRepoImple
         implements Repositorio<Horario>,
@@ -96,7 +97,19 @@ public class HorarioRepoImple
 
     @Override
     public void eliminar(Long id) {
-
+        boolean huboExcepcion = false;
+        try (
+                Connection con = getConection(); PreparedStatement st = con.prepareStatement(SQL_DELETE_HORARIO);) {
+            st.setLong(1, id);
+            st.executeUpdate();
+        } catch (Exception e) {
+            huboExcepcion = true;
+            System.out.println("Hubo Excepcion: ");
+        }
+        if (!huboExcepcion) {
+            JOptionPane.showMessageDialog(null, "Horario eliminado correctamente", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "El horario esta en uso en una Asignacion. No se puede Eliminar", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
-
 }
