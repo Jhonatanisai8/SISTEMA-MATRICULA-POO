@@ -13,15 +13,16 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class ControladorFormularioAdmHorarios
         implements ActionListener {
-
+    
     private final frmMenuView frmMenuView;
     private final frmAdmistrarHorariosView frmAdmistrarHorariosView;
     private Horario miHorario;
     private Long id;
-
+    
     public ControladorFormularioAdmHorarios(frmMenuView frmMenuView, frmAdmistrarHorariosView frmAdmistrarHorariosView) {
         this.frmMenuView = frmMenuView;
         this.frmAdmistrarHorariosView = frmAdmistrarHorariosView;
@@ -32,7 +33,7 @@ public class ControladorFormularioAdmHorarios
         ProcesosFormularioAdmHorarios.presentarFormulario(this.frmMenuView.dsktEscritorio, this.frmAdmistrarHorariosView);
         clickSobreTabla();
     }
-
+    
     private void clickSobreTabla() {
         frmAdmistrarHorariosView.tblDataHorarios.addMouseListener(new MouseAdapter() {
             @Override
@@ -45,12 +46,12 @@ public class ControladorFormularioAdmHorarios
             }
         });
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         HorarioRepoImple repo = new HorarioRepoImple();
         ServiciosAdmHorarios admHorarios = new ServiciosAdmHorarios();
-
+        
         if (e.getSource() == this.frmAdmistrarHorariosView.btnGuardarHorario) {
             miHorario = ProcesosFormularioAdmHorarios.crearHorarioFormulario(this.frmAdmistrarHorariosView);
             if (miHorario == null) {
@@ -64,14 +65,14 @@ public class ControladorFormularioAdmHorarios
             }
             System.out.println("click sobre el boton guardar.....");
         }
-
+        
         if (e.getSource() == this.frmAdmistrarHorariosView.btnModificar) {
             int fila = frmAdmistrarHorariosView.tblDataHorarios.getSelectedRow();
             if (fila < 0) {
                 JOptionPane.showMessageDialog(null, "Por favor seleccione un horario para poder modificar.", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
-
+            
             int op = JOptionPane.showConfirmDialog(null, "¿Estas seguro de modificar el Horario?", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
             if (op == 0) {
                 this.miHorario = ProcesosFormularioAdmHorarios.crearHorarioFormulario(frmAdmistrarHorariosView);
@@ -84,7 +85,7 @@ public class ControladorFormularioAdmHorarios
             }
             System.out.println("Click sobre el boton modificar....");
         }
-
+        
         if (e.getSource() == this.frmAdmistrarHorariosView.btnEliminar) {
             int fila = frmAdmistrarHorariosView.tblDataHorarios.getSelectedRow();
             if (fila < 0) {
@@ -97,8 +98,20 @@ public class ControladorFormularioAdmHorarios
             ServiciosAdmHorarios.limpiarCampos(frmAdmistrarHorariosView);
             frmAdmistrarHorariosView.btnGuardarHorario.setEnabled(true);
             System.out.println("Click sobre el boton eliminar..");
-
+            
+        }
+        
+        if (e.getSource() == this.frmAdmistrarHorariosView.btnBuscarHorario) {
+            if (frmAdmistrarHorariosView.txtBuscar.getText().isBlank()) {
+                JOptionPane.showMessageDialog(null, "Por ingrese el dia de la semana de el/los horario.", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
+                admHorarios.mostrarRegistrosEnTabla(frmAdmistrarHorariosView.tblDataHorarios, ENCABEZADOS_TABLA, repo.listar());
+                admHorarios.establecerAnchoColumnasTabla(frmAdmistrarHorariosView.tblDataHorarios, TAMANIO_COLUMNAS);
+                ServiciosAdmHorarios.limpiarCampos(frmAdmistrarHorariosView);
+                return;
+            }
+            DefaultTableModel modelo = (DefaultTableModel) frmAdmistrarHorariosView.tblDataHorarios.getModel();
+            frmAdmistrarHorariosView.tblDataHorarios.setModel(repo.listarHorariosDefaultTableModel(modelo, frmAdmistrarHorariosView.txtBuscar.getText()));
         }
     }
-
+    
 }
