@@ -30,6 +30,7 @@ public interface ConsultasSQLMatricula {
     final String SQL_SELECT_INFORMACION = """
                                           SELECT 
                                               m.id_matricula AS ID_Matricula,
+                                          e.id_estudiante AS ID_ES,
                                               CONCAT(p.nombre, ' ', p.apellido_paterno, ' ', p.apellido_materno) AS Estudiante,
                                               e.email_educativo AS Email_Educativo,
                                               CONCAT(pd.nombre, ' ', pd.apellido_paterno, ' ', pd.apellido_materno) AS Docente,
