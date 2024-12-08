@@ -105,7 +105,7 @@ public class SalonReposiImple
 
     public DefaultTableModel listarCursosDefaultTableModel(DefaultTableModel defaultTableModel, String nombre) {
         defaultTableModel.setRowCount(0);
-        final String SQL_SELECT_RONALDO = "SELECT id_salon,nombre_salon,capacidad,referencia,vacantes_disponibles FROM salon WHERE LIKE '%" + nombre + "%'";
+        final String SQL_SELECT_RONALDO = "SELECT id_salon,nombre_salon,capacidad,referencia,vacantes_disponibles FROM salon WHERE nombre_salon LIKE '%" + nombre + "%'";
         try (
                 Connection con = getConection(); PreparedStatement stSalon = con.prepareStatement(SQL_SELECT_RONALDO); ResultSet rs = stSalon.executeQuery();) {
             ResultSetMetaData data = rs.getMetaData();

@@ -14,25 +14,27 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class ControladorFormularioAdmSalones
         implements ActionListener {
-
+    
     private final frmMenuView frmMenuView;
     private final frmAdmistrarSalonesView frmAdmistrarSalonesView;
     private Salon miSalon;
     private Long id;
-
+    
     public ControladorFormularioAdmSalones(frmMenuView frmMenuView, frmAdmistrarSalonesView frmAdmistrarSalonesView) {
         this.frmMenuView = frmMenuView;
         this.frmAdmistrarSalonesView = frmAdmistrarSalonesView;
         this.frmAdmistrarSalonesView.btnGuardarSalon.addActionListener(this);
         this.frmAdmistrarSalonesView.btnModificar.addActionListener(this);
         this.frmAdmistrarSalonesView.btnEliminar.addActionListener(this);
+        this.frmAdmistrarSalonesView.btnBuscar.addActionListener(this);
         ProcesosFormularioAdmistrarSalones.presentarFormulario(this.frmMenuView.dsktEscritorio, this.frmAdmistrarSalonesView);
         clickSobreTabla();
     }
-
+    
     private void clickSobreTabla() {
         frmAdmistrarSalonesView.tblData.addMouseListener(new MouseAdapter() {
             @Override
@@ -45,7 +47,7 @@ public class ControladorFormularioAdmSalones
             }
         });
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         SalonReposiImple repo = new SalonReposiImple();
@@ -67,7 +69,7 @@ public class ControladorFormularioAdmSalones
                 JOptionPane.showMessageDialog(null, "Por favor selecione una fila.", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
-
+            
             int opcion = JOptionPane.showConfirmDialog(null, "¿ESTAS SEGURO DE MODICAR DICHO SALON?", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
             if (opcion == 0) {
                 this.miSalon = ProcesosFormularioAdmistrarSalones.creaSalonFormulario(this.frmAdmistrarSalonesView);
@@ -81,7 +83,7 @@ public class ControladorFormularioAdmSalones
             }
             System.out.println("Click sobre el boton modificar.....");
         }
-
+        
         if (e.getSource() == this.frmAdmistrarSalonesView.btnEliminar) {
             int fila = this.frmAdmistrarSalonesView.tblData.getSelectedRow();
             if (fila < 0) {
@@ -95,7 +97,17 @@ public class ControladorFormularioAdmSalones
             frmAdmistrarSalonesView.btnGuardarSalon.setEnabled(true);
             System.out.println("Click sobre eliminar salon.....");
         }
-
+        
+        if (e.getSource() == this.frmAdmistrarSalonesView.btnBuscar) {
+            if (this.frmAdmistrarSalonesView.txtBuscar.getText().isBlank()) {
+                JOptionPane.showMessageDialog(null, "Por favor ingrese el nombre del salon a buscar.", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
+                admSalones.mostrarRegistrosEnTabla(this.frmAdmistrarSalonesView.tblData, TITULOS_COLUMNAS, repo.listar());
+                admSalones.establecerAnchoColumnasTabla(this.frmAdmistrarSalonesView.tblData, ANCHO_COLUMAS);
+                return;
+            }
+            DefaultTableModel model = (DefaultTableModel) frmAdmistrarSalonesView.tblData.getModel();
+            frmAdmistrarSalonesView.tblData.setModel(repo.listarCursosDefaultTableModel(model, frmAdmistrarSalonesView.txtBuscar.getText()));
+            System.out.println("Click sobre el boton buscar curso...");
+        }
     }
-
 }
