@@ -28,6 +28,7 @@ public class ControladorFormularioAdmSalones
         this.frmAdmistrarSalonesView = frmAdmistrarSalonesView;
         this.frmAdmistrarSalonesView.btnGuardarSalon.addActionListener(this);
         this.frmAdmistrarSalonesView.btnModificar.addActionListener(this);
+        this.frmAdmistrarSalonesView.btnEliminar.addActionListener(this);
         ProcesosFormularioAdmistrarSalones.presentarFormulario(this.frmMenuView.dsktEscritorio, this.frmAdmistrarSalonesView);
         clickSobreTabla();
     }
@@ -66,7 +67,7 @@ public class ControladorFormularioAdmSalones
                 JOptionPane.showMessageDialog(null, "Por favor selecione una fila.", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
-            
+
             int opcion = JOptionPane.showConfirmDialog(null, "¿ESTAS SEGURO DE MODICAR DICHO SALON?", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
             if (opcion == 0) {
                 this.miSalon = ProcesosFormularioAdmistrarSalones.creaSalonFormulario(this.frmAdmistrarSalonesView);
@@ -80,6 +81,21 @@ public class ControladorFormularioAdmSalones
             }
             System.out.println("Click sobre el boton modificar.....");
         }
+
+        if (e.getSource() == this.frmAdmistrarSalonesView.btnEliminar) {
+            int fila = this.frmAdmistrarSalonesView.tblData.getSelectedRow();
+            if (fila < 0) {
+                JOptionPane.showMessageDialog(null, "Por favor seleccione un Salon para poder eliminar.", "ATENCION", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            repo.eliminar(id);
+            admSalones.mostrarRegistrosEnTabla(this.frmAdmistrarSalonesView.tblData, TITULOS_COLUMNAS, repo.listar());
+            admSalones.establecerAnchoColumnasTabla(this.frmAdmistrarSalonesView.tblData, ANCHO_COLUMAS);
+            ServiciosAdmSalones.limpiarCampos(this.frmAdmistrarSalonesView);
+            frmAdmistrarSalonesView.btnGuardarSalon.setEnabled(true);
+            System.out.println("Click sobre eliminar salon.....");
+        }
+
     }
 
 }
