@@ -8,6 +8,7 @@ import java.util.List;
 import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class HorarioRepoImple
         implements Repositorio<Horario>,
@@ -111,5 +112,25 @@ public class HorarioRepoImple
         } else {
             JOptionPane.showMessageDialog(null, "El horario esta en uso en una Asignacion. No se puede Eliminar", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
         }
+    }
+
+    public DefaultTableModel listarHorariosDefaultTableModel(DefaultTableModel defaultTableModel, String nombre) {
+        defaultTableModel.setRowCount(0);
+        String SQL_BUSCAR = "SELECT id_horario,dia_semana,hora_inicio,hora_fin,turno FROM horario WHERE dia_semana LIKE '%" + nombre + "%'";
+        try (
+                Connection con = getConection(); PreparedStatement stCurso = con.prepareStatement(SQL_BUSCAR); ResultSet rs = stCurso.executeQuery();) {
+            ResultSetMetaData data = rs.getMetaData();
+            int columnas = data.getColumnCount();
+            while (rs.next()) {
+                Object[] fila = new Object[columnas];
+                for (int i = 1; i <= columnas; i++) {
+                    fila[i - 1] = rs.getObject(i);
+                }
+                defaultTableModel.addRow(fila);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al listar ciertos horarios  buscados: " + e.getMessage());
+        }
+        return defaultTableModel;
     }
 }
