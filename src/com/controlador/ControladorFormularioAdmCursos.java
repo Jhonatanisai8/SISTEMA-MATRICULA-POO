@@ -70,14 +70,17 @@ public class ControladorFormularioAdmCursos
                 JOptionPane.showMessageDialog(null, "Por favor selecione una fila.", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
-            this.miCurso = ProcesosFormularioAdmistrarCursos.creaCursoFormulario(this.frmAdmistrarCursos);
-            this.miCurso.setIdCurso(id);
-            repo.modificar(this.miCurso);
-            admCurso.mostrarRegistrosEnTabla(frmAdmistrarCursos.tblDatosCursos, ENCABEZADO_COLUMNAS_TABLA, repo.listar());
-            admCurso.establecerAnchoColumnasTabla(this.frmAdmistrarCursos.tblDatosCursos, ANCH0_COLUMNAS);
-            ServiciosCurso.limpiarCampos(this.frmAdmistrarCursos);
-            this.frmAdmistrarCursos.btnGuardarCurso.setEnabled(true);
-            JOptionPane.showMessageDialog(null, "Curso Modificado Correctamente", "ATENCIÓN", 3);
+            int opcion = JOptionPane.showConfirmDialog(null, "¿ESTAS SEGURO DE MODIFICAR DICHO CURSO?", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
+            if (opcion == 0) {
+                this.miCurso = ProcesosFormularioAdmistrarCursos.creaCursoFormulario(this.frmAdmistrarCursos);
+                this.miCurso.setIdCurso(id);
+                repo.modificar(this.miCurso);
+                admCurso.mostrarRegistrosEnTabla(frmAdmistrarCursos.tblDatosCursos, ENCABEZADO_COLUMNAS_TABLA, repo.listar());
+                admCurso.establecerAnchoColumnasTabla(this.frmAdmistrarCursos.tblDatosCursos, ANCH0_COLUMNAS);
+                ServiciosCurso.limpiarCampos(this.frmAdmistrarCursos);
+                this.frmAdmistrarCursos.btnGuardarCurso.setEnabled(true);
+                JOptionPane.showMessageDialog(null, "Curso Modificado Correctamente", "ATENCIÓN", 3);
+            }
             System.out.println("Click sobre el boton modificar....");
         }
 
@@ -103,7 +106,7 @@ public class ControladorFormularioAdmCursos
                 return;
             }
             DefaultTableModel modelo = (DefaultTableModel) frmAdmistrarCursos.tblDatosCursos.getModel();
-            frmAdmistrarCursos.tblDatosCursos.setModel(repo.listarCursosDefaultTableModel(modelo,frmAdmistrarCursos.txtBuscar.getText()));
+            frmAdmistrarCursos.tblDatosCursos.setModel(repo.listarCursosDefaultTableModel(modelo, frmAdmistrarCursos.txtBuscar.getText()));
         }
 
     }
