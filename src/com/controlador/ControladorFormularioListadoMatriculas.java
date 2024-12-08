@@ -6,6 +6,7 @@ import com.vista.frmMenuView;
 import com.vista.frmVerInformacionMatriculaView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 public class ControladorFormularioListadoMatriculas
         implements ActionListener {
@@ -24,8 +25,17 @@ public class ControladorFormularioListadoMatriculas
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.frmListadoMatriculasView.btnVerInformacionCompleta) {
-            frmVerInformacionMatriculaView informacionMatriculaView = new frmVerInformacionMatriculaView();
-            ControladorFormularioVerInformacionMatricula cfvim = new ControladorFormularioVerInformacionMatricula(this.frmMenuView, informacionMatriculaView);
+            int fila = frmListadoMatriculasView.tblDatos.getSelectedRow();
+            Long idEstu;
+            if (fila < 0) {
+                JOptionPane.showMessageDialog(null, "Por favor seleccione una fila.", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            } else {
+                idEstu = Long.valueOf(frmListadoMatriculasView.tblDatos.getValueAt(fila, 1).toString());
+                frmVerInformacionMatriculaView informacionMatriculaView = new frmVerInformacionMatriculaView();
+                ControladorFormularioVerInformacionMatricula cfvim = new ControladorFormularioVerInformacionMatricula(this.frmMenuView, informacionMatriculaView, idEstu);
+            }
+            System.out.println("Id: => " + idEstu);
             System.out.println("Click sobre el boton de ver informacion completa...");
         }
     }
