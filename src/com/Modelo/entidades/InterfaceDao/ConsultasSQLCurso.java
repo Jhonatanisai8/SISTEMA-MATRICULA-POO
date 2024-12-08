@@ -10,4 +10,6 @@ public interface ConsultasSQLCurso {
             + "VALUES (?,?,?,?,?)";
 
     final String SQL_UPDATE_CURSO = "UPDATE curso SET codigo_curso = ?, nombre_curso = ?, descripcion = ?, grado = ? WHERE id_curso = ?";
+
+    final String SQL_DELETE_CURSO = "DELETE FROM curso WHERE id_curso = ?";
 }

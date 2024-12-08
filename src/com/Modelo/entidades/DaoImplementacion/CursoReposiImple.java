@@ -7,6 +7,7 @@ import com.Modelo.entidades.InterfaceDao.Repositorio;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class CursoReposiImple
         implements Repositorio<Curso>,
@@ -88,8 +89,23 @@ public class CursoReposiImple
     }
 
     @Override
-    public void eliminar(Long curso) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void eliminar(Long id) {
+        boolean huboExcepcion = false;
+        try (
+                Connection con = getConnection(); PreparedStatement stEliminar = con.prepareStatement(SQL_DELETE_CURSO);) {
+            stEliminar.setLong(1, id);
+            stEliminar.executeUpdate();
+        } catch (Exception e) {
+            huboExcepcion = true;
+            System.out.println("Hubo Excepcion");
+        }
+
+        if (!huboExcepcion) {
+            JOptionPane.showMessageDialog(null, "Curso Eliminado Correctamente.", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "El curso esta en uso en una Asignacion, No se Puede Eliminar.", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
+        }
+
     }
 
     private Curso crearCurso(final ResultSet rs) throws SQLException {
