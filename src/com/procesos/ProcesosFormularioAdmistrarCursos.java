@@ -10,7 +10,6 @@ import com.vista.frmAdmistrarCursos;
 import java.util.List;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 public class ProcesosFormularioAdmistrarCursos
         implements ConstantesFormularioAdmCursos {
@@ -75,10 +74,4 @@ public class ProcesosFormularioAdmistrarCursos
         frmAdmistrarCursos.cbxGrado.setSelectedItem(String.valueOf(curso.getGrado()));
         frmAdmistrarCursos.btnGuardarCurso.setEnabled(false);
     }
-
-//    public  listarCursosBuscados(frmAdmistrarCursos frmAdmistrarCursos) {
-//        CursoReposiImple cri = new CursoReposiImple();
-//        DefaultTableModel modelo = (DefaultTableModel) frmAdmistrarCursos.tblDatosCursos.getModel();
-//        cri.listarCursosDefaultTableModel(modelo, frmAdmistrarCursos.txtBuscar.getText());
-//    }
 }
