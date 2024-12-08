@@ -19,6 +19,7 @@ public class frmListadoMatriculasView extends javax.swing.JInternalFrame {
         txtBuscarMatricula = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         btnBuscarMatricula = new javax.swing.JButton();
+        btnVerInformacionCompleta = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(254, 254, 254));
 
@@ -37,6 +38,13 @@ public class frmListadoMatriculasView extends javax.swing.JInternalFrame {
 
         btnBuscarMatricula.setText("Buscar Matricula");
 
+        btnVerInformacionCompleta.setText("Ver Informacion Completa");
+        btnVerInformacionCompleta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerInformacionCompletaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlFondoLayout = new javax.swing.GroupLayout(pnlFondo);
         pnlFondo.setLayout(pnlFondoLayout);
         pnlFondoLayout.setHorizontalGroup(
@@ -52,6 +60,9 @@ public class frmListadoMatriculasView extends javax.swing.JInternalFrame {
             .addGroup(pnlFondoLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1140, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pnlFondoLayout.createSequentialGroup()
+                .addGap(670, 670, 670)
+                .addComponent(btnVerInformacionCompleta, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnlFondoLayout.setVerticalGroup(
             pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -64,7 +75,9 @@ public class frmListadoMatriculasView extends javax.swing.JInternalFrame {
                     .addComponent(btnBuscarMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(btnVerInformacionCompleta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -81,9 +94,14 @@ public class frmListadoMatriculasView extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnVerInformacionCompletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerInformacionCompletaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVerInformacionCompletaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnBuscarMatricula;
+    public javax.swing.JButton btnVerInformacionCompleta;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private static javax.swing.JPanel pnlFondo;
