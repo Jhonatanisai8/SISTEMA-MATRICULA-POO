@@ -31,17 +31,6 @@ public class CursoReposiImple
         return listaCursos;
     }
 
-    private Curso crearCurso(final ResultSet rs) throws SQLException {
-        Curso miCurso = new Curso();
-        miCurso.setIdCurso(rs.getLong("ID"));
-        miCurso.setCodigoCurso(rs.getString("CODIGO"));
-        miCurso.setNombreCurso(rs.getString("NOMBRE_CURSO"));
-        miCurso.setDescripcion(rs.getString("DESCRIPCION"));
-        miCurso.setGrado(rs.getInt("GRADO"));
-        miCurso.setNivel(rs.getString("NIVEL"));
-        return miCurso;
-    }
-
     @Override
     public Curso porDni(Long dni) {
         Curso curso = null;
@@ -96,12 +85,22 @@ public class CursoReposiImple
         } catch (Exception e) {
             System.out.println("error al modificar un curso: " + e.getMessage());
         }
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void eliminar(Long curso) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private Curso crearCurso(final ResultSet rs) throws SQLException {
+        Curso miCurso = new Curso();
+        miCurso.setIdCurso(rs.getLong("ID"));
+        miCurso.setCodigoCurso(rs.getString("CODIGO"));
+        miCurso.setNombreCurso(rs.getString("NOMBRE_CURSO"));
+        miCurso.setDescripcion(rs.getString("DESCRIPCION"));
+        miCurso.setGrado(rs.getInt("GRADO"));
+        miCurso.setNivel(rs.getString("NIVEL"));
+        return miCurso;
     }
 
 }
