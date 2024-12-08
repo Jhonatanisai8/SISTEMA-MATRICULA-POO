@@ -81,12 +81,22 @@ public class HorarioRepoImple
 
     @Override
     public void modificar(Horario horario) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try (
+                Connection con = getConection(); PreparedStatement st = con.prepareStatement(SQL_UPDATE_HORARIO);) {
+            st.setString(1, horario.getDiaSemana());
+            st.setTime(2, Time.valueOf(horario.getHoraInicio()));
+            st.setTime(3, Time.valueOf(horario.getHoraFin()));
+            st.setString(4, horario.getTurno());
+            st.setLong(5, horario.getIdHorario());
+            st.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("error al modificar  un horario: " + e.getMessage());
+        }
     }
 
     @Override
     public void eliminar(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
     }
 
 }

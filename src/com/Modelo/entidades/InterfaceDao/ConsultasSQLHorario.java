@@ -14,4 +14,6 @@ public interface ConsultasSQLHorario {
             + " FROM "
             + "    horario";
 
+    final String SQL_UPDATE_HORARIO = "UPDATE horario SET dia_semana = ?, hora_inicio = ?, hora_fin = ?, turno = ? WHERE id_horario = ?";
+
 }
