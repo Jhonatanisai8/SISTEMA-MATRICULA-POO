@@ -19,6 +19,11 @@ public class ProcesosFormularioAdmistrarSalones
         return repo.listar();
     }
 
+    public static Salon obtenerSalon(Long id) {
+        SalonReposiImple imple = new SalonReposiImple();
+        return imple.porDni(id);
+    }
+
     public static void presentarFormulario(JDesktopPane desktopPane, frmAdmistrarSalonesView frmSalonesView) {
         ServiciosAdmSalones serviciosAdmSalones = new ServiciosAdmSalones();
         frmSalonesView.tblData.setFont(FUENTE_TEXT_PRESENTACION);
@@ -52,5 +57,13 @@ public class ProcesosFormularioAdmistrarSalones
         }
         //retornamos 
         return miSalon;
+    }
+
+    public static void presentarInformacionCurso(frmAdmistrarSalonesView frmAdmistrarSalonesView, Salon salon) {
+        //ponemos la informacion del objeto en los respectivos campos de informacion
+        frmAdmistrarSalonesView.txtNombreSalon.setText(salon.getNombreSalon());
+        frmAdmistrarSalonesView.txtReferenciaSalon.setText(salon.getReferencia());
+        frmAdmistrarSalonesView.spnCapacidad.setValue(String.valueOf(salon.getCapacidadEstudiantes()));
+        frmAdmistrarSalonesView.btnGuardarSalon.setEnabled(false);
     }
 }
