@@ -66,14 +66,18 @@ public class ControladorFormularioAdmSalones
                 JOptionPane.showMessageDialog(null, "Por favor selecione una fila.", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
-            this.miSalon = ProcesosFormularioAdmistrarSalones.creaSalonFormulario(this.frmAdmistrarSalonesView);
-            this.miSalon.setIdSalon(id);
-            repo.modificar(this.miSalon);
-            admSalones.mostrarRegistrosEnTabla(this.frmAdmistrarSalonesView.tblData, TITULOS_COLUMNAS, repo.listar());
-            admSalones.establecerAnchoColumnasTabla(this.frmAdmistrarSalonesView.tblData, ANCHO_COLUMAS);
-            ServiciosAdmSalones.limpiarCampos(this.frmAdmistrarSalonesView);
-            this.frmAdmistrarSalonesView.btnGuardarSalon.setEnabled(true);
-            JOptionPane.showMessageDialog(null, "Salon Modificado Correctamente", "ATENCIÓN", 3);
+            
+            int opcion = JOptionPane.showConfirmDialog(null, "¿ESTAS SEGURO DE MODICAR DICHO SALON?", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
+            if (opcion == 0) {
+                this.miSalon = ProcesosFormularioAdmistrarSalones.creaSalonFormulario(this.frmAdmistrarSalonesView);
+                this.miSalon.setIdSalon(id);
+                repo.modificar(this.miSalon);
+                admSalones.mostrarRegistrosEnTabla(this.frmAdmistrarSalonesView.tblData, TITULOS_COLUMNAS, repo.listar());
+                admSalones.establecerAnchoColumnasTabla(this.frmAdmistrarSalonesView.tblData, ANCHO_COLUMAS);
+                ServiciosAdmSalones.limpiarCampos(this.frmAdmistrarSalonesView);
+                this.frmAdmistrarSalonesView.btnGuardarSalon.setEnabled(true);
+                JOptionPane.showMessageDialog(null, "Salon Modificado Correctamente", "ATENCIÓN", 3);
+            }
             System.out.println("Click sobre el boton modificar.....");
         }
     }
