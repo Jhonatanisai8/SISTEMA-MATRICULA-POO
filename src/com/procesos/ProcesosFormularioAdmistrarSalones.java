@@ -63,7 +63,7 @@ public class ProcesosFormularioAdmistrarSalones
         //ponemos la informacion del objeto en los respectivos campos de informacion
         frmAdmistrarSalonesView.txtNombreSalon.setText(salon.getNombreSalon());
         frmAdmistrarSalonesView.txtReferenciaSalon.setText(salon.getReferencia());
-        frmAdmistrarSalonesView.spnCapacidad.setValue(String.valueOf(salon.getCapacidadEstudiantes()));
+        frmAdmistrarSalonesView.spnCapacidad.setValue(salon.getCapacidadEstudiantes());
         frmAdmistrarSalonesView.btnGuardarSalon.setEnabled(false);
     }
 }
