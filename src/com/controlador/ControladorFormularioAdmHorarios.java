@@ -16,12 +16,12 @@ import javax.swing.JOptionPane;
 
 public class ControladorFormularioAdmHorarios
         implements ActionListener {
-    
+
     private final frmMenuView frmMenuView;
     private final frmAdmistrarHorariosView frmAdmistrarHorariosView;
     private Horario miHorario;
     private Long id;
-    
+
     public ControladorFormularioAdmHorarios(frmMenuView frmMenuView, frmAdmistrarHorariosView frmAdmistrarHorariosView) {
         this.frmMenuView = frmMenuView;
         this.frmAdmistrarHorariosView = frmAdmistrarHorariosView;
@@ -32,7 +32,7 @@ public class ControladorFormularioAdmHorarios
         ProcesosFormularioAdmHorarios.presentarFormulario(this.frmMenuView.dsktEscritorio, this.frmAdmistrarHorariosView);
         clickSobreTabla();
     }
-    
+
     private void clickSobreTabla() {
         frmAdmistrarHorariosView.tblDataHorarios.addMouseListener(new MouseAdapter() {
             @Override
@@ -45,12 +45,12 @@ public class ControladorFormularioAdmHorarios
             }
         });
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         HorarioRepoImple repo = new HorarioRepoImple();
         ServiciosAdmHorarios admHorarios = new ServiciosAdmHorarios();
-        
+
         if (e.getSource() == this.frmAdmistrarHorariosView.btnGuardarHorario) {
             miHorario = ProcesosFormularioAdmHorarios.crearHorarioFormulario(this.frmAdmistrarHorariosView);
             if (miHorario == null) {
@@ -64,14 +64,14 @@ public class ControladorFormularioAdmHorarios
             }
             System.out.println("click sobre el boton guardar.....");
         }
-        
+
         if (e.getSource() == this.frmAdmistrarHorariosView.btnModificar) {
             int fila = frmAdmistrarHorariosView.tblDataHorarios.getSelectedRow();
             if (fila < 0) {
                 JOptionPane.showMessageDialog(null, "Por favor seleccione un horario para poder modificar.", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
-            
+
             int op = JOptionPane.showConfirmDialog(null, "¿Estas seguro de modificar el Horario?", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
             if (op == 0) {
                 this.miHorario = ProcesosFormularioAdmHorarios.crearHorarioFormulario(frmAdmistrarHorariosView);
@@ -84,6 +84,21 @@ public class ControladorFormularioAdmHorarios
             }
             System.out.println("Click sobre el boton modificar....");
         }
+
+        if (e.getSource() == this.frmAdmistrarHorariosView.btnEliminar) {
+            int fila = frmAdmistrarHorariosView.tblDataHorarios.getSelectedRow();
+            if (fila < 0) {
+                JOptionPane.showMessageDialog(null, "Por favor selecine un curso a eliminar.", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+            repo.eliminar(id);
+            admHorarios.mostrarRegistrosEnTabla(frmAdmistrarHorariosView.tblDataHorarios, ENCABEZADOS_TABLA, repo.listar());
+            admHorarios.establecerAnchoColumnasTabla(frmAdmistrarHorariosView.tblDataHorarios, TAMANIO_COLUMNAS);
+            ServiciosAdmHorarios.limpiarCampos(frmAdmistrarHorariosView);
+            frmAdmistrarHorariosView.btnGuardarHorario.setEnabled(true);
+            System.out.println("Click sobre el boton eliminar..");
+
+        }
     }
-    
+
 }
