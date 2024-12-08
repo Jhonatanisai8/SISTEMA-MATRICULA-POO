@@ -19,6 +19,11 @@ public class ProcesosFormularioAdmistrarCursos
         return repo.listar();
     }
 
+    public static Curso obtenerCurso(Long id) {
+        CursoReposiImple cursoReposiImple = new CursoReposiImple();
+        return cursoReposiImple.porDni(id);
+    }
+
     private static void rellenarComboBox(frmAdmistrarCursos frmAdmistrarCursos) {
         frmAdmistrarCursos.cbxGrado.removeAllItems();
         for (String string : LISTA_GRADOS) {
@@ -60,5 +65,13 @@ public class ProcesosFormularioAdmistrarCursos
         }
         //retornamos 
         return miCurso;
+    }
+
+    public static void presentarInformacionCurso(frmAdmistrarCursos frmAdmistrarCursos, Curso curso) {
+        //ponemos la informacion del objeto en los campos de informacion 
+        frmAdmistrarCursos.txtNombreCurso.setText(curso.getNombreCurso());
+        frmAdmistrarCursos.txtDiscripcion.setText(curso.getDescripcion());
+        frmAdmistrarCursos.cbxGrado.setSelectedItem(String.valueOf(curso.getGrado()));
+        frmAdmistrarCursos.btnGuardarCurso.setEnabled(false);
     }
 }
