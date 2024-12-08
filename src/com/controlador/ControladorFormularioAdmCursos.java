@@ -2,7 +2,6 @@ package com.controlador;
 
 import com.Modelo.entidades.Curso;
 import com.Modelo.entidades.DaoImplementacion.CursoReposiImple;
-import com.Modelo.entidades.InterfaceDao.Repositorio;
 import static com.Utelerias.Constantes.ConstantesFormularioAdmCursos.ENCABEZADO_COLUMNAS_TABLA;
 import static com.Utelerias.Constantes.ConstantesFormularioAdmCursos.ANCH0_COLUMNAS;
 import com.procesos.ProcesosFormularioAdmistrarCursos;

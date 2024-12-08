@@ -10,6 +10,8 @@ import com.vista.frmAdmistrarHorariosView;
 import com.vista.frmMenuView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 
 public class ControladorFormularioAdmHorarios
@@ -18,12 +20,27 @@ public class ControladorFormularioAdmHorarios
     private final frmMenuView frmMenuView;
     private final frmAdmistrarHorariosView frmAdmistrarHorariosView;
     private Horario miHorario;
+    private Long id;
 
     public ControladorFormularioAdmHorarios(frmMenuView frmMenuView, frmAdmistrarHorariosView frmAdmistrarHorariosView) {
         this.frmMenuView = frmMenuView;
         this.frmAdmistrarHorariosView = frmAdmistrarHorariosView;
         this.frmAdmistrarHorariosView.btnGuardarHorario.addActionListener(this);
         ProcesosFormularioAdmHorarios.presentarFormulario(this.frmMenuView.dsktEscritorio, this.frmAdmistrarHorariosView);
+        clickSobreTabla();
+    }
+
+    private void clickSobreTabla() {
+        frmAdmistrarHorariosView.tblDataHorarios.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int fila = frmAdmistrarHorariosView.tblDataHorarios.getSelectedRow();
+                id = Long.valueOf(frmAdmistrarHorariosView.tblDataHorarios.getValueAt(fila, 0).toString());
+                Horario horarioModificado = ProcesosFormularioAdmHorarios.obtenerHorario(id);
+                ProcesosFormularioAdmHorarios.presentarInformacionHorario(frmAdmistrarHorariosView, horarioModificado);
+                System.out.println("Click sobre la tabla..");
+            }
+        });
     }
 
     @Override
