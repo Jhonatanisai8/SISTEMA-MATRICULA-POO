@@ -11,7 +11,7 @@ public class ProcesoInicioSesion
 
     private static void ponerIconosFormulario(frmInicioSesionView fr) {
         fr.lblLogo.setIcon(ICONO_LOGO);
-        fr.lblLogo.setText("Jhonatan's");
+        fr.lblLogo.setText("Grupo Nº4.");
         fr.lblImagenFondo.setIcon(ICONO_FONDO_IE);
     }
 

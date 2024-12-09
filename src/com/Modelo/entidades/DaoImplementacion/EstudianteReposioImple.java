@@ -1,5 +1,6 @@
 package com.Modelo.entidades.DaoImplementacion;
 
+import com.Modelo.entidades.Apoderado;
 import com.Modelo.entidades.ApoderadoDatos;
 import com.Modelo.entidades.BaseDatos.ConexionBaseDatos;
 import com.Modelo.entidades.Direccion;
@@ -62,25 +63,36 @@ public class EstudianteReposioImple
     public Estudiante porDni(Long dni) {
         Estudiante estudiante = null;
         String SQL_SELECT_BUSCAR_ESTUDIANTE = "SELECT "
-                + "            	p.id_persona AS 'ID', "
-                + "                p.nombre AS 'Nombre', "
-                + "                p.apellido_paterno AS 'Apellido Paterno', "
-                + "                p.apellido_materno AS 'Apellido Materno', "
-                + "                p.fecha_nacimiento AS 'Fecha Nacimiento', "
-                + "                d.tipo_documento AS 'Tipo Documento', "
-                + "                d.numero_dni AS 'Nº de Dni', "
-                + "                di.calle AS 'Calle', "
-                + "                di.numero_cale AS 'Nº Calle', "
-                + "                di.distrito AS 'Distrito', "
-                + "                di.provincia AS 'Provincia', "
-                + "                p.telefono AS 'Telefono', "
-                + "                p.email_personal AS 'Email Personal', "
-                + "                e.codigo_estudiante AS 'Cod Estudiante', "
-                + "                e.email_educativo AS 'Email Educativo' "
-                + "            FROM persona AS p "
-                + "            INNER JOIN dni AS d ON d.id_dni = p.id_dni "
-                + "            INNER JOIN direccion AS di ON di.id_direccion = p.id_direccion "
-                + "            INNER JOIN estudiante AS e ON e.id_estudiante = p.id_persona "
+                + "p.id_persona AS 'ID', "
+                + "p.nombre AS 'Nombre', "
+                + "p.apellido_paterno AS 'Apellido Paterno', "
+                + "p.apellido_materno AS 'Apellido Materno', "
+                + "p.fecha_nacimiento AS 'Fecha Nacimiento', "
+                + "d.tipo_documento AS 'Tipo Documento', "
+                + "d.numero_dni AS 'Nº de Dni', "
+                + "di.calle AS 'Calle', "
+                + "di.numero_cale AS 'Nº Calle', "
+                + "di.distrito AS 'Distrito', "
+                + "di.provincia AS 'Provincia', "
+                + "p.telefono AS 'Telefono', "
+                + "p.email_personal AS 'Email Personal', "
+                + "e.codigo_estudiante AS 'Cod Estudiante', "
+                + "e.email_educativo AS 'Email Educativo', "
+                + "apo.id_apoderado AS 'ID Apoderado', "
+                + "pa.nombre AS 'Nombre Apoderado', "
+                + "pa.apellido_paterno AS 'Apellido Paterno Apoderado', "
+                + "pa.apellido_materno AS 'Apellido Materno Apoderado', "
+                + "pa.telefono AS 'Telefono Apoderado', "
+                + "pa.email_personal AS 'Email Personal Apoderado', "
+                + "apo.relacion_estudiante AS 'Relacion Estudiante', "
+                + "apo.ocupacion AS 'Ocupacion Apoderado', "
+                + "apo.estado_civil AS 'Estado Civil Apoderado' "
+                + "FROM persona AS p "
+                + "INNER JOIN dni AS d ON d.id_dni = p.id_dni "
+                + "INNER JOIN direccion AS di ON di.id_direccion = p.id_direccion "
+                + "INNER JOIN estudiante AS e ON e.id_estudiante = p.id_persona "
+                + "LEFT JOIN apoderado AS apo ON e.id_apoderado = apo.id_apoderado "
+                + "LEFT JOIN persona AS pa ON pa.id_persona = apo.id_apoderado "
                 + "            WHERE d.numero_dni LIKE  '%" + String.valueOf(dni) + "%' ";
         try (Connection con = getConection(); Statement stmt = con.createStatement(); ResultSet rs = stmt.executeQuery(SQL_SELECT_BUSCAR_ESTUDIANTE)) {
             if (rs.next()) {
@@ -194,7 +206,9 @@ public class EstudianteReposioImple
         Estudiante e = new Estudiante();
         Dni dni = new Dni();
         Direccion direccion = new Direccion();
-        //le establecemos los datos al estudiantes
+        Apoderado apoderado = new Apoderado();
+
+        // Datos del estudiante
         e.setIdEstudiante(rs.getLong("ID"));
         e.setIdPersona(rs.getLong("ID"));
         e.setNombre(rs.getString("Nombre"));
@@ -205,19 +219,40 @@ public class EstudianteReposioImple
         e.setEmailPersonal(rs.getString("Email Personal"));
         e.setEmailEducativo(rs.getString("Email Educativo"));
         e.setCodigoEstudiante(rs.getString("Cod Estudiante"));
-        //le establecemos los datos al dni
+
+        // Datos del DNI
         dni.setIdDni(rs.getLong("ID"));
         dni.setTipoDocumentoDni(rs.getString("Tipo Documento"));
         dni.setNumeroDni(rs.getString("Nº de Dni"));
-        //le establecemos los datos a la direccion
+
+        // Datos de la dirección
         direccion.setIdDireccion(rs.getLong("ID"));
         direccion.setCalle(rs.getString("Calle"));
         direccion.setNumero(rs.getString("Nº Calle"));
         direccion.setDistrito(rs.getString("Distrito"));
         direccion.setProvincia(rs.getString("Provincia"));
-        //le establecemos dni y la direccion al estudiante
+
+        // Establecer DNI y dirección al estudiante
         e.setDni(dni);
         e.setDireccion(direccion);
+
+        // Datos del apoderado (si existe)
+        Long idApoderado = rs.getLong("ID Apoderado");
+        if (idApoderado !=  null && idApoderado > 0) {
+            apoderado.setIdApoderado(idApoderado);
+            apoderado.setNombre(rs.getString("Nombre Apoderado"));
+            apoderado.setApellidoPaterno(rs.getString("Apellido Paterno Apoderado"));
+            apoderado.setApellidoMaterno(rs.getString("Apellido Materno Apoderado"));
+            apoderado.setTelefono(rs.getString("Telefono Apoderado"));
+            apoderado.setEmailPersonal(rs.getString("Email Personal Apoderado"));
+            apoderado.setRelacionEstudiante(rs.getString("Relacion Estudiante"));
+            apoderado.setOcupacion(rs.getString("Ocupacion Apoderado"));
+            apoderado.setEstadoCivil(rs.getString("Estado Civil Apoderado"));
+
+            // Establecer el apoderado al estudiante
+            e.setApoderado(apoderado);
+        }
+
         return e;
     }
 

@@ -8,6 +8,7 @@ public class ConexionBaseDatos
         implements Credenciales {
 
     public static Connection getInstance() throws SQLException {
+        System.out.println("Conectado a la BD......");
         return DriverManager.getConnection(RUTA, USUARIO, CLAVE);
     }
 }

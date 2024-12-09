@@ -62,6 +62,7 @@ public class ControladorFormularioListadoEstudiantes
             if (filaSelecionada >= 0) {
                 Estudiante estudiante = ProcesosFormularioListadoEstudiantes.obtenerEstudiante(Long.valueOf(frmEstudiantesView.btlData.getValueAt(filaSelecionada, 6).toString()));
                 frmRegistrarEstudianteView frmRegistrarEstudianteView1 = new frmRegistrarEstudianteView(estudiante);
+                System.out.println("ID APODERADO DEL OBJETO PASADO AL OTRO FORMULARIO: " + estudiante.getApoderado().getIdApoderado());
                 this.frmEstudiantesView.dispose();
                 ControladorFormularioRegistroEstudiantes cfre = new ControladorFormularioRegistroEstudiantes(this.frmMenuView1, frmRegistrarEstudianteView1, estudiante);
             } else {

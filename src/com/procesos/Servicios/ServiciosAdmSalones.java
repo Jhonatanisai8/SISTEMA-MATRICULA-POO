@@ -28,7 +28,7 @@ public class ServiciosAdmSalones
             data[i][1] = miSalon.getNombreSalon();
             data[i][2] = miSalon.getCapacidadEstudiantes();
             data[i][3] = miSalon.getReferencia();
-            data[i][4] = miSalon.getCapacidadEstudiantes();
+            data[i][4] = miSalon.getVacantes();
         }
         //creamo el modelo 
         DefaultTableModel modelo = new DefaultTableModel(data, nombreColumnas);

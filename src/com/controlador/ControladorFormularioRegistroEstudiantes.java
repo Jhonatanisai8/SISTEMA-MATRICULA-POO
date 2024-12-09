@@ -42,6 +42,8 @@ public class ControladorFormularioRegistroEstudiantes
     @Override
     public void actionPerformed(ActionEvent e) {
         Repositorio<Estudiante> repositorio = new EstudianteReposioImple();  // Asegúrate que el nombre sea correcto.
+
+        //click sobre guardar
         if (e.getSource() == this.frEstudiante.btnGuardar) {
             int fila = this.frEstudiante.tblApoderados.getSelectedRow();
             //si esta en guardar
@@ -60,12 +62,19 @@ public class ControladorFormularioRegistroEstudiantes
                     JOptionPane.showMessageDialog(null, "Por favor seleccinar una fila del apoderado.", "Atención", 3);
                 }
             } else {//si esta en modificar
-                Long id = this.estudianteMoficar.getIdEstudiante();
-                Estudiante estudianteModificar = ProcesosFormularioRegistroEstudiante.crearEstudiante(this.frEstudiante, fila);
-                estudianteModificar.setIdEstudiante(id);  // O si usas otro ID, asignarlo aquí.
-                repositorio.modificar(estudianteModificar);
-                JOptionPane.showMessageDialog(null, "Estudiante con Id: " + estudianteModificar.getIdEstudiante() + "\n modifcado correctamente", "Atención", 3);
-                ServiciosEstudianteDocente.limpiarDatos(frEstudiante);
+                if (fila >= 0) {
+                    Long id = this.estudianteMoficar.getIdEstudiante();
+                    Long idApoderado = this.estudianteMoficar.getApoderado().getIdApoderado();
+                    System.out.println(idApoderado);
+                    Estudiante estudianteModificar = ProcesosFormularioRegistroEstudiante.crearEstudiante(this.frEstudiante, fila);
+                    estudianteModificar.setIdEstudiante(id);  // O si usas otro ID, asignarlo aquí.
+                    repositorio.modificar(estudianteModificar);
+                    JOptionPane.showMessageDialog(null, "Estudiante con Id: " + estudianteModificar.getIdEstudiante() + "\nModifcado correctamente", "Atención", 3);
+                    ServiciosEstudianteDocente.limpiarDatos(frEstudiante);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Por favor seleccinar una fila del apoderado.", "Atención", 3);
+                }
+
                 System.out.println("Has dado click para modificar....");
             }
         }
