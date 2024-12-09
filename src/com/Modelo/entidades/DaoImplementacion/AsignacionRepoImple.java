@@ -6,6 +6,7 @@ import com.Modelo.entidades.InterfaceDao.ConsultasSQLAsignacion;
 import com.Modelo.entidades.InterfaceDao.Repositorio;
 import java.sql.*;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 public class AsignacionRepoImple
         implements Repositorio<Asignacion>,
@@ -49,5 +50,11 @@ public class AsignacionRepoImple
     public void eliminar(Long id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
+    public DefaultTableModel listarInformacionObjeto(DefaultTableModel model, String parametro, int bandera) {
+        model.setRowCount(0);
+        
+        return model;
+    }
+
 }
