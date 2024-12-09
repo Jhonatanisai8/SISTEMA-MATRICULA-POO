@@ -30,7 +30,7 @@ public class ProcesosFormularioMenuView
         frenuView.jmnAdministrarDocentes.setIcon(ICONO_JMN_ADMINISTRAR_DOCENTES);
         frenuView.jmnAdmistrarSalones.setIcon(ICONO_JMN_REGISTRAR_SALON);
         frenuView.jmnRegistrarCurso.setIcon(ICONO_JMN_REGISTRAR_CURSO);
-        frenuView.jmnAdministrarCursos.setIcon(ICONO_JMN_ADMINISTRAR_CURSOS);
+        frenuView.jmnCursoProfesor.setIcon(ICONO_JMN_ADMINISTRAR_CURSOS);
         frenuView.jmnAdministrarHorarios.setIcon(ICONO_JMN_ADMINISTRAR_HORARIOS);
         frenuView.jmnRegistrarMatriculas.setIcon(ICONO_JMN_LISTAR_ESTUDIANTES_MATRICULADOS);
         frenuView.jmnAdministrarMatriculas.setIcon(ICONO_JMN_LISTAR_DOCENTES_ASIGNADOS);

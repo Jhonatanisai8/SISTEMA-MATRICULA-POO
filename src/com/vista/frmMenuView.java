@@ -31,7 +31,7 @@ public class frmMenuView extends javax.swing.JFrame {
         jmnAdmistrarSalones = new javax.swing.JMenuItem();
         mnCursos = new javax.swing.JMenu();
         jmnRegistrarCurso = new javax.swing.JMenuItem();
-        jmnAdministrarCursos = new javax.swing.JMenuItem();
+        jmnCursoProfesor = new javax.swing.JMenuItem();
         mnHorarios = new javax.swing.JMenu();
         jmnAdministrarHorarios = new javax.swing.JMenuItem();
         mnMatricula = new javax.swing.JMenu();
@@ -136,13 +136,13 @@ public class frmMenuView extends javax.swing.JFrame {
         jmnRegistrarCurso.setText("Registrar Curso");
         mnCursos.add(jmnRegistrarCurso);
 
-        jmnAdministrarCursos.setText("Administrar Cursos");
-        jmnAdministrarCursos.addActionListener(new java.awt.event.ActionListener() {
+        jmnCursoProfesor.setText("Curso Profesor");
+        jmnCursoProfesor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmnAdministrarCursosActionPerformed(evt);
+                jmnCursoProfesorActionPerformed(evt);
             }
         });
-        mnCursos.add(jmnAdministrarCursos);
+        mnCursos.add(jmnCursoProfesor);
 
         menMenuPrincipal.add(mnCursos);
 
@@ -218,9 +218,9 @@ public class frmMenuView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jmnAdministrarEstudiantesActionPerformed
 
-    private void jmnAdministrarCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmnAdministrarCursosActionPerformed
+    private void jmnCursoProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmnCursoProfesorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jmnAdministrarCursosActionPerformed
+    }//GEN-LAST:event_jmnCursoProfesorActionPerformed
 
     private void jmnAdministrarHorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmnAdministrarHorariosActionPerformed
         // TODO add your handling code here:
@@ -247,13 +247,13 @@ public class frmMenuView extends javax.swing.JFrame {
     public javax.swing.JDesktopPane dsktEscritorio;
     public javax.swing.JMenuItem jmnAdministrarApoderados;
     public javax.swing.JMenuItem jmnAdministrarAsignaciones;
-    public javax.swing.JMenuItem jmnAdministrarCursos;
     public javax.swing.JMenuItem jmnAdministrarDocentes;
     public javax.swing.JMenuItem jmnAdministrarEstudiantes;
     public javax.swing.JMenuItem jmnAdministrarHorarios;
     public javax.swing.JMenuItem jmnAdministrarMatriculas;
     public javax.swing.JMenuItem jmnAdmistrarSalones;
     public javax.swing.JMenuItem jmnCerrarSesion;
+    public javax.swing.JMenuItem jmnCursoProfesor;
     public javax.swing.JMenu jmnInicio;
     public javax.swing.JMenuItem jmnRegistrarAsignacion;
     public javax.swing.JMenuItem jmnRegistrarCurso;

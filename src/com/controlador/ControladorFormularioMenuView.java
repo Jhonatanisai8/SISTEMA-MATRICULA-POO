@@ -5,6 +5,7 @@ import com.vista.frmRegistrarAsignacionesView;
 import com.vista.frmAdmistrarCursos;
 import com.vista.frmAdmistrarHorariosView;
 import com.vista.frmAdmistrarSalonesView;
+import com.vista.frmCursoProfesorView;
 import com.vista.frmInicioSesionView;
 import com.vista.frmInicioView;
 import com.vista.frmListadoApoderadosView;
@@ -42,6 +43,7 @@ public class ControladorFormularioMenuView
         this.frmenuView.jmnRegistrarAsignacion.addActionListener(this);
         this.frmenuView.jmnRegistrarMatriculas.addActionListener(this);
         this.frmenuView.jmnAdministrarMatriculas.addActionListener(this);
+        this.frmenuView.jmnCursoProfesor.addActionListener(this);
         ProcesosFormularioMenuView.presentarFormulario(this.frmenuView);
         System.out.println("Mostrando el Menu del sistema...");
     }
@@ -138,5 +140,10 @@ public class ControladorFormularioMenuView
             System.out.println("Click sobre el JMenu de Administrar Matriculas");
         }
 
+        if (e.getSource() == this.frmenuView.jmnCursoProfesor) {
+            frmCursoProfesorView cpv = new frmCursoProfesorView();
+            ControladorFormularioCursoProfesor cfcp = new ControladorFormularioCursoProfesor(this.frmenuView, cpv);
+            System.out.println("Click sobre el JMenu de Curso Profesor");
+        }
     }
 }
