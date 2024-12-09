@@ -22,7 +22,7 @@ public class ProcesosFormularioCursoProfesor
         DefaultTableModel model = new DefaultTableModel(ENCABEZADOS_TABLA_CURSO, 0);
         frmCursoProfesorView.tblDatos.setModel(model);
         model = (DefaultTableModel) frmCursoProfesorView.tblDatos.getModel();
-        frmCursoProfesorView.tblDatos.setModel(cri.listarCursosProcesos(model, "", 0));
+        frmCursoProfesorView.tblDatos.setModel(cri.listarCursosProcesos(model, ""));
         curso.establecerAnchoColumnasTabla(frmCursoProfesorView.tblDatos, ANCHO_CURSO_PROFESOR);
     }
 }

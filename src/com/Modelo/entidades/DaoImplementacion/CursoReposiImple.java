@@ -140,10 +140,36 @@ public class CursoReposiImple
         return defaultTableModel;
     }
 
-    public DefaultTableModel listarCursosProcesos(DefaultTableModel defaultTableModel, String nombre, int bandera) {
+    public DefaultTableModel listarCursosProcesos(DefaultTableModel defaultTableModel, String nombre) {
+
         defaultTableModel.setRowCount(0);
+        String SQL = "";
+        if (nombre.isEmpty()) {
+            SQL = SQL_CURSO_PROFESOR;
+        } else {
+            SQL = """
+                  SELECT
+                                                            CONCAT(pd.nombre,' ',pd.apellido_paterno,' ',pd.apellido_materno) AS "Docente",
+                                                            ddoc.email_educativo_docente AS "Email Educativo Docente",
+                                                            c.codigo_curso AS "Codigo Curso",
+                                                            c.nombre_curso AS "Nombre Curso",
+                                                            c.descripcion AS "Descripcion Curso",
+                                                            c.grado AS "Grado Curso",
+                                                            c.nivel AS "Nivel Curso"
+                                                        FROM 
+                                                            docente ddoc
+                                                        JOIN 
+                                                            persona pd ON ddoc.id_docente = pd.id_persona
+                                                        JOIN 
+                                                            asignacion a ON ddoc.id_docente = a.id_docente
+                                                        JOIN 
+                                                            curso c ON a.id_curso = c.id_curso
+                                                         WHERE pd.nombre LIKE '%""" + nombre + "%'"
+                    + "                                      ORDER BY \n"
+                    + "                                          pd.nombre, c.nombre_curso";
+        }
         try (
-                Connection con = getConnection(); PreparedStatement stCurso = con.prepareStatement(SQL_CURSO_PROFESOR); ResultSet rs = stCurso.executeQuery();) {
+                Connection con = getConnection(); PreparedStatement stCurso = con.prepareStatement(SQL); ResultSet rs = stCurso.executeQuery();) {
             ResultSetMetaData data = rs.getMetaData();
             int columnas = data.getColumnCount();
             while (rs.next()) {
