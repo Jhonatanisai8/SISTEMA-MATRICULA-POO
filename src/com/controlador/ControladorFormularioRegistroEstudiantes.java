@@ -62,25 +62,41 @@ public class ControladorFormularioRegistroEstudiantes
                     JOptionPane.showMessageDialog(null, "Por favor seleccinar una fila del apoderado.", "Atención", 3);
                 }
             } else {//si esta en modificar
-                if (fila >= 0) {
+                int opcion = JOptionPane.showConfirmDialog(null, """
+                                                                 APODERADO NO SELECCIONADO.
+                                                                  DESEA DEJAR EL APODERADO ANTERIOR CON ID: """ + this.estudianteMoficar.getApoderado().getIdApoderado()
+                        + "\nY NOMBRE: " + this.estudianteMoficar.getApoderado().getNombre(), "ATENCION", JOptionPane.INFORMATION_MESSAGE);
+                if (opcion == 0) {
                     Long id = this.estudianteMoficar.getIdEstudiante();
                     Long idApoderado = this.estudianteMoficar.getApoderado().getIdApoderado();
                     System.out.println(idApoderado);
                     Estudiante estudianteModificar = ProcesosFormularioRegistroEstudiante.crearEstudiante(this.frEstudiante, fila);
                     estudianteModificar.setIdEstudiante(id);  // O si usas otro ID, asignarlo aquí.
+                    estudianteModificar.setApoderado(this.estudianteMoficar.getApoderado());
                     repositorio.modificar(estudianteModificar);
                     JOptionPane.showMessageDialog(null, "Estudiante con Id: " + estudianteModificar.getIdEstudiante() + "\nModifcado correctamente", "Atención", 3);
                     ServiciosEstudianteDocente.limpiarDatos(frEstudiante);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Por favor seleccinar una fila del apoderado.", "Atención", 3);
+                    JOptionPane.showMessageDialog(null, "POR FAVOR SELECCIONE UNA APODERADO.", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
+                    int filaSele = frEstudiante.tblApoderados.getSelectedRow();
+                    if (filaSele >= 0) {
+                        estudiante = ProcesosFormularioRegistroEstudiante.crearEstudiante(this.frEstudiante, filaSele);
+                        if (estudiante != null) {
+                            repositorio.guardar(estudiante);
+                            ServiciosEstudianteDocente.limpiarDatos(frEstudiante);
+                            System.out.println("Has dado click para guardar.....");
+                            JOptionPane.showMessageDialog(null, "Estudiante con Nombre: " + estudiante.getNombre() + "\n guardado correctamente", "Atención", 3);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "POR FAVOR SELECCINE UN APODERADO.", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
+                    }
                 }
-
                 System.out.println("Has dado click para modificar....");
             }
         }
-
         //para digirse al formulario de regisi apoderado
-        if (e.getSource() == this.frEstudiante.btnRegistrarApoderado) {
+        if (e.getSource()
+                == this.frEstudiante.btnRegistrarApoderado) {
             frmRegistrarApoderadoView frmRegistrarApoderadoView = new frmRegistrarApoderadoView();
             this.frEstudiante.dispose();
             ControladorFormularioRegistroApoderado cfra = new ControladorFormularioRegistroApoderado(frmRegistrarApoderadoView, this.frMenuView);

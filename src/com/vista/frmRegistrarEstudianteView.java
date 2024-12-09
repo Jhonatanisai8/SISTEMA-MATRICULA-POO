@@ -5,14 +5,21 @@ import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighte
 
 public class frmRegistrarEstudianteView extends javax.swing.JInternalFrame {
 
+    private Estudiante e;
+
     public frmRegistrarEstudianteView() {
         FlatMaterialLighterIJTheme.setup();
         initComponents();
     }
 
     public frmRegistrarEstudianteView(Estudiante e) {
+        this.e = e;
         FlatMaterialLighterIJTheme.setup();
         initComponents();
+    }
+
+    public Estudiante getE() {
+        return e;
     }
 
     @SuppressWarnings("unchecked")

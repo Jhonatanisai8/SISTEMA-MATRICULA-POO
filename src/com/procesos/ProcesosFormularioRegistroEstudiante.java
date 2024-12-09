@@ -131,12 +131,22 @@ public class ProcesosFormularioRegistroEstudiante
 
     private static Apoderado crearApoderado(frmRegistrarEstudianteView frmRegistrarEstudianteView, int fila) {
         Apoderado miApoderado = new Apoderado();
-        //le asiganamos sus atributos 
-        miApoderado.setIdApoderado(Long.valueOf(frmRegistrarEstudianteView.tblApoderados.getValueAt(fila, 0).toString()));
-        miApoderado.setNombre(frmRegistrarEstudianteView.tblApoderados.getValueAt(fila, 1).toString());
-        miApoderado.setRelacionEstudiante(frmRegistrarEstudianteView.tblApoderados.getValueAt(fila, 2).toString());
-        miApoderado.setOcupacion(frmRegistrarEstudianteView.tblApoderados.getValueAt(fila, 3).toString());
-        miApoderado.setEstadoCivil(frmRegistrarEstudianteView.tblApoderados.getValueAt(fila, 4).toString());
+        if (frmRegistrarEstudianteView.btnGuardar.getText().equalsIgnoreCase("Modificar")) {
+            miApoderado = frmRegistrarEstudianteView.getE().getApoderado();
+        } else {
+            //le asiganamos sus atributos 
+            Long id;
+            if (fila < 0) {
+                id = frmRegistrarEstudianteView.getE().getIdEstudiante();
+            } else {
+                id = Long.valueOf(frmRegistrarEstudianteView.tblApoderados.getValueAt(fila, 0).toString());
+            }
+            miApoderado.setIdApoderado(id);
+            miApoderado.setNombre(frmRegistrarEstudianteView.tblApoderados.getValueAt(fila, 1).toString());
+            miApoderado.setRelacionEstudiante(frmRegistrarEstudianteView.tblApoderados.getValueAt(fila, 2).toString());
+            miApoderado.setOcupacion(frmRegistrarEstudianteView.tblApoderados.getValueAt(fila, 3).toString());
+            miApoderado.setEstadoCivil(frmRegistrarEstudianteView.tblApoderados.getValueAt(fila, 4).toString());
+        }
         return miApoderado;
     }
 
