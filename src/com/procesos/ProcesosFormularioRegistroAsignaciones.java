@@ -10,6 +10,7 @@ import com.Modelo.entidades.Docente;
 import com.Modelo.entidades.Horario;
 import com.Modelo.entidades.InterfaceDao.Repositorio;
 import com.Modelo.entidades.Salon;
+import static com.Utelerias.Constantes.ConstantesFormularioAdmCursos.FUENTE_TEXT_PRESENTACION;
 import com.Utelerias.Constantes.ConstantesFormularioAdmHorarios;
 import com.Utelerias.Constantes.ConstantesFormularioMenu;
 import com.Utelerias.Constantes.ConstantesFormularioRegistrarAsignacion;
@@ -35,7 +36,6 @@ public class ProcesosFormularioRegistroAsignaciones
         Repositorio<Horario> repo = new HorarioRepoImple();
         Repositorio<Curso> repositorio = new CursoReposiImple();
         Repositorio<Docente> repoDocente = new DocenteReposioImple();
-
         desktopPane.removeAll();
         desktopPane.add(frmAdministrarAsignacionesView);
         frmAdministrarAsignacionesView.setTitle("Registro de asignaciones".toUpperCase());
@@ -45,6 +45,10 @@ public class ProcesosFormularioRegistroAsignaciones
         ServiciosAdmAsignaciones.mostrarRegistrosEnTablas(frmAdministrarAsignacionesView);
         ServiciosAdmAsignaciones.listarEnTablaCursos(frmAdministrarAsignacionesView.tblCursos, ENCABEZADO_CURSO, repositorio.listar());
         ServiciosAdmAsignaciones.listarEnTablaDocentes(frmAdministrarAsignacionesView.tblDocentes, ENCABEZADO_DOCENTE, repoDocente.listar());
+        frmAdministrarAsignacionesView.tblCursos.setFont(FUENTE_TEXT_PRESENTACION);
+        frmAdministrarAsignacionesView.tblDocentes.setFont(FUENTE_TEXT_PRESENTACION);
+        frmAdministrarAsignacionesView.tblHorarios.setFont(FUENTE_TEXT_PRESENTACION);
+        frmAdministrarAsignacionesView.tblSalones.setFont(FUENTE_TEXT_PRESENTACION);
     }
 
     public static Asignacion crearAsignacionDesdeFormulario(frmRegistrarAsignacionesView frmAsignacionesVie) {
