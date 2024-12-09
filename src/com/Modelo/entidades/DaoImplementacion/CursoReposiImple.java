@@ -13,11 +13,11 @@ import javax.swing.table.DefaultTableModel;
 public class CursoReposiImple
         implements Repositorio<Curso>,
         ConsultasSQLCurso {
-    
+
     private Connection getConnection() throws SQLException {
         return ConexionBaseDatos.getInstance();
     }
-    
+
     @Override
     public List<Curso> listar() {
         List<Curso> listaCursos = new ArrayList<>();
@@ -32,7 +32,7 @@ public class CursoReposiImple
         }
         return listaCursos;
     }
-    
+
     @Override
     public Curso porDni(Long dni) {
         Curso curso = null;
@@ -54,7 +54,7 @@ public class CursoReposiImple
         }
         return curso;
     }
-    
+
     @Override
     public void guardar(Curso curso) {
         try (
@@ -71,7 +71,7 @@ public class CursoReposiImple
             System.out.println("error al insertar un curso: " + e.getMessage());
         }
     }
-    
+
     @Override
     public void modificar(Curso curso) {
         try (
@@ -88,7 +88,7 @@ public class CursoReposiImple
             System.out.println("error al modificar un curso: " + e.getMessage());
         }
     }
-    
+
     @Override
     public void eliminar(Long id) {
         boolean huboExcepcion = false;
@@ -100,15 +100,15 @@ public class CursoReposiImple
             huboExcepcion = true;
             System.out.println("Hubo Excepcion");
         }
-        
+
         if (!huboExcepcion) {
             JOptionPane.showMessageDialog(null, "Curso Eliminado Correctamente.", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(null, "El curso esta en uso en una Asignacion, No se Puede Eliminar.", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
         }
-        
+
     }
-    
+
     private Curso crearCurso(final ResultSet rs) throws SQLException {
         Curso miCurso = new Curso();
         miCurso.setIdCurso(rs.getLong("ID"));
@@ -119,7 +119,7 @@ public class CursoReposiImple
         miCurso.setNivel(rs.getString("NIVEL"));
         return miCurso;
     }
-    
+
     public DefaultTableModel listarCursosDefaultTableModel(DefaultTableModel defaultTableModel, String nombre) {
         defaultTableModel.setRowCount(0);
         String SQL_BUSCAR = "SELECT id_curso,codigo_curso,nombre_curso,descripcion,grado,nivel FROM curso WHERE nombre_curso  LIKE '%" + nombre + "%'";
@@ -139,5 +139,24 @@ public class CursoReposiImple
         }
         return defaultTableModel;
     }
-    
+
+    public DefaultTableModel listarCursosProcesos(DefaultTableModel defaultTableModel, String nombre, int bandera) {
+        defaultTableModel.setRowCount(0);
+        try (
+                Connection con = getConnection(); PreparedStatement stCurso = con.prepareStatement(SQL_CURSO_PROFESOR); ResultSet rs = stCurso.executeQuery();) {
+            ResultSetMetaData data = rs.getMetaData();
+            int columnas = data.getColumnCount();
+            while (rs.next()) {
+                Object[] fila = new Object[columnas];
+                for (int i = 1; i <= columnas; i++) {
+                    fila[i - 1] = rs.getObject(i);
+                }
+                defaultTableModel.addRow(fila);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al listar  cursos y su profesor  buscados: " + e.getMessage());
+        }
+        return defaultTableModel;
+    }
+
 }
