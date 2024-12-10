@@ -23,7 +23,7 @@ public interface ConsultasSQLAsignacion {
                                                s.capacidad AS "Capacidad Salon",
                                                s.referencia AS "Referencia Salon",
                                                h.id_horario AS "ID Horario",
-                                               h.dia_semana AS "D\u00eda Semana",
+                                               h.dia_semana AS "Día Semana",
                                                h.hora_inicio AS "Hora Inicio",
                                                h.hora_fin AS "Hora Fin",
                                                h.turno AS "Turno"
