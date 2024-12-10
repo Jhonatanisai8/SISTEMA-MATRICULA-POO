@@ -24,7 +24,7 @@ public class AsignacionRepoImple
     @Override
     public List<Asignacion> listar() {
         List<Asignacion> listaAsignaccion = new ArrayList<>();
-        try (Connection con = getConnection(); Statement st = con.createStatement(); ResultSet rs = st.executeQuery(SQL_INSERT_ASIGNACION)) {
+        try (Connection con = getConnection(); Statement st = con.createStatement(); ResultSet rs = st.executeQuery(SQL_SELECT_ASIGNACIONES);) {
             while (rs.next()) {
                 Asignacion asignacion = CrearAsignacion(rs);
                 listaAsignaccion.add(asignacion);
@@ -40,7 +40,8 @@ public class AsignacionRepoImple
         asignacion.setIdAsignacion(rs.getLong("ID Asignacion"));
         Curso curso = new Curso();
         curso.setIdCurso(rs.getLong("ID Curso"));
-        curso.setNombreCurso(rs.getString("Codigo Curso"));
+        curso.setCodigoCurso(rs.getString("Codigo Curso"));
+        curso.setNombreCurso(rs.getString("Nombre Curso"));
         curso.setDescripcion(rs.getString("Descripcion Curso"));
         curso.setGrado(rs.getInt("Grado"));
         curso.setNivel(rs.getString("Nivel"));

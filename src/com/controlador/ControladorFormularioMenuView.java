@@ -12,6 +12,7 @@ import com.vista.frmListadoApoderadosView;
 import com.vista.frmListadoDocentesView;
 import com.vista.frmListadoEstudiantesView;
 import com.vista.frmListadoMatriculasView;
+import com.vista.frmListarAsignacionesView;
 import com.vista.frmMenuView;
 import com.vista.frmRegistrarApoderadoView;
 import com.vista.frmRegistrarDocenteView;
@@ -44,6 +45,7 @@ public class ControladorFormularioMenuView
         this.frmenuView.jmnRegistrarMatriculas.addActionListener(this);
         this.frmenuView.jmnAdministrarMatriculas.addActionListener(this);
         this.frmenuView.jmnCursoProfesor.addActionListener(this);
+        this.frmenuView.jmnListarAsignaciones.addActionListener(this);
         ProcesosFormularioMenuView.presentarFormulario(this.frmenuView);
         System.out.println("Mostrando el Menu del sistema...");
     }
@@ -144,6 +146,11 @@ public class ControladorFormularioMenuView
             frmCursoProfesorView cpv = new frmCursoProfesorView();
             ControladorFormularioCursoProfesor cfcp = new ControladorFormularioCursoProfesor(this.frmenuView, cpv);
             System.out.println("Click sobre el JMenu de Curso Profesor");
+        }
+
+        if (e.getSource() == this.frmenuView.jmnListarAsignaciones) {
+            frmListarAsignacionesView asignacionesView = new frmListarAsignacionesView();
+            ControladorFormularioListadoAsignaciones asignaciones = new ControladorFormularioListadoAsignaciones(this.frmenuView, asignacionesView);
         }
     }
 }

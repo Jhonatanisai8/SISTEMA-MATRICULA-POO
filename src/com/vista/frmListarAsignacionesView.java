@@ -67,6 +67,6 @@ public class frmListarAsignacionesView extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane2;
     private static javax.swing.JPanel pnlFondo;
-    private javax.swing.JTable tblData;
+    public javax.swing.JTable tblData;
     // End of variables declaration//GEN-END:variables
 }
